@@ -1,0 +1,50 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/11/02 18:04:53 by soum              #+#    #+#              #
+#    Updated: 2021/11/12 21:23:55 by soum             ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = push_swap
+SRCS = main.c \
+	   src/util.c \
+	   src/error.c \
+	   src/sort.c \
+	   src/swap.c \
+	   src/push.c \
+	   src/rotate.c \
+	   src/reverse.c \
+	   src/pop_push.c \
+
+LIBFT = Libft
+LIBFT_LIB = Libft/libft.a
+INCLUDES = ./includes/push_swap.h
+
+CC = gcc
+CFLAGES = -Wall -Wextra -Werror
+
+.c.o :
+	$(CC) $(CFLAGES) -c $< -o $(<:.c=.o) -I $(INCLUDES)
+
+OBJS = $(SRCS:.c=.o)
+
+all : $(NAME)
+
+$(NAME) : $(OBJS)
+	make all -C $(LIBFT)/
+	$(CC) $(CFLAGES) $(OBJS) $(LIBFT_LIB) -o $(NAME)
+
+re : fclean all
+
+clean :
+	rm -f $(OBJS)
+	make clean -C $(LIBFT)
+
+fclean : clean
+	rm -f $(NAME)
+	rm -f $(LIBFT_LIB)
