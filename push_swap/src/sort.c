@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:47:24 by soum              #+#    #+#             */
-/*   Updated: 2021/11/13 19:09:55 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/14 17:26:31 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,26 +46,42 @@ void	test_print(t_stack *a, t_stack *b)
 	printf("---------------\n");
 }
 
+void	is_all_sorted(t_stack *a, t_stack *b)
+{
+	t_node	*node;
+	int		num;
+	int		next_num;
+
+	node = a->top;
+	num = node->data;
+	node = node->next;
+	while (node)
+	{
+		next_num = node->data;
+		if (next_num > num)
+		{
+			num = next_num;
+			node = node->next;
+		}
+		else
+			return ;
+	}
+	free_stack(a);
+	free_stack(b);
+	exit(0);
+}
+
 void	sorting(t_stack *a, t_stack *b)
 {
+	int	size;
+
+	is_all_sorted(a, b);
+	size = stack_size(a);
+	if (size == 3)
+		size_3_sort(a, b);
+	else if (size == 5)
+		size_5_sort(a, b);
+	else
+		quick_sort(a, b);
 	test_print(a, b);
-	swap_a(a);
-	test_print(a, b);
-	push_b(a, b);
-	push_b(a, b);
-	push_b(a, b);
-	test_print(a, b);
-	rotate_a(a, b);
-	rotate_b(a, b);
-	test_print(a, b);
-	reverse_a(a, b);
-	reverse_b(a, b);
-	test_print(a, b);
-	swap_a(a);
-	test_print(a, b);
-	push_a(a, b);
-	push_a(a, b);
-	push_a(a, b);
-	test_print(a, b);
-	system("leaks push_swap");
 }

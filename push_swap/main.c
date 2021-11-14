@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:57:18 by soum              #+#    #+#             */
-/*   Updated: 2021/11/13 19:11:01 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/14 15:28:22 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,8 @@ int	main(int argc, char **argv)
 		sorting(a, b);
 	}
 	else
-		ft_putstr_fd("Error\n", 2);
+	{
+		free_stack(a);
+		free_stack(b);
+	}
 }
