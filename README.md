@@ -2,8 +2,8 @@
 
 [![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/soum)](https://github.com/JaeSeoKim/badge42)
 
-
--Libft : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/Libft)](https://github.com/JaeSeoKim/badge42)
+<!-- Link -->
+[LIBFT](https://github.com/tjddnd3116/42seoul_subject/tree/main/Libft) : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/Libft)](https://github.com/JaeSeoKim/badge42)
 
 -born2beroot : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/Born2beroot)](https://github.com/JaeSeoKim/badge42)
 
