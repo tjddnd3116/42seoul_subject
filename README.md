@@ -5,9 +5,9 @@
 <!-- Link -->
 -[Libft](https://github.com/tjddnd3116/42seoul_subject/tree/main/Libft) : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/Libft)](https://github.com/JaeSeoKim/badge42)
 
--[born2beroot] : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/Born2beroot)](https://github.com/JaeSeoKim/badge42)
+-born2beroot : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/Born2beroot)](https://github.com/JaeSeoKim/badge42)
 
--[netwhat] : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/netwhat)](https://github.com/JaeSeoKim/badge42)
+-netwhat : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/netwhat)](https://github.com/JaeSeoKim/badge42)
 
 -[get_next_line](https://github.com/tjddnd3116/42seoul_subject/tree/main/get_next_line) : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/get_next_line)](https://github.com/JaeSeoKim/badge42)
 
