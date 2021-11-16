@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   size_sort.c                                        :+:      :+:    :+:   */
+/*   sort_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 17:18:12 by soum              #+#    #+#             */
-/*   Updated: 2021/11/15 20:23:35 by soum             ###   ########.fr       */
+/*   Created: 2021/11/15 19:59:07 by soum              #+#    #+#             */
+/*   Updated: 2021/11/15 20:25:30 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
-void	size_2_sort(t_stack *stack)
-{
-	t_node *tmp;
 
-	tmp = stack->top;
-	if (tmp->data > tmp->next->data)
-		swap_a(stack);
-}
-
-void	size_3_sort(t_stack *stack)
+int	find_max_num(t_node *node)
 {
+	int		index;
+	int		locate;
+	int		max;
 	t_node	*tmp;
-	int		max_locate;
 
-	tmp = stack->top;
-	max_locate = find_max_num(tmp);
-	printf(" max locate : %d\n", max_locate);
+	tmp = node;
+	locate = 0;
+	index = 0;
+	max = tmp->data;
+	tmp = tmp->next;
+	while (index < 2)
+	{
+		if (tmp->data > max)
+		{
+			max = tmp->data;
+			locate++;
+		}
+		tmp = tmp->next;
+		index++;
+	}
+	return (locate);
 }
-/*
-void	size_4_sort(t_stack *a, t_stack *b)
-{
-}
-
-void	size_5_sort(t_stack *a, t_stack *b)
-{
-
-}
-*/

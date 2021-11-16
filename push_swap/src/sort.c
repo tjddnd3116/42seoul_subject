@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:47:24 by soum              #+#    #+#             */
-/*   Updated: 2021/11/14 17:26:31 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/15 19:56:14 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,14 @@ void	sorting(t_stack *a, t_stack *b)
 
 	is_all_sorted(a, b);
 	size = stack_size(a);
-	if (size == 3)
-		size_3_sort(a, b);
-	else if (size == 5)
-		size_5_sort(a, b);
-	else
-		quick_sort(a, b);
+	if (size == 2)
+		size_2_sort(a);
+	else if (size == 3)
+		size_3_sort(a);
+//	else if (size == 4)
+		//size_4_sort(a, b);
+//	else if (size == 5)
+		//size_5_sort(a, b);
+//	else
 	test_print(a, b);
 }

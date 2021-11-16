@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 17:59:11 by soum              #+#    #+#             */
-/*   Updated: 2021/11/14 17:19:33 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/15 20:01:30 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ int			push(int data, t_stack *stack);
 int			push_last(int data, t_stack *stack);
 void		pop_last(t_stack *stack);
 //size_sort.c
-void		size_3_sort(t_stack *a, t_stack *b);
+void		size_2_sort(t_stack *stack);
+void		size_3_sort(t_stack *stack);
+void		size_4_sort(t_stack *a, t_stack *b);
 void		size_5_sort(t_stack *a, t_stack *b);
+//sort_util.c
+int			find_max_num(t_node *node);
 #endif
