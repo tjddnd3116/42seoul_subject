@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 17:59:11 by soum              #+#    #+#             */
-/*   Updated: 2021/11/15 20:01:30 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/16 20:54:27 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef struct s_stack
 //util.c
 long long	ft_atoi2(const char *str);
 int			stack_size(t_stack *stack);
-//ft_atoi.c
+//libft
+void		ft_putstr_fd(char *s, int fd);
 int			ft_isspace(const char c);
 //error.c
 void		error_msg_exit(char *msg);
@@ -64,9 +65,14 @@ int			push_last(int data, t_stack *stack);
 void		pop_last(t_stack *stack);
 //size_sort.c
 void		size_2_sort(t_stack *stack);
-void		size_3_sort(t_stack *stack);
+void		size_3_sort(t_stack *a, t_stack *b);
 void		size_4_sort(t_stack *a, t_stack *b);
 void		size_5_sort(t_stack *a, t_stack *b);
 //sort_util.c
+int			find_min_num(t_node *node);
+int			find_min_locate(t_node *node);
 int			find_max_num(t_node *node);
+int			find_max_locate(t_node *node);
+//quick_sort.c
+//void		quick_sort(t_stack *a, t_stack *b);
 #endif

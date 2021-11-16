@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:52:12 by soum              #+#    #+#             */
-/*   Updated: 2021/11/12 21:45:44 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/16 13:52:13 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	swap_b(t_stack *b)
 		top->data = top_next->data;
 		top_next->data = tmp_data;
 	}
+	ft_putstr_fd("sb\n", 1);
 }
 
 void	swap_a(t_stack *a)
@@ -50,10 +51,12 @@ void	swap_a(t_stack *a)
 		top->data = top_next->data;
 		top_next->data = tmp_data;
 	}
+	ft_putstr_fd("sa\n", 1);
 }
 
 void	swap_all(t_stack *a, t_stack *b)
 {
 	swap_a(a);
 	swap_b(b);
+	ft_putstr_fd("ss\n", 1);
 }

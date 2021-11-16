@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 20:40:33 by soum              #+#    #+#             */
-/*   Updated: 2021/11/12 21:44:51 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/16 13:53:42 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	reverse_a(t_stack *a, t_stack *b)
 		malloc_error(b);
 	}
 	pop_last(a);
+	ft_putstr_fd("rra\n", 1);
 }
 
 void	reverse_b(t_stack *a, t_stack *b)
@@ -66,10 +67,12 @@ void	reverse_b(t_stack *a, t_stack *b)
 		malloc_error(b);
 	}
 	pop_last(b);
+	ft_putstr_fd("rrb\n", 1);
 }
 
 void	reverse_all(t_stack *a, t_stack *b)
 {
 	reverse_a(a, b);
 	reverse_b(a, b);
+	ft_putstr_fd("rrr\n", 1);
 }

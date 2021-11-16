@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 18:26:51 by soum              #+#    #+#             */
-/*   Updated: 2021/11/12 21:44:24 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/16 13:55:27 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	push_a(t_stack *a, t_stack *b)
 		malloc_error(b);
 	}
 	pop(b);
+	ft_putstr_fd("pa\n", 1);
 }
 
 void	push_b(t_stack *a, t_stack *b)
@@ -46,4 +47,5 @@ void	push_b(t_stack *a, t_stack *b)
 		malloc_error(b);
 	}
 	pop(a);
+	ft_putstr_fd("pb\n", 1);
 }

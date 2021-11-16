@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/02 18:04:53 by soum              #+#    #+#              #
-#    Updated: 2021/11/15 20:23:11 by soum             ###   ########.fr        #
+#    Updated: 2021/11/16 21:01:48 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = main.c \
 	   src/pop_push.c \
 	   src/size_sort.c \
 	   src/sort_util.c \
+	   src/quick_sort.c \
 
 LIBFT = Libft
 LIBFT_LIB = Libft/libft.a
