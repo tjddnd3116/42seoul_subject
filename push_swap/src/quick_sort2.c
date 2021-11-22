@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:53:51 by soum              #+#    #+#             */
-/*   Updated: 2021/11/22 19:58:46 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/22 21:06:18 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ void	rrr(t_info *info, int ra, int rb)
 	//rb = info->rb_count;
 	while (ra || rb)
 	{
-		info->write_flag = 1;
+		//info->write_flag = 1;
 		if (ra && rb)
 		{
 			info->write_flag = 0;
 			reverse_all(info);
+			info->write_flag = 1;
 			ra--;
 			rb--;
 		}
