@@ -18,4 +18,5 @@
 -[minitalk](https://github.com/tjddnd3116/42seoul_subject/tree/main/minitalk) : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/minitalk)](https://github.com/JaeSeoKim/badge42)
 
 -[so_long](https://github.com/tjddnd3116/42seoul_subject/tree/main/so_long) : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/so_long)](https://github.com/JaeSeoKim/badge42)
+
 -[push_swap](https://github.com/tjddnd3116/42seoul_subject/tree/main/push_swap) : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/push_swap)](https://github.com/JaeSeoKim/badge42)
