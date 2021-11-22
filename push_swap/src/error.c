@@ -6,15 +6,15 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 16:39:44 by soum              #+#    #+#             */
-/*   Updated: 2021/11/12 20:00:08 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/22 16:12:14 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	malloc_error(t_stack *a)
+void	malloc_error(t_info *info)
 {
-	free_stack(a);
+	free_stack(info);
 	exit(0);
 }
 
@@ -24,17 +24,28 @@ void	error_msg_exit(char *msg)
 	exit(0);
 }
 
-void	free_stack(t_stack *a)
+void	free_stack(t_info *info)
 {
-	t_node	*now;
-	t_node	*next;
+	t_node	*a_now;
+	t_node	*a_next;
+	t_node	*b_now;
+	t_node	*b_next;
 
-	now = a->top;
-	while (now)
+	a_now = info->a_stack->top;
+	b_now = info->b_stack->top;
+	while (a_now)
 	{
-		next = now->next;
-		free(now);
-		now = next;
+		a_next = a_now->next;
+		free(a_now);
+		a_now = a_next;
 	}
-	free(a);
+	while (b_now)
+	{
+		b_next = b_now->next;
+		free(b_now);
+		b_now = b_next;
+	}
+	free(info->a_stack);
+	free(info->b_stack);
+	free(info);
 }

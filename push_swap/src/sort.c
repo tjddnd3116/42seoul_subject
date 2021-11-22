@@ -6,24 +6,25 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:47:24 by soum              #+#    #+#             */
-/*   Updated: 2021/11/16 20:53:33 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/22 19:22:37 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-void	test_print(t_stack *a, t_stack *b)
+void	test_print(t_info *info)
 {
 	t_node	*a_tmp;
 	t_node	*b_tmp;
 	int		a_size;
 	int		b_size;
 
-	a_tmp = a->top;
-	b_tmp = b->top;
-	a_size = stack_size(a);
-	b_size = stack_size(b);
+	a_tmp = info->a_stack->top;
+	b_tmp = info->b_stack->top;
+	a_size = stack_size(info->a_stack);
+	b_size = stack_size(info->b_stack);
+	printf("-----------------\n");
 	while (a_tmp != NULL || b_tmp != NULL)
 	{
 		if (a_tmp != NULL)
@@ -46,13 +47,13 @@ void	test_print(t_stack *a, t_stack *b)
 	printf("---------------\n");
 }
 
-void	is_all_sorted(t_stack *a, t_stack *b)
+void	is_all_sorted(t_info *info)
 {
 	t_node	*node;
 	int		num;
 	int		next_num;
 
-	node = a->top;
+	node = info->a_stack->top;
 	num = node->data;
 	node = node->next;
 	while (node)
@@ -66,26 +67,25 @@ void	is_all_sorted(t_stack *a, t_stack *b)
 		else
 			return ;
 	}
-	free_stack(a);
-	free_stack(b);
+	free_stack(info);
 	exit(0);
 }
 
-void	sorting(t_stack *a, t_stack *b)
+void	sorting(t_info *info)
 {
 	int	size;
 
-	is_all_sorted(a, b);
-	size = stack_size(a);
+	is_all_sorted(info);
+	size = stack_size(info->a_stack);
 	if (size == 2)
-		size_2_sort(a);
+		size_2_sort(info);
 	else if (size == 3)
-		size_3_sort(a, b);
+		size_3_sort(info);
 	else if (size == 4)
-		size_4_sort(a, b);
+		size_4_sort(info);
 	else if (size == 5)
-		size_5_sort(a, b);
+		size_5_sort(info);
 	else
-		//quick_sort(a, b);
-	test_print(a, b);
+		over_5_sort(info);
+	//test_print(info);
 }
