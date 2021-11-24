@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 20:04:51 by soum              #+#    #+#             */
-/*   Updated: 2021/11/22 20:17:05 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/24 14:15:35 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	rotate_a(t_info *info)
 	int		size;
 	t_node	*top;
 	int		error;
-	
+
 	info->ra_count++;
 	error = 1;
 	top = info->a_stack->top;
@@ -36,7 +36,7 @@ void	rotate_b(t_info *info)
 	int		size;
 	t_node	*top;
 	int		error;
-	
+
 	info->rb_count++;
 	error = 1;
 	top = info->b_stack->top;

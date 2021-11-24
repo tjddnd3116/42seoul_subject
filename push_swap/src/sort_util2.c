@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:13:27 by soum              #+#    #+#             */
-/*   Updated: 2021/11/22 18:21:27 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/24 14:16:24 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	sort_arr(long *arr, t_stack *stack, int size)
 		}
 	}
 }
+
 int	big_pivot(t_stack *stack, int size)
 {
 	long	*arr;
@@ -73,7 +74,7 @@ int	small_pivot(t_stack *stack, int size)
 
 	index = 0;
 	tmp_node = stack->top;
-	arr = (long *)malloc(sizeof(long) *size + 1);
+	arr = (long *)malloc(sizeof(long) * size + 1);
 	while (index < size)
 	{
 		arr[index] = tmp_node->data;

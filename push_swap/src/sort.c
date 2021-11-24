@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:47:24 by soum              #+#    #+#             */
-/*   Updated: 2021/11/22 19:22:37 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/24 14:34:03 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,4 @@ void	sorting(t_info *info)
 		size_5_sort(info);
 	else
 		over_5_sort(info);
-	//test_print(info);
 }

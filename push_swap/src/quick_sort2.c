@@ -6,22 +6,43 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:53:51 by soum              #+#    #+#             */
-/*   Updated: 2021/11/22 21:06:18 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/24 14:14:57 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+void	recursive(t_info *info, int flag)
+{
+	int	ra;
+	int	rb;
+	int	pb;
+	int	pa;
+
+	ra = info->ra_count;
+	rb = info->rb_count;
+	pb = info->pb_count;
+	pa = info->pa_count;
+	if (flag == 0)
+	{
+		rrr(info, ra, rb);
+		a_to_b(info, ra);
+		b_to_a(info, rb);
+		b_to_a(info, pb - rb);
+	}
+	else
+	{
+		a_to_b(info, pa - ra);
+		rrr(info, ra, rb);
+		a_to_b(info, ra);
+		b_to_a(info, rb);
+	}
+}
+
 void	rrr(t_info *info, int ra, int rb)
 {
-	//int	ra;
-	//int	rb;
-
-	//ra = info->ra_count;
-	//rb = info->rb_count;
 	while (ra || rb)
 	{
-		//info->write_flag = 1;
 		if (ra && rb)
 		{
 			info->write_flag = 0;

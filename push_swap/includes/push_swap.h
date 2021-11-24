@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 17:59:11 by soum              #+#    #+#             */
-/*   Updated: 2021/11/22 19:57:49 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/24 13:59:23 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void		b_to_a(t_info *info, int size);
 void		under_3_sort(t_info *info, int size, char stack);
 //quick_sort2.c
 void		rrr(t_info *info, int ra, int rb);
+void		recursive(t_info *info, int flag);
 //sort.c
 void		test_print(t_info *info);
 #endif
