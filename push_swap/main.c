@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:57:18 by soum              #+#    #+#             */
-/*   Updated: 2021/11/25 13:34:46 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/25 14:38:21 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ int	main(int argc, char **argv)
 			check_and_insert_num_str(argv[index], info);
 		sorting(info);
 		free_stack(info);
-		system("leaks push_swap");
 	}
 	else
 		free_stack(info);
