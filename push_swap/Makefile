@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/02 18:04:53 by soum              #+#    #+#              #
-#    Updated: 2021/11/22 16:55:15 by soum             ###   ########.fr        #
+#    Updated: 2021/11/25 12:15:26 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,9 @@ SRCS = main.c \
 	   src/rotate.c \
 	   src/reverse.c \
 	   src/pop_push.c \
-	   src/size_sort.c \
-	   src/sort_util.c \
-	   src/sort_util2.c \
+	   src/under_5_size_sort.c \
+	   src/find_min_max_locate.c \
+	   src/find_pivot.c \
 	   src/quick_sort.c \
 	   src/quick_sort2.c \
 

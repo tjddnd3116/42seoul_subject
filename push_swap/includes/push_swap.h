@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 17:59:11 by soum              #+#    #+#             */
-/*   Updated: 2021/11/24 13:59:23 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/25 13:19:57 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,17 @@ typedef struct s_info
 }	t_info;
 
 //util.c
+void		create_linked_list(t_info *info);
 long long	ft_atoi2(const char *str);
 int			stack_size(t_stack *stack);
+void		init_count(t_info *info);
 //libft
+int			ft_isdigit(int c);
+char		**ft_split(char const *s, char c);
 void		ft_putstr_fd(char *s, int fd);
 int			ft_isspace(const char c);
 //error.c
-void		error_msg_exit(char *msg);
+void		error_msg_exit(char *msg, t_info *info);
 void		malloc_error(t_info *info);
 void		free_stack(t_info *info);
 //sort.c
@@ -74,20 +78,19 @@ void		pop(t_stack *stack);
 int			push(int data, t_stack *stack);
 int			push_last(int data, t_stack *stack);
 void		pop_last(t_stack *stack);
-//size_sort.c
+//under_5_size_sort.c
 void		size_2_sort(t_info *info);
 void		size_3_sort(t_info *info);
 void		size_4_sort(t_info *info);
 void		size_5_sort(t_info *info);
-//sort_util.c
+//find_min_max_locate.c
 int			find_min_num(t_node *node, int size);
 int			find_min_locate(t_node *node, int size);
 int			find_max_num(t_node *node, int size);
 int			find_max_locate(t_node *node, int size);
-//sort_util2.c
+//find_pivot.c
 int			big_pivot(t_stack *stack, int size);
 int			small_pivot(t_stack *stack, int size);
-void		init_count(t_info *info);
 //quick_sort.c
 void		over_5_sort(t_info *info);
 void		a_to_b(t_info *info, int size);

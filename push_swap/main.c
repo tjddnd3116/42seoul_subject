@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:57:18 by soum              #+#    #+#             */
-/*   Updated: 2021/11/22 20:59:44 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/25 13:34:46 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,10 @@ void	dup_check(t_node *tmp, int num, t_info *info)
 	while (tmp != NULL)
 	{
 		if (tmp->data == num)
-		{
-			free_stack(info);
-			error_msg_exit("Error\n");
-		}
+			error_msg_exit("Error\n", info);
 		else
 			tmp = tmp->next;
 	}
-}
-
-void	create_linked_list(t_info *info)
-{
-	t_stack	*new_a_stack;
-	t_stack *new_b_stack;
-
-	new_a_stack = (t_stack *)malloc(sizeof(t_stack));
-	new_b_stack = (t_stack *)malloc(sizeof(t_stack));
-	if (new_a_stack == NULL || new_b_stack == NULL)
-		exit(0);
-	new_a_stack->top = NULL;
-	new_b_stack->top = NULL;
-	info->a_stack = new_a_stack;
-	info->b_stack = new_b_stack;
 }
 
 int	check_num(char *num_str, t_info *info)
@@ -52,35 +34,27 @@ int	check_num(char *num_str, t_info *info)
 	index = 0;
 	while (num_str[index] != '\0')
 	{
-		if ((num_str[index] >= '0' && num_str[index] <= '9') \
-				|| (num_str[index] == '+' || num_str[index] == '-'))
+		if (ft_isdigit(num_str[index]) \
+				|| (num_str[0] == '+' || num_str[0] == '-'))
 			index++;
 		else
-		{
-			free_stack(info);
-			error_msg_exit("Error\n");
-		}
+			error_msg_exit("Error\n", info);
 	}
 	num = ft_atoi2(num_str);
 	if (num < -2147483648 || num > 2147483647)
-	{
-		free_stack(info);
-		error_msg_exit("Error");
-	}
+		error_msg_exit("Error\n", info);
 	dup_check(tmp, num, info);
 	return ((int)num);
 }
 
-void	insert_stack(char *num_str, t_info *info)
+void	insert_stack(int num, t_info *info)
 {
-	int		num;
 	t_node	*new_node;
 	t_node	*tmp;
 
 	new_node = (t_node *)malloc(sizeof(t_node));
 	if (new_node == NULL)
 		malloc_error(info);
-	num = check_num(num_str, info);
 	tmp = info->a_stack->top;
 	if (tmp == NULL)
 	{
@@ -99,6 +73,25 @@ void	insert_stack(char *num_str, t_info *info)
 		new_node->data = num;
 	}
 }
+void    check_and_insert_num_str(char *num_str, t_info *info)
+{
+	char    **tmp_num_str;
+	int     index;
+	int     num;
+
+	index = 0;
+	tmp_num_str = ft_split(num_str, ' ');
+	if (tmp_num_str == NULL)
+		malloc_error(info);
+	while (tmp_num_str[index] != NULL)
+	{
+		num = check_num(tmp_num_str[index] , info);
+		insert_stack(num, info);
+		free(tmp_num_str[index]);
+		index++;
+	}
+	free(tmp_num_str);
+}
 
 int	main(int argc, char **argv)
 {
@@ -112,9 +105,10 @@ int	main(int argc, char **argv)
 	{
 		info->write_flag = 1;
 		while (++index < argc)
-			insert_stack(argv[index], info);
+			check_and_insert_num_str(argv[index], info);
 		sorting(info);
-		//test_print(info);
+		free_stack(info);
+		system("leaks push_swap");
 	}
 	else
 		free_stack(info);

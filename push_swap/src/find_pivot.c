@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_util2.c                                       :+:      :+:    :+:   */
+/*   find_pivot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:13:27 by soum              #+#    #+#             */
-/*   Updated: 2021/11/24 14:16:24 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/25 12:16:06 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	init_count(t_info *info)
-{
-	info->pa_count = 0;
-	info->pb_count = 0;
-	info->ra_count = 0;
-	info->rb_count = 0;
-}
 
 void	sort_arr(long *arr, t_stack *stack, int size)
 {

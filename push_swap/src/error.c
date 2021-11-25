@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 16:39:44 by soum              #+#    #+#             */
-/*   Updated: 2021/11/22 16:12:14 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/25 12:56:50 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ void	malloc_error(t_info *info)
 	exit(0);
 }
 
-void	error_msg_exit(char *msg)
+void	error_msg_exit(char *msg, t_info *info)
 {
 	ft_putstr_fd(msg, 2);
+	free_stack(info);
 	exit(0);
 }
 
