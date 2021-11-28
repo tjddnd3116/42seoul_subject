@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 17:59:11 by soum              #+#    #+#             */
-/*   Updated: 2021/11/25 13:19:57 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/28 19:51:36 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_info
 	int		pb_count;
 	int		ra_count;
 	int		rb_count;
+	int		rrr_flag;
 	int		write_flag;
 }	t_info;
 
@@ -92,13 +93,15 @@ int			find_max_locate(t_node *node, int size);
 int			big_pivot(t_stack *stack, int size);
 int			small_pivot(t_stack *stack, int size);
 //quick_sort.c
+void		size_3_sort2(t_info *info);
 void		over_5_sort(t_info *info);
 void		a_to_b(t_info *info, int size);
 void		b_to_a(t_info *info, int size);
-void		under_3_sort(t_info *info, int size, char stack);
+void		under_4_sort(t_info *info, int size, char stack);
 //quick_sort2.c
 void		rrr(t_info *info, int ra, int rb);
 void		recursive(t_info *info, int flag);
+void		size_4_sort2(t_info *info);
 //sort.c
 void		test_print(t_info *info);
 #endif

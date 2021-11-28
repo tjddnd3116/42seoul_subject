@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 17:26:55 by soum              #+#    #+#             */
-/*   Updated: 2021/11/24 14:14:19 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/28 19:53:41 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	size_3_sort2(t_info *info)
 	}
 }
 
-void	under_3_sort(t_info *info, int size, char stack)
+void	under_4_sort(t_info *info, int size, char stack)
 {
 	int	i;
 
@@ -59,6 +59,8 @@ void	under_3_sort(t_info *info, int size, char stack)
 		size_2_sort(info);
 	else if (size == 3)
 		size_3_sort2(info);
+	//else if (size == 4)
+	//	size_4_sort2(info);
 }
 
 void	a_to_b(t_info *info, int size)
@@ -73,7 +75,7 @@ void	a_to_b(t_info *info, int size)
 	s_pivot = small_pivot(info->a_stack, size);
 	if (size <= 3)
 	{
-		under_3_sort(info, size, 'a');
+		under_4_sort(info, size, 'a');
 		return ;
 	}
 	while (index++ < size)
@@ -102,7 +104,7 @@ void	b_to_a(t_info *info, int size)
 	s_pivot = small_pivot(info->b_stack, size);
 	if (size <= 3)
 	{
-		under_3_sort(info, size, 'b');
+		under_4_sort(info, size, 'b');
 		return ;
 	}
 	while (index++ < size)
@@ -116,6 +118,7 @@ void	b_to_a(t_info *info, int size)
 				rotate_a(info);
 		}
 	}
+	info->rrr_flag = 1;
 	recursive(info, 1);
 }
 
@@ -123,6 +126,7 @@ void	over_5_sort(t_info *info)
 {
 	int	size;
 
+	info->rrr_flag = 0;
 	size = stack_size(info->a_stack);
 	a_to_b(info, size);
 }

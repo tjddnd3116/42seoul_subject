@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:13:27 by soum              #+#    #+#             */
-/*   Updated: 2021/11/25 12:16:06 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/28 19:28:07 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	big_pivot(t_stack *stack, int size)
 	}
 	arr[index] = '\0';
 	sort_arr(arr, stack, size);
-	pivot = arr[size / 4 * 3];
+	pivot = arr[size / 3 * 2];
 	free(arr);
 	return (pivot);
 }
@@ -75,7 +75,7 @@ int	small_pivot(t_stack *stack, int size)
 	}
 	arr[index] = '\0';
 	sort_arr(arr, stack, size);
-	pivot = arr[size / 4];
+	pivot = arr[size / 3];
 	free(arr);
 	return (pivot);
 }
