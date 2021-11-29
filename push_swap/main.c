@@ -6,12 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:57:18 by soum              #+#    #+#             */
-/*   Updated: 2021/11/25 14:38:21 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/29 16:05:14 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
-#include <stdio.h>
 
 void	dup_check(t_node *tmp, int num, t_info *info)
 {
@@ -29,7 +28,7 @@ int	check_num(char *num_str, t_info *info)
 	long long	num;
 	int			index;
 	t_node		*tmp;
-	
+
 	tmp = info->a_stack->top;
 	index = 0;
 	while (num_str[index] != '\0')
@@ -73,11 +72,12 @@ void	insert_stack(int num, t_info *info)
 		new_node->data = num;
 	}
 }
-void    check_and_insert_num_str(char *num_str, t_info *info)
+
+void	check_and_insert_num_str(char *num_str, t_info *info)
 {
-	char    **tmp_num_str;
-	int     index;
-	int     num;
+	char	**tmp_num_str;
+	int		index;
+	int		num;
 
 	index = 0;
 	tmp_num_str = ft_split(num_str, ' ');
@@ -85,7 +85,7 @@ void    check_and_insert_num_str(char *num_str, t_info *info)
 		malloc_error(info);
 	while (tmp_num_str[index] != NULL)
 	{
-		num = check_num(tmp_num_str[index] , info);
+		num = check_num(tmp_num_str[index], info);
 		insert_stack(num, info);
 		free(tmp_num_str[index]);
 		index++;
@@ -98,7 +98,7 @@ int	main(int argc, char **argv)
 	int		index;
 	t_info	*info;
 
-	info = (t_info *)malloc(sizeof(t_info));;
+	info = (t_info *)malloc(sizeof(t_info));
 	index = 0;
 	create_linked_list(info);
 	if (argc > 1)

@@ -6,22 +6,22 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 17:59:11 by soum              #+#    #+#             */
-/*   Updated: 2021/11/28 19:51:36 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/29 16:02:39 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "../Libft/libft.h"
-#include <unistd.h>
-#include <stdlib.h>
+# include "../Libft/libft.h"
+# include <unistd.h>
+# include <stdlib.h>
 
 typedef struct s_node
 {
 	struct s_node	*pre;
 	struct s_node	*next;
-	int		data;
+	int				data;
 }	t_node;
 
 typedef struct s_stack
@@ -31,8 +31,8 @@ typedef struct s_stack
 
 typedef struct s_info
 {
-	t_stack *a_stack;
-	t_stack *b_stack;
+	t_stack	*a_stack;
+	t_stack	*b_stack;
 	int		pa_count;
 	int		pb_count;
 	int		ra_count;
@@ -90,18 +90,18 @@ int			find_min_locate(t_node *node, int size);
 int			find_max_num(t_node *node, int size);
 int			find_max_locate(t_node *node, int size);
 //find_pivot.c
-int			big_pivot(t_stack *stack, int size);
-int			small_pivot(t_stack *stack, int size);
-//quick_sort.c
+int			find_big_pivot(t_stack *stack, int size);
+int			find_small_pivot(t_stack *stack, int size);
+//a_to_b.c
 void		size_3_sort2(t_info *info);
 void		over_5_sort(t_info *info);
 void		a_to_b(t_info *info, int size);
+void		under_3_sort(t_info *info, int size, char stack);
+//b_to_a.c
 void		b_to_a(t_info *info, int size);
-void		under_4_sort(t_info *info, int size, char stack);
-//quick_sort2.c
 void		rrr(t_info *info, int ra, int rb);
 void		recursive(t_info *info, int flag);
-void		size_4_sort2(t_info *info);
+void		size_2_sort_b_to_a(t_info *info);
+void		size_3_sort_b_to_a(t_info *info);
 //sort.c
-void		test_print(t_info *info);
 #endif

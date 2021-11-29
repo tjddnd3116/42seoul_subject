@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort2.c                                      :+:      :+:    :+:   */
+/*   b_to_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:53:51 by soum              #+#    #+#             */
-/*   Updated: 2021/11/29 15:57:46 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/29 15:58:02 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	b_to_a(t_info *info, int size)
 	int	b_pivot;
 	int	s_pivot;
 
-	init_count(info);
 	init_count(info);
 	b_pivot = find_big_pivot(info->b_stack, size);
 	s_pivot = find_small_pivot(info->b_stack, size);

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:13:27 by soum              #+#    #+#             */
-/*   Updated: 2021/11/28 19:28:07 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/29 15:55:34 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	sort_arr(long *arr, t_stack *stack, int size)
 	}
 }
 
-int	big_pivot(t_stack *stack, int size)
+int	find_big_pivot(t_stack *stack, int size)
 {
 	long	*arr;
 	t_node	*tmp_node;
@@ -57,7 +57,7 @@ int	big_pivot(t_stack *stack, int size)
 	return (pivot);
 }
 
-int	small_pivot(t_stack *stack, int size)
+int	find_small_pivot(t_stack *stack, int size)
 {
 	long	*arr;
 	t_node	*tmp_node;

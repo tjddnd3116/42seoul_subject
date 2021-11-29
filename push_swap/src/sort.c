@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:47:24 by soum              #+#    #+#             */
-/*   Updated: 2021/11/25 12:21:55 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/29 15:48:07 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ void	sorting(t_info *info)
 	else if (size == 5)
 		size_5_sort(info);
 	else
-		over_5_sort(info);
+	{
+		info->rrr_flag = 0;
+		a_to_b(info, size);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 16:05:41 by soum              #+#    #+#             */
-/*   Updated: 2021/11/25 13:02:08 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/29 15:34:03 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	create_linked_list(t_info *info)
 {
-	t_stack *new_a_stack;
-	t_stack *new_b_stack;
+	t_stack	*new_a_stack;
+	t_stack	*new_b_stack;
 
 	new_a_stack = (t_stack *)malloc(sizeof(t_stack));
 	if (new_a_stack == NULL)

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 11:52:02 by soum              #+#    #+#             */
-/*   Updated: 2021/09/26 17:54:15 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/29 16:01:19 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char			**ft_split(char const *s, char c);
 void			ft_lstadd_front(t_list **lst, t_list *new);
 void			ft_lstadd_back(t_list **lst, t_list *new);
 void			ft_lstclear(t_list **lst, void (*del)(void *));
-void			ft_lstiter(t_list *lst, void(*f)(void *));
+void			ft_lstiter(t_list *lst, void (*f)(void *));
 char			*ft_strtrim(char const *s1, char const *set);
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));

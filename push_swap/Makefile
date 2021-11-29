@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/02 18:04:53 by soum              #+#    #+#              #
-#    Updated: 2021/11/25 12:15:26 by soum             ###   ########.fr        #
+#    Updated: 2021/11/29 16:06:03 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ SRCS = main.c \
 	   src/under_5_size_sort.c \
 	   src/find_min_max_locate.c \
 	   src/find_pivot.c \
-	   src/quick_sort.c \
-	   src/quick_sort2.c \
+	   src/a_to_b.c \
+	   src/b_to_a.c \
 
 LIBFT = Libft
 LIBFT_LIB = Libft/libft.a
