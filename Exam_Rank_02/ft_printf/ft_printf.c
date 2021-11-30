@@ -33,8 +33,13 @@ int	is_digit(char let)
 
 void	check_flag(char *format, t_options *options, int i)
 {
-	if (is_digit(format[i] && options->prec == -1))
+	//printf("%c\n", format[i]);
+	//printf("prec : %d\n", options->prec);
+	if (is_digit(format[i]) && options->prec == -1)
+	{
+		//printf("here\n");
 		options->width = options->width * 10 + format[i] - 48;
+	}
 	else if (format[i] == '.')
 		options->prec = 0;
 	else if (is_digit(format[i]))
@@ -123,6 +128,7 @@ int	print_width_str(char *tmp, t_options *options, int len)
 	int width;
 
 	width = options->width;
+	//printf("width : %d\n", width);
 	if (width > len)
 	{
 		while (width - len > 0)
@@ -130,6 +136,7 @@ int	print_width_str(char *tmp, t_options *options, int len)
 			write(1, " ", 1);
 			width--;
 		}
+		ft_putstr(tmp);
 		return (options->width - len);
 	}
 	else
@@ -147,11 +154,13 @@ int	print_s(char *str, t_options *options)
 	tmp = NULL;
 	len = 0;
 	width = options->width;
+	//printf("width : %d\n", width);
 	if (str == NULL)
 		str = "(null)";
 	tmp = put_prec_str(str, options, tmp);
 	len = ft_strlen(tmp);
 	tmp_len = ft_strlen(tmp);
+	//printf("tmp_len : %d\n", tmp_len);
 	if (width == 0)
 		ft_putstr(tmp);
 	else

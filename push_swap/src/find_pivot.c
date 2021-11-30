@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:13:27 by soum              #+#    #+#             */
-/*   Updated: 2021/11/29 15:55:34 by soum             ###   ########.fr       */
+/*   Updated: 2021/11/29 16:24:11 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	sort_arr(long *arr, t_stack *stack, int size)
 
 	index = 0;
 	tmp_node = stack->top;
-	while (index < size -1)
+	while (index < size - 1)
 	{
 		if (arr[index] <= arr[index + 1])
-				index++;
+			index++;
 		else
 		{
 			tmp = arr[index];
