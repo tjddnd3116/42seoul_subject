@@ -21,4 +21,4 @@
 
 -[push_swap](https://github.com/tjddnd3116/42seoul_subject/tree/main/push_swap) : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/push_swap)](https://github.com/JaeSeoKim/badge42)  
 
---[philosophers](https://github.com/tjddnd3116/42seoul_subject/tree/main/philosophers) : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/philosophers)](https://github.com/JaeSeoKim/badge42)
+-[philosophers](https://github.com/tjddnd3116/42seoul_subject/tree/main/Philosophers) : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/philosophers)](https://github.com/JaeSeoKim/badge42)
