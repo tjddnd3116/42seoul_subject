@@ -6,11 +6,21 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:53:20 by soum              #+#    #+#             */
-/*   Updated: 2021/12/03 18:29:40 by soum             ###   ########.fr       */
+/*   Updated: 2021/12/04 18:58:54 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+long long	now_time_ms()
+{
+	struct timeval	time;
+	long long		ms;
+
+	gettimeofday(&time, NULL);
+	ms = (time.tv_sec * 1000) + (time.tv_usec / 1000);
+	return (ms);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -34,18 +44,4 @@ int	ft_atoi(const char *str)
 		index++;
 	}
 	return (result * sign);
-}
-
-void	init_info(t_info *info, int argc, char **argv)
-{
-	info->num_philo = ft_atoi(argv[1]);
-	info->time_die = ft_atoi(argv[2]);
-	info->time_eat = ft_atoi(argv[3]);
-	info->time_sleep = ft_atoi(argv[4]);
-	info->num_eat = 0;
-	if (argc == 6)
-		info->num_eat = ft_atoi(argv[5]);
-	info->philo = (t_philo *)malloc(sizeof(t_philo) * info->num_philo);
-	info->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * info->num_philo);
-	gettimeofday(&info->start_time, NULL);
 }

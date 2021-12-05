@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/04 14:01:53 by soum              #+#    #+#             */
+/*   Updated: 2021/12/04 14:02:16 by soum             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./includes/philo.h"
-#include <stdio.h>
-int main(int argc, char **argv)
+
+int	main(int argc, char **argv)
 {
-	t_info *info;
+	t_info	*info;
 
 	info = (t_info *)malloc(sizeof(t_info));
 	if (argc == 5 || argc == 6)
