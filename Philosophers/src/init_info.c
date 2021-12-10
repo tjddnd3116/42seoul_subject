@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 14:15:17 by soum              #+#    #+#             */
-/*   Updated: 2021/12/04 19:23:05 by soum             ###   ########.fr       */
+/*   Updated: 2021/12/10 16:11:51 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	init_philo(t_info *info)
 	{
 		info->philo[index].info = info;
 		info->philo[index].id = index + 1;
-		info->philo[index].l_fork = index + 1;
-		info->philo[index].r_fork = index + 2;
-		if (index == philo_num - 1)
+		info->philo[index].l_fork = index;
+		info->philo[index].r_fork = (index + 1) % info->num_philo;
+		if (index == philo_num - 1 && index != 0)
 			info->philo[index].r_fork = 1;
 		info->philo[index].eat_count = 0;
 		info->philo[index].last_eat = 0;
@@ -46,6 +46,7 @@ void	init_mutex(t_info *info)
 		index++;
 	}
 	pthread_mutex_init(&info->print, NULL);
+	pthread_mutex_init(&info->time_m, NULL);
 }
 
 void	init_info(t_info *info, int argc, char **argv)
@@ -63,6 +64,7 @@ void	init_info(t_info *info, int argc, char **argv)
 	info->forks = (pthread_mutex_t *)malloc(\
 			sizeof(pthread_mutex_t) * info->num_philo);
 	info->start_time = now_time_ms();
+	info->philo_idx = 0;
 	info->philo_die = 0;
 	init_philo(info);
 	init_mutex(info);
