@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 18:36:11 by soum              #+#    #+#             */
-/*   Updated: 2021/12/10 15:53:11 by soum             ###   ########.fr       */
+/*   Updated: 2021/12/14 11:14:29 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	is_dead(t_philo *philo)
 {
 	long long now_time;
-
 	now_time = now_time_ms();
+	
 	if (now_time - philo->last_eat > philo->info->time_die)
 	{
 		print_message(philo, "died");
@@ -56,7 +56,7 @@ void	eating(t_philo *philo)
 	{
 		end_time = now_time_ms();
 		diff_time = end_time - start_time;
-		usleep(100);
+		usleep(10);
 	}
 	philo->last_eat = now_time_ms();
 }
@@ -76,7 +76,7 @@ void	sleeping(t_philo *philo)
 	{
 		end_time = now_time_ms();
 		diff_time = end_time - start_time;
-		usleep(100);
+		usleep(10);
 	}
 }
 

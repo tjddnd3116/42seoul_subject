@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:26:00 by soum              #+#    #+#             */
-/*   Updated: 2021/12/10 17:33:53 by soum             ###   ########.fr       */
+/*   Updated: 2021/12/11 19:02:49 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	wait_other_philo(t_philo *philo)
 	{
 		if (philo->info->philo_idx == philo->info->num_philo - 1)
 		{
-			philo->last_eat = philo->info->start_time;
 			usleep(100);
+			//philo->last_eat = now_time_ms();
 			break ;
 		}
 	}
@@ -30,9 +30,6 @@ void	*eat_think_sleep(void *v_philo)
 	t_philo	*philo;
 
 	philo = (t_philo *)v_philo;
-	pthread_mutex_lock(&philo->info->time_m);
-	philo->info->start_time = now_time_ms();
-	pthread_mutex_unlock(&philo->info->time_m);
 	wait_other_philo(philo);
 	if (philo->id % 2 == 1)
 	{
@@ -58,13 +55,13 @@ void	create_philo(t_info *info)
 
 	index = 0;
 	num_of_philo = info->num_philo;
+	info->start_time = now_time_ms();
 	while (index < num_of_philo)
 	{
 		info->philo_idx = index;
-		//info->philo[index].last_eat = now_time_ms();
+		info->philo[index].last_eat = now_time_ms();
 		thr_id = pthread_create(&info->philo[index].thread, \
 				NULL, eat_think_sleep, (void *)&info->philo[index]);
-		usleep(500);
 		if (thr_id < 0)
 			error();
 		index++;
@@ -92,18 +89,17 @@ void	main_thread(t_info *info)
 	i = 0;
 	while (1)
 	{
-		if (info->philo_idx == info->num_philo - 1)
+		i = 0;
+		while (i < info->num_philo)
 		{
-			i = 0;
-			while (i < info->num_philo)
-			{
-				is_dead(&info->philo[i]);
-				i++;
-			}
-			if (info->philo_die == 1)
-				break ;
+			is_dead(&info->philo[i]);
+			i++;
 		}
-		else
-			usleep(100);
+		if (info->philo_die == 1)
+		{
+			pthread_mutex_unlock(&info->forks[0]);
+			pthread_mutex_unlock(&info->forks[1]);
+			break ;
+		}
 	}
 }

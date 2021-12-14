@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 14:08:50 by soum              #+#    #+#             */
-/*   Updated: 2021/12/10 16:11:27 by soum             ###   ########.fr       */
+/*   Updated: 2021/12/11 17:33:37 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_info
 	t_philo			*philo;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t print;
-	pthread_mutex_t	time_m;
+	pthread_mutex_t	eat_m;
 	long long		start_time;
 	int				num_philo;
 	int				philo_idx;

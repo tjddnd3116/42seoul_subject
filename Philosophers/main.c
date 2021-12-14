@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 14:01:53 by soum              #+#    #+#             */
-/*   Updated: 2021/12/09 20:01:06 by soum             ###   ########.fr       */
+/*   Updated: 2021/12/11 17:42:35 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 		init_info(info, argc, argv);
 		create_philo(info);
 		main_thread(info);
-		//join_thread(info);
+		join_thread(info);
 		print_all_last_eat(info);
 	}
 	free(info);

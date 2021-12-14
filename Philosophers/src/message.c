@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:36:28 by soum              #+#    #+#             */
-/*   Updated: 2021/12/09 19:45:52 by soum             ###   ########.fr       */
+/*   Updated: 2021/12/11 14:57:52 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	print_all_last_eat(t_info *info)
 	index = 0;
 	while (index < info->num_philo)
 	{
+		//printf("%lld\n", info->philo[index].last_eat);
+		//printf("%lld\n", info->start_time);
 		last_eat = info->philo[index].last_eat - info->start_time;
 		printf("[%d] philo last eat :%lld\n", index + 1, last_eat);
 		index++;
