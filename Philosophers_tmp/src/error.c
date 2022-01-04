@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/04 14:01:53 by soum              #+#    #+#             */
-/*   Updated: 2021/12/26 01:54:18 by soum             ###   ########.fr       */
+/*   Created: 2022/01/03 17:28:23 by soum              #+#    #+#             */
+/*   Updated: 2022/01/03 17:28:57 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/philo.h"
+#include "../includes/philo.h"
 
-int	main(int argc, char **argv)
+void	error(void)
 {
-	t_info	*info;
-
-	info = (t_info *)malloc(sizeof(t_info));
-	if (argc == 5 || argc == 6)
-	{
-		init_info(info, argc, argv);
-		create_philo(info);
-		main_thread(info);
-		join_thread(info);
-		print_all_last_eat(info);
-	}
-	free(info);
+	exit(0);
 }

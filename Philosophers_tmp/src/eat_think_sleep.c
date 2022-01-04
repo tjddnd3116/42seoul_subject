@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 18:36:11 by soum              #+#    #+#             */
-/*   Updated: 2021/12/26 01:55:16 by soum             ###   ########.fr       */
+/*   Created: 2022/01/03 17:15:18 by soum              #+#    #+#             */
+/*   Updated: 2022/01/04 17:25:53 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,11 @@ int	is_dead(t_philo *philo)
 void	hold_fork(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->info->forks[philo->l_fork]);
+	philo->info->use_forks[philo->l_fork] = 1;
 	print_message(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->info->forks[philo->r_fork]);
+	philo->info->use_forks[philo->r_fork] = 1;
 	print_message(philo, "has taken a fork");
-}
-
-void	put_fork(t_philo *philo)
-{
-	pthread_mutex_unlock(&philo->info->forks[philo->l_fork]);
-	pthread_mutex_unlock(&philo->info->forks[philo->r_fork]);
 }
 
 void	eating(t_philo *philo)
@@ -59,6 +55,10 @@ void	eating(t_philo *philo)
 		usleep(10);
 	}
 	philo->last_eat = now_time_ms();
+	pthread_mutex_unlock(&philo->info->forks[philo->l_fork]);
+	philo->info->use_forks[philo->l_fork] = 0;
+	pthread_mutex_unlock(&philo->info->forks[philo->r_fork]);
+	philo->info->use_forks[philo->r_fork] = 0;
 }
 
 void	sleeping(t_philo *philo)
@@ -84,4 +84,3 @@ void	thinking(t_philo *philo)
 {
 	print_message(philo, "is thinking");
 }
-

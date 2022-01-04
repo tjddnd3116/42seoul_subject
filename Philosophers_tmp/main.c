@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/04 14:01:53 by soum              #+#    #+#             */
-/*   Updated: 2021/12/26 01:54:18 by soum             ###   ########.fr       */
+/*   Created: 2022/01/03 16:27:44 by soum              #+#    #+#             */
+/*   Updated: 2022/01/04 16:30:27 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int argc, char **argv)
 		create_philo(info);
 		main_thread(info);
 		join_thread(info);
-		print_all_last_eat(info);
 	}
 	free(info);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 14:26:00 by soum              #+#    #+#             */
-/*   Updated: 2022/01/03 16:53:46 by soum             ###   ########.fr       */
+/*   Created: 2022/01/03 16:44:18 by soum              #+#    #+#             */
+/*   Updated: 2022/01/04 17:25:29 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	wait_other_philo(t_philo *philo)
 {
 	while (1)
 	{
-		usleep(100);
+		usleep(10);
 		if (philo->info->philo_idx == philo->info->num_philo - 1)
+		{
 			break ;
+		}
 	}
 }
 
@@ -27,18 +29,18 @@ void	*eat_think_sleep(void *v_philo)
 	t_philo	*philo;
 
 	philo = (t_philo *)v_philo;
-	wait_other_philo(philo);
+//	wait_other_philo(philo);
 	if (philo->id % 2 == 1)
-	{
 		usleep(10000);
-		//usleep(200 * (philo->info->num_philo - philo->id + 1));
-	}
 	while (!philo->info->philo_die)
 	{
+		is_dead(philo);	
 		hold_fork(philo);
+		is_dead(philo);
 		eating(philo);
-		put_fork(philo);
+		is_dead(philo);
 		sleeping(philo);
+		is_dead(philo);
 		thinking(philo);
 	}
 	return (0);
@@ -87,15 +89,16 @@ void	main_thread(t_info *info)
 	while (1)
 	{
 		i = 0;
-		while (i < info->num_philo)
-		{
-			is_dead(&info->philo[i]);
-			i++;
-		}
 		if (info->philo_die == 1)
 		{
-			pthread_mutex_unlock(&info->forks[0]);
-			pthread_mutex_unlock(&info->forks[1]);
+			while (i < info->num_philo)
+			{
+				if (info->use_forks[i] == 1)
+					pthread_mutex_unlock(&info->forks[i]);
+				i++;
+			}
+			info->end_time = now_time_ms();
+			print_all_last_eat(info);
 			break ;
 		}
 	}

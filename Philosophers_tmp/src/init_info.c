@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/04 14:15:17 by soum              #+#    #+#             */
-/*   Updated: 2022/01/03 16:39:27 by soum             ###   ########.fr       */
+/*   Created: 2022/01/03 16:31:05 by soum              #+#    #+#             */
+/*   Updated: 2022/01/04 16:22:46 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init_philo(t_info *info)
 {
 	int	philo_num;
 	int	index;
-	
+
 	index = 0;
 	philo_num = info->num_philo;
 	while (index < philo_num)
@@ -25,10 +25,8 @@ void	init_philo(t_info *info)
 		info->philo[index].id = index + 1;
 		info->philo[index].l_fork = index;
 		info->philo[index].r_fork = (index + 1) % info->num_philo;
-		//if (index == philo_num - 1 && index != 0)
-		//	info->philo[index].r_fork = 1;
 		info->philo[index].eat_count = 0;
-		//info->philo[index].last_eat = 0;
+		info->use_forks[index] = 0;
 		index++;
 	}
 }
@@ -51,8 +49,6 @@ void	init_mutex(t_info *info)
 
 void	init_info(t_info *info, int argc, char **argv)
 {
-
-
 	info->num_philo = ft_atoi(argv[1]);
 	info->time_die = ft_atoi(argv[2]);
 	info->time_eat = ft_atoi(argv[3]);
@@ -63,7 +59,7 @@ void	init_info(t_info *info, int argc, char **argv)
 	info->philo = (t_philo *)malloc(sizeof(t_philo) * info->num_philo);
 	info->forks = (pthread_mutex_t *)malloc(\
 			sizeof(pthread_mutex_t) * info->num_philo);
-//	info->start_time = now_time_ms();
+	info->use_forks = (int *)malloc(sizeof(int) * info->num_philo);
 	info->philo_idx = 0;
 	info->philo_die = 0;
 	init_philo(info);

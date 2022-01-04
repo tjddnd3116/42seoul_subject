@@ -5,18 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 13:53:20 by soum              #+#    #+#             */
-/*   Updated: 2021/12/23 23:17:53 by soum             ###   ########.fr       */
+/*   Created: 2022/01/03 17:11:17 by soum              #+#    #+#             */
+/*   Updated: 2022/01/03 17:14:58 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-long long	now_time_ms()
+long long	now_time_ms(void)
 {
 	struct timeval	time;
 	long long		ms;
-
 
 	gettimeofday(&time, NULL);
 	ms = (time.tv_sec * 1000) + (time.tv_usec / 1000);
