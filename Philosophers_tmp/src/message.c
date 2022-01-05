@@ -6,26 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:29:09 by soum              #+#    #+#             */
-/*   Updated: 2022/01/04 15:54:09 by soum             ###   ########.fr       */
+/*   Updated: 2022/01/05 19:30:49 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-void	print_all_last_eat(t_info *info)
-{
-	int			index;
-	long long	last_eat;
-
-	index = 0;
-	while (index < info->num_philo)
-	{
-		last_eat = info->philo[index].last_eat - info->start_time;
-		printf("[%d] philo last eat : %lld\n", index + 1, last_eat);
-		index++;
-	}
-	printf("last time : %lld\n", info->end_time- info->start_time);
-}
 
 void	print_message(t_philo *philo, char *str)
 {

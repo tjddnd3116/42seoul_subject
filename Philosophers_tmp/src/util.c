@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:11:17 by soum              #+#    #+#             */
-/*   Updated: 2022/01/03 17:14:58 by soum             ###   ########.fr       */
+/*   Updated: 2022/01/05 19:54:24 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,25 @@ int	ft_atoi(const char *str)
 		index++;
 	}
 	return (result * sign);
+}
+
+int	arg_check(int argc, char **argv)
+{
+	int	arg_cnt;
+	int	index;
+
+	arg_cnt = 1;
+	while (arg_cnt < argc)
+	{
+		index = 0;
+		while (argv[arg_cnt][index])
+		{
+			if (argv[arg_cnt][index] >= '0' && argv[arg_cnt][index] <= '9')
+				index++;
+			else
+				return (0);
+		}
+		arg_cnt++;
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 16:44:18 by soum              #+#    #+#             */
-/*   Updated: 2022/01/04 17:25:29 by soum             ###   ########.fr       */
+/*   Updated: 2022/01/05 19:51:14 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,25 @@ void	wait_other_philo(t_philo *philo)
 	{
 		usleep(10);
 		if (philo->info->philo_idx == philo->info->num_philo - 1)
-		{
 			break ;
-		}
 	}
+}
+
+int	is_full(t_philo *philo)
+{
+	int	num_eat;
+	int	eat_cnt;
+
+	num_eat = philo->info->num_eat;
+	eat_cnt = philo->eat_count;
+	if (eat_cnt == num_eat)
+	{
+		pthread_mutex_lock(&philo->info->all_eat_m);
+		philo->info->all_eat_cnt++;
+		pthread_mutex_unlock(&philo->info->all_eat_m);
+		return (1);
+	}
+	return (0);
 }
 
 void	*eat_think_sleep(void *v_philo)
@@ -29,15 +44,17 @@ void	*eat_think_sleep(void *v_philo)
 	t_philo	*philo;
 
 	philo = (t_philo *)v_philo;
-//	wait_other_philo(philo);
+	wait_other_philo(philo);
 	if (philo->id % 2 == 1)
 		usleep(10000);
 	while (!philo->info->philo_die)
 	{
-		is_dead(philo);	
+		is_dead(philo);
 		hold_fork(philo);
 		is_dead(philo);
 		eating(philo);
+		if (is_full(philo) == 1)
+			return (0);
 		is_dead(philo);
 		sleeping(philo);
 		is_dead(philo);
@@ -46,7 +63,7 @@ void	*eat_think_sleep(void *v_philo)
 	return (0);
 }
 
-void	create_philo(t_info *info)
+int	create_philo(t_info *info)
 {
 	int	thr_id;
 	int	num_of_philo;
@@ -62,44 +79,8 @@ void	create_philo(t_info *info)
 		thr_id = pthread_create(&info->philo[index].thread, \
 				NULL, eat_think_sleep, (void *)&info->philo[index]);
 		if (thr_id < 0)
-			error();
+			return (0);
 		index++;
 	}
-}
-
-void	join_thread(t_info *info)
-{
-	int	num_philo;
-	int	index;
-
-	index = 0;
-	num_philo = info->num_philo;
-	while (index < num_philo)
-	{
-		pthread_join(info->philo[index].thread, NULL);
-		index++;
-	}
-}
-
-void	main_thread(t_info *info)
-{
-	int	i;
-
-	i = 0;
-	while (1)
-	{
-		i = 0;
-		if (info->philo_die == 1)
-		{
-			while (i < info->num_philo)
-			{
-				if (info->use_forks[i] == 1)
-					pthread_mutex_unlock(&info->forks[i]);
-				i++;
-			}
-			info->end_time = now_time_ms();
-			print_all_last_eat(info);
-			break ;
-		}
-	}
+	return (1);
 }
