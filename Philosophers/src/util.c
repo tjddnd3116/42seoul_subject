@@ -5,18 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 13:53:20 by soum              #+#    #+#             */
-/*   Updated: 2021/12/23 23:17:53 by soum             ###   ########.fr       */
+/*   Created: 2022/01/03 17:11:17 by soum              #+#    #+#             */
+/*   Updated: 2022/01/06 15:29:44 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-long long	now_time_ms()
+int	is_dead(t_philo *philo)
+{
+	long long	now_time;
+
+	now_time = now_time_ms();
+	if (now_time - philo->last_eat > philo->info->time_die)
+	{
+		print_message(philo, "died");
+		philo->info->philo_die = 1;
+		return (1);
+	}
+	return (0);
+}
+
+long long	now_time_ms(void)
 {
 	struct timeval	time;
 	long long		ms;
-
 
 	gettimeofday(&time, NULL);
 	ms = (time.tv_sec * 1000) + (time.tv_usec / 1000);
@@ -45,4 +58,25 @@ int	ft_atoi(const char *str)
 		index++;
 	}
 	return (result * sign);
+}
+
+int	arg_check(int argc, char **argv)
+{
+	int	arg_cnt;
+	int	index;
+
+	arg_cnt = 1;
+	while (arg_cnt < argc)
+	{
+		index = 0;
+		while (argv[arg_cnt][index])
+		{
+			if (argv[arg_cnt][index] >= '0' && argv[arg_cnt][index] <= '9')
+				index++;
+			else
+				return (0);
+		}
+		arg_cnt++;
+	}
+	return (1);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 14:26:00 by soum              #+#    #+#             */
-/*   Updated: 2022/01/03 16:53:46 by soum             ###   ########.fr       */
+/*   Created: 2022/01/03 16:44:18 by soum              #+#    #+#             */
+/*   Updated: 2022/01/06 16:30:08 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,27 @@ void	wait_other_philo(t_philo *philo)
 {
 	while (1)
 	{
-		usleep(100);
+		usleep(10);
 		if (philo->info->philo_idx == philo->info->num_philo - 1)
 			break ;
 	}
+}
+
+int	is_full(t_philo *philo)
+{
+	int	num_eat;
+	int	eat_cnt;
+
+	num_eat = philo->info->num_eat;
+	eat_cnt = philo->eat_count;
+	if (eat_cnt == num_eat)
+	{
+		pthread_mutex_lock(&philo->info->all_eat_m);
+		philo->info->all_eat_cnt++;
+		pthread_mutex_unlock(&philo->info->all_eat_m);
+		return (1);
+	}
+	return (0);
 }
 
 void	*eat_think_sleep(void *v_philo)
@@ -29,22 +46,26 @@ void	*eat_think_sleep(void *v_philo)
 	philo = (t_philo *)v_philo;
 	wait_other_philo(philo);
 	if (philo->id % 2 == 1)
-	{
 		usleep(10000);
-		//usleep(200 * (philo->info->num_philo - philo->id + 1));
-	}
 	while (!philo->info->philo_die)
 	{
-		hold_fork(philo);
-		eating(philo);
-		put_fork(philo);
-		sleeping(philo);
-		thinking(philo);
+		if (hold_fork(philo) == 1)
+			return (0);
+		if (eating(philo) == 1)
+			return (0);
+		if (put_fork(philo) == 1)
+			return (0);
+		if (is_full(philo) == 1)
+			return (0);
+		if (sleeping(philo) == 1)
+			return (0);
+		if (thinking(philo) == 1)
+			return (0);
 	}
 	return (0);
 }
 
-void	create_philo(t_info *info)
+int	create_philo(t_info *info)
 {
 	int	thr_id;
 	int	num_of_philo;
@@ -60,43 +81,8 @@ void	create_philo(t_info *info)
 		thr_id = pthread_create(&info->philo[index].thread, \
 				NULL, eat_think_sleep, (void *)&info->philo[index]);
 		if (thr_id < 0)
-			error();
+			return (0);
 		index++;
 	}
-}
-
-void	join_thread(t_info *info)
-{
-	int	num_philo;
-	int	index;
-
-	index = 0;
-	num_philo = info->num_philo;
-	while (index < num_philo)
-	{
-		pthread_join(info->philo[index].thread, NULL);
-		index++;
-	}
-}
-
-void	main_thread(t_info *info)
-{
-	int	i;
-
-	i = 0;
-	while (1)
-	{
-		i = 0;
-		while (i < info->num_philo)
-		{
-			is_dead(&info->philo[i]);
-			i++;
-		}
-		if (info->philo_die == 1)
-		{
-			pthread_mutex_unlock(&info->forks[0]);
-			pthread_mutex_unlock(&info->forks[1]);
-			break ;
-		}
-	}
+	return (1);
 }

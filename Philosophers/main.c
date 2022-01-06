@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/04 14:01:53 by soum              #+#    #+#             */
-/*   Updated: 2021/12/26 01:54:18 by soum             ###   ########.fr       */
+/*   Created: 2022/01/03 16:27:44 by soum              #+#    #+#             */
+/*   Updated: 2022/01/06 15:59:10 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@ int	main(int argc, char **argv)
 	t_info	*info;
 
 	info = (t_info *)malloc(sizeof(t_info));
-	if (argc == 5 || argc == 6)
-	{
-		init_info(info, argc, argv);
-		create_philo(info);
-		main_thread(info);
-		join_thread(info);
-		print_all_last_eat(info);
-	}
-	free(info);
+	if (info == NULL)
+		return (0);
+	if (argc != 5 && argc != 6)
+		return (all_free_exit(info, "Error : argument count"));
+	if (!(init_info(info, argc, argv)))
+		return (all_free_exit(info, "Error :init"));
+	if (!(create_philo(info)))
+		return (all_free_exit(info, "Error : thread create"));
+	main_thread(info);
+	join_thread(info);
+	detach_destroy_all(info);
+	all_free_exit(info, NULL);
+	return (0);
 }

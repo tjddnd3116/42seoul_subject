@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 17:30:49 by soum              #+#    #+#             */
-/*   Updated: 2022/01/05 19:47:32 by soum             ###   ########.fr       */
+/*   Updated: 2022/01/06 16:25:12 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	main_thread(t_info *info)
 					pthread_mutex_unlock(&info->forks[i]);
 				i++;
 			}
-			info->end_time = now_time_ms();
 			break ;
 		}
 	}

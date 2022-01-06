@@ -5,48 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 18:36:11 by soum              #+#    #+#             */
-/*   Updated: 2021/12/26 01:55:16 by soum             ###   ########.fr       */
+/*   Created: 2022/01/03 17:15:18 by soum              #+#    #+#             */
+/*   Updated: 2022/01/06 13:18:03 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	is_dead(t_philo *philo)
+int	hold_fork(t_philo *philo)
 {
-	long long	now_time;
-
-	now_time = now_time_ms();
-	if (now_time - philo->last_eat > philo->info->time_die)
-	{
-		print_message(philo, "died");
-		philo->info->philo_die = 1;
+	if (is_dead(philo) == 1)
 		return (1);
-	}
+	pthread_mutex_lock(&philo->info->forks[philo->l_fork]);
+	philo->info->use_forks[philo->l_fork] = 1;
+	print_message(philo, "has taken a fork");
+	pthread_mutex_lock(&philo->info->forks[philo->r_fork]);
+	philo->info->use_forks[philo->r_fork] = 1;
+	print_message(philo, "has taken a fork");
+	if (is_dead(philo) == 1)
+		return (1);
 	return (0);
 }
 
-void	hold_fork(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->info->forks[philo->l_fork]);
-	print_message(philo, "has taken a fork");
-	pthread_mutex_lock(&philo->info->forks[philo->r_fork]);
-	print_message(philo, "has taken a fork");
-}
-
-void	put_fork(t_philo *philo)
-{
-	pthread_mutex_unlock(&philo->info->forks[philo->l_fork]);
-	pthread_mutex_unlock(&philo->info->forks[philo->r_fork]);
-}
-
-void	eating(t_philo *philo)
+int	eating(t_philo *philo)
 {
 	int			time_to_eat;
 	long long	start_time;
 	long long	end_time;
 	long long	diff_time;
 
+	if (is_dead(philo) == 1)
+		return (1);
 	time_to_eat = philo->info->time_eat;
 	print_message(philo, "is eating");
 	philo->eat_count++;
@@ -59,15 +48,33 @@ void	eating(t_philo *philo)
 		usleep(10);
 	}
 	philo->last_eat = now_time_ms();
+	if (is_dead(philo) == 1)
+		return (1);
+	return (0);
 }
 
-void	sleeping(t_philo *philo)
+int	put_fork(t_philo *philo)
+{
+	if (is_dead(philo) == 1)
+		return (1);
+	pthread_mutex_unlock(&philo->info->forks[philo->l_fork]);
+	philo->info->use_forks[philo->l_fork] = 0;
+	pthread_mutex_unlock(&philo->info->forks[philo->r_fork]);
+	philo->info->use_forks[philo->r_fork] = 0;
+	if (is_dead(philo) == 1)
+		return (1);
+	return (0);
+}
+
+int	sleeping(t_philo *philo)
 {
 	int			time_to_sleep;
 	long long	start_time;
 	long long	end_time;
 	long long	diff_time;
 
+	if (is_dead(philo) == 1)
+		return (1);
 	time_to_sleep = philo->info->time_sleep;
 	print_message(philo, "is sleeping");
 	start_time = now_time_ms();
@@ -78,10 +85,17 @@ void	sleeping(t_philo *philo)
 		diff_time = end_time - start_time;
 		usleep(10);
 	}
+	if (is_dead(philo) == 1)
+		return (1);
+	return (0);
 }
 
-void	thinking(t_philo *philo)
+int	thinking(t_philo *philo)
 {
+	if (is_dead(philo) == 1)
+		return (1);
 	print_message(philo, "is thinking");
+	if (is_dead(philo) == 1)
+		return (1);
+	return (0);
 }
-
