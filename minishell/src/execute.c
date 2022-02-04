@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 04:10:03 by semin             #+#    #+#             */
-/*   Updated: 2022/02/02 16:00:16 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/04 20:14:46 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	execute_extern(t_cmd *cmd, char **env)
 		waitpid(pid, &status, 0);
 		// printf("status: %d\n", status >> 9);
 		// env free
+		free_envp(env);
 	}
 }
 

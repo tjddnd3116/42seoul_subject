@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:53:23 by soum              #+#    #+#             */
-/*   Updated: 2022/02/02 15:59:00 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/04 19:58:55 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,5 @@ void		execute_list(t_m_list *list, t_env *env);
 void		set_pipe(t_m_list *list, t_env *env);
 
 void		free_env_list(t_data *data);
+void		free_envp(char **env);
 #endif
