@@ -3,34 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   free_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:30:13 by soum              #+#    #+#             */
-/*   Updated: 2022/02/04 20:11:02 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/08 19:15:41 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 #include "../Libft/libft.h"
 
-void 	free_envp(char **env)
-{
-	int index;
-
-	index = 0;
-	while(env[index])
-	{
-		free(env[index]);
-		index++;
-	}
-	free(env[index]);
-	free(env);
-}
-
 void	free_env_list(t_data *data)
 {
-	t_env *env;
-	t_env *tmp_env;
+	t_env	*env;
+	t_env	*tmp_env;
 
 	env = data->env;
 	while (env)
@@ -44,6 +30,21 @@ void	free_env_list(t_data *data)
 		env = NULL;
 		env = tmp_env;
 	}
+	env = data->env;
+}
+
+void	free_envp(char **env)
+{
+	int	index;
+
+	index = 0;
+	while (env[index])
+	{
+		free(env[index]);
+		index++;
+	}
+	free(env[index]);
+	free(env);
 }
 
 void	free_cmd_data(t_cmd *content)

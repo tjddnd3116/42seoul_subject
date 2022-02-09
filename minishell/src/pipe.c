@@ -3,58 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 16:30:33 by semin             #+#    #+#             */
-/*   Updated: 2022/02/01 23:23:02 by semin            ###   ########.fr       */
+/*   Created: 2022/02/08 19:16:31 by soum              #+#    #+#             */
+/*   Updated: 2022/02/08 19:16:32 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 #include "../Libft/libft.h"
 
-void	child(int fd, t_cmd *cmd, t_env *env)
+void	child(t_m_list *list, t_data *data)
 {
-	dup2(fd, STDOUT_FILENO);
-	close(fd);
-	execute_cmd(cmd, env);
+	t_cmd	*cmd;
+	int		err;
+
+	cmd = list->content;
+	err = rd_handler(cmd);
+	close(cmd->fd[0]);
+	if (cmd->flag == 1 && !cmd->out)
+	{
+		dup2(cmd->fd[1], STDOUT_FILENO);
+		close(cmd->fd[1]);
+	}
+	if (!err)
+		execute_cmd(data, cmd, data->env, 1);
+	exit(g_status);
 }
 
-void	parent(int fd, t_m_list *list, t_env *env)
-{
-	dup2(fd, STDIN_FILENO);
-	close(fd);
-	execute(list, env);
-}
-
-void	set_pipe(t_m_list *list, t_env *env)
+void	create_child(t_m_list *list, t_data *data, int prev)
 {
 	pid_t	pid;
-	t_cmd	*child_cmd;
-	t_cmd	*parent_cmd;
 	int		status;
-	int		fd[2];
 
-	child_cmd = list->content;
-	parent_cmd = list->next->content;
-	if (pipe(fd) < 0)
+	if (pipe(list->content->fd) < 0)
 	{
 		printf("pipe error");
 		return ;
 	}
+	if (prev == 1)
+		dup2(200, STDIN_FILENO);
 	pid = fork();
 	if (pid == 0)
-	{
-		// child
-		close(fd[0]);
-		child(fd[1], child_cmd, env);
-		exit(0);
-		//exit status
-	}
+		child(list, data);
 	else
 	{
 		waitpid(pid, &status, 0);
-		close(fd[1]);
-		parent(fd[0], list->next, env);
+		g_status = status >> 8;
+		close(list->content->fd[1]);
+		if (list->content->flag == 1)
+			dup2(list->content->fd[0], 200);
+		close(list->content->fd[0]);
 	}
 }

@@ -3,37 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   init_shell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 16:11:04 by soum              #+#    #+#             */
-/*   Updated: 2022/02/04 20:16:01 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/09 17:50:17 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 #include "../Libft/libft.h"
 
+void	init_cmd(t_cmd *cmd_data, char *cmd, char let)
+{
+	cmd_data->out = 0;
+	if (ft_strrchr(cmd, '>'))
+		cmd_data->out = 1;
+	if (let == '|')
+		cmd_data->flag = 1;
+	else if (let == ';' || let == '\0')
+		cmd_data->flag = 0;
+}
+
 void	init_struct(t_data *data, char **envp)
 {
+	// g_status = 0;
 	data->lstlast = NULL;
 	data->env = init_env(envp);
 	setting_signal();
 }
 
-void	sig_handler(int signal)
+void	sigint_handler(int signal)
 {
-	if (signal == SIGINT)
+	pid_t	pid;
+	int		status;
+
+	(void)signal;
+	pid = waitpid(-1, &status, WNOHANG);
+	if (pid != -1)
 	{
-		printf("minishell$ \n");
-		if (rl_on_new_line() == -1) // move to new(empty) line
-			exit(1);
-		rl_replace_line("", 1); // 문자 입력 후 ctrl+c 눌렀을 때 버퍼 비워줌
-		rl_redisplay(); // readline redisplay
+		printf("\n");
+		return ;
 	}
+	printf("minishell$ \n");
+	rl_on_new_line();
+	rl_replace_line("", 1);
+	rl_redisplay();
+	// exit status: 130
+}
+
+void	sigquit_handler(int signal)
+{
+	pid_t	pid;
+	int		status;
+
+	(void)signal;
+	pid = waitpid(-1, &status, WNOHANG);
+	if (pid == -1)
+	{
+		rl_on_new_line();
+		rl_redisplay();
+		return ;
+	}
+	printf("^\\Quit: 3\n");
+	// exit status: 131
 }
 
 void	setting_signal(void)
 {
-	signal(SIGINT, sig_handler);
-	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, sigint_handler);
+	signal(SIGQUIT, sigquit_handler);
 }

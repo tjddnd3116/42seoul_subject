@@ -6,54 +6,57 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:41:40 by soum              #+#    #+#             */
-/*   Updated: 2022/02/01 18:36:48 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/09 17:41:53 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 #include "../Libft/libft.h"
 
-int	two_time_error(char *str)
+int	pipe_error_check2(t_m_list *tmp, int flag)
 {
-	int	index;
-
-	index = 0;
-	while (str[index])
+	if (flag == 1)
 	{
-		if (str[index] == ';')
+		if (tmp->next && tmp->next->content->flag \
+				&& tmp->next->content->cmdline[0] == NULL)
 		{
-			if (str[index + 1] != '\0' && str[index + 1] == ';')
-				return (1);
+			syntax_error_msg('|');
+			return (1);
 		}
-		else if (str[index] == '|')
+	}
+	else if (flag == 0)
+	{
+		if (tmp->next && tmp->next->content->flag == 0 && \
+				tmp->next->content->cmdline[0] == NULL)
 		{
-			if (str[index + 1] != '\0' && str[index + 1] == '|')
-				return (1);
+			syntax_error_msg(';');
+			return (1);
 		}
-		index++;
 	}
 	return (0);
 }
 
-int	quote_error(char *str)
+int	pipe_error_check(t_data *data)
 {
-	int	index;
-	int	single_cnt;
-	int	double_cnt;
+	t_m_list	*tmp;
+	t_cmd		*cmd;
 
-	index = 0;
-	single_cnt = 0;
-	double_cnt = 0;
-	while (str[index])
+	tmp = data->lstlast;
+	while (tmp)
 	{
-		if (str[index] == '\'')
-			single_cnt++;
-		else if (str[index] == '\"')
-			double_cnt++;
-		index++;
+		cmd = tmp->content;
+		if (cmd->flag)
+		{
+			if (pipe_error_check2(tmp, 1))
+				return (1);
+		}
+		else if (cmd->flag == 0)
+		{
+			if (pipe_error_check2(tmp, 0))
+				return (1);
+		}
+		tmp = tmp->next;
 	}
-	if (single_cnt % 2 || double_cnt % 2)
-		return (1);
 	return (0);
 }
 
@@ -64,15 +67,5 @@ int	check_cmd(t_data *data)
 	str = data->cmd_set;
 	if (str == NULL)
 		return (1);
-	if (two_time_error(str) == 1)
-	{
-		error_msg("shell : syntax error near unexpected token\n");
-		return (1);
-	}
-	if (quote_error(str) == 1)
-	{
-		error_msg("shell : quote_error\n");
-		return (1);
-	}
 	return (0);
 }

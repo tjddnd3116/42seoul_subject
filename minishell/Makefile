@@ -26,8 +26,14 @@ SRCS = main.c \
 	   src/export.c \
 	   src/exit.c \
 	   src/cd.c \
-	   src/echo.c \
 	   src/pipe.c \
+	   src/redirection.c \
+	   src/parsing_util.c \
+	   src/rd_util.c \
+	   src/util.c \
+	   src/reparsing_cmd.c \
+	   src/quote.c \
+	   src/quote_split.c \
 
 LIBFT = libft
 LIBFT_LIB = Libft/libft.a

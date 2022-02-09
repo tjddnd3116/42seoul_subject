@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 04:10:14 by semin             #+#    #+#             */
-/*   Updated: 2022/02/02 15:28:24 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/07 15:41:22 by semin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	free_env(t_env **cur)
 	free(*cur);
 }
 
-void	delete_env(t_env **env, char *key)
+void	delete_env(t_env **env, char *key, t_data *data)
 {
 	t_env	*cur;
 	t_env	*prev;
@@ -57,8 +57,7 @@ void	delete_env(t_env **env, char *key)
 			}
 			else
 			{
-				env = &cur->next;
-				// 수정
+				data->env = cur->next;
 				free_env(&cur);
 			}
 		}
@@ -67,7 +66,7 @@ void	delete_env(t_env **env, char *key)
 	}
 }
 
-void	ft_unset(t_cmd *cmd, t_env *env)
+void	ft_unset(t_cmd *cmd, t_env *env, t_data *data)
 {
 	int	i;
 
@@ -75,10 +74,13 @@ void	ft_unset(t_cmd *cmd, t_env *env)
 	while (cmd->cmdline[i])
 	{
 		if (ft_isalpha(cmd->cmdline[i][0]) || cmd->cmdline[i][0] == '_')
-			delete_env(&env, cmd->cmdline[i]);
+			delete_env(&env, cmd->cmdline[i], data);
 		else
+		{
 			printf("minishell: unset: `%s\': not a valid identifier\n", \
 					cmd->cmdline[i]);
+			g_status = 1;
+		}
 		i++;
 	}
 }
