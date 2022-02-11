@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:53:23 by soum              #+#    #+#             */
-/*   Updated: 2022/02/09 17:48:29 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/10 17:59:12 by semin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,12 @@ typedef struct s_m_list
 {
 	struct s_cmd	*content;
 	struct s_m_list	*next;
-}t_m_list;
+}	t_m_list;
 
 typedef struct s_cmd
 {
 	char	**cmdline;
 	int		flag;
-	char	quote;
 	int		fd[2];
 	int		out;
 }	t_cmd;
@@ -51,7 +50,6 @@ typedef struct s_env
 
 typedef struct s_data
 {
-	int			status;
 	char		*cmd_set;
 	t_m_list	*lstlast;
 	t_env		*env;
@@ -73,7 +71,7 @@ int			pipe_error_check(t_data *data);
 int			check_cmd(t_data *data);
 
 //env.c
-t_env		*new_env(char *envline);
+t_env		*new_env(char *envline, t_env *env);
 int			get_envlen(char **env);
 t_env		*init_env(char **envp);
 int			env_num(t_env *env);
@@ -88,8 +86,8 @@ void		error_msg(char *str);
 void		syntax_error_msg(char let);
 
 //execute.c
-void		exec_extern(t_cmd *cmd, char **env);
-void		execute_extern(t_cmd *cmd, char **env);
+void		exec_extern(t_cmd *cmd, char **env, t_env *t_env);
+void		execute_extern(t_cmd *cmd, char **env, t_env *t_env);
 void		execute_cmd(t_data *data, t_cmd *cmd, t_env *env, int flag);
 void		execute_list(t_m_list *list, t_data *data, \
 		int b_stdin, int b_stdout);
@@ -175,4 +173,6 @@ void		ft_unset(t_cmd *cmd, t_env *env, t_data *data);
 
 //util.c
 char		*ft_strjoin_free(char *s1, char *s2);
+t_env		*replace_env(char **split_env, t_env *findenv);
+void		join_path(t_cmd *cmd, char **path, char **command);
 #endif

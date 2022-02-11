@@ -6,27 +6,32 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 04:10:03 by semin             #+#    #+#             */
-/*   Updated: 2022/02/07 17:50:57 by semin            ###   ########.fr       */
+/*   Updated: 2022/02/10 18:00:03 by semin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 #include "../Libft/libft.h"
 
-void	exec_extern(t_cmd *cmd, char **env)
+void	exec_extern(t_cmd *cmd, char **env, t_env *envs)
 {
-	char	*command[6];
+	char	**command;
 	int		i;
+	char	**path;
+	t_env	*env_path;
 
-	command[0] = ft_strjoin("/bin/", cmd->cmdline[0]);
-	command[1] = ft_strjoin("/usr/bin/", cmd->cmdline[0]);
-	command[2] = ft_strjoin("/usr/local/bin/", cmd->cmdline[0]);
-	command[3] = ft_strjoin("/usr/sbin/", cmd->cmdline[0]);
-	command[4] = ft_strjoin("/sbin/", cmd->cmdline[0]);
-	command[5] = 0;
-	i = 0;
+	env_path = find_env("PATH", envs);
+	if (!env_path)
+	{
+		printf("minishell: %s: command not found\n", cmd->cmdline[0]);
+		exit(127);
+	}
+	path = ft_split(env_path->value, ':');
+	command = (char **)malloc(sizeof(char *) * (get_envlen(path) + 1));
+	join_path(cmd, path, command);
 	execve(cmd->cmdline[0], cmd->cmdline, env);
-	while (i < 5)
+	i = 0;
+	while (command[i])
 	{
 		execve(command[i], cmd->cmdline, env);
 		i++;
@@ -35,7 +40,7 @@ void	exec_extern(t_cmd *cmd, char **env)
 	exit(127);
 }
 
-void	execute_extern(t_cmd *cmd, char **env)
+void	execute_extern(t_cmd *cmd, char **env, t_env *envs)
 {
 	pid_t	pid;
 	int		status;
@@ -44,7 +49,7 @@ void	execute_extern(t_cmd *cmd, char **env)
 	if (pid < 0)
 		exit(errno);
 	if (pid == 0)
-		exec_extern(cmd, env);
+		exec_extern(cmd, env, envs);
 	else
 	{
 		waitpid(pid, &status, 0);
@@ -65,7 +70,7 @@ void	execute_cmd(t_data *data, t_cmd *cmd, t_env *env, int flag)
 	else if (!ft_strcmp(cmd->cmdline[0], "exit"))
 		ft_exit(cmd, flag, data);
 	else
-		execute_extern(cmd, make_envp(env));
+		execute_extern(cmd, make_envp(env), env);
 }
 
 void	execute_list(t_m_list *list, t_data *data, int b_stdin, int b_stdout)

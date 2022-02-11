@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:51:05 by soum              #+#    #+#             */
-/*   Updated: 2022/02/09 17:55:46 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/10 14:01:43 by semin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	put_in_cmd(t_data *data, char *cmd, char let)
 	new_list = (t_m_list *)malloc(sizeof(t_m_list));
 	cmd_data = (t_cmd *)malloc(sizeof(t_cmd));
 	init_cmd(cmd_data, cmd, let);
-	//추가
 	new_list->content = cmd_data;
 	if (ft_strchr(cmd, '"') || ft_strchr(cmd, '\''))
 		cmd_data->cmdline = quote_split(cmd, ' ');

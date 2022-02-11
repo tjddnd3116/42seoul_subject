@@ -6,20 +6,27 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 01:31:41 by semin             #+#    #+#             */
-/*   Updated: 2022/02/02 15:25:45 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/10 14:56:06 by semin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 #include "../Libft/libft.h"
 
-t_env	*new_env(char *envline)
+t_env	*new_env(char *envline, t_env *env)
 {
 	t_env	*new_env;
+	t_env	*findenv;
 	char	**split_env;
 
-	new_env = (t_env *)malloc(sizeof(t_env));
 	split_env = ft_split(envline, '=');
+	if (env)
+		findenv = find_env(split_env[0], env);
+	else
+		findenv = NULL;
+	if (findenv)
+		return (replace_env(split_env, findenv));
+	new_env = (t_env *)malloc(sizeof(t_env));
 	new_env->key = ft_strdup(split_env[0]);
 	if (split_env[1])
 		new_env->value = ft_strdup(split_env[1]);
@@ -51,12 +58,12 @@ t_env	*init_env(char **envp)
 
 	if (!envp[0])
 		return (NULL);
-	env = new_env(envp[0]);
+	env = new_env(envp[0], 0);
 	cur = env;
 	i = 1;
 	while (i < get_envlen(envp))
 	{
-		cur->next = new_env(envp[i]);
+		cur->next = new_env(envp[i], env);
 		cur = cur->next;
 		i++;
 	}

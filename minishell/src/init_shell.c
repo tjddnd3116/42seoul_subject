@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 16:11:04 by soum              #+#    #+#             */
-/*   Updated: 2022/02/09 17:50:17 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/10 14:45:48 by semin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	init_cmd(t_cmd *cmd_data, char *cmd, char let)
 
 void	init_struct(t_data *data, char **envp)
 {
-	// g_status = 0;
 	data->lstlast = NULL;
 	data->env = init_env(envp);
 	setting_signal();
@@ -41,6 +40,7 @@ void	sigint_handler(int signal)
 	pid = waitpid(-1, &status, WNOHANG);
 	if (pid != -1)
 	{
+		g_status = 1;
 		printf("\n");
 		return ;
 	}
@@ -48,7 +48,7 @@ void	sigint_handler(int signal)
 	rl_on_new_line();
 	rl_replace_line("", 1);
 	rl_redisplay();
-	// exit status: 130
+	g_status = 130;
 }
 
 void	sigquit_handler(int signal)
@@ -65,7 +65,7 @@ void	sigquit_handler(int signal)
 		return ;
 	}
 	printf("^\\Quit: 3\n");
-	// exit status: 131
+	g_status = 131;
 }
 
 void	setting_signal(void)

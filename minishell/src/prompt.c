@@ -6,23 +6,19 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 16:10:06 by soum              #+#    #+#             */
-/*   Updated: 2022/02/07 16:32:34 by semin            ###   ########.fr       */
+/*   Updated: 2022/02/10 14:01:15 by semin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 #include "../Libft/libft.h"
 
-#include <sys/time.h>
-
 void	show_prompt(t_data *data)
 {
 	struct termios	term;
 
 	tcgetattr(STDIN_FILENO, &term);
-	term.c_lflag &= ~(ECHOCTL);	// 제어문자 반향 off
-	// term.c_cc[VMIN] = 1;	// minimum number of bytes in input queue
-	// term.c_cc[VTIME] = 0;	// how long to wait
+	term.c_lflag &= ~(ECHOCTL);
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	data->cmd_set = readline("minishell$ ");
 	if (!data->cmd_set)

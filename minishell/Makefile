@@ -1,13 +1,12 @@
 # **************************************************************************** #
-#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/11 12:49:29 by soum              #+#    #+#              #
-#    Updated: 2022/02/02 14:01:10 by soum             ###   ########.fr        #
+#    Updated: 2022/02/10 15:20:41 by semin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +40,8 @@ INCLUDES = ./includes/minishell.h
 
 CC = gcc
 CFLAGES = -Wall -Wextra -Werror
-COMFILE_FLAGS = -lreadline -L /opt/homebrew/opt/readline/lib
-OBJ_FLAGS = -I /opt/homebrew/opt/readline/include
+COMFILE_FLAGS = -lreadline -L/Users/semin/.brew/opt/readline/lib
+OBJ_FLAGS = -I/Users/semin/.brew/opt/readline/include
 
 .c.o :
 	$(CC) $(CFLAGES) $(OBJ_FLAGS) -c $< -o $(<:.c=.o) -I $(INCLUDES)

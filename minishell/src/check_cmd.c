@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:41:40 by soum              #+#    #+#             */
-/*   Updated: 2022/02/09 17:41:53 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/10 16:41:04 by semin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,15 @@ int	pipe_error_check(t_data *data)
 int	check_cmd(t_data *data)
 {
 	char	*str;
+	int		index;
 
+	index = 0;
 	str = data->cmd_set;
 	if (str == NULL)
+		return (1);
+	while (str[index] == ' ')
+		index++;
+	if (!str[index])
 		return (1);
 	return (0);
 }

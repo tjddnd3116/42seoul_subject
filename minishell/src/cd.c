@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 22:52:14 by semin             #+#    #+#             */
-/*   Updated: 2022/02/07 15:04:18 by semin            ###   ########.fr       */
+/*   Updated: 2022/02/10 14:50:28 by semin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	add_env(t_env *env, char *key, char *value)
 	s = ft_strjoin(key, "=");
 	envline = ft_strjoin(s, value);
 	free(s);
-	cur->next = new_env(envline);
+	cur->next = new_env(envline, env);
 	free(envline);
 }
 
