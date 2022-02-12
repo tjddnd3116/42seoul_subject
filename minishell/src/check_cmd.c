@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:41:40 by soum              #+#    #+#             */
-/*   Updated: 2022/02/10 16:41:04 by semin            ###   ########.fr       */
+/*   Updated: 2022/02/12 17:13:33 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,15 @@ int	pipe_error_check2(t_m_list *tmp, int flag)
 	{
 		if (tmp->next && tmp->next->content->flag \
 				&& tmp->next->content->cmdline[0] == NULL)
-		{
-			syntax_error_msg('|');
 			return (1);
-		}
+		if (!tmp->next)
+			return (1);
 	}
 	else if (flag == 0)
 	{
 		if (tmp->next && tmp->next->content->flag == 0 && \
 				tmp->next->content->cmdline[0] == NULL)
-		{
-			syntax_error_msg(';');
 			return (1);
-		}
 	}
 	return (0);
 }
@@ -47,13 +43,13 @@ int	pipe_error_check(t_data *data)
 		cmd = tmp->content;
 		if (cmd->flag)
 		{
-			if (pipe_error_check2(tmp, 1))
-				return (1);
+			if (cmd->cmdline[0] == NULL || pipe_error_check2(tmp, 1))
+				return (syntax_error_msg('|'));
 		}
 		else if (cmd->flag == 0)
 		{
-			if (pipe_error_check2(tmp, 0))
-				return (1);
+			if (cmd->cmdline[0] == NULL || pipe_error_check2(tmp, 0))
+				return (syntax_error_msg(';'));
 		}
 		tmp = tmp->next;
 	}

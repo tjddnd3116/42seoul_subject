@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:45:17 by semin             #+#    #+#             */
-/*   Updated: 2022/02/07 21:26:33 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/12 17:25:03 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*replace_dollar(char *str, t_env *env)
 	key_len = get_keylen(c + 1);
 	key = ft_substr(str, c - str + 1, key_len);
 	found_env = find_env(key, env);
-	if (found_env)
+	if (found_env && found_env->value)
 		ret = ft_strdup(found_env->value);
 	else
 		ret = NULL;

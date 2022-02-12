@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:53:23 by soum              #+#    #+#             */
-/*   Updated: 2022/02/10 17:59:12 by semin            ###   ########.fr       */
+/*   Updated: 2022/02/12 17:08:47 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char		*replace_dollar(char *str, t_env *env);
 
 //error.c
 void		error_msg(char *str);
-void		syntax_error_msg(char let);
+int			syntax_error_msg(char let);
 
 //execute.c
 void		exec_extern(t_cmd *cmd, char **env, t_env *t_env);
@@ -122,9 +122,10 @@ void		parsing(t_data *data);
 
 //parsing_util.c
 int			quote_index(char *cmd, char let, int *index);
-char		*put_in_cmdline(char *cmd, char let, int *i);
-char		*put_in_cmdline_normal(char *cmd, char let, int *i);
+/** char		*put_in_cmdline(char *cmd, char let, int *i); */
+/** char		*put_in_cmdline_normal(char *cmd, char let, int *i); */
 int			find_quote_match(char *tmp, int i);
+char		*new_put_in_cmdline(char *cmd, int *i);
 
 //pipe.c
 void		child(t_m_list *list, t_data *data);
