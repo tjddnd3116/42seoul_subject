@@ -26,3 +26,4 @@
 
 -[minishell](https://github.com/tjddnd3116/42seoul_subject/tree/main/minishell) : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/minishell)](https://github.com/JaeSeoKim/badge42)
 
+-[cpp_module_00](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_00) : [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/soum/cpp_module_00)](https://github.com/JaeSeoKim/badge42)
