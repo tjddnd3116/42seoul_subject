@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:03:40 by soum              #+#    #+#             */
-/*   Updated: 2022/02/12 16:54:45 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/13 00:25:44 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,26 +53,26 @@ char	*double_quote(char *cmdline, t_env *env)
 	char	*new_cmdline;
 	char	let[2];
 	int		index;
+	char	*repl;
 
-	index = 0;
+	index = -1;
 	let[1] = 0;
-	new_cmdline = (char *)malloc(sizeof(char));
-	new_cmdline[0] = '\0';
-	while (cmdline[index])
+	new_cmdline = ft_calloc(1, sizeof(char));
+	while (cmdline[++index])
 	{
+		let[0] = cmdline[index];
 		if (cmdline[index] == '$')
 		{
-			if (replace_dollar(&cmdline[index], env))
-				new_cmdline = ft_strjoin_free(new_cmdline, \
-						replace_dollar(&cmdline[index], env));
+			repl = replace_dollar(&cmdline[index], env);
+			if (repl)
+			{
+				new_cmdline = ft_strjoin_free(new_cmdline, repl);
+				free(repl);
+			}
 			index += key_len(&cmdline[index + 1]);
 		}
 		else if (cmdline[index] != '"')
-		{
-			let[0] = cmdline[index];
 			new_cmdline = ft_strjoin_free(new_cmdline, let);
-		}
-		index++;
 	}
 	return (new_cmdline);
 }

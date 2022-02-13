@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 16:11:04 by soum              #+#    #+#             */
-/*   Updated: 2022/02/10 14:45:48 by semin            ###   ########.fr       */
+/*   Updated: 2022/02/12 22:05:43 by semin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	sigint_handler(int signal)
 	if (pid != -1)
 	{
 		g_status = 1;
-		printf("\n");
+		printf("^C\n");
 		return ;
 	}
 	printf("minishell$ \n");

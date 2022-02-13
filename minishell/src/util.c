@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 00:17:08 by soum              #+#    #+#             */
-/*   Updated: 2022/02/10 17:59:14 by semin            ###   ########.fr       */
+/*   Updated: 2022/02/12 22:15:20 by semin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,13 @@ void	join_path(t_cmd *cmd, char **path, char **command)
 		i++;
 	}
 	command[i] = 0;
+}
+
+void	reset_terminal(void)
+{
+	struct termios	term;
+
+	tcgetattr(STDIN_FILENO, &term);
+	term.c_lflag |= ECHOCTL;
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 }

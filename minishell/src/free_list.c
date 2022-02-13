@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:30:13 by soum              #+#    #+#             */
-/*   Updated: 2022/02/08 19:15:41 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/12 22:08:28 by semin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	free_env_list(t_data *data)
 		env = tmp_env;
 	}
 	env = data->env;
+	free(data);
 }
 
 void	free_envp(char **env)

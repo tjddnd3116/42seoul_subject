@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 17:51:05 by soum              #+#    #+#             */
-/*   Updated: 2022/02/12 17:16:17 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/12 18:06:10 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	parsing_proc(t_data *data, char *tmp)
 			if (i == -1)
 				return (1);
 		}
-		cmd = (char *)malloc(sizeof(char) *(i - j + 1));
+		cmd = (char *)malloc(sizeof(char) * (i - j + 1));
 		ft_strlcpy(cmd, tmp + j, i - j + 1);
 		j = i + 1;
 		put_in_cmd(data, cmd, tmp[i]);

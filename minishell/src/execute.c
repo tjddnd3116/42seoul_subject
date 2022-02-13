@@ -6,7 +6,7 @@
 /*   By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 04:10:03 by semin             #+#    #+#             */
-/*   Updated: 2022/02/10 18:00:03 by semin            ###   ########.fr       */
+/*   Updated: 2022/02/12 21:52:20 by semin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	exec_extern(t_cmd *cmd, char **env, t_env *envs)
 	char	**path;
 	t_env	*env_path;
 
+	execve(cmd->cmdline[0], cmd->cmdline, env);
 	env_path = find_env("PATH", envs);
 	if (!env_path)
 	{
@@ -29,7 +30,6 @@ void	exec_extern(t_cmd *cmd, char **env, t_env *envs)
 	path = ft_split(env_path->value, ':');
 	command = (char **)malloc(sizeof(char *) * (get_envlen(path) + 1));
 	join_path(cmd, path, command);
-	execve(cmd->cmdline[0], cmd->cmdline, env);
 	i = 0;
 	while (command[i])
 	{
