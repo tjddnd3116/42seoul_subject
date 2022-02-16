@@ -2,9 +2,6 @@
 
 class awake {
 	public:
-		awake() {
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		}
 		awake(int argc, char **argv) {
 			int i;
 
