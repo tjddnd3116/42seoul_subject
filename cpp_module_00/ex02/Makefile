@@ -6,12 +6,12 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 11:22:34 by soum              #+#    #+#              #
-#    Updated: 2022/02/18 20:38:41 by soum             ###   ########.fr        #
+#    Updated: 2022/02/21 20:48:11 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = account
-CC = clang++
+CC = c++
 CFLAGES = -Wall -Wextra -Werror -std=c++98
 
 SRCS = ./test.cpp \
