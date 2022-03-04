@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:30:43 by soum              #+#    #+#             */
-/*   Updated: 2022/02/14 13:30:46 by soum             ###   ########.fr       */
+/*   Updated: 2022/02/21 22:47:51 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <string>
 
 int main(void) {
-	PhoneBook list[8];
+	PhoneBook phonebook[8];
 	for (int i = 0; i < 8; i++)
-		list[i] = PhoneBook();
+		phonebook[i] = PhoneBook();
 	std::string cmd;
 
 	while (1) {
@@ -30,11 +30,11 @@ int main(void) {
 			return (0);
 		else if (!cmd.compare("ADD"))
 		{
-			list[index].add();
+			phonebook[index].add();
 			index++;
 		}
 		else if (!cmd.compare("SEARCH"))
-			list[index].search();
+			phonebook[index].search();
 	}
 	return (0);
 }
