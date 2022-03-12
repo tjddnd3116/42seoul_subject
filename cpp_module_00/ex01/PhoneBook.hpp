@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:30:52 by soum              #+#    #+#             */
-/*   Updated: 2022/02/14 13:34:55 by soum             ###   ########.fr       */
+/*   Updated: 2022/03/11 13:07:58 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 
 #include <iostream>
 #include <string>
+#include "info.hpp"
 
 class PhoneBook {
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	std::string phone_number;
-	std::string darkest_secret;
+	private:
+		info user[8];
+		int	index;
+		int fullFilled;
 
 	public:
 		void add();
 		void search();
+		PhoneBook();
 };
 
 #endif
