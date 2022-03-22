@@ -6,54 +6,67 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 19:07:57 by soum              #+#    #+#             */
-/*   Updated: 2022/02/18 19:50:00 by soum             ###   ########.fr       */
+/*   Updated: 2022/03/13 18:26:16 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 
-// static int getNbAccounts(void)
-// {
-//   return (0);
-// }
-//
-// static int getTotalAmount(void)
-// {
-//   return (0);
-// }
-//
-// static int getNbDeposits(void)
-// {
-//   return (0);
-// }
-//
-// static int getNbWithdrawals(void)
-// {
-//   return (0);
-// }
-//
-// static void displayAccountsInfos(void)
-// {
-//
-// }
-
-void makeDeposit(int deposit)
+Account::Account(void)
 {
-	(void)deposit;
+
 }
 
-bool makeWithdrawal(int withdrawal)
+Account::Account(int deposit)
 {
-	(void)withdrawal;
-	return (1);
+
 }
 
-int	checkAmount(void)
+void	Account::_displayTimestamp(void)
+{
+
+}
+int	Account::getNbAccounts(void)
 {
 	return (0);
 }
 
-void	displayStatus(void)
+int Account::getTotalAmount(void)
+{
+	return (0);
+}
+
+int Account::getNbDeposits(void)
+{
+	return (0);
+}
+
+int Account::getNbWithdrawals(void)
+{
+	return (0);
+}
+
+void	Account::displayAccountsInfos(void)
+{
+
+}
+
+void	Account::makeDeposit(int deposit)
+{
+
+}
+
+bool Account::makeWithdrawal(int withdrawal)
+{
+	return(true);
+}
+
+// int Account::checkAmount(void)
+// {
+//   return (0);
+// }
+
+Account::~Account()
 {
 
 }

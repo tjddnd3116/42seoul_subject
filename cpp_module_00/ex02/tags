@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Account	Account.hpp	/^class Account {$/;"	c
+CC	Makefile	/^CC = c++$/;"	m
+CFLAGES	Makefile	/^CFLAGES = -Wall -Wextra -Werror -std=c++98$/;"	m
+INC	Makefile	/^INC = Account.hpp$/;"	m
+NAME	Makefile	/^NAME = account$/;"	m
+OBJS	Makefile	/^OBJS = $(SRCS:.cpp=.o)$/;"	m
+SRCS	Makefile	/^SRCS = .\/test.cpp \\$/;"	m
+__ACCOUNT_H__	Account.hpp	/^#define __ACCOUNT_H__$/;"	d
+_accountIndex	Account.hpp	/^	int				_accountIndex;$/;"	m	class:Account
+_amount	Account.hpp	/^	int				_amount;$/;"	m	class:Account
+_nbAccounts	Account.hpp	/^	static int	_nbAccounts;$/;"	m	class:Account
+_nbDeposits	Account.hpp	/^	int				_nbDeposits;$/;"	m	class:Account
+_nbWithdrawals	Account.hpp	/^	int				_nbWithdrawals;$/;"	m	class:Account
+_totalAmount	Account.hpp	/^	static int	_totalAmount;$/;"	m	class:Account
+_totalNbDeposits	Account.hpp	/^	static int	_totalNbDeposits;$/;"	m	class:Account
+_totalNbWithdrawals	Account.hpp	/^	static int	_totalNbWithdrawals;$/;"	m	class:Account
+main	test.cpp	/^int		main (void) {$/;"	f
+t	Account.hpp	/^	typedef Account		t;$/;"	t	class:Account

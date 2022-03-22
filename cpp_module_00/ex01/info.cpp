@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 12:53:44 by soum              #+#    #+#             */
-/*   Updated: 2022/03/12 18:53:29 by soum             ###   ########.fr       */
+/*   Updated: 2022/03/13 18:00:59 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void info::reSizeInfo()
 	if (this->first_name.size() > 10)
 	{
 		this->first_name = this->first_name.substr(0, 9);
-		// std::cout << first_name << std::endl;
 		this->first_name = this->first_name.append(".");
-		// std::cout << first_name << std::endl;
 	}
 	if (this->last_name.size() > 10)
 	{
@@ -62,22 +60,14 @@ void info::fillInfo()
 void info::showInfo()
 {
 	info::reSizeInfo();
-
 	std::cout << std::setw(10) << "first name" << "|" <<\
 		std::setw(10) << "last name" << "|" << \
 		std::setw(10) << "nickname" << "|" << \
 		std::setw(10) << "tel." << "|" << \
 		std::setw(10) << "secret" << "|" << std::endl;
-
-		std::cout << std::setw(10) << this->first_name << "|" <<\
+	std::cout << std::setw(10) << this->first_name << "|" <<\
 		std::setw(10) << this->last_name << "|" << \
 		std::setw(10) << this->nickname << "|" << \
 		std::setw(10) << this->phone_number << "|" << \
 		std::setw(10) << this->darkest_secret << "|" << std::endl;
-
-	// std::cout << this->first_name + "|";
-	// std::cout << this->last_name + "|";
-	// std::cout << this->nickname + "|";
-	// std::cout << this->phone_number + "|";
-	// std::cout << this->darkest_secret + "|" << std::endl;
 }
