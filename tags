@@ -1,0 +1,1233 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ASCII_RANGE	Exam_Rank_03/micro_paint/generate_example.cpp	/^#define ASCII_RANGE /;"	d	file:
+ASCII_RANGE	Exam_Rank_03/mini_paint/generate_example.cpp	/^#define ASCII_RANGE /;"	d	file:
+ATLAS_NB_CHAR	so_long/minilibx/mlx_string_put.c	/^#define ATLAS_NB_CHAR /;"	d	file:
+Account	cpp_module_00/ex02/Account.cpp	/^Account::Account(int deposit)$/;"	f	class:Account
+Account	cpp_module_00/ex02/Account.cpp	/^Account::Account(void)$/;"	f	class:Account
+Account	cpp_module_00/ex02/Account.hpp	/^class Account {$/;"	c
+BUFFER_SIZE	Exam_Rank_02/get_next_line/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
+BUFFER_SIZE	get_next_line/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
+BUFFER_SIZE	get_next_line/get_next_line_bonus.h	/^#  define BUFFER_SIZE /;"	d
+BUFFER_SIZE	so_long/includes/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
+CC	Libft/Makefile	/^CC = gcc$/;"	m
+CC	Philosophers/Makefile	/^CC = gcc$/;"	m
+CC	cpp_module_00/ex00/Makefile	/^CC = c++$/;"	m
+CC	cpp_module_00/ex01/Makefile	/^CC = c++$/;"	m
+CC	cpp_module_00/ex02/Makefile	/^CC = c++$/;"	m
+CC	ft_printf/Libft/Makefile	/^CC = gcc$/;"	m
+CC	ft_printf/Makefile	/^CC = gcc$/;"	m
+CC	minishell/Libft/Makefile	/^CC = gcc$/;"	m
+CC	minishell/Makefile	/^CC = gcc$/;"	m
+CC	minitalk/Libft/Makefile	/^CC = gcc$/;"	m
+CC	minitalk/Makefile	/^CC		= gcc$/;"	m
+CC	minitalk/ft_printf/Makefile	/^CC = gcc$/;"	m
+CC	push_swap/Libft/Makefile	/^CC = gcc$/;"	m
+CC	push_swap/Makefile	/^CC = gcc$/;"	m
+CC	so_long/Libft/Makefile	/^CC = gcc$/;"	m
+CC	so_long/Makefile	/^CC = gcc$/;"	m
+CFLAGES	Philosophers/Makefile	/^CFLAGES = -Wall -Werror -Wextra$/;"	m
+CFLAGES	cpp_module_00/ex00/Makefile	/^CFLAGES = -Wall -Wextra -Werror -std=c++98$/;"	m
+CFLAGES	cpp_module_00/ex01/Makefile	/^CFLAGES = -Wall -Wextra -Werror -std=c++98$/;"	m
+CFLAGES	cpp_module_00/ex02/Makefile	/^CFLAGES = -Wall -Wextra -Werror -std=c++98$/;"	m
+CFLAGES	ft_printf/Makefile	/^CFLAGES = -Wall -Wextra -Werror$/;"	m
+CFLAGES	minishell/Makefile	/^CFLAGES = -Wall -Wextra -Werror$/;"	m
+CFLAGES	minitalk/ft_printf/Makefile	/^CFLAGES = -Wall -Wextra -Werror$/;"	m
+CFLAGES	push_swap/Makefile	/^CFLAGES = -Wall -Wextra -Werror$/;"	m
+CFLAGES	so_long/Makefile	/^CFLAGES = -Wall -Wextra -Werror$/;"	m
+CFLAGS	Libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	ft_printf/Libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	minishell/Libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	minitalk/Libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	push_swap/Libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	so_long/Libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	so_long/minilibx/Makefile	/^CFLAGS=-O3$/;"	m
+CLIENT	minitalk/Makefile	/^CLIENT	= client$/;"	m
+COMFILE_FLAGS	minishell/Makefile	/^COMFILE_FLAGS = -lreadline -L\/opt\/homebrew\/opt\/readline\/lib$/;"	m
+C_OBJ	so_long/minilibx/Makefile	/^C_OBJ=$(C_SRC:.c=.o)$/;"	m
+C_SRC	so_long/minilibx/Makefile	/^C_SRC= mlx_xpm.c mlx_png.c mlx_string_put.c$/;"	m
+ERR_DATA_FILTER	so_long/minilibx/mlx_png.c	/^#define	ERR_DATA_FILTER	/;"	d	file:
+ERR_DATA_MISMATCH	so_long/minilibx/mlx_png.c	/^#define	ERR_DATA_MISMATCH	/;"	d	file:
+ERR_MAGIC_SIZE	so_long/minilibx/mlx_png.c	/^#define	ERR_MAGIC_SIZE	/;"	d	file:
+ERR_MAGIC_WRONG	so_long/minilibx/mlx_png.c	/^#define	ERR_MAGIC_WRONG	/;"	d	file:
+ERR_MALLOC	so_long/minilibx/mlx_png.c	/^#define ERR_MALLOC	/;"	d	file:
+ERR_STRUCT_CRC	so_long/minilibx/mlx_png.c	/^#define	ERR_STRUCT_CRC	/;"	d	file:
+ERR_STRUCT_DAT	so_long/minilibx/mlx_png.c	/^#define	ERR_STRUCT_DAT	/;"	d	file:
+ERR_STRUCT_END	so_long/minilibx/mlx_png.c	/^#define	ERR_STRUCT_END	/;"	d	file:
+ERR_STRUCT_HDR	so_long/minilibx/mlx_png.c	/^#define	ERR_STRUCT_HDR	/;"	d	file:
+ERR_STRUCT_INCIMPL	so_long/minilibx/mlx_png.c	/^#define	ERR_STRUCT_INCIMPL /;"	d	file:
+ERR_STRUCT_INCOMPLETE	so_long/minilibx/mlx_png.c	/^#define	ERR_STRUCT_INCOMPLETE	/;"	d	file:
+ERR_STRUCT_MISSCHK	so_long/minilibx/mlx_png.c	/^#define	ERR_STRUCT_MISSCHK	/;"	d	file:
+ERR_ZLIB	so_long/minilibx/mlx_png.c	/^#define	ERR_ZLIB	/;"	d	file:
+FLAGS	minitalk/Makefile	/^FLAGS	= -Wall -Werror -wextra$/;"	m
+FONT_WIDTH	so_long/minilibx/mlx_string_put.c	/^#define FONT_WIDTH	/;"	d	file:
+FT_PRINTF_H	ft_printf/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
+FT_PRINTF_H	minitalk/includes/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
+FULL_ASCII	Exam_Rank_03/micro_paint/generate_example.cpp	/^#define FULL_ASCII /;"	d	file:
+FULL_ASCII	Exam_Rank_03/mini_paint/generate_example.cpp	/^#define FULL_ASCII /;"	d	file:
+GET_NEXT_LINE_BONUS_H	get_next_line/get_next_line_bonus.h	/^# define GET_NEXT_LINE_BONUS_H$/;"	d
+GET_NEXT_LINE_H	Exam_Rank_02/get_next_line/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
+GET_NEXT_LINE_H	get_next_line/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
+GET_NEXT_LINE_H	so_long/includes/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
+HEXA	ft_printf/ft_printf.h	/^# define HEXA /;"	d
+HEXA	minitalk/includes/ft_printf.h	/^# define HEXA /;"	d
+INC	cpp_module_00/ex01/Makefile	/^INC = .\/PhoneBook.hpp \\$/;"	m
+INC	cpp_module_00/ex02/Makefile	/^INC = Account.hpp$/;"	m
+INC	so_long/minilibx/Makefile	/^INC=-I.$/;"	m
+INCLUDES	Philosophers/Makefile	/^INCLUDES = .\/includes\/philo.h$/;"	m
+INCLUDES	minishell/Libft/Makefile	/^INCLUDES = ..\/includes\/libft.h$/;"	m
+INCLUDES	minishell/Makefile	/^INCLUDES = .\/includes\/minishell.h$/;"	m
+INCLUDES	minitalk/Libft/Makefile	/^INCLUDES = ..\/includes\/libft.h$/;"	m
+INCLUDES	minitalk/Makefile	/^INCLUDES = .\/includes\/minitalk.h$/;"	m
+INCLUDES	minitalk/ft_printf/Makefile	/^INCLUDES = ..\/includes\/ft_printf.h$/;"	m
+INCLUDES	push_swap/Libft/Makefile	/^INCLUDES = ..\/includes\/libft.h$/;"	m
+INCLUDES	push_swap/Makefile	/^INCLUDES = .\/includes\/push_swap.h$/;"	m
+INCLUDES	so_long/Libft/Makefile	/^INCLUDES = ..\/includes\/libft.h$/;"	m
+INCLUDES	so_long/Makefile	/^INCLUDES = .\/includes\/so_long.h$/;"	m
+INFO_HPP	cpp_module_00/ex01/info.hpp	/^#define INFO_HPP$/;"	d
+LIBFT	ft_printf/Makefile	/^LIBFT = Libft$/;"	m
+LIBFT	minishell/Makefile	/^LIBFT = libft$/;"	m
+LIBFT	minitalk/Makefile	/^LIBFT = libft$/;"	m
+LIBFT	minitalk/ft_printf/Makefile	/^LIBFT = ..\/Libft$/;"	m
+LIBFT	push_swap/Makefile	/^LIBFT = Libft$/;"	m
+LIBFT	so_long/Makefile	/^LIBFT = libft$/;"	m
+LIBFT_H	Libft/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_H	ft_printf/Libft/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_H	minishell/Libft/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_H	minitalk/includes/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_H	push_swap/Libft/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_H	so_long/Libft/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_LIB	ft_printf/Makefile	/^LIBFT_LIB = libft.a$/;"	m
+LIBFT_LIB	minishell/Makefile	/^LIBFT_LIB = Libft\/libft.a$/;"	m
+LIBFT_LIB	minitalk/Makefile	/^LIBFT_LIB = Libft\/libft.a$/;"	m
+LIBFT_LIB	minitalk/ft_printf/Makefile	/^LIBFT_LIB = libft.a$/;"	m
+LIBFT_LIB	push_swap/Makefile	/^LIBFT_LIB = Libft\/libft.a$/;"	m
+LIBFT_LIB	so_long/Makefile	/^LIBFT_LIB = libft\/libft.a$/;"	m
+MAP	so_long/includes/so_long.h	/^# define MAP /;"	d
+MINILIBX	so_long/Makefile	/^MINILIBX = minilibx$/;"	m
+MINISHELL_H	minishell/includes/minishell.h	/^# define MINISHELL_H$/;"	d
+MINITALK_H	minitalk/includes/minitalk.h	/^# define MINITALK_H$/;"	d
+MLX_H	so_long/minilibx/mlx.h	/^#define	MLX_H$/;"	d
+MLX_SYNC_IMAGE_WRITABLE	so_long/minilibx/mlx.h	/^#define MLX_SYNC_IMAGE_WRITABLE	/;"	d
+MLX_SYNC_WIN_CMD_COMPLETED	so_long/minilibx/mlx.h	/^#define MLX_SYNC_WIN_CMD_COMPLETED	/;"	d
+MLX_SYNC_WIN_FLUSH_CMD	so_long/minilibx/mlx.h	/^#define MLX_SYNC_WIN_FLUSH_CMD	/;"	d
+MODE	Exam_Rank_03/micro_paint/generate_example.cpp	/^#define MODE /;"	d	file:
+MODE	Exam_Rank_03/mini_paint/generate_example.cpp	/^#define MODE /;"	d	file:
+MODULE_OBJ	so_long/minilibx/Makefile	/^MODULE_OBJ=$(MODULE_SRC:.swift=.swiftmodule)$/;"	m
+MODULE_SRC	so_long/minilibx/Makefile	/^MODULE_SRC= mlx_image.swift mlx_window.swift mlx_init.swift$/;"	m
+NAME	Libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	Philosophers/Makefile	/^NAME = philo$/;"	m
+NAME	cpp_module_00/ex00/Makefile	/^NAME = megaphone$/;"	m
+NAME	cpp_module_00/ex01/Makefile	/^NAME = phonebook$/;"	m
+NAME	cpp_module_00/ex02/Makefile	/^NAME = account$/;"	m
+NAME	ft_printf/Libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	ft_printf/Makefile	/^NAME = libftprintf.a$/;"	m
+NAME	minishell/Libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	minishell/Makefile	/^NAME = minishell$/;"	m
+NAME	minitalk/Libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	minitalk/ft_printf/Makefile	/^NAME = libftprintf.a$/;"	m
+NAME	push_swap/Libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	push_swap/Makefile	/^NAME = push_swap$/;"	m
+NAME	so_long/Libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	so_long/Makefile	/^NAME = so_long$/;"	m
+NAME	so_long/minilibx/Makefile	/^NAME=libmlx.dylib$/;"	m
+OBJ	so_long/minilibx/Makefile	/^OBJ=$(SRC:.swift=.o)$/;"	m
+OBJS	Libft/Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+OBJS	Philosophers/Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+OBJS	cpp_module_00/ex00/Makefile	/^OBJS = $(SRCS:.cpp=.o)$/;"	m
+OBJS	cpp_module_00/ex01/Makefile	/^OBJS = $(SRCS:.cpp=.o)$/;"	m
+OBJS	cpp_module_00/ex02/Makefile	/^OBJS = $(SRCS:.cpp=.o)$/;"	m
+OBJS	ft_printf/Libft/Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+OBJS	ft_printf/Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+OBJS	minishell/Libft/Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+OBJS	minishell/Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+OBJS	minitalk/Libft/Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+OBJS	minitalk/ft_printf/Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+OBJS	push_swap/Libft/Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+OBJS	push_swap/Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+OBJS	so_long/Libft/Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+OBJS	so_long/Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+OBJS_B	Libft/Makefile	/^OBJS_B = $(SRCS_B:.c=.o)$/;"	m
+OBJS_B	ft_printf/Libft/Makefile	/^OBJS_B = $(SRCS_B:.c=.o)$/;"	m
+OBJS_B	ft_printf/Makefile	/^OBJS_B = $(SRCS_B:.c=.o)$/;"	m
+OBJS_B	minishell/Libft/Makefile	/^OBJS_B = $(SRCS_B:.c=.o)$/;"	m
+OBJS_B	minitalk/Libft/Makefile	/^OBJS_B = $(SRCS_B:.c=.o)$/;"	m
+OBJS_B	push_swap/Libft/Makefile	/^OBJS_B = $(SRCS_B:.c=.o)$/;"	m
+OBJS_B	so_long/Libft/Makefile	/^OBJS_B = $(SRCS_B:.c=.o)$/;"	m
+OBJ_FILES	ft_printf/Makefile	/^	OBJ_FILES = $(OBJS)$/;"	m
+OBJ_FILES	ft_printf/Makefile	/^	OBJ_FILES = $(OBJS_B)$/;"	m
+OBJ_FLAGS	minishell/Makefile	/^OBJ_FLAGS = -I\/opt\/homebrew\/opt\/readline\/include$/;"	m
+OPEN_MAX	get_next_line/get_next_line_bonus.h	/^#  define OPEN_MAX /;"	d
+PHILO_H	Philosophers/includes/philo.h	/^# define PHILO_H$/;"	d
+PHONEBOOK_HPP	cpp_module_00/ex01/PhoneBook.hpp	/^#define PHONEBOOK_HPP$/;"	d
+PNG_HDR_SIZE	so_long/minilibx/mlx_png.c	/^#define PNG_HDR_SIZE	/;"	d	file:
+PNG_MAGIC_SIZE	so_long/minilibx/mlx_png.c	/^#define	PNG_MAGIC_SIZE	/;"	d	file:
+PRINTF	minitalk/Makefile	/^PRINTF	= ft_printf$/;"	m
+PRINTF_LIB	minitalk/Makefile	/^PRINTF_LIB = ft_printf\/libftprintf.a$/;"	m
+PUSH_SWAP_H	push_swap/includes/push_swap.h	/^# define PUSH_SWAP_H$/;"	d
+Pcircle	Exam_Rank_03/mini_paint/our_mini_paint.c	/^typedef struct circle circle, *Pcircle;$/;"	t	typeref:struct:	file:
+Pdrawing	Exam_Rank_03/micro_paint/our_micro_paint.c	/^typedef struct drawing drawing, *Pdrawing;$/;"	t	typeref:struct:	file:
+Pdrawing	Exam_Rank_03/mini_paint/our_mini_paint.c	/^typedef struct drawing drawing, *Pdrawing;$/;"	t	typeref:struct:	file:
+PhoneBook	cpp_module_00/ex01/PhoneBook.cpp	/^PhoneBook::PhoneBook()$/;"	f	class:PhoneBook
+PhoneBook	cpp_module_00/ex01/PhoneBook.hpp	/^class PhoneBook {$/;"	c
+Prectangle	Exam_Rank_03/micro_paint/our_micro_paint.c	/^typedef struct rectangle rectangle, *Prectangle;$/;"	t	typeref:struct:	file:
+RETURN	so_long/minilibx/mlx_xpm.c	/^#define	RETURN	/;"	d	file:
+SERVER	minitalk/Makefile	/^SERVER	= server$/;"	m
+SO_LONG_H	so_long/includes/so_long.h	/^# define SO_LONG_H$/;"	d
+SRC	so_long/minilibx/Makefile	/^SRC= interface.swift $(MODULE_SRC)$/;"	m
+SRCS	Libft/Makefile	/^SRCS = ft_bzero.c ft_memset.c ft_strlen.c ft_memcpy.c \\$/;"	m
+SRCS	Philosophers/Makefile	/^SRCS = main.c \\$/;"	m
+SRCS	cpp_module_00/ex00/Makefile	/^SRCS = .\/megaphone.cpp$/;"	m
+SRCS	cpp_module_00/ex01/Makefile	/^SRCS = PhoneBook.cpp \\$/;"	m
+SRCS	cpp_module_00/ex02/Makefile	/^SRCS = .\/test.cpp \\$/;"	m
+SRCS	ft_printf/Libft/Makefile	/^SRCS = ft_bzero.c ft_memset.c ft_strlen.c ft_memcpy.c \\$/;"	m
+SRCS	ft_printf/Makefile	/^SRCS = ft_printf.c ft_print_type.c ft_print_type2.c ft_put_str.c ft_print_minuszero.c ft_utils.c ft_utils2.c$/;"	m
+SRCS	minishell/Libft/Makefile	/^SRCS = ft_bzero.c ft_memset.c ft_strlen.c ft_memcpy.c \\$/;"	m
+SRCS	minishell/Makefile	/^SRCS = main.c \\$/;"	m
+SRCS	minitalk/Libft/Makefile	/^SRCS = ft_bzero.c ft_memset.c ft_strlen.c ft_memcpy.c \\$/;"	m
+SRCS	minitalk/ft_printf/Makefile	/^SRCS = ft_printf.c ft_print_type.c ft_print_type2.c ft_print_minuszero.c ft_utils.c ft_utils2.c ft_put_str.c$/;"	m
+SRCS	push_swap/Libft/Makefile	/^SRCS = ft_bzero.c ft_memset.c ft_strlen.c ft_memcpy.c \\$/;"	m
+SRCS	push_swap/Makefile	/^SRCS = main.c \\$/;"	m
+SRCS	so_long/Libft/Makefile	/^SRCS = ft_bzero.c ft_memset.c ft_strlen.c ft_memcpy.c \\$/;"	m
+SRCS	so_long/Makefile	/^SRCS = main.c \\$/;"	m
+SRCS_B	Libft/Makefile	/^SRCS_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \\$/;"	m
+SRCS_B	ft_printf/Libft/Makefile	/^SRCS_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \\$/;"	m
+SRCS_B	ft_printf/Makefile	/^SRCS_B = ft_printf.c ft_print_type.c ft_print_type2.c ft_put_str.c ft_print_minuszero.c ft_utils.c ft_utils2.c$/;"	m
+SRCS_B	minishell/Libft/Makefile	/^SRCS_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \\$/;"	m
+SRCS_B	minitalk/Libft/Makefile	/^SRCS_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \\$/;"	m
+SRCS_B	push_swap/Libft/Makefile	/^SRCS_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \\$/;"	m
+SRCS_B	so_long/Libft/Makefile	/^SRCS_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \\$/;"	m
+TYPE	ft_printf/ft_printf.h	/^# define TYPE /;"	d
+TYPE	minitalk/includes/ft_printf.h	/^# define TYPE /;"	d
+UHEXA	ft_printf/ft_printf.h	/^# define UHEXA /;"	d
+UHEXA	minitalk/includes/ft_printf.h	/^# define UHEXA /;"	d
+UNIQ_BPP	so_long/minilibx/mlx_png.c	/^#define UNIQ_BPP /;"	d	file:
+Z_CHUNK	so_long/minilibx/mlx_png.c	/^#define	Z_CHUNK	/;"	d	file:
+__ACCOUNT_H__	cpp_module_00/ex02/Account.hpp	/^#define __ACCOUNT_H__$/;"	d
+_accountIndex	cpp_module_00/ex02/Account.hpp	/^	int				_accountIndex;$/;"	m	class:Account
+_amount	cpp_module_00/ex02/Account.hpp	/^	int				_amount;$/;"	m	class:Account
+_displayTimestamp	cpp_module_00/ex02/Account.cpp	/^void	Account::_displayTimestamp(void)$/;"	f	class:Account
+_nbAccounts	cpp_module_00/ex02/Account.hpp	/^	static int	_nbAccounts;$/;"	m	class:Account
+_nbDeposits	cpp_module_00/ex02/Account.hpp	/^	int				_nbDeposits;$/;"	m	class:Account
+_nbWithdrawals	cpp_module_00/ex02/Account.hpp	/^	int				_nbWithdrawals;$/;"	m	class:Account
+_totalAmount	cpp_module_00/ex02/Account.hpp	/^	static int	_totalAmount;$/;"	m	class:Account
+_totalNbDeposits	cpp_module_00/ex02/Account.hpp	/^	static int	_totalNbDeposits;$/;"	m	class:Account
+_totalNbWithdrawals	cpp_module_00/ex02/Account.hpp	/^	static int	_totalNbWithdrawals;$/;"	m	class:Account
+a_stack	push_swap/includes/push_swap.h	/^	t_stack	*a_stack;$/;"	m	struct:s_info
+a_to_b	push_swap/src/a_to_b.c	/^void	a_to_b(t_info *info, int size)$/;"	f
+add	cpp_module_00/ex01/PhoneBook.cpp	/^void	PhoneBook::add()$/;"	f	class:PhoneBook
+add_env	minishell/src/cd.c	/^void	add_env(t_env *env, char *key, char *value)$/;"	f
+addr	so_long/includes/so_long.h	/^	char	*addr;$/;"	m	struct:s_image
+addr	so_long/includes/so_long.h	/^	char	*addr;$/;"	m	struct:s_obj
+all_eat	Philosophers/includes/philo.h	/^	int				all_eat;$/;"	m	struct:s_info
+all_eat_cnt	Philosophers/includes/philo.h	/^	int				all_eat_cnt;$/;"	m	struct:s_info
+all_eat_m	Philosophers/includes/philo.h	/^	pthread_mutex_t	all_eat_m;$/;"	m	struct:s_info
+all_free_exit	Philosophers/src/error.c	/^int	all_free_exit(t_info *info, char *str)$/;"	f
+all_wall	so_long/includes/so_long.h	/^	int	all_wall;$/;"	m	struct:s_map
+apply_op	Exam_Rank_03/micro_paint/our_micro_paint.c	/^int apply_op(rectangle *rect, drawing *drawing)$/;"	f
+apply_op	Exam_Rank_03/mini_paint/our_mini_paint.c	/^int apply_op(circle *circle, drawing *drawing)$/;"	f
+arg_check	Philosophers/src/util.c	/^int	arg_check(int argc, char **argv)$/;"	f
+b_stack	push_swap/includes/push_swap.h	/^	t_stack	*b_stack;$/;"	m	struct:s_info
+b_to_a	push_swap/src/b_to_a.c	/^void	b_to_a(t_info *info, int size)$/;"	f
+b_to_a	push_swap/src/quick_sort2.c	/^void	b_to_a(t_info *info, int size)$/;"	f
+background	Exam_Rank_03/micro_paint/micro_paint.c	/^	char	background;$/;"	m	struct:s_zone	file:
+background	Exam_Rank_03/mini_paint/mini_paint.c	/^	char	background;$/;"	m	struct:s_zone	file:
+background	Exam_Rank_03/mini_paint/my_mini_paint.c	/^	char	background;$/;"	m	struct:s_zone	file:
+background	Exam_Rank_03/mini_paint/test.c	/^	char background;$/;"	m	struct:s_zone	file:
+bit	minitalk/includes/minitalk.h	/^	int		bit;$/;"	m	struct:s_info
+bpp	so_long/includes/so_long.h	/^	int		bpp;$/;"	m	struct:s_image
+bpp	so_long/includes/so_long.h	/^	int		bpp;$/;"	m	struct:s_obj
+bpp	so_long/minilibx/mlx_png.c	/^  int		bpp;$/;"	m	struct:png_info_s	file:
+bytes_per_pixel	so_long/minilibx/font.c	/^  unsigned int 	 bytes_per_pixel; \/* 2:RGB16, 3:RGB, 4:RGBA *\/ $/;"	m	struct:__anon1	file:
+ch_env	minishell/src/cd.c	/^void	ch_env(t_env *env, char *key, char *value)$/;"	f
+change_map	so_long/src/move_player.c	/^void	change_map(t_window *window, char obj, t_pos *pos, char **map)$/;"	f
+check	push_swap/push_swap_tester/tester.sh	/^function check () {$/;"	f
+check_and_insert_num_str	push_swap/main.c	/^void	check_and_insert_num_str(char *num_str, t_info *info)$/;"	f
+check_ber	so_long/src/check_map.c	/^int	check_ber(t_window *window, char *ber)$/;"	f
+check_bonus	push_swap/push_swap_tester/tester.sh	/^function check_bonus () {$/;"	f
+check_cmd	minishell/src/check_cmd.c	/^int	check_cmd(t_data *data)$/;"	f
+check_flag	Exam_Rank_02/ft_printf/ft_printf.c	/^void	check_flag(char *format, t_options *options, int i)$/;"	f
+check_flag	ft_printf/ft_printf.c	/^void	check_flag(char *format, t_options *options, int i)$/;"	f
+check_flag	minitalk/ft_printf/ft_printf.c	/^void	check_flag(char *format, t_options *options, int i)$/;"	f
+check_format	Exam_Rank_02/ft_printf/ft_printf.c	/^int	check_format(char *format, va_list ap)$/;"	f
+check_map	so_long/src/check_map.c	/^int	check_map(int fd, t_map *map, t_window *window)$/;"	f
+check_map_line	so_long/src/check_map.c	/^int	check_map_line(char *line, t_map *map)$/;"	f
+check_num	push_swap/main.c	/^int	check_num(char *num_str, t_info *info)$/;"	f
+check_over_range	Libft/ft_atoi.c	/^int	check_over_range(unsigned long long sum, int sign)$/;"	f
+check_over_range	ft_printf/Libft/ft_atoi.c	/^int	check_over_range(unsigned long long sum, int sign)$/;"	f
+check_over_range	minishell/Libft/ft_atoi.c	/^int	check_over_range(unsigned long long sum, int sign)$/;"	f
+check_over_range	minitalk/Libft/ft_atoi.c	/^int	check_over_range(unsigned long long sum, int sign)$/;"	f
+check_over_range	push_swap/Libft/ft_atoi.c	/^int	check_over_range(unsigned long long sum, int sign)$/;"	f
+check_over_range	so_long/Libft/ft_atoi.c	/^int	check_over_range(unsigned long long sum, int sign)$/;"	f
+check_ps	push_swap/push_swap_tester/tester.sh	/^function check_ps () {$/;"	f
+check_shape	Exam_Rank_03/micro_paint/micro_paint.c	/^	check_shape(t_shape *shape)$/;"	f
+check_type	ft_printf/ft_printf.c	/^int	check_type(va_list ap, t_options *options)$/;"	f
+check_type	minitalk/ft_printf/ft_printf.c	/^int	check_type(va_list ap, t_options *options)$/;"	f
+check_zone	Exam_Rank_03/micro_paint/micro_paint.c	/^	check_zone(t_zone *zone)$/;"	f
+child	minishell/src/pipe.c	/^void	child(t_m_list *list, t_data *data)$/;"	f
+circle	Exam_Rank_03/mini_paint/our_mini_paint.c	/^struct circle$/;"	s	file:
+circle	Exam_Rank_03/mini_paint/our_mini_paint.c	/^typedef struct circle circle, *Pcircle;$/;"	t	typeref:struct:circle	file:
+clear_all	Exam_Rank_03/micro_paint/micro_paint.c	/^	clear_all(FILE *file, char *drawing)$/;"	f
+clear_all	Exam_Rank_03/mini_paint/mini_paint.c	/^	clear_all(FILE *file, char *drawing, char const *str)$/;"	f
+clear_all	Exam_Rank_03/mini_paint/my_mini_paint.c	/^int	clear_all(FILE *file, char *drawing, char const *str)$/;"	f
+clear_all	Exam_Rank_03/mini_paint/test.c	/^int clear_all(FILE *file, char *drawing, char *str)$/;"	f
+cmd_cnt	minishell/src/redirection.c	/^int	cmd_cnt(t_cmd *cmd)$/;"	f
+cmd_set	minishell/includes/minishell.h	/^	char		*cmd_set;$/;"	m	struct:s_data
+cmdline	minishell/includes/minishell.h	/^	char	**cmdline;$/;"	m	struct:s_cmd
+cmdline_change	minishell/src/reparsing_cmd.c	/^char	*cmdline_change(char *cmdline, t_env *env)$/;"	f
+cnt	minitalk/includes/minitalk.h	/^	int		cnt;$/;"	m	struct:s_info
+col	so_long/minilibx/mlx_xpm.c	/^  int           col;$/;"	m	struct:s_xpm_col	file:
+color	Exam_Rank_03/micro_paint/micro_paint.c	/^	char	color;$/;"	m	struct:s_shape	file:
+color	Exam_Rank_03/micro_paint/our_micro_paint.c	/^	char color;$/;"	m	struct:rectangle	file:
+color	Exam_Rank_03/mini_paint/mini_paint.c	/^	char	color;$/;"	m	struct:s_shape	file:
+color	Exam_Rank_03/mini_paint/my_mini_paint.c	/^	char	color;$/;"	m	struct:s_shape	file:
+color	Exam_Rank_03/mini_paint/our_mini_paint.c	/^	char color;$/;"	m	struct:circle	file:
+color	Exam_Rank_03/mini_paint/test.c	/^	char color;$/;"	m	struct:s_shape	file:
+color	so_long/minilibx/mlx_png.c	/^  int		color;$/;"	m	struct:png_info_s	file:
+color	so_long/minilibx/mlx_xpm.c	/^  int   color;$/;"	m	struct:s_col_name	file:
+content	Libft/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content	ft_printf/Libft/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content	minishell/Libft/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content	minishell/includes/minishell.h	/^	struct s_cmd	*content;$/;"	m	struct:s_m_list	typeref:struct:s_m_list::s_cmd
+content	minitalk/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content	push_swap/Libft/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content	so_long/Libft/libft.h	/^	void			*content;$/;"	m	struct:s_list
+conv_hexa	ft_printf/ft_utils2.c	/^char	*conv_hexa(unsigned long long arg)$/;"	f
+conv_hexa	minitalk/ft_printf/ft_utils2.c	/^char	*conv_hexa(unsigned long long arg)$/;"	f
+crc_table	so_long/minilibx/mlx_png.c	/^unsigned long crc_table[256] = { 0, 0x77073096, 0xee0e612c, 0x990951ba, 0x76dc419, 0x706af48f, 0xe963a535, 0x9e6495a3, 0xedb8832, 0x79dcb8a4, 0xe0d5e91e, 0x97d2d988, 0x9b64c2b, 0x7eb17cbd, 0xe7b82d07, 0x90bf1d91, 0x1db71064, 0x6ab020f2, 0xf3b97148, 0x84be41de, 0x1adad47d, 0x6ddde4eb, 0xf4d4b551, 0x83d385c7, 0x136c9856, 0x646ba8c0, 0xfd62f97a, 0x8a65c9ec, 0x14015c4f, 0x63066cd9, 0xfa0f3d63, 0x8d080df5, 0x3b6e20c8, 0x4c69105e, 0xd56041e4, 0xa2677172, 0x3c03e4d1, 0x4b04d447, 0xd20d85fd, 0xa50ab56b, 0x35b5a8fa, 0x42b2986c, 0xdbbbc9d6, 0xacbcf940, 0x32d86ce3, 0x45df5c75, 0xdcd60dcf, 0xabd13d59, 0x26d930ac, 0x51de003a, 0xc8d75180, 0xbfd06116, 0x21b4f4b5, 0x56b3c423, 0xcfba9599, 0xb8bda50f, 0x2802b89e, 0x5f058808, 0xc60cd9b2, 0xb10be924, 0x2f6f7c87, 0x58684c11, 0xc1611dab, 0xb6662d3d, 0x76dc4190, 0x1db7106, 0x98d220bc, 0xefd5102a, 0x71b18589, 0x6b6b51f, 0x9fbfe4a5, 0xe8b8d433, 0x7807c9a2, 0xf00f934, 0x9609a88e, 0xe10e9818, 0x7f6a0dbb, 0x86d3d2d, 0x91646c97, 0xe6635c01, 0x6b6b51f4, 0x1c6c6162, 0x856530d8, 0xf262004e, 0x6c0695ed, 0x1b01a57b, 0x8208f4c1, 0xf50fc457, 0x65b0d9c6, 0x12b7e950, 0x8bbeb8ea, 0xfcb9887c, 0x62dd1ddf, 0x15da2d49, 0x8cd37cf3, 0xfbd44c65, 0x4db26158, 0x3ab551ce, 0xa3bc0074, 0xd4bb30e2, 0x4adfa541, 0x3dd895d7, 0xa4d1c46d, 0xd3d6f4fb, 0x4369e96a, 0x346ed9fc, 0xad678846, 0xda60b8d0, 0x44042d73, 0x33031de5, 0xaa0a4c5f, 0xdd0d7cc9, 0x5005713c, 0x270241aa, 0xbe0b1010, 0xc90c2086, 0x5768b525, 0x206f85b3, 0xb966d409, 0xce61e49f, 0x5edef90e, 0x29d9c998, 0xb0d09822, 0xc7d7a8b4, 0x59b33d17, 0x2eb40d81, 0xb7bd5c3b, 0xc0ba6cad, 0xedb88320, 0x9abfb3b6, 0x3b6e20c, 0x74b1d29a, 0xead54739, 0x9dd277af, 0x4db2615, 0x73dc1683, 0xe3630b12, 0x94643b84, 0xd6d6a3e, 0x7a6a5aa8, 0xe40ecf0b, 0x9309ff9d, 0xa00ae27, 0x7d079eb1, 0xf00f9344, 0x8708a3d2, 0x1e01f268, 0x6906c2fe, 0xf762575d, 0x806567cb, 0x196c3671, 0x6e6b06e7, 0xfed41b76, 0x89d32be0, 0x10da7a5a, 0x67dd4acc, 0xf9b9df6f, 0x8ebeeff9, 0x17b7be43, 0x60b08ed5, 0xd6d6a3e8, 0xa1d1937e, 0x38d8c2c4, 0x4fdff252, 0xd1bb67f1, 0xa6bc5767, 0x3fb506dd, 0x48b2364b, 0xd80d2bda, 0xaf0a1b4c, 0x36034af6, 0x41047a60, 0xdf60efc3, 0xa867df55, 0x316e8eef, 0x4669be79, 0xcb61b38c, 0xbc66831a, 0x256fd2a0, 0x5268e236, 0xcc0c7795, 0xbb0b4703, 0x220216b9, 0x5505262f, 0xc5ba3bbe, 0xb2bd0b28, 0x2bb45a92, 0x5cb36a04, 0xc2d7ffa7, 0xb5d0cf31, 0x2cd99e8b, 0x5bdeae1d, 0x9b64c2b0, 0xec63f226, 0x756aa39c, 0x26d930a, 0x9c0906a9, 0xeb0e363f, 0x72076785, 0x5005713, 0x95bf4a82, 0xe2b87a14, 0x7bb12bae, 0xcb61b38, 0x92d28e9b, 0xe5d5be0d, 0x7cdcefb7, 0xbdbdf21, 0x86d3d2d4, 0xf1d4e242, 0x68ddb3f8, 0x1fda836e, 0x81be16cd, 0xf6b9265b, 0x6fb077e1, 0x18b74777, 0x88085ae6, 0xff0f6a70, 0x66063bca, 0x11010b5c, 0x8f659eff, 0xf862ae69, 0x616bffd3, 0x166ccf45, 0xa00ae278, 0xd70dd2ee, 0x4e048354, 0x3903b3c2, 0xa7672661, 0xd06016f7, 0x4969474d, 0x3e6e77db, 0xaed16a4a, 0xd9d65adc, 0x40df0b66, 0x37d83bf0, 0xa9bcae53, 0xdebb9ec5, 0x47b2cf7f, 0x30b5ffe9, 0xbdbdf21c, 0xcabac28a, 0x53b39330, 0x24b4a3a6, 0xbad03605, 0xcdd70693, 0x54de5729, 0x23d967bf, 0xb3667a2e, 0xc4614ab8, 0x5d681b02, 0x2a6f2b94, 0xb40bbe37, 0xc30c8ea1, 0x5a05df1b, 0x2d02ef8d };$/;"	v
+create_child	minishell/src/pipe.c	/^void	create_child(t_m_list *list, t_data *data, int prev)$/;"	f
+create_linked_list	push_swap/src/util.c	/^void	create_linked_list(t_info *info)$/;"	f
+create_philo	Philosophers/src/dinning_philo.c	/^int	create_philo(t_info *info)$/;"	f
+create_window	so_long/src/create_window.c	/^void	create_window(t_window *window)$/;"	f
+cube_size	so_long/includes/so_long.h	/^	int			cube_size;$/;"	m	struct:s_window
+darkest_secret	cpp_module_00/ex01/info.hpp	/^		std::string darkest_secret;$/;"	m	class:info
+data	push_swap/includes/push_swap.h	/^	int				data;$/;"	m	struct:s_node
+del_backup	get_next_line/get_next_line.c	/^int	del_backup(char **backup)$/;"	f
+del_backup	get_next_line/get_next_line_bonus.c	/^int	del_backup(char **backup)$/;"	f
+del_backup	so_long/src/get_next_line.c	/^int	del_backup(char **backup)$/;"	f
+delete_env	minishell/src/unset.c	/^void	delete_env(t_env **env, char *key, t_data *data)$/;"	f
+depth	so_long/minilibx/mlx_png.c	/^  int		depth;$/;"	m	struct:png_info_s	file:
+detach_destroy_all	Philosophers/src/error.c	/^void	detach_destroy_all(t_info *info)$/;"	f
+displayAccountsInfos	cpp_module_00/ex02/Account.cpp	/^void	Account::displayAccountsInfos(void)$/;"	f	class:Account
+dollar_sign	minishell/src/quote.c	/^char	*dollar_sign(char *cmdline, t_env *env)$/;"	f
+dot	ft_printf/ft_printf.h	/^	int		dot;$/;"	m	struct:s_options
+dot	minitalk/includes/ft_printf.h	/^	int		dot;$/;"	m	struct:s_options
+double_quote	minishell/src/quote.c	/^char	*double_quote(char *cmdline, t_env *env)$/;"	f
+draw_drawing	Exam_Rank_03/micro_paint/micro_paint.c	/^	draw_drawing(char *drawing, t_zone *zone)$/;"	f
+draw_drawing	Exam_Rank_03/mini_paint/mini_paint.c	/^	draw_drawing(t_zone *zone, char *drawing)$/;"	f
+draw_drawing	Exam_Rank_03/mini_paint/my_mini_paint.c	/^void	draw_drawing(t_zone *zone, char *drawing)$/;"	f
+draw_drawing	Exam_Rank_03/mini_paint/test.c	/^void	draw_drawing(t_zone *zone, char *drawing)$/;"	f
+draw_shape	Exam_Rank_03/micro_paint/micro_paint.c	/^	draw_shape(char **drawing, t_shape *shape, t_zone *zone)$/;"	f
+draw_shape	Exam_Rank_03/mini_paint/mini_paint.c	/^	draw_shape(t_zone *zone, char *drawing, t_shape *shape)$/;"	f
+draw_shape	Exam_Rank_03/mini_paint/my_mini_paint.c	/^void	draw_shape(t_zone *zone, char *drawing, t_shape *shape)$/;"	f
+draw_shape	Exam_Rank_03/mini_paint/test.c	/^void draw_shape(t_zone *zone, char *drawing, t_shape *shape)$/;"	f
+draw_shapes	Exam_Rank_03/micro_paint/micro_paint.c	/^	draw_shapes(FILE *file, char **drawing, t_zone *zone)$/;"	f
+draw_shapes	Exam_Rank_03/mini_paint/mini_paint.c	/^	draw_shapes(FILE *file, t_zone *zone, char *drawing)$/;"	f
+draw_shapes	Exam_Rank_03/mini_paint/my_mini_paint.c	/^int	draw_shapes(FILE *file, t_zone *zone, char *drawing)$/;"	f
+draw_shapes	Exam_Rank_03/mini_paint/test.c	/^int	draw_shapes(FILE *file, t_zone *zone, char *drawing)$/;"	f
+drawing	Exam_Rank_03/micro_paint/our_micro_paint.c	/^struct drawing$/;"	s	file:
+drawing	Exam_Rank_03/micro_paint/our_micro_paint.c	/^typedef struct drawing drawing, *Pdrawing;$/;"	t	typeref:struct:drawing	file:
+drawing	Exam_Rank_03/mini_paint/our_mini_paint.c	/^struct drawing$/;"	s	file:
+drawing	Exam_Rank_03/mini_paint/our_mini_paint.c	/^typedef struct drawing drawing, *Pdrawing;$/;"	t	typeref:struct:drawing	file:
+dup_check	push_swap/main.c	/^void	dup_check(t_node *tmp, int num, t_info *info)$/;"	f
+eat_count	Philosophers/includes/philo.h	/^	int				eat_count;$/;"	m	struct:s_philo
+eat_think_sleep	Philosophers/src/dinning_philo.c	/^void	*eat_think_sleep(void *v_philo)$/;"	f
+eating	Philosophers/src/eat_think_sleep.c	/^int	eating(t_philo *philo)$/;"	f
+endian	so_long/includes/so_long.h	/^	int		endian;$/;"	m	struct:s_image
+endian	so_long/includes/so_long.h	/^	int		endian;$/;"	m	struct:s_obj
+env	minishell/includes/minishell.h	/^	t_env		*env;$/;"	m	struct:s_data
+env_num	minishell/src/env.c	/^int	env_num(t_env *env)$/;"	f
+error_msg	minishell/src/error.c	/^void	error_msg(char *str)$/;"	f
+error_msg_exit	push_swap/src/error.c	/^void	error_msg_exit(char *msg, t_info *info)$/;"	f
+error_msg_exit	so_long/src/error.c	/^void	error_msg_exit(char *msg)$/;"	f
+exec_extern	minishell/src/execute.c	/^void	exec_extern(t_cmd *cmd, char **env, t_env *envs)$/;"	f
+exec_ps	push_swap/push_swap_tester/tester.sh	/^function exec_ps() {$/;"	f
+execute	Exam_Rank_03/micro_paint/our_micro_paint.c	/^int execute(FILE *file)$/;"	f
+execute	Exam_Rank_03/mini_paint/our_mini_paint.c	/^int execute(FILE *file)$/;"	f
+execute	minishell/src/execute.c	/^void	execute(t_data *data, t_m_list *list)$/;"	f
+execute_cmd	minishell/src/execute.c	/^void	execute_cmd(t_data *data, t_cmd *cmd, t_env *env, int flag)$/;"	f
+execute_extern	minishell/src/execute.c	/^void	execute_extern(t_cmd *cmd, char **env, t_env *envs)$/;"	f
+execute_list	minishell/src/execute.c	/^void	execute_list(t_m_list *list, t_data *data, int b_stdin, int b_stdout)$/;"	f
+execute_one	Exam_Rank_03/micro_paint/our_micro_paint.c	/^void execute_one(rectangle *rect, drawing *drawing, int x, int y)$/;"	f
+execute_one	Exam_Rank_03/mini_paint/our_mini_paint.c	/^void execute_one(circle *circle, drawing *drawing, int x, int y)$/;"	f
+exit_count	so_long/includes/so_long.h	/^	int			exit_count;$/;"	m	struct:s_window
+export_util	minishell/src/export.c	/^t_env	*export_util(t_cmd *cmd, int i, t_env *env, t_env *cur)$/;"	f
+fd	minishell/includes/minishell.h	/^	int		fd[2];$/;"	m	struct:s_cmd
+fillInfo	cpp_module_00/ex01/info.cpp	/^void info::fillInfo()$/;"	f	class:info
+fin_game	so_long/src/error.c	/^int	fin_game(t_window *window)$/;"	f
+find_big_pivot	push_swap/src/find_pivot.c	/^int	find_big_pivot(t_stack *stack, int size)$/;"	f
+find_env	minishell/src/cd.c	/^t_env	*find_env(char *key, t_env *env)$/;"	f
+find_max_locate	push_swap/src/find_min_max_locate.c	/^int	find_max_locate(t_node *node, int size)$/;"	f
+find_max_num	push_swap/src/find_min_max_locate.c	/^int	find_max_num(t_node *node, int size)$/;"	f
+find_min_locate	push_swap/src/find_min_max_locate.c	/^int	find_min_locate(t_node *node, int size)$/;"	f
+find_min_num	push_swap/src/find_min_max_locate.c	/^int	find_min_num(t_node *node, int size)$/;"	f
+find_quote_match	minishell/src/parsing_util.c	/^int	find_quote_match(char *tmp, int i)$/;"	f
+find_rd_type	minishell/src/rd_util.c	/^int	find_rd_type(char *rd)$/;"	f
+find_small_pivot	push_swap/src/find_pivot.c	/^int	find_small_pivot(t_stack *stack, int size)$/;"	f
+first_name	cpp_module_00/ex01/info.hpp	/^		std::string first_name;$/;"	m	class:info
+flag	minishell/includes/minishell.h	/^	int		flag;$/;"	m	struct:s_cmd
+flag_c	push_swap/push_swap_tester/tester.sh	/^function flag_c () {$/;"	f
+flag_co	push_swap/push_swap_tester/tester.sh	/^function flag_co () {$/;"	f
+flag_r	push_swap/push_swap_tester/tester.sh	/^function flag_r () {$/;"	f
+flag_rn	push_swap/push_swap_tester/tester.sh	/^function flag_rn () {$/;"	f
+flag_ro	push_swap/push_swap_tester/tester.sh	/^function flag_ro () {$/;"	f
+font_atlas	so_long/minilibx/font.c	/^} font_atlas = {$/;"	v	typeref:struct:__anon1	file:
+forks	Philosophers/includes/philo.h	/^	pthread_mutex_t	*forks;$/;"	m	struct:s_info
+free_all_map	so_long/src/error.c	/^void	free_all_map(t_window *window, int len)$/;"	f
+free_cmd_data	minishell/src/free_list.c	/^void	free_cmd_data(t_cmd *content)$/;"	f
+free_cmd_list	minishell/src/free_list.c	/^void	free_cmd_list(t_data *data)$/;"	f
+free_env	minishell/src/unset.c	/^void	free_env(t_env **cur)$/;"	f
+free_env_list	minishell/src/free_list.c	/^void	free_env_list(t_data *data)$/;"	f
+free_envp	minishell/src/free_list.c	/^void	free_envp(char **env)$/;"	f
+free_stack	push_swap/src/error.c	/^void	free_stack(t_info *info)$/;"	f
+ft_atoi	Libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi	Philosophers/src/util.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi	ft_printf/Libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi	minishell/Libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi	minitalk/Libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi	push_swap/Libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi	so_long/Libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi2	push_swap/src/util.c	/^long long	ft_atoi2(const char *str)$/;"	f
+ft_bzero	Libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	ft_printf/Libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	minishell/Libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	minitalk/Libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	push_swap/Libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	so_long/Libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_calloc	Libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_calloc	ft_printf/Libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_calloc	minishell/Libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_calloc	minitalk/Libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_calloc	push_swap/Libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_calloc	so_long/Libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_cd	minishell/src/cd.c	/^void	ft_cd(t_cmd *cmd, t_env *env)$/;"	f
+ft_chdir	minishell/src/cd.c	/^void	ft_chdir(char *dest, t_env *env)$/;"	f
+ft_exit	minishell/src/exit.c	/^void	ft_exit(t_cmd *cmd, int flag, t_data *data)$/;"	f
+ft_export	minishell/src/export.c	/^void	ft_export(t_cmd *cmd, t_env *env)$/;"	f
+ft_find	Libft/ft_strnstr.c	/^static int	ft_find(const char *haystack, const char *needle, size_t i)$/;"	f	file:
+ft_find	Libft/ft_strtrim.c	/^static int	ft_find(char const *set, char c)$/;"	f	file:
+ft_find	ft_printf/Libft/ft_strnstr.c	/^static int	ft_find(const char *haystack, const char *needle, size_t i)$/;"	f	file:
+ft_find	ft_printf/Libft/ft_strtrim.c	/^static int	ft_find(char const *set, char c)$/;"	f	file:
+ft_find	minishell/Libft/ft_strnstr.c	/^static int	ft_find(const char *haystack, const char *needle, size_t i)$/;"	f	file:
+ft_find	minishell/Libft/ft_strtrim.c	/^static int	ft_find(char const *set, char c)$/;"	f	file:
+ft_find	minitalk/Libft/ft_strnstr.c	/^static int	ft_find(const char *haystack, const char *needle, size_t i)$/;"	f	file:
+ft_find	minitalk/Libft/ft_strtrim.c	/^static int	ft_find(char const *set, char c)$/;"	f	file:
+ft_find	push_swap/Libft/ft_strnstr.c	/^static int	ft_find(const char *haystack, const char *needle, size_t i)$/;"	f	file:
+ft_find	push_swap/Libft/ft_strtrim.c	/^static int	ft_find(char const *set, char c)$/;"	f	file:
+ft_find	so_long/Libft/ft_strnstr.c	/^static int	ft_find(const char *haystack, const char *needle, size_t i)$/;"	f	file:
+ft_find	so_long/Libft/ft_strtrim.c	/^static int	ft_find(char const *set, char c)$/;"	f	file:
+ft_free	Libft/ft_split.c	/^static void	ft_free(char **arr)$/;"	f	file:
+ft_free	ft_printf/Libft/ft_split.c	/^static void	ft_free(char **arr)$/;"	f	file:
+ft_free	minishell/Libft/ft_split.c	/^static void	ft_free(char **arr)$/;"	f	file:
+ft_free	minitalk/Libft/ft_split.c	/^static void	ft_free(char **arr)$/;"	f	file:
+ft_free	push_swap/Libft/ft_split.c	/^static void	ft_free(char **arr)$/;"	f	file:
+ft_free	so_long/Libft/ft_split.c	/^static void	ft_free(char **arr)$/;"	f	file:
+ft_isalnum	Libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalnum	ft_printf/Libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalnum	minishell/Libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalnum	minitalk/Libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalnum	push_swap/Libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalnum	so_long/Libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalpha	Libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isalpha	ft_printf/Libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isalpha	minishell/Libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isalpha	minitalk/Libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isalpha	push_swap/Libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isalpha	so_long/Libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isascii	Libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isascii	ft_printf/Libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isascii	minishell/Libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isascii	minitalk/Libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isascii	push_swap/Libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isascii	so_long/Libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isdigit	Libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isdigit	ft_printf/Libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isdigit	minishell/Libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isdigit	minitalk/Libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isdigit	push_swap/Libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isdigit	so_long/Libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isprint	Libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_isprint	ft_printf/Libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_isprint	minishell/Libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_isprint	minitalk/Libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_isprint	push_swap/Libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_isprint	so_long/Libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_isspace	Libft/ft_atoi.c	/^int	ft_isspace(const char c)$/;"	f
+ft_isspace	ft_printf/Libft/ft_atoi.c	/^int	ft_isspace(const char c)$/;"	f
+ft_isspace	minishell/Libft/ft_atoi.c	/^int	ft_isspace(const char c)$/;"	f
+ft_isspace	minitalk/Libft/ft_atoi.c	/^int	ft_isspace(const char c)$/;"	f
+ft_isspace	push_swap/Libft/ft_atoi.c	/^int	ft_isspace(const char c)$/;"	f
+ft_isspace	so_long/Libft/ft_atoi.c	/^int	ft_isspace(const char c)$/;"	f
+ft_itoa	Libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_itoa	ft_printf/Libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_itoa	minishell/Libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_itoa	minitalk/Libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_itoa	push_swap/Libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_itoa	so_long/Libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_itoa2	ft_printf/ft_utils2.c	/^void	ft_itoa2(long tmp, char *nbr, int len, int prec_len)$/;"	f
+ft_itoa2	minitalk/ft_printf/ft_utils2.c	/^void	ft_itoa2(long tmp, char *nbr, int len, int prec_len)$/;"	f
+ft_lstadd_back	Libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_back	ft_printf/Libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_back	minishell/Libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_back	minitalk/Libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_back	push_swap/Libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_back	so_long/Libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	Libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	ft_printf/Libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	minishell/Libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	minitalk/Libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	push_swap/Libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	so_long/Libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstclear	Libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void *))$/;"	f
+ft_lstclear	ft_printf/Libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void *))$/;"	f
+ft_lstclear	minishell/Libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void *))$/;"	f
+ft_lstclear	minitalk/Libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void *))$/;"	f
+ft_lstclear	push_swap/Libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void *))$/;"	f
+ft_lstclear	so_long/Libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void *))$/;"	f
+ft_lstdelone	Libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void *))$/;"	f
+ft_lstdelone	ft_printf/Libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void *))$/;"	f
+ft_lstdelone	minishell/Libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void *))$/;"	f
+ft_lstdelone	minitalk/Libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void *))$/;"	f
+ft_lstdelone	push_swap/Libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void *))$/;"	f
+ft_lstdelone	so_long/Libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void *))$/;"	f
+ft_lstiter	Libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstiter	ft_printf/Libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstiter	minishell/Libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstiter	minitalk/Libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstiter	push_swap/Libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstiter	so_long/Libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstlast	Libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstlast	ft_printf/Libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstlast	minishell/Libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstlast	minitalk/Libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstlast	push_swap/Libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstlast	so_long/Libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstmap	Libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstmap	ft_printf/Libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstmap	minishell/Libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstmap	minitalk/Libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstmap	push_swap/Libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstmap	so_long/Libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstnew	Libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstnew	ft_printf/Libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstnew	minishell/Libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstnew	minitalk/Libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstnew	push_swap/Libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstnew	so_long/Libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstsize	Libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_lstsize	ft_printf/Libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_lstsize	minishell/Libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_lstsize	minitalk/Libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_lstsize	push_swap/Libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_lstsize	so_long/Libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_malloc	get_next_line/get_next_line.c	/^char	*ft_malloc(size_t size)$/;"	f
+ft_malloc	get_next_line/get_next_line_bonus.c	/^char	*ft_malloc(size_t size)$/;"	f
+ft_malloc	so_long/src/get_next_line.c	/^char	*ft_malloc(size_t size)$/;"	f
+ft_memccpy	Libft/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
+ft_memccpy	ft_printf/Libft/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
+ft_memccpy	minishell/Libft/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
+ft_memccpy	minitalk/Libft/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
+ft_memccpy	push_swap/Libft/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
+ft_memccpy	so_long/Libft/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
+ft_memchr	Libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memchr	ft_printf/Libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memchr	minishell/Libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memchr	minitalk/Libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memchr	push_swap/Libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memchr	so_long/Libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memcmp	Libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcmp	ft_printf/Libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcmp	minishell/Libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcmp	minitalk/Libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcmp	push_swap/Libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcmp	so_long/Libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcpy	Libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memcpy	ft_printf/Libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memcpy	minishell/Libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memcpy	minitalk/Libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memcpy	push_swap/Libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memcpy	so_long/Libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memmove	Libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memmove	ft_printf/Libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memmove	minishell/Libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memmove	minitalk/Libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memmove	push_swap/Libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memmove	so_long/Libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memset	Libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_memset	ft_printf/Libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_memset	minishell/Libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_memset	minitalk/Libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_memset	push_swap/Libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_memset	so_long/Libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_nbrlen	ft_printf/ft_utils.c	/^int	ft_nbrlen(int arg)$/;"	f
+ft_nbrlen	minitalk/ft_printf/ft_utils.c	/^int	ft_nbrlen(int arg)$/;"	f
+ft_nbrlen_l	ft_printf/ft_utils2.c	/^int	ft_nbrlen_l(long arg)$/;"	f
+ft_nbrlen_l	minitalk/ft_printf/ft_utils2.c	/^int	ft_nbrlen_l(long arg)$/;"	f
+ft_nbrlen_u	ft_printf/ft_utils.c	/^int	ft_nbrlen_u(unsigned int arg)$/;"	f
+ft_nbrlen_u	minitalk/ft_printf/ft_utils.c	/^int	ft_nbrlen_u(unsigned int arg)$/;"	f
+ft_nbrlen_ull	ft_printf/ft_utils2.c	/^int	ft_nbrlen_ull(unsigned long long arg)$/;"	f
+ft_nbrlen_ull	minitalk/ft_printf/ft_utils2.c	/^int	ft_nbrlen_ull(unsigned long long arg)$/;"	f
+ft_nbrlen_x	ft_printf/ft_utils.c	/^int	ft_nbrlen_x(unsigned int arg)$/;"	f
+ft_nbrlen_x	minitalk/ft_printf/ft_utils.c	/^int	ft_nbrlen_x(unsigned int arg)$/;"	f
+ft_nlen	Libft/ft_itoa.c	/^int	ft_nlen(int n)$/;"	f
+ft_nlen	ft_printf/Libft/ft_itoa.c	/^int	ft_nlen(int n)$/;"	f
+ft_nlen	minishell/Libft/ft_itoa.c	/^int	ft_nlen(int n)$/;"	f
+ft_nlen	minitalk/Libft/ft_itoa.c	/^int	ft_nlen(int n)$/;"	f
+ft_nlen	push_swap/Libft/ft_itoa.c	/^int	ft_nlen(int n)$/;"	f
+ft_nlen	so_long/Libft/ft_itoa.c	/^int	ft_nlen(int n)$/;"	f
+ft_printf	Exam_Rank_02/ft_printf/ft_printf.c	/^int	ft_printf(const char *format, ...)$/;"	f
+ft_printf	ft_printf/ft_printf.c	/^int	ft_printf(const char *format, ...)$/;"	f
+ft_printf	minitalk/ft_printf/ft_printf.c	/^int	ft_printf(const char *format, ...)$/;"	f
+ft_put_in	Libft/ft_itoa.c	/^void	ft_put_in(int n, char *tmp, int len)$/;"	f
+ft_put_in	ft_printf/Libft/ft_itoa.c	/^void	ft_put_in(int n, char *tmp, int len)$/;"	f
+ft_put_in	minishell/Libft/ft_itoa.c	/^void	ft_put_in(int n, char *tmp, int len)$/;"	f
+ft_put_in	minitalk/Libft/ft_itoa.c	/^void	ft_put_in(int n, char *tmp, int len)$/;"	f
+ft_put_in	push_swap/Libft/ft_itoa.c	/^void	ft_put_in(int n, char *tmp, int len)$/;"	f
+ft_put_in	so_long/Libft/ft_itoa.c	/^void	ft_put_in(int n, char *tmp, int len)$/;"	f
+ft_putchar	Exam_Rank_02/ft_printf/ft_printf.c	/^int	ft_putchar(char let)$/;"	f
+ft_putchar	ft_printf/ft_utils.c	/^int	ft_putchar(char s)$/;"	f
+ft_putchar	minitalk/ft_printf/ft_utils.c	/^int	ft_putchar(char s)$/;"	f
+ft_putchar_fd	Libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char s, int fd)$/;"	f
+ft_putchar_fd	ft_printf/Libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char s, int fd)$/;"	f
+ft_putchar_fd	minishell/Libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char s, int fd)$/;"	f
+ft_putchar_fd	minitalk/Libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char s, int fd)$/;"	f
+ft_putchar_fd	push_swap/Libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char s, int fd)$/;"	f
+ft_putchar_fd	so_long/Libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char s, int fd)$/;"	f
+ft_putendl_fd	Libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putendl_fd	ft_printf/Libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putendl_fd	minishell/Libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putendl_fd	minitalk/Libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putendl_fd	push_swap/Libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putendl_fd	so_long/Libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putin	Libft/ft_split.c	/^static void	ft_putin(char const *s, char *arr, int from, int i)$/;"	f	file:
+ft_putin	ft_printf/Libft/ft_split.c	/^static void	ft_putin(char const *s, char *arr, int from, int i)$/;"	f	file:
+ft_putin	minishell/Libft/ft_split.c	/^static void	ft_putin(char const *s, char *arr, int from, int i)$/;"	f	file:
+ft_putin	minitalk/Libft/ft_split.c	/^static void	ft_putin(char const *s, char *arr, int from, int i)$/;"	f	file:
+ft_putin	push_swap/Libft/ft_split.c	/^static void	ft_putin(char const *s, char *arr, int from, int i)$/;"	f	file:
+ft_putin	so_long/Libft/ft_split.c	/^static void	ft_putin(char const *s, char *arr, int from, int i)$/;"	f	file:
+ft_putnbr_fd	Libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putnbr_fd	ft_printf/Libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putnbr_fd	minishell/Libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putnbr_fd	minitalk/Libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putnbr_fd	push_swap/Libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putnbr_fd	so_long/Libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putstr	Exam_Rank_02/ft_printf/ft_printf.c	/^void	ft_putstr(char *str)$/;"	f
+ft_putstr	ft_printf/ft_utils.c	/^void	ft_putstr(char *s)$/;"	f
+ft_putstr	minitalk/ft_printf/ft_utils.c	/^void	ft_putstr(char *s)$/;"	f
+ft_putstr_fd	Libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_putstr_fd	ft_printf/Libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_putstr_fd	minishell/Libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_putstr_fd	minitalk/Libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_putstr_fd	push_swap/Libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_putstr_fd	so_long/Libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_sep	Libft/ft_split.c	/^static void	ft_sep(char const *s, char c, char **arr)$/;"	f	file:
+ft_sep	ft_printf/Libft/ft_split.c	/^static void	ft_sep(char const *s, char c, char **arr)$/;"	f	file:
+ft_sep	minishell/Libft/ft_split.c	/^static void	ft_sep(char const *s, char c, char **arr)$/;"	f	file:
+ft_sep	minitalk/Libft/ft_split.c	/^static void	ft_sep(char const *s, char c, char **arr)$/;"	f	file:
+ft_sep	push_swap/Libft/ft_split.c	/^static void	ft_sep(char const *s, char c, char **arr)$/;"	f	file:
+ft_sep	so_long/Libft/ft_split.c	/^static void	ft_sep(char const *s, char c, char **arr)$/;"	f	file:
+ft_sep_cnt	Libft/ft_split.c	/^static size_t	ft_sep_cnt(char const *s, char c)$/;"	f	file:
+ft_sep_cnt	ft_printf/Libft/ft_split.c	/^static size_t	ft_sep_cnt(char const *s, char c)$/;"	f	file:
+ft_sep_cnt	minishell/Libft/ft_split.c	/^static size_t	ft_sep_cnt(char const *s, char c)$/;"	f	file:
+ft_sep_cnt	minitalk/Libft/ft_split.c	/^static size_t	ft_sep_cnt(char const *s, char c)$/;"	f	file:
+ft_sep_cnt	push_swap/Libft/ft_split.c	/^static size_t	ft_sep_cnt(char const *s, char c)$/;"	f	file:
+ft_sep_cnt	so_long/Libft/ft_split.c	/^static size_t	ft_sep_cnt(char const *s, char c)$/;"	f	file:
+ft_split	Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split	ft_printf/Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split	minishell/Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split	minitalk/Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split	push_swap/Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split	so_long/Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_strchr	Libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	ft_printf/Libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	get_next_line/get_next_line_utils.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	get_next_line/get_next_line_utils_bonus.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	minishell/Libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	minitalk/Libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	push_swap/Libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	so_long/Libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	so_long/src/get_next_line_utils.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strcmp	minishell/src/unset.c	/^int	ft_strcmp(const char *s1, const char *s2)$/;"	f
+ft_strdup	Exam_Rank_02/ft_printf/ft_printf.c	/^char	*ft_strdup(char *str)$/;"	f
+ft_strdup	Libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	ft_printf/Libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	get_next_line/get_next_line_utils.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	get_next_line/get_next_line_utils_bonus.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	minishell/Libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	minitalk/Libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	push_swap/Libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	so_long/Libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	so_long/src/get_next_line_utils.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strjoin	Libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	ft_printf/Libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	get_next_line/get_next_line_utils.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	get_next_line/get_next_line_utils_bonus.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	minishell/Libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	minitalk/Libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	push_swap/Libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	so_long/Libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	so_long/src/get_next_line_utils.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin_free	minishell/src/util.c	/^char	*ft_strjoin_free(char *s1, char *s2)$/;"	f
+ft_strlcat	Libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t detsize)$/;"	f
+ft_strlcat	ft_printf/Libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t detsize)$/;"	f
+ft_strlcat	minishell/Libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t detsize)$/;"	f
+ft_strlcat	minitalk/Libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t detsize)$/;"	f
+ft_strlcat	push_swap/Libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t detsize)$/;"	f
+ft_strlcat	so_long/Libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t detsize)$/;"	f
+ft_strlcpy	Exam_Rank_02/ft_printf/ft_printf.c	/^void	ft_strlcpy(char *tmp, char *str, int len)$/;"	f
+ft_strlcpy	Libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t detsize)$/;"	f
+ft_strlcpy	ft_printf/Libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t detsize)$/;"	f
+ft_strlcpy	minishell/Libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t detsize)$/;"	f
+ft_strlcpy	minitalk/Libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t detsize)$/;"	f
+ft_strlcpy	push_swap/Libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t detsize)$/;"	f
+ft_strlcpy	so_long/Libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t detsize)$/;"	f
+ft_strlen	Exam_Rank_02/ft_printf/ft_printf.c	/^int	ft_strlen(char *str)$/;"	f
+ft_strlen	Exam_Rank_03/micro_paint/micro_paint.c	/^	ft_strlen(char const *str)$/;"	f
+ft_strlen	Exam_Rank_03/micro_paint/our_micro_paint.c	/^int ft_strlen(char *str)$/;"	f
+ft_strlen	Exam_Rank_03/mini_paint/mini_paint.c	/^	ft_strlen(char const *str)$/;"	f
+ft_strlen	Exam_Rank_03/mini_paint/my_mini_paint.c	/^int	ft_strlen(char const *str)$/;"	f
+ft_strlen	Exam_Rank_03/mini_paint/our_mini_paint.c	/^int ft_strlen(char *str)$/;"	f
+ft_strlen	Exam_Rank_03/mini_paint/test.c	/^int ft_strlen(char *str)$/;"	f
+ft_strlen	Libft/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	ft_printf/Libft/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	get_next_line/get_next_line_utils.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	get_next_line/get_next_line_utils_bonus.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	minishell/Libft/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	minitalk/Libft/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	push_swap/Libft/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	so_long/Libft/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	so_long/src/get_next_line_utils.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strmapi	Libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strmapi	ft_printf/Libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strmapi	minishell/Libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strmapi	minitalk/Libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strmapi	push_swap/Libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strmapi	so_long/Libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strncmp	Libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncmp	ft_printf/Libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncmp	minishell/Libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncmp	minitalk/Libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncmp	push_swap/Libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncmp	so_long/Libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strnstr	Libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strnstr	ft_printf/Libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strnstr	minishell/Libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strnstr	minitalk/Libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strnstr	push_swap/Libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strnstr	so_long/Libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strrchr	Libft/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strrchr	ft_printf/Libft/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strrchr	minishell/Libft/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strrchr	minitalk/Libft/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strrchr	push_swap/Libft/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strrchr	so_long/Libft/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strtrim	Libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_strtrim	ft_printf/Libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_strtrim	minishell/Libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_strtrim	minitalk/Libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_strtrim	push_swap/Libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_strtrim	so_long/Libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_substr	Libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	ft_printf/Libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	get_next_line/get_next_line_utils.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	get_next_line/get_next_line_utils_bonus.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	minishell/Libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	minitalk/Libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	push_swap/Libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	so_long/Libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	so_long/src/get_next_line_utils.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_tolower	Libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_tolower	ft_printf/Libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_tolower	minishell/Libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_tolower	minitalk/Libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_tolower	push_swap/Libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_tolower	so_long/Libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_toupper	Libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_toupper	ft_printf/Libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_toupper	minishell/Libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_toupper	minitalk/Libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_toupper	push_swap/Libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_toupper	so_long/Libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_unset	minishell/src/unset.c	/^void	ft_unset(t_cmd *cmd, t_env *env, t_data *data)$/;"	f
+fullFilled	cpp_module_00/ex01/PhoneBook.hpp	/^		int fullFilled;$/;"	m	class:PhoneBook
+g_print_msg	minitalk/includes/minitalk.h	/^t_info	g_print_msg;$/;"	v
+g_status	minishell/main.c	/^int	g_status = 0;$/;"	v
+getNbAccounts	cpp_module_00/ex02/Account.cpp	/^int	Account::getNbAccounts(void)$/;"	f	class:Account
+getNbDeposits	cpp_module_00/ex02/Account.cpp	/^int Account::getNbDeposits(void)$/;"	f	class:Account
+getNbWithdrawals	cpp_module_00/ex02/Account.cpp	/^int Account::getNbWithdrawals(void)$/;"	f	class:Account
+getTotalAmount	cpp_module_00/ex02/Account.cpp	/^int Account::getTotalAmount(void)$/;"	f	class:Account
+get_args	push_swap/push_swap_tester/tester.sh	/^function get_args() {$/;"	f
+get_cube_size	so_long/src/create_window.c	/^int	get_cube_size(t_window *window, t_pos screen_size, int map_x, int map_y)$/;"	f
+get_envlen	minishell/src/env.c	/^int	get_envlen(char **env)$/;"	f
+get_info	Exam_Rank_03/micro_paint/our_micro_paint.c	/^int get_info(FILE *file, drawing *drawing)$/;"	f
+get_info	Exam_Rank_03/mini_paint/our_mini_paint.c	/^int get_info(FILE *file, drawing *drawing)$/;"	f
+get_keylen	minishell/src/env_util.c	/^int	get_keylen(char *str)$/;"	f
+get_next_line	Exam_Rank_02/get_next_line/get_next_line.c	/^char *get_next_line(int fd)$/;"	f
+get_next_line	get_next_line/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_next_line	get_next_line/get_next_line_bonus.c	/^char	*get_next_line(int fd)$/;"	f
+get_next_line	so_long/src/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_obj_color	so_long/src/render_image.c	/^char	*get_obj_color(t_obj *obj, int cube_x, int cube_y, int cube_size)$/;"	f
+get_zone	Exam_Rank_03/micro_paint/micro_paint.c	/^	get_zone(FILE *file, t_zone *zone)$/;"	f
+get_zone	Exam_Rank_03/mini_paint/mini_paint.c	/^	*get_zone(FILE *file, t_zone *zone)$/;"	f
+get_zone	Exam_Rank_03/mini_paint/my_mini_paint.c	/^char *get_zone(FILE *file, t_zone *zone)$/;"	f
+get_zone	Exam_Rank_03/mini_paint/test.c	/^char *get_zone(FILE *file, t_zone *zone)$/;"	f
+handle_s	minitalk/server.c	/^void	handle_s(int sig, siginfo_t *info, void *context)$/;"	f
+hash	ft_printf/ft_printf.h	/^	int		hash;$/;"	m	struct:s_options
+hash	minitalk/includes/ft_printf.h	/^	int		hash;$/;"	m	struct:s_options
+height	Exam_Rank_03/micro_paint/micro_paint.c	/^	float	height;$/;"	m	struct:s_shape	file:
+height	Exam_Rank_03/micro_paint/micro_paint.c	/^	int		height;$/;"	m	struct:s_zone	file:
+height	Exam_Rank_03/micro_paint/our_micro_paint.c	/^	float height;$/;"	m	struct:rectangle	file:
+height	Exam_Rank_03/micro_paint/our_micro_paint.c	/^	int height;$/;"	m	struct:drawing	file:
+height	Exam_Rank_03/mini_paint/mini_paint.c	/^	int		height;$/;"	m	struct:s_zone	file:
+height	Exam_Rank_03/mini_paint/my_mini_paint.c	/^	int		height;$/;"	m	struct:s_zone	file:
+height	Exam_Rank_03/mini_paint/our_mini_paint.c	/^	int height;$/;"	m	struct:drawing	file:
+height	Exam_Rank_03/mini_paint/test.c	/^	int height;$/;"	m	struct:s_zone	file:
+height	so_long/includes/so_long.h	/^	int		height;$/;"	m	struct:s_obj
+height	so_long/minilibx/font.c	/^  unsigned int 	 height;$/;"	m	struct:__anon1	file:
+height	so_long/minilibx/mlx_png.c	/^  unsigned int	height;$/;"	m	struct:png_info_s	file:
+heredoc	minishell/src/rd_util.c	/^void	heredoc(char *end)$/;"	f
+hold_fork	Philosophers/src/eat_think_sleep.c	/^int	hold_fork(t_philo *philo)$/;"	f
+id	Philosophers/includes/philo.h	/^	int				id;$/;"	m	struct:s_philo
+img	so_long/includes/so_long.h	/^	t_image		img;$/;"	m	struct:s_window
+img	so_long/includes/so_long.h	/^	void	*img;$/;"	m	struct:s_image
+img	so_long/includes/so_long.h	/^	void	*img;$/;"	m	struct:s_obj
+in_circle	Exam_Rank_03/mini_paint/mini_paint.c	/^	in_circle(float x, float y, t_shape *shape)$/;"	f
+in_circle	Exam_Rank_03/mini_paint/my_mini_paint.c	/^int	in_circle(float x, float y, t_shape *shape)$/;"	f
+in_circle	Exam_Rank_03/mini_paint/test.c	/^int in_circle(float x, float y, t_shape *shape)$/;"	f
+in_rectangle	Exam_Rank_03/micro_paint/micro_paint.c	/^	in_rectangle(float x, float y, t_shape *shape)$/;"	f
+index	cpp_module_00/ex01/PhoneBook.hpp	/^		int	index;$/;"	m	class:PhoneBook
+info	Philosophers/includes/philo.h	/^	struct s_info	*info;$/;"	m	struct:s_philo	typeref:struct:s_philo::s_info
+info	cpp_module_00/ex01/info.hpp	/^class info {$/;"	c
+init_cmd	minishell/src/init_shell.c	/^void	init_cmd(t_cmd *cmd_data, char *cmd, char let)$/;"	f
+init_count	push_swap/src/util.c	/^void	init_count(t_info *info)$/;"	f
+init_env	minishell/src/env.c	/^t_env	*init_env(char **envp)$/;"	f
+init_info	Philosophers/src/init_info.c	/^int	init_info(t_info *info, int argc, char **argv)$/;"	f
+init_info	minitalk/server.c	/^void	init_info(void)$/;"	f
+init_map	so_long/src/check_map.c	/^void	init_map(t_map *map)$/;"	f
+init_mutex	Philosophers/src/init_info.c	/^int	init_mutex(t_info *info)$/;"	f
+init_options	Exam_Rank_02/ft_printf/ft_printf.c	/^void	init_options(t_options *options)$/;"	f
+init_options	ft_printf/ft_printf.c	/^void	init_options(t_options *options)$/;"	f
+init_options	minitalk/ft_printf/ft_printf.c	/^void	init_options(t_options *options)$/;"	f
+init_philo	Philosophers/src/init_info.c	/^int	init_philo(t_info *info)$/;"	f
+init_struct	minishell/src/init_shell.c	/^void	init_struct(t_data *data, char **envp)$/;"	f
+init_window	so_long/src/create_window.c	/^void	init_window(t_window *window)$/;"	f
+insert_stack	push_swap/main.c	/^void	insert_stack(int num, t_info *info)$/;"	f
+interlace	so_long/minilibx/mlx_png.c	/^  int		interlace;$/;"	m	struct:png_info_s	file:
+invalid_args	push_swap/push_swap_tester/tester.sh	/^function invalid_args () {$/;"	f
+is_C	so_long/includes/so_long.h	/^	int	is_C;$/;"	m	struct:s_map
+is_E	so_long/includes/so_long.h	/^	int	is_E;$/;"	m	struct:s_map
+is_P	so_long/includes/so_long.h	/^	int	is_P;$/;"	m	struct:s_map
+is_all_sorted	push_swap/src/sort.c	/^void	is_all_sorted(t_info *info)$/;"	f
+is_background_color	so_long/src/render_image2.c	/^int	is_background_color(t_obj *obj, char *color)$/;"	f
+is_dead	Philosophers/src/util.c	/^int	is_dead(t_philo *philo)$/;"	f
+is_digit	Exam_Rank_02/ft_printf/ft_printf.c	/^int	is_digit(char let)$/;"	f
+is_full	Philosophers/src/dinning_philo.c	/^int	is_full(t_philo *philo)$/;"	f
+is_in_circle	Exam_Rank_03/mini_paint/our_mini_paint.c	/^int is_in_circle(float x, float y, circle *circle)$/;"	f
+is_in_rectangle	Exam_Rank_03/micro_paint/our_micro_paint.c	/^int is_in_rectangle(float x, float y, rectangle *rectangle)$/;"	f
+is_numeric	minishell/src/exit.c	/^int	is_numeric(char *str)$/;"	f
+item_count	so_long/includes/so_long.h	/^	int			item_count;$/;"	m	struct:s_window
+join_path	minishell/src/util.c	/^void	join_path(t_cmd *cmd, char **path, char **command)$/;"	f
+join_thread	Philosophers/src/thread.c	/^void	join_thread(t_info *info)$/;"	f
+key	minishell/includes/minishell.h	/^	char			*key;$/;"	m	struct:s_env
+key_event	so_long/src/key_event.c	/^void	key_event(t_window *window)$/;"	f
+key_len	minishell/src/quote.c	/^int	key_len(char *str)$/;"	f
+key_press	so_long/src/key_event.c	/^int	key_press(int keycode, t_window *window)$/;"	f
+l_fork	Philosophers/includes/philo.h	/^	int				l_fork;$/;"	m	struct:s_philo
+last_eat	Philosophers/includes/philo.h	/^	long long		last_eat;$/;"	m	struct:s_philo
+last_name	cpp_module_00/ex01/info.hpp	/^		std::string last_name;$/;"	m	class:info
+last_stack	push_swap/src/reverse.c	/^t_node	*last_stack(t_stack *stack)$/;"	f
+len	so_long/includes/so_long.h	/^	int	len;$/;"	m	struct:s_map
+line_len	so_long/includes/so_long.h	/^	int		line_len;$/;"	m	struct:s_obj
+line_length	so_long/includes/so_long.h	/^	int		line_length;$/;"	m	struct:s_image
+load_all_image	so_long/src/create_window.c	/^void	load_all_image(t_window *window)$/;"	f
+load_map	so_long/src/load_map.c	/^void	load_map(char *ber, t_window *window)$/;"	f
+load_map_x	so_long/src/load_map.c	/^void	load_map_x(char *line, t_window *window, int y)$/;"	f
+load_map_y	so_long/src/load_map.c	/^void	load_map_y(int fd, t_window *window)$/;"	f
+load_pos	so_long/src/load_map.c	/^void	load_pos(t_pos *pos, int x, int y)$/;"	f
+lstlast	minishell/includes/minishell.h	/^	t_m_list	*lstlast;$/;"	m	struct:s_data
+magic	so_long/minilibx/mlx_png.c	/^unsigned char magic[PNG_MAGIC_SIZE] = {137, 80, 78, 71, 13, 10, 26, 10};$/;"	v
+main	Exam_Rank_02/ft_printf/ft_printf.c	/^int main(void)$/;"	f
+main	Exam_Rank_02/ft_printf/main.c	/^int main(void)$/;"	f
+main	Exam_Rank_02/get_next_line/main.c	/^int	main(void)$/;"	f
+main	Exam_Rank_03/micro_paint/generate_example.cpp	/^int main(void)$/;"	f
+main	Exam_Rank_03/micro_paint/micro_paint.c	/^	main(int argc, char **argv)$/;"	f
+main	Exam_Rank_03/micro_paint/our_micro_paint.c	/^int main(int argc, char **argv)$/;"	f
+main	Exam_Rank_03/mini_paint/generate_example.cpp	/^int main(void)$/;"	f
+main	Exam_Rank_03/mini_paint/mini_paint.c	/^	main(int argc, char **argv)$/;"	f
+main	Exam_Rank_03/mini_paint/my_mini_paint.c	/^int	main(int argc, char **argv)$/;"	f
+main	Exam_Rank_03/mini_paint/our_mini_paint.c	/^int main(int argc, char **argv)$/;"	f
+main	Exam_Rank_03/mini_paint/test.c	/^int main(int argc, char **argv)$/;"	f
+main	Philosophers/main.c	/^int	main(int argc, char **argv)$/;"	f
+main	cpp_module_00/ex00/megaphone.cpp	/^int main(int argc, char **argv)$/;"	f
+main	cpp_module_00/ex01/main.cpp	/^int main(void) {$/;"	f
+main	cpp_module_00/ex02/test.cpp	/^int		main (void) {$/;"	f
+main	minishell/main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	minitalk/client.c	/^int	main(int argc, char *argv[])$/;"	f
+main	minitalk/server.c	/^int	main(void)$/;"	f
+main	push_swap/main.c	/^int	main(int argc, char **argv)$/;"	f
+main	so_long/main.c	/^int	main(int argc, char *argv[])$/;"	f
+main_thread	Philosophers/src/thread.c	/^void	main_thread(t_info *info)$/;"	f
+makeDeposit	cpp_module_00/ex02/Account.cpp	/^void	Account::makeDeposit(int deposit)$/;"	f	class:Account
+makeWithdrawal	cpp_module_00/ex02/Account.cpp	/^bool Account::makeWithdrawal(int withdrawal)$/;"	f	class:Account
+make_envp	minishell/src/env.c	/^char	**make_envp(t_env *env)$/;"	f
+malloc_error	push_swap/src/error.c	/^void	malloc_error(t_info *info)$/;"	f
+map	so_long/includes/so_long.h	/^	char		**map;$/;"	m	struct:s_window
+map_x	so_long/includes/so_long.h	/^	int			map_x;$/;"	m	struct:s_window
+map_y	so_long/includes/so_long.h	/^	int			map_y;$/;"	m	struct:s_window
+matrice	Exam_Rank_03/micro_paint/our_micro_paint.c	/^	char *matrice;$/;"	m	struct:drawing	file:
+matrice	Exam_Rank_03/mini_paint/our_mini_paint.c	/^	char *matrice;$/;"	m	struct:drawing	file:
+message	minitalk/includes/minitalk.h	/^	char	message;$/;"	m	struct:s_info
+minus	ft_printf/ft_printf.h	/^	int		minus;$/;"	m	struct:s_options
+minus	minitalk/includes/ft_printf.h	/^	int		minus;$/;"	m	struct:s_options
+mipng_crc	so_long/minilibx/mlx_png.c	/^int	mipng_crc(unsigned char *ptr, int len)$/;"	f
+mipng_data	so_long/minilibx/mlx_png.c	/^int	mipng_data(void *img, unsigned char *dat, png_info_t *pi)$/;"	f
+mipng_defilter	so_long/minilibx/mlx_png.c	/^unsigned char (*(mipng_defilter[]))(unsigned char *buff, int pos, int a, int b, int c) =$/;"	v
+mipng_defilter_average	so_long/minilibx/mlx_png.c	/^unsigned char mipng_defilter_average(unsigned char *buff, int pos, int a, int b, int c)$/;"	f
+mipng_defilter_none	so_long/minilibx/mlx_png.c	/^unsigned char mipng_defilter_none(unsigned char *buff, int pos, int a, int b, int c)$/;"	f
+mipng_defilter_paeth	so_long/minilibx/mlx_png.c	/^unsigned char mipng_defilter_paeth(unsigned char *buff, int pos, int a, int b, int c)$/;"	f
+mipng_defilter_sub	so_long/minilibx/mlx_png.c	/^unsigned char mipng_defilter_sub(unsigned char *buff, int pos, int a, int b, int c)$/;"	f
+mipng_defilter_up	so_long/minilibx/mlx_png.c	/^unsigned char mipng_defilter_up(unsigned char *buff, int pos, int a, int b, int c)$/;"	f
+mipng_err	so_long/minilibx/mlx_png.c	/^char *(mipng_err[]) =$/;"	v
+mipng_fill_img	so_long/minilibx/mlx_png.c	/^int	mipng_fill_img(void *img, unsigned char *buf, png_info_t *pi)$/;"	f
+mipng_is_type	so_long/minilibx/mlx_png.c	/^int	mipng_is_type(unsigned char *ptr, char *type)$/;"	f
+mipng_magic	so_long/minilibx/mlx_png.c	/^int	mipng_magic(unsigned char *ptr, int size)$/;"	f
+mipng_structure	so_long/minilibx/mlx_png.c	/^int	mipng_structure(unsigned char *ptr, int size, unsigned char **hdr, unsigned char **dat)$/;"	f
+mipng_verif_hdr	so_long/minilibx/mlx_png.c	/^int	mipng_verif_hdr(unsigned char *hdr, png_info_t *pi)$/;"	f
+mixed_quote	minishell/src/quote.c	/^char	*mixed_quote(char *cmdline, t_env *env)$/;"	f
+mlx	so_long/includes/so_long.h	/^	void		*mlx;$/;"	m	struct:s_window
+mlx_col_name	so_long/minilibx/mlx_rgb.c	/^struct s_col_name mlx_col_name[] =$/;"	v	typeref:struct:s_col_name
+mlx_int_file_get_rid_comment	so_long/minilibx/mlx_xpm.c	/^void	mlx_int_file_get_rid_comment(char *ptr, int size)$/;"	f
+mlx_int_fill	so_long/minilibx/mlx_string_put.c	/^void mlx_int_fill(unsigned char *data, int sl)$/;"	f
+mlx_int_get_col_name	so_long/minilibx/mlx_xpm.c	/^int	mlx_int_get_col_name(char *str,int size)$/;"	f
+mlx_int_get_line	so_long/minilibx/mlx_xpm.c	/^char	*mlx_int_get_line(char *ptr,int *pos,int size)$/;"	f
+mlx_int_get_text_rgb	so_long/minilibx/mlx_xpm.c	/^int	mlx_int_get_text_rgb(char *name, char *end)$/;"	f
+mlx_int_parse_png	so_long/minilibx/mlx_png.c	/^void	*mlx_int_parse_png(void *xvar, unsigned char *fptr, int size, int *width, int *height)$/;"	f
+mlx_int_parse_xpm	so_long/minilibx/mlx_xpm.c	/^void	*mlx_int_parse_xpm(void *xvar,void *info,int info_size,char *(*f)(), int *width, int *height)$/;"	f
+mlx_int_static_line	so_long/minilibx/mlx_xpm.c	/^char	*mlx_int_static_line(char **xpm_data,int *pos,int size)$/;"	f
+mlx_int_str_str	so_long/minilibx/mlx_xpm.c	/^int	mlx_int_str_str(char *str,char *find,int len)$/;"	f
+mlx_int_str_str_cote	so_long/minilibx/mlx_xpm.c	/^int	mlx_int_str_str_cote(char *str,char *find,int len)$/;"	f
+mlx_int_str_to_wordtab	so_long/minilibx/mlx_xpm.c	/^char	**mlx_int_str_to_wordtab(char *str)$/;"	f
+mlx_int_xpm_set_pixel	so_long/minilibx/mlx_xpm.c	/^void	mlx_int_xpm_set_pixel(char *data, int opp, int col, int x)$/;"	f
+mlx_png_file_to_image	so_long/minilibx/mlx_png.c	/^void	*mlx_png_file_to_image(void *xvar, char *file, int *width, int *height)$/;"	f
+mlx_string_put	so_long/minilibx/mlx_string_put.c	/^int mlx_string_put(void *mlx_ptr, void *win_ptr, int x, int y, int color, char *string)$/;"	f
+mlx_xpm_file_to_image	so_long/minilibx/mlx_xpm.c	/^void	*mlx_xpm_file_to_image(void *xvar,char *file,int *width,int *height)$/;"	f
+mlx_xpm_to_image	so_long/minilibx/mlx_xpm.c	/^void	*mlx_xpm_to_image(void *xvar,char **xpm_data,int *width,int *height)$/;"	f
+move_count	so_long/includes/so_long.h	/^	int			move_count;$/;"	m	struct:s_window
+move_player	so_long/src/move_player.c	/^void	move_player(t_window *window, int keycode)$/;"	f
+move_pos	so_long/src/move_player.c	/^void	move_pos(t_window *window, int x, int y)$/;"	f
+my_mlx_pixel_put	so_long/src/render_image.c	/^void	my_mlx_pixel_put(t_image *img, int x, int y, int color)$/;"	f
+name	so_long/minilibx/mlx_xpm.c	/^  char  *name;$/;"	m	struct:s_col_name	file:
+name	so_long/minilibx/mlx_xpm.c	/^  int           name;$/;"	m	struct:s_xpm_col	file:
+nbrlloc	ft_printf/ft_utils2.c	/^char	*nbrlloc(long tmp, t_options *options, int *len)$/;"	f
+nbrlloc	minitalk/ft_printf/ft_utils2.c	/^char	*nbrlloc(long tmp, t_options *options, int *len)$/;"	f
+new_env	minishell/src/env.c	/^t_env	*new_env(char *envline, t_env *env)$/;"	f
+next	Exam_Rank_03/micro_paint/micro_paint.c	/^	struct s_shape	*next;$/;"	m	struct:s_shape	typeref:struct:s_shape::s_shape	file:
+next	Libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	ft_printf/Libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	minishell/Libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	minishell/includes/minishell.h	/^	struct s_env	*next;$/;"	m	struct:s_env	typeref:struct:s_env::s_env
+next	minishell/includes/minishell.h	/^	struct s_m_list	*next;$/;"	m	struct:s_m_list	typeref:struct:s_m_list::s_m_list
+next	minitalk/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	push_swap/Libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	push_swap/includes/push_swap.h	/^	struct s_node	*next;$/;"	m	struct:s_node	typeref:struct:s_node::s_node
+next	so_long/Libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+nickname	cpp_module_00/ex01/info.hpp	/^		std::string nickname;$/;"	m	class:info
+now_time	Philosophers/includes/philo.h	/^	long long		now_time;$/;"	m	struct:s_philo
+now_time_ms	Philosophers/src/util.c	/^long long	now_time_ms(void)$/;"	f
+num_eat	Philosophers/includes/philo.h	/^	int				num_eat;$/;"	m	struct:s_info
+num_philo	Philosophers/includes/philo.h	/^	int				num_philo;$/;"	m	struct:s_info
+obj_exit	so_long/includes/so_long.h	/^	t_obj		obj_exit;$/;"	m	struct:s_window
+obj_item	so_long/includes/so_long.h	/^	t_obj		obj_item;$/;"	m	struct:s_window
+obj_player	so_long/includes/so_long.h	/^	t_obj		obj_player;$/;"	m	struct:s_window
+obj_wall	so_long/includes/so_long.h	/^	t_obj		obj_wall;$/;"	m	struct:s_window
+out	minishell/includes/minishell.h	/^	int		out;$/;"	m	struct:s_cmd
+pa_count	push_swap/includes/push_swap.h	/^	int		pa_count;$/;"	m	struct:s_info
+paint_background	Exam_Rank_03/micro_paint/micro_paint.c	/^	*paint_background(t_zone *zone)$/;"	f
+parsing	minishell/src/parsing_cmd.c	/^void	parsing(t_data *data)$/;"	f
+parsing_proc	minishell/src/parsing_cmd.c	/^int	parsing_proc(t_data *data, char *tmp)$/;"	f
+pb_count	push_swap/includes/push_swap.h	/^	int		pb_count;$/;"	m	struct:s_info
+philo	Philosophers/includes/philo.h	/^	t_philo			*philo;$/;"	m	struct:s_info
+philo_die	Philosophers/includes/philo.h	/^	int				philo_die;$/;"	m	struct:s_info
+philo_idx	Philosophers/includes/philo.h	/^	int				philo_idx;$/;"	m	struct:s_info
+phone_number	cpp_module_00/ex01/info.hpp	/^		std::string phone_number;$/;"	m	class:info
+pipe_error_check	minishell/src/check_cmd.c	/^int	pipe_error_check(t_data *data)$/;"	f
+pipe_error_check2	minishell/src/check_cmd.c	/^int	pipe_error_check2(t_m_list *tmp, int flag)$/;"	f
+pixel_data	so_long/minilibx/font.c	/^  unsigned char	 pixel_data[1140 * 20 * 4 + 1];$/;"	m	struct:__anon1	file:
+player	so_long/includes/so_long.h	/^	t_pos		player;$/;"	m	struct:s_window
+plus	ft_printf/ft_printf.h	/^	int		plus;$/;"	m	struct:s_options
+plus	minitalk/includes/ft_printf.h	/^	int		plus;$/;"	m	struct:s_options
+png_info_s	so_long/minilibx/mlx_png.c	/^typedef struct png_info_s$/;"	s	file:
+png_info_t	so_long/minilibx/mlx_png.c	/^} png_info_t;$/;"	t	typeref:struct:png_info_s	file:
+pop	push_swap/src/pop_push.c	/^void	pop(t_stack *stack)$/;"	f
+pop_last	push_swap/src/pop_push.c	/^void	pop_last(t_stack *stack)$/;"	f
+pre	push_swap/includes/push_swap.h	/^	struct s_node	*pre;$/;"	m	struct:s_node	typeref:struct:s_node::s_node
+prec	Exam_Rank_02/ft_printf/ft_printf.c	/^	int prec;$/;"	m	struct:s_options	file:
+prec	ft_printf/ft_printf.h	/^	int		prec;$/;"	m	struct:s_options
+prec	minitalk/includes/ft_printf.h	/^	int		prec;$/;"	m	struct:s_options
+print	Philosophers/includes/philo.h	/^	pthread_mutex_t	print;$/;"	m	struct:s_info
+print_count	so_long/src/move_player.c	/^void	print_count(t_window *window, int move_count)$/;"	f
+print_else	ft_printf/ft_print_minuszero.c	/^int	print_else(char *type, t_options *options, int type_len)$/;"	f
+print_else	minitalk/ft_printf/ft_print_minuszero.c	/^int	print_else(char *type, t_options *options, int type_len)$/;"	f
+print_export	minishell/src/export.c	/^void	print_export(t_env *env)$/;"	f
+print_info	Exam_Rank_03/micro_paint/our_micro_paint.c	/^void print_info(drawing *zone)$/;"	f
+print_info	Exam_Rank_03/mini_paint/our_mini_paint.c	/^int print_info(drawing *drawing)$/;"	f
+print_message	Philosophers/src/message.c	/^void	print_message(t_philo *philo, char *str)$/;"	f
+print_minus	ft_printf/ft_print_minuszero.c	/^int	print_minus(char *type, t_options *options, int type_len)$/;"	f
+print_minus	minitalk/ft_printf/ft_print_minuszero.c	/^int	print_minus(char *type, t_options *options, int type_len)$/;"	f
+print_not_valid	minishell/src/export.c	/^void	print_not_valid(char *cmd, char *str)$/;"	f
+print_rd_error	minishell/src/redirection.c	/^void	print_rd_error(t_cmd *cmd, int status, char *cmdtype)$/;"	f
+print_s	Exam_Rank_02/ft_printf/ft_printf.c	/^int	print_s(char *str, t_options *options)$/;"	f
+print_type	Exam_Rank_02/ft_printf/ft_printf.c	/^int	print_type(va_list ap, t_options *options)$/;"	f
+print_width_str	Exam_Rank_02/ft_printf/ft_printf.c	/^int	print_width_str(char *tmp, t_options *options, int len)$/;"	f
+print_zero	ft_printf/ft_print_minuszero.c	/^int	print_zero(char *type, t_options *options, int type_len)$/;"	f
+print_zero	minitalk/ft_printf/ft_print_minuszero.c	/^int	print_zero(char *type, t_options *options, int type_len)$/;"	f
+print_zero_d	ft_printf/ft_print_minuszero.c	/^int	print_zero_d(char *type, t_options *options, int type_len)$/;"	f
+print_zero_d	minitalk/ft_printf/ft_print_minuszero.c	/^int	print_zero_d(char *type, t_options *options, int type_len)$/;"	f
+printf_c	ft_printf/ft_print_type.c	/^int	printf_c(int arg, t_options *options)$/;"	f
+printf_c	minitalk/ft_printf/ft_print_type.c	/^int	printf_c(int arg, t_options *options)$/;"	f
+printf_d	ft_printf/ft_print_type2.c	/^int	printf_d(int arg, t_options *options)$/;"	f
+printf_d	minitalk/ft_printf/ft_print_type2.c	/^int	printf_d(int arg, t_options *options)$/;"	f
+printf_p	ft_printf/ft_print_type.c	/^int	printf_p(unsigned long long arg, t_options *options)$/;"	f
+printf_p	minitalk/ft_printf/ft_print_type.c	/^int	printf_p(unsigned long long arg, t_options *options)$/;"	f
+printf_percent	ft_printf/ft_print_type.c	/^int	printf_percent(char percent, t_options *options)$/;"	f
+printf_percent	minitalk/ft_printf/ft_print_type.c	/^int	printf_percent(char percent, t_options *options)$/;"	f
+printf_s	ft_printf/ft_print_type.c	/^int	printf_s(char *arg, t_options *options)$/;"	f
+printf_s	minitalk/ft_printf/ft_print_type.c	/^int	printf_s(char *arg, t_options *options)$/;"	f
+printf_u	ft_printf/ft_print_type2.c	/^int	printf_u(unsigned int arg, t_options *options)$/;"	f
+printf_u	minitalk/ft_printf/ft_print_type2.c	/^int	printf_u(unsigned int arg, t_options *options)$/;"	f
+printf_x	ft_printf/ft_print_type2.c	/^int	printf_x(unsigned int arg, t_options *options)$/;"	f
+printf_x	minitalk/ft_printf/ft_print_type2.c	/^int	printf_x(unsigned int arg, t_options *options)$/;"	f
+push	push_swap/src/pop_push.c	/^int	push(int data, t_stack *stack)$/;"	f
+push_a	push_swap/src/push.c	/^void	push_a(t_info *info)$/;"	f
+push_b	push_swap/src/push.c	/^void	push_b(t_info *info)$/;"	f
+push_last	push_swap/src/pop_push.c	/^int	push_last(int data, t_stack *stack)$/;"	f
+put_fork	Philosophers/src/eat_think_sleep.c	/^int	put_fork(t_philo *philo)$/;"	f
+put_in_cmd	minishell/src/parsing_cmd.c	/^void	put_in_cmd(t_data *data, char *cmd, char let)$/;"	f
+put_in_cmdline	minishell/src/parsing_util.c	/^char	*put_in_cmdline(char *cmd, int *i)$/;"	f
+put_in_line	get_next_line/get_next_line.c	/^char	*put_in_line(char *line, char **backup, int i, char *tmp)$/;"	f
+put_in_line	get_next_line/get_next_line_bonus.c	/^char	*put_in_line(char *line, char **backup, int i, char *tmp)$/;"	f
+put_in_line	so_long/src/get_next_line.c	/^char	*put_in_line(char *line, char **backup, int i, char *tmp)$/;"	f
+put_pns	ft_printf/ft_print_minuszero.c	/^void	put_pns(t_options *options, long arg, char *nbr)$/;"	f
+put_pns	minitalk/ft_printf/ft_print_minuszero.c	/^void	put_pns(t_options *options, int arg, char *nbr)$/;"	f
+put_prec_str	Exam_Rank_02/ft_printf/ft_printf.c	/^char *put_prec_str(char *str, t_options *options, char *tmp)$/;"	f
+put_str_X	ft_printf/ft_put_str.c	/^char	*put_str_X(t_options *options, unsigned int arg)$/;"	f
+put_str_X	minitalk/ft_printf/ft_put_str.c	/^char	*put_str_X(t_options *options, unsigned int arg)$/;"	f
+put_str_d	ft_printf/ft_put_str.c	/^char	*put_str_d(t_options *options, int arg)$/;"	f
+put_str_d	minitalk/ft_printf/ft_put_str.c	/^char	*put_str_d(t_options *options, int arg)$/;"	f
+put_str_s	ft_printf/ft_put_str.c	/^char	*put_str_s(t_options *options, char *arg, char *tmp)$/;"	f
+put_str_s	minitalk/ft_printf/ft_put_str.c	/^char	*put_str_s(t_options *options, char *arg, char *tmp)$/;"	f
+put_str_u	ft_printf/ft_put_str.c	/^char	*put_str_u(t_options *options, unsigned int arg)$/;"	f
+put_str_u	minitalk/ft_printf/ft_put_str.c	/^char	*put_str_u(t_options *options, unsigned int arg)$/;"	f
+put_str_x	ft_printf/ft_put_str.c	/^char	*put_str_x(t_options *options, unsigned int arg)$/;"	f
+put_str_x	minitalk/ft_printf/ft_put_str.c	/^char	*put_str_x(t_options *options, unsigned int arg)$/;"	f
+putin	minishell/src/quote_split.c	/^void	putin(char *cmd, char *cmdline, int from, int i)$/;"	f
+quote_index	minishell/src/parsing_util.c	/^int	quote_index(char *cmd, int *i)$/;"	f
+quote_split	minishell/src/quote_split.c	/^char	**quote_split(char *cmd, char c)$/;"	f
+r_fork	Philosophers/includes/philo.h	/^	int				r_fork;$/;"	m	struct:s_philo
+ra_count	push_swap/includes/push_swap.h	/^	int		ra_count;$/;"	m	struct:s_info
+radius	Exam_Rank_03/mini_paint/mini_paint.c	/^	float	radius;$/;"	m	struct:s_shape	file:
+radius	Exam_Rank_03/mini_paint/my_mini_paint.c	/^	float	radius;$/;"	m	struct:s_shape	file:
+radius	Exam_Rank_03/mini_paint/our_mini_paint.c	/^	float radius;$/;"	m	struct:circle	file:
+radius	Exam_Rank_03/mini_paint/test.c	/^	float radius;$/;"	m	struct:s_shape	file:
+rand_float_range	Exam_Rank_03/micro_paint/generate_example.cpp	/^float rand_float_range(float min, float max, std::mt19937 &rng)$/;"	f
+rand_float_range	Exam_Rank_03/mini_paint/generate_example.cpp	/^float rand_float_range(float min, float max, std::mt19937 &rng)$/;"	f
+rand_int_range	Exam_Rank_03/micro_paint/generate_example.cpp	/^int rand_int_range(int min, int max, std::mt19937 &rng)$/;"	f
+rand_int_range	Exam_Rank_03/mini_paint/generate_example.cpp	/^int rand_int_range(int min, int max, std::mt19937 &rng)$/;"	f
+rb_count	push_swap/includes/push_swap.h	/^	int		rb_count;$/;"	m	struct:s_info
+rd_double_out	minishell/src/rd_util.c	/^int	rd_double_out(char *file)$/;"	f
+rd_handler	minishell/src/redirection.c	/^int	rd_handler(t_cmd *cmd)$/;"	f
+rd_in	minishell/src/rd_util.c	/^int	rd_in(char *file)$/;"	f
+rd_out	minishell/src/rd_util.c	/^int	rd_out(char *file)$/;"	f
+reSizeInfo	cpp_module_00/ex01/info.cpp	/^void info::reSizeInfo()$/;"	f	class:info
+rectangle	Exam_Rank_03/micro_paint/our_micro_paint.c	/^struct rectangle$/;"	s	file:
+rectangle	Exam_Rank_03/micro_paint/our_micro_paint.c	/^typedef struct rectangle rectangle, *Prectangle;$/;"	t	typeref:struct:rectangle	file:
+recursive	push_swap/src/b_to_a.c	/^void	recursive(t_info *info, int flag)$/;"	f
+recursive	push_swap/src/quick_sort2.c	/^void	recursive(t_info *info, int flag)$/;"	f
+redirect	minishell/src/redirection.c	/^int	redirect(t_cmd *cmd, char **cmdline, char **new_cmdline, int dup_out)$/;"	f
+redirection	minishell/src/redirection.c	/^int	redirection(char *file, int type, int dup_out, int out)$/;"	f
+render_cube	so_long/src/render_image.c	/^void	render_cube(t_window *window, int map_x, int map_y)$/;"	f
+render_image	so_long/src/render_image.c	/^void	render_image(t_window *window)$/;"	f
+rendering	so_long/src/render_image2.c	/^int	rendering(t_window *window)$/;"	f
+reparsing_env	minishell/src/reparsing_cmd.c	/^void	reparsing_env(t_data *data)$/;"	f
+replace_dollar	minishell/src/env_util.c	/^char	*replace_dollar(char *str, t_env *env)$/;"	f
+replace_env	minishell/src/util.c	/^t_env	*replace_env(char **split_env, t_env *findenv)$/;"	f
+reset_terminal	minishell/src/util.c	/^void	reset_terminal(void)$/;"	f
+retate_all	push_swap/src/rotate.c	/^void	retate_all(t_info *info)$/;"	f
+reverse_a	push_swap/src/reverse.c	/^void	reverse_a(t_info *info)$/;"	f
+reverse_all	push_swap/src/reverse.c	/^void	reverse_all(t_info *info)$/;"	f
+reverse_b	push_swap/src/reverse.c	/^void	reverse_b(t_info *info)$/;"	f
+rotate_a	push_swap/src/rotate.c	/^void	rotate_a(t_info *info)$/;"	f
+rotate_b	push_swap/src/rotate.c	/^void	rotate_b(t_info *info)$/;"	f
+rrr	push_swap/src/b_to_a.c	/^void	rrr(t_info *info, int ra, int rb)$/;"	f
+rrr	push_swap/src/quick_sort2.c	/^void	rrr(t_info *info, int ra, int rb)$/;"	f
+rrr_flag	push_swap/includes/push_swap.h	/^	int		rrr_flag;$/;"	m	struct:s_info
+s_cmd	minishell/includes/minishell.h	/^typedef struct s_cmd$/;"	s
+s_col_name	so_long/minilibx/mlx_xpm.c	/^struct  s_col_name$/;"	s	file:
+s_data	minishell/includes/minishell.h	/^typedef struct s_data$/;"	s
+s_env	minishell/includes/minishell.h	/^typedef struct s_env$/;"	s
+s_image	so_long/includes/so_long.h	/^typedef struct s_image$/;"	s
+s_info	Philosophers/includes/philo.h	/^typedef struct s_info$/;"	s
+s_info	minitalk/includes/minitalk.h	/^typedef struct s_info$/;"	s
+s_info	push_swap/includes/push_swap.h	/^typedef struct s_info$/;"	s
+s_list	Libft/libft.h	/^typedef struct s_list$/;"	s
+s_list	ft_printf/Libft/libft.h	/^typedef struct s_list$/;"	s
+s_list	minishell/Libft/libft.h	/^typedef struct s_list$/;"	s
+s_list	minitalk/includes/libft.h	/^typedef struct s_list$/;"	s
+s_list	push_swap/Libft/libft.h	/^typedef struct s_list$/;"	s
+s_list	so_long/Libft/libft.h	/^typedef struct s_list$/;"	s
+s_m_list	minishell/includes/minishell.h	/^typedef struct s_m_list$/;"	s
+s_map	so_long/includes/so_long.h	/^typedef struct s_map$/;"	s
+s_node	push_swap/includes/push_swap.h	/^typedef struct s_node$/;"	s
+s_obj	so_long/includes/so_long.h	/^typedef struct s_obj$/;"	s
+s_options	Exam_Rank_02/ft_printf/ft_printf.c	/^typedef struct s_options$/;"	s	file:
+s_options	ft_printf/ft_printf.h	/^typedef struct s_options$/;"	s
+s_options	minitalk/includes/ft_printf.h	/^typedef struct s_options$/;"	s
+s_philo	Philosophers/includes/philo.h	/^typedef struct s_philo$/;"	s
+s_pos	so_long/includes/so_long.h	/^typedef struct s_pos$/;"	s
+s_shape	Exam_Rank_03/micro_paint/micro_paint.c	/^typedef struct	s_shape$/;"	s	file:
+s_shape	Exam_Rank_03/mini_paint/mini_paint.c	/^typedef struct	s_shape$/;"	s	file:
+s_shape	Exam_Rank_03/mini_paint/my_mini_paint.c	/^typedef struct	s_shape$/;"	s	file:
+s_shape	Exam_Rank_03/mini_paint/test.c	/^typedef struct s_shape$/;"	s	file:
+s_stack	push_swap/includes/push_swap.h	/^typedef struct s_stack$/;"	s
+s_window	so_long/includes/so_long.h	/^typedef struct s_window$/;"	s
+s_xpm_col	so_long/minilibx/mlx_xpm.c	/^typedef struct  s_xpm_col$/;"	s	file:
+s_zone	Exam_Rank_03/micro_paint/micro_paint.c	/^typedef struct	s_zone$/;"	s	file:
+s_zone	Exam_Rank_03/mini_paint/mini_paint.c	/^typedef struct	s_zone$/;"	s	file:
+s_zone	Exam_Rank_03/mini_paint/my_mini_paint.c	/^typedef struct	s_zone$/;"	s	file:
+s_zone	Exam_Rank_03/mini_paint/test.c	/^typedef struct s_zone$/;"	s	file:
+screen_size	so_long/includes/so_long.h	/^	t_pos		screen_size;$/;"	m	struct:s_window
+search	cpp_module_00/ex01/PhoneBook.cpp	/^void	PhoneBook::search()$/;"	f	class:PhoneBook
+send_msg	minitalk/client.c	/^void	send_msg(char *pid, char *msg)$/;"	f
+send_sig	minitalk/client.c	/^int	send_sig(char let, int gv)$/;"	f
+sep_cmdline	minishell/src/quote_split.c	/^void	sep_cmdline(char *cmd, char c, char **cmdline)$/;"	f
+sep_cnt_quote	minishell/src/quote_split.c	/^int	sep_cnt_quote(char *cmd, char c)$/;"	f
+setting_signal	minishell/src/init_shell.c	/^void	setting_signal(void)$/;"	f
+showInfo	cpp_module_00/ex01/info.cpp	/^void info::showInfo()$/;"	f	class:info
+show_prompt	minishell/src/prompt.c	/^void	show_prompt(t_data *data)$/;"	f
+sigint_handler	minishell/src/init_shell.c	/^void	sigint_handler(int signal)$/;"	f
+sigquit_handler	minishell/src/init_shell.c	/^void	sigquit_handler(int signal)$/;"	f
+single_quote	minishell/src/quote.c	/^char	*single_quote(char *cmdline)$/;"	f
+size_2_sort	push_swap/src/under_5_size_sort.c	/^void	size_2_sort(t_info *info)$/;"	f
+size_2_sort_b_to_a	push_swap/src/b_to_a.c	/^void	size_2_sort_b_to_a(t_info *info)$/;"	f
+size_2_sort_b_to_a	push_swap/src/quick_sort2.c	/^void	size_2_sort_b_to_a(t_info *info)$/;"	f
+size_3_sort	push_swap/src/under_5_size_sort.c	/^void	size_3_sort(t_info *info)$/;"	f
+size_3_sort2	push_swap/src/a_to_b.c	/^void	size_3_sort2(t_info *info)$/;"	f
+size_3_sort_b_to_a	push_swap/src/b_to_a.c	/^void	size_3_sort_b_to_a(t_info *info)$/;"	f
+size_3_sort_b_to_a	push_swap/src/quick_sort2.c	/^void	size_3_sort_b_to_a(t_info *info)$/;"	f
+size_4_sort	push_swap/src/under_5_size_sort.c	/^void	size_4_sort(t_info *info)$/;"	f
+size_5_sort	push_swap/src/under_5_size_sort.c	/^void	size_5_sort(t_info *info)$/;"	f
+sleeping	Philosophers/src/eat_think_sleep.c	/^int	sleeping(t_philo *philo)$/;"	f
+sort_arr	push_swap/src/find_pivot.c	/^void	sort_arr(long *arr, t_stack *stack, int size)$/;"	f
+sorting	push_swap/src/sort.c	/^void	sorting(t_info *info)$/;"	f
+space	ft_printf/ft_printf.h	/^	int		space;$/;"	m	struct:s_options
+space	minitalk/includes/ft_printf.h	/^	int		space;$/;"	m	struct:s_options
+sq_dist	Exam_Rank_03/mini_paint/our_mini_paint.c	/^float sq_dist(float x1, float y1, float x2, float y2)$/;"	f
+square	Exam_Rank_03/mini_paint/our_mini_paint.c	/^float square(float a)$/;"	f
+stack_size	push_swap/src/util.c	/^int	stack_size(t_stack *stack)$/;"	f
+start_time	Philosophers/includes/philo.h	/^	long long		start_time;$/;"	m	struct:s_info
+stop_game	so_long/src/error.c	/^int	stop_game(t_window *window)$/;"	f
+str_error	Exam_Rank_03/micro_paint/micro_paint.c	/^	str_error(char const *str, int ret)$/;"	f
+str_error	Exam_Rank_03/mini_paint/mini_paint.c	/^	str_error(char const *str)$/;"	f
+str_error	Exam_Rank_03/mini_paint/my_mini_paint.c	/^int	str_error(char const *str)$/;"	f
+str_error	Exam_Rank_03/mini_paint/test.c	/^int str_error(char *str)$/;"	f
+swap_a	push_swap/src/swap.c	/^void	swap_a(t_info *info)$/;"	f
+swap_all	push_swap/src/swap.c	/^void	swap_all(t_info *info)$/;"	f
+swap_b	push_swap/src/swap.c	/^void	swap_b(t_info *info)$/;"	f
+syntax_error_msg	minishell/src/error.c	/^int	syntax_error_msg(char let)$/;"	f
+t	cpp_module_00/ex02/Account.hpp	/^	typedef Account		t;$/;"	t	class:Account
+t_cmd	minishell/includes/minishell.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
+t_data	minishell/includes/minishell.h	/^}	t_data;$/;"	t	typeref:struct:s_data
+t_env	minishell/includes/minishell.h	/^}	t_env;$/;"	t	typeref:struct:s_env
+t_image	so_long/includes/so_long.h	/^}	t_image;$/;"	t	typeref:struct:s_image
+t_info	Philosophers/includes/philo.h	/^}	t_info;$/;"	t	typeref:struct:s_info
+t_info	minitalk/includes/minitalk.h	/^}	t_info;$/;"	t	typeref:struct:s_info
+t_info	push_swap/includes/push_swap.h	/^}	t_info;$/;"	t	typeref:struct:s_info
+t_list	Libft/libft.h	/^}				t_list;$/;"	t	typeref:struct:s_list
+t_list	ft_printf/Libft/libft.h	/^}				t_list;$/;"	t	typeref:struct:s_list
+t_list	minishell/Libft/libft.h	/^}				t_list;$/;"	t	typeref:struct:s_list
+t_list	minitalk/includes/libft.h	/^}				t_list;$/;"	t	typeref:struct:s_list
+t_list	push_swap/Libft/libft.h	/^}				t_list;$/;"	t	typeref:struct:s_list
+t_list	so_long/Libft/libft.h	/^}				t_list;$/;"	t	typeref:struct:s_list
+t_m_list	minishell/includes/minishell.h	/^}	t_m_list;$/;"	t	typeref:struct:s_m_list
+t_map	so_long/includes/so_long.h	/^}	t_map;$/;"	t	typeref:struct:s_map
+t_node	push_swap/includes/push_swap.h	/^}	t_node;$/;"	t	typeref:struct:s_node
+t_obj	so_long/includes/so_long.h	/^}	t_obj;$/;"	t	typeref:struct:s_obj
+t_options	Exam_Rank_02/ft_printf/ft_printf.c	/^}	t_options;$/;"	t	typeref:struct:s_options	file:
+t_options	ft_printf/ft_printf.h	/^}	t_options;$/;"	t	typeref:struct:s_options
+t_options	minitalk/includes/ft_printf.h	/^}	t_options;$/;"	t	typeref:struct:s_options
+t_philo	Philosophers/includes/philo.h	/^}	t_philo;$/;"	t	typeref:struct:s_philo
+t_pos	so_long/includes/so_long.h	/^}	t_pos;$/;"	t	typeref:struct:s_pos
+t_shape	Exam_Rank_03/micro_paint/micro_paint.c	/^}				t_shape;$/;"	t	typeref:struct:s_shape	file:
+t_shape	Exam_Rank_03/mini_paint/mini_paint.c	/^}				t_shape;$/;"	t	typeref:struct:s_shape	file:
+t_shape	Exam_Rank_03/mini_paint/my_mini_paint.c	/^}				t_shape;$/;"	t	typeref:struct:s_shape	file:
+t_shape	Exam_Rank_03/mini_paint/test.c	/^} t_shape;$/;"	t	typeref:struct:s_shape	file:
+t_stack	push_swap/includes/push_swap.h	/^}	t_stack;$/;"	t	typeref:struct:s_stack
+t_window	so_long/includes/so_long.h	/^}	t_window;$/;"	t	typeref:struct:s_window
+t_xpm_col	so_long/minilibx/mlx_xpm.c	/^} t_xpm_col;$/;"	t	typeref:struct:s_xpm_col	file:
+t_zone	Exam_Rank_03/micro_paint/micro_paint.c	/^} 				t_zone;$/;"	t	typeref:struct:s_zone	file:
+t_zone	Exam_Rank_03/mini_paint/mini_paint.c	/^}				t_zone;$/;"	t	typeref:struct:s_zone	file:
+t_zone	Exam_Rank_03/mini_paint/my_mini_paint.c	/^}				t_zone;$/;"	t	typeref:struct:s_zone	file:
+t_zone	Exam_Rank_03/mini_paint/test.c	/^}	t_zone;$/;"	t	typeref:struct:s_zone	file:
+test_print	push_swap/test_print.c	/^void	test_print(t_info *info)$/;"	f
+thinking	Philosophers/src/eat_think_sleep.c	/^int	thinking(t_philo *philo)$/;"	f
+thread	Philosophers/includes/philo.h	/^	pthread_t		thread;$/;"	m	struct:s_philo
+time_die	Philosophers/includes/philo.h	/^	int				time_die;$/;"	m	struct:s_info
+time_eat	Philosophers/includes/philo.h	/^	int				time_eat;$/;"	m	struct:s_info
+time_sleep	Philosophers/includes/philo.h	/^	int				time_sleep;$/;"	m	struct:s_info
+top	push_swap/includes/push_swap.h	/^	t_node	*top;$/;"	m	struct:s_stack
+total_len	ft_printf/ft_printf.c	/^int	total_len(va_list ap, char *format)$/;"	f
+total_len	minitalk/ft_printf/ft_printf.c	/^int	total_len(va_list ap, char *format)$/;"	f
+turn_off_bit	minitalk/server.c	/^void	turn_off_bit(void)$/;"	f
+turn_on_bit	minitalk/server.c	/^void	turn_on_bit(void)$/;"	f
+type	Exam_Rank_02/ft_printf/ft_printf.c	/^	char type;$/;"	m	struct:s_options	file:
+type	Exam_Rank_03/micro_paint/micro_paint.c	/^	char	type;$/;"	m	struct:s_shape	file:
+type	Exam_Rank_03/micro_paint/our_micro_paint.c	/^	char type;$/;"	m	struct:rectangle	file:
+type	Exam_Rank_03/mini_paint/mini_paint.c	/^	char	type;$/;"	m	struct:s_shape	file:
+type	Exam_Rank_03/mini_paint/my_mini_paint.c	/^	char	type;$/;"	m	struct:s_shape	file:
+type	Exam_Rank_03/mini_paint/our_mini_paint.c	/^	char type;$/;"	m	struct:circle	file:
+type	Exam_Rank_03/mini_paint/test.c	/^	char type;$/;"	m	struct:s_shape	file:
+type	ft_printf/ft_printf.h	/^	char	type;$/;"	m	struct:s_options
+type	minitalk/includes/ft_printf.h	/^	char	type;$/;"	m	struct:s_options
+under_3_sort	push_swap/src/a_to_b.c	/^void	under_3_sort(t_info *info, int size, char stack)$/;"	f
+use_forks	Philosophers/includes/philo.h	/^	int				*use_forks;$/;"	m	struct:s_info
+user	cpp_module_00/ex01/PhoneBook.hpp	/^		info user[8];$/;"	m	class:PhoneBook
+value	minishell/includes/minishell.h	/^	char			*value;$/;"	m	struct:s_env
+wait_other_philo	Philosophers/src/dinning_philo.c	/^void	wait_other_philo(t_philo *philo)$/;"	f
+what_obj	so_long/src/render_image.c	/^t_obj	*what_obj(t_window *window, char pos)$/;"	f
+width	Exam_Rank_02/ft_printf/ft_printf.c	/^	int	width;$/;"	m	struct:s_options	file:
+width	Exam_Rank_03/micro_paint/micro_paint.c	/^	float	width;$/;"	m	struct:s_shape	file:
+width	Exam_Rank_03/micro_paint/micro_paint.c	/^	int		width;$/;"	m	struct:s_zone	file:
+width	Exam_Rank_03/micro_paint/our_micro_paint.c	/^	float width;$/;"	m	struct:rectangle	file:
+width	Exam_Rank_03/micro_paint/our_micro_paint.c	/^	int width;$/;"	m	struct:drawing	file:
+width	Exam_Rank_03/mini_paint/mini_paint.c	/^	int		width;$/;"	m	struct:s_zone	file:
+width	Exam_Rank_03/mini_paint/my_mini_paint.c	/^	int		width;$/;"	m	struct:s_zone	file:
+width	Exam_Rank_03/mini_paint/our_mini_paint.c	/^	int width;$/;"	m	struct:drawing	file:
+width	Exam_Rank_03/mini_paint/test.c	/^	int width;$/;"	m	struct:s_zone	file:
+width	ft_printf/ft_printf.h	/^	int		width;$/;"	m	struct:s_options
+width	minitalk/includes/ft_printf.h	/^	int		width;$/;"	m	struct:s_options
+width	so_long/includes/so_long.h	/^	int		width;$/;"	m	struct:s_obj
+width	so_long/minilibx/font.c	/^  unsigned int 	 width;$/;"	m	struct:__anon1	file:
+width	so_long/minilibx/mlx_png.c	/^  unsigned int	width;$/;"	m	struct:png_info_s	file:
+win	so_long/includes/so_long.h	/^	void		*win;$/;"	m	struct:s_window
+write_flag	push_swap/includes/push_swap.h	/^	int		write_flag;$/;"	m	struct:s_info
+x	Exam_Rank_03/micro_paint/micro_paint.c	/^	float	x;$/;"	m	struct:s_shape	file:
+x	Exam_Rank_03/micro_paint/our_micro_paint.c	/^	float x;$/;"	m	struct:rectangle	file:
+x	Exam_Rank_03/mini_paint/mini_paint.c	/^	float	x;$/;"	m	struct:s_shape	file:
+x	Exam_Rank_03/mini_paint/my_mini_paint.c	/^	float	x;$/;"	m	struct:s_shape	file:
+x	Exam_Rank_03/mini_paint/our_mini_paint.c	/^	float x;$/;"	m	struct:circle	file:
+x	Exam_Rank_03/mini_paint/test.c	/^	float x;$/;"	m	struct:s_shape	file:
+x	so_long/includes/so_long.h	/^	int	x;$/;"	m	struct:s_pos
+y	Exam_Rank_03/micro_paint/micro_paint.c	/^	float	y;$/;"	m	struct:s_shape	file:
+y	Exam_Rank_03/micro_paint/our_micro_paint.c	/^	float y;$/;"	m	struct:rectangle	file:
+y	Exam_Rank_03/mini_paint/mini_paint.c	/^	float	y;$/;"	m	struct:s_shape	file:
+y	Exam_Rank_03/mini_paint/my_mini_paint.c	/^	float	y;$/;"	m	struct:s_shape	file:
+y	Exam_Rank_03/mini_paint/our_mini_paint.c	/^	float y;$/;"	m	struct:circle	file:
+y	Exam_Rank_03/mini_paint/test.c	/^	float y;$/;"	m	struct:s_shape	file:
+y	so_long/includes/so_long.h	/^	int	y;$/;"	m	struct:s_pos
+zero	ft_printf/ft_printf.h	/^	int		zero;$/;"	m	struct:s_options
+zero	minitalk/includes/ft_printf.h	/^	int		zero;$/;"	m	struct:s_options
+~Account	cpp_module_00/ex02/Account.cpp	/^Account::~Account()$/;"	f	class:Account

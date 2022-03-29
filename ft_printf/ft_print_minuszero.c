@@ -6,9 +6,10 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 13:56:41 by soum              #+#    #+#             */
-/*   Updated: 2021/09/09 15:36:01 by soum             ###   ########.fr       */
+/*   Updated: 2022/03/25 23:49:01 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	print_else(char *type, t_options *options, int type_len)
