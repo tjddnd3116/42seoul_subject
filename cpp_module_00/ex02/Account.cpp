@@ -6,13 +6,14 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 19:07:57 by soum              #+#    #+#             */
-/*   Updated: 2022/03/29 21:58:25 by soum             ###   ########.fr       */
+/*   Updated: 2022/03/31 21:06:51 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <ctime>
 #include <iostream>
+#include <xlocale/_time.h>
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -34,19 +35,12 @@ Account::Account(int initial_deposit)
 
 void	Account::_displayTimestamp(void)
 {
-	time_t timer = time(NULL);
-	struct tm* t = localtime(&timer);
+	time_t timer;
+	char	buff[16];
 
-	if (t->tm_sec < 10)
-	{
-		std::cout << "[" << t->tm_year + 1900 << t->tm_mon + 1 << t->tm_mday
-		<< "_" << t->tm_hour << t->tm_min << "0" << t->tm_sec << "] ";
-	}
-	else
-	{
-		std::cout << "[" << t->tm_year + 1900 << t->tm_mon + 1 << t->tm_mday
-		<< "_" << t->tm_hour << t->tm_min << t->tm_sec << "] ";
-	}
+	timer = time(NULL);
+	strftime(buff, sizeof(buff), "%Y%m%d_%H%M%S", localtime(&timer));
+	std::cout << "[" << buff << "]";
 }
 int	Account::getNbAccounts(void)
 {
