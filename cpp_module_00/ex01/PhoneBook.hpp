@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:30:52 by soum              #+#    #+#             */
-/*   Updated: 2022/03/31 16:41:15 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/02 23:14:00 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class PhoneBook {
 	public:
 		void add();
 		void search();
+		void search_all();
+		void search_index();
 		PhoneBook();
 };
 

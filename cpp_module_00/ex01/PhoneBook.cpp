@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:31:47 by soum              #+#    #+#             */
-/*   Updated: 2022/03/31 20:19:38 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/02 23:44:43 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,9 @@ void	PhoneBook::add()
 		index = -1;
 	}
 }
-void	PhoneBook::search()
+
+void PhoneBook::search_index()
 {
-	if (this->index == -1 && fullFilled == 0)
-	{
-		std::cout << "empty Phonebook!" << std::endl;
-		return ;
-	}
 	int idx = 0;
 	std::cout << "index : ";
 	std::cin >> idx;
@@ -47,15 +43,49 @@ void	PhoneBook::search()
 		std::cin.ignore(INT_MAX, '\n');
 		return ;
 	}
-	if (idx <= 0)
+	if (idx <= 0 || idx > 8)
 		std::cout << "wrong index!" << std::endl;
-	else if (fullFilled)
-			user[idx - 1].showInfo();
 	else
 	{
-		if (idx - 1 > index)
+		if (fullFilled)
+			user[idx - 1].showInfo();
+		else if (idx - 1 > index)
 			std::cout << "wrong index!" << std::endl;
 		else
 			user[idx - 1].showInfo();
 	}
 }
+
+void PhoneBook::search_all()
+{
+	int idx;
+
+	idx = 0;
+	if (fullFilled)
+	{
+		while (idx < 8)
+		{
+			user[idx].showInfo();
+			idx++;
+		}
+	}
+	else
+	{
+		while (idx < index)
+		{
+			user[idx].showInfo();
+			idx++;
+		}
+	}
+}
+
+void	PhoneBook::search()
+{
+	if (this->index == -1 && fullFilled == 0)
+	{
+		std::cout << "empty Phonebook!" << std::endl;
+		return ;
+	}
+	search_all();
+	search_index();
+	}

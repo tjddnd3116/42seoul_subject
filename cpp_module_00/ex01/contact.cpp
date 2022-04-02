@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 12:53:44 by soum              #+#    #+#             */
-/*   Updated: 2022/03/31 20:35:37 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/02 23:41:15 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ void contact::fillInfo()
 	std::cin >> darkest_secret;
 	std::cin.clear();
 	std::cin.ignore(1024, '\n');
+}
+
+void contact::showAllInfo()
+{
+
 }
 
 void contact::showInfo()
