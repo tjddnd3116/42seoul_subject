@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 12:36:03 by soum              #+#    #+#             */
-/*   Updated: 2022/04/02 23:40:32 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/03 21:08:29 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ class contact {
 		std::string nickname;
 		std::string phone_number;
 		std::string darkest_secret;
-		std::string resize_info(std::string field);
+		std::string reSizeInfo(std::string field);
 
 	public:
 		void fillInfo();
 		void showAllInfo();
 		void showInfo();
-		void set_index(int index);
+		void setIndex(int index);
 };
 
 #endif

@@ -6,13 +6,14 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 12:53:44 by soum              #+#    #+#             */
-/*   Updated: 2022/04/02 23:41:15 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/03 21:31:09 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+#include "PhoneBook.hpp"
 
-std::string contact::resize_info(std::string field)
+std::string contact::reSizeInfo(std::string field)
 {
 	std::string temp_field;
 
@@ -34,46 +35,75 @@ std::string contact::resize_info(std::string field)
 
 void contact::fillInfo()
 {
-	std::cout << "first name : ";
-	std::cin >> first_name;
-	std::cin.clear();
-	std::cin.ignore(1024, '\n');
-	std::cout << "last name : ";
-	std::cin >> last_name;
-	std::cin.clear();
-	std::cin.ignore(1024, '\n');
-	std::cout << "nick name : ";
-	std::cin >> nickname;
-	std::cin.clear();
-	std::cin.ignore(1024, '\n');
-	std::cout << "phone number : ";
-	std::cin >> phone_number;
-	std::cin.clear();
-	std::cin.ignore(1024, '\n');
-	std::cout << "darkest secret : ";
-	std::cin >> darkest_secret;
-	std::cin.clear();
-	std::cin.ignore(1024, '\n');
-}
+	contact tmp_usr;
+	std::string tmp_field;
+	std::string *field;
 
+
+	while (1)
+	{
+		if (tmp_usr.first_name == "")
+		{
+			std::cout << "first_name :";
+			field = &tmp_usr.first_name;
+		}
+		else if (tmp_usr.last_name == "")
+		{
+			std::cout << "last_name :";
+			field = &tmp_usr.last_name;
+		}
+		else if (tmp_usr.nickname == "")
+		{
+			std::cout << "nickname :";
+			field = &tmp_usr.nickname;
+		}
+		else if (tmp_usr.phone_number == "")
+		{
+			std::cout << "phone number :";
+			field = &tmp_usr.phone_number;
+		}
+		else if (tmp_usr.darkest_secret == "")
+		{
+			std::cout << "darkest secret :";
+			field = &tmp_usr.darkest_secret;
+		}
+		std::getline(std::cin, tmp_field);
+		if (std::cin.eof())
+			return ;
+		if (tmp_field == "")
+		{
+			std::cout << "do not fill empty field" << std::endl;
+			continue;
+		}
+		else
+		{
+			*field = tmp_field;
+			if (field == &tmp_usr.darkest_secret)
+			{
+				*this = tmp_usr;
+				break;
+			}
+		}
+	}
+}
 void contact::showAllInfo()
 {
-
+	std::cout << "first name :" << first_name << std::endl;
+	std::cout << "last name :" << last_name << std::endl;
+	std::cout << "nickname :" << nickname << std::endl;
+	std::cout << "phone number :" << phone_number << std::endl;
+	std::cout << "darkest secret :" << darkest_secret << std::endl;
 }
 
 void contact::showInfo()
 {
-	std::cout << "|" << std::setw(10) << "index" << "|" <<
-		std::setw(10) << "first name" << "|" <<
-		std::setw(10) << "last name" << "|" <<
-		std::setw(10) << "nickname" << "|" << std::endl;
 	std::cout << "|" << std::setw(10) << index << "|" <<
-		std::setw(10) << resize_info("first_name") << "|" <<
-		std::setw(10) << resize_info("last_name") << "|" <<
-		std::setw(10) << resize_info("nickname")  << "|" << std::endl;
+		std::setw(10) << reSizeInfo("first_name") << "|" <<
+		std::setw(10) << reSizeInfo("last_name") << "|" <<
+		std::setw(10) << reSizeInfo("nickname")  << "|" << std::endl;
 }
 
-void contact::set_index(int index)
+void contact::setIndex(int index)
 {
 	this->index = index;
 }

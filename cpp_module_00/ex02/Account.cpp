@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 19:07:57 by soum              #+#    #+#             */
-/*   Updated: 2022/03/31 21:06:51 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/03 22:01:34 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	Account::_displayTimestamp(void)
 
 	timer = time(NULL);
 	strftime(buff, sizeof(buff), "%Y%m%d_%H%M%S", localtime(&timer));
-	std::cout << "[" << buff << "]";
+	std::cout << "[" << buff << "] ";
 }
 int	Account::getNbAccounts(void)
 {
@@ -67,7 +67,7 @@ void	Account::displayAccountsInfos(void)
 	_displayTimestamp();
 	std::cout << "accounts:" << _nbAccounts
 		<< ";total:" << _totalAmount
-		<< ";deposit:" << _totalNbDeposits
+		<< ";deposits:" << _totalNbDeposits
 		<< ";withdrawals:" << _totalNbWithdrawals << std::endl;
 }
 
@@ -100,7 +100,7 @@ bool Account::makeWithdrawal(int withdrawal)
 	{
 		std::cout << "index:" << _accountIndex
 			<< ";p_amount:" << _amount
-			<< "withdrawal:" << withdrawal;
+			<< ";withdrawal:" << withdrawal;
 		_amount -= withdrawal;
 		_nbWithdrawals = 1;
 		_totalAmount -= withdrawal;

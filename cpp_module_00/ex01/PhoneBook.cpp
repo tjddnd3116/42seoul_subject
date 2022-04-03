@@ -6,23 +6,21 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:31:47 by soum              #+#    #+#             */
-/*   Updated: 2022/04/02 23:44:43 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/03 21:45:50 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
-{
-	index = -1;
-	fullFilled = 0;
-}
+	: index(-1), fullFilled(0)
+{}
 
 void	PhoneBook::add()
 {
 	index++;
-	user[index].set_index(index + 1);
 	user[index].fillInfo();
+	user[index].setIndex(index + 1);
 	if (index == 7)
 	{
 		fullFilled = 1;
@@ -30,17 +28,17 @@ void	PhoneBook::add()
 	}
 }
 
-void PhoneBook::search_index()
+void PhoneBook::searchIndex()
 {
 	int idx = 0;
 	std::cout << "index : ";
 	std::cin >> idx;
-	std::cin.ignore(INT_MAX, '\n');
+	std::cin.ignore(1024, '\n');
 	if (std::cin.fail())
 	{
 		std::cout << "wrong index!" << std::endl;
 		std::cin.clear();
-		std::cin.ignore(INT_MAX, '\n');
+		std::cin.ignore(1024, '\n');
 		return ;
 	}
 	if (idx <= 0 || idx > 8)
@@ -48,34 +46,29 @@ void PhoneBook::search_index()
 	else
 	{
 		if (fullFilled)
-			user[idx - 1].showInfo();
+			user[idx - 1].showAllInfo();
 		else if (idx - 1 > index)
 			std::cout << "wrong index!" << std::endl;
 		else
-			user[idx - 1].showInfo();
+			user[idx - 1].showAllInfo();
 	}
 }
 
-void PhoneBook::search_all()
+void PhoneBook::searchAll()
 {
 	int idx;
 
 	idx = 0;
-	if (fullFilled)
+	std::cout << "|" << std::setw(10) << "index" << "|" <<
+		std::setw(10) << "first name" << "|" <<
+		std::setw(10) << "last name" << "|" <<
+		std::setw(10) << "nickname" << "|" << std::endl;
+	while (fullFilled || idx < index + 1)
 	{
-		while (idx < 8)
-		{
-			user[idx].showInfo();
-			idx++;
-		}
-	}
-	else
-	{
-		while (idx < index)
-		{
-			user[idx].showInfo();
-			idx++;
-		}
+		if (idx == 8)
+			break;
+		user[idx].showInfo();
+		idx++;
 	}
 }
 
@@ -86,6 +79,6 @@ void	PhoneBook::search()
 		std::cout << "empty Phonebook!" << std::endl;
 		return ;
 	}
-	search_all();
-	search_index();
-	}
+	searchAll();
+	searchIndex();
+}

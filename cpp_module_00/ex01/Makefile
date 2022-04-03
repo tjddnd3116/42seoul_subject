@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 11:22:34 by soum              #+#    #+#              #
-#    Updated: 2022/04/02 22:36:38 by soum             ###   ########.fr        #
+#    Updated: 2022/04/03 21:50:15 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,6 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = PhoneBook.cpp \
 	   Contact.cpp \
 	   main.cpp
-
-INC = PhoneBook.hpp \
-			Contact.hpp
 
 .cpp.o :
 	$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)
