@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 12:53:44 by soum              #+#    #+#             */
-/*   Updated: 2022/04/03 21:31:09 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/04 16:17:36 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void contact::fillInfo()
 		std::getline(std::cin, tmp_field);
 		if (std::cin.eof())
 			return ;
-		if (tmp_field == "")
+		if (tmp_field == "" || myIsSpace(tmp_field))
 		{
-			std::cout << "do not fill empty field" << std::endl;
+			std::cout << "do not fill empty field or space in field" << std::endl;
 			continue;
 		}
 		else
@@ -106,4 +106,20 @@ void contact::showInfo()
 void contact::setIndex(int index)
 {
 	this->index = index;
+}
+
+bool contact::myIsSpace(std::string field)
+{
+	int str_len;
+	int idx;
+
+	str_len = field.length();
+	idx = 0;
+	while (idx < str_len)
+	{
+		if (std::isspace(field.at(idx)))
+			return (true);
+		idx++;
+	}
+	return (false);
 }

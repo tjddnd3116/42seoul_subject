@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 12:36:03 by soum              #+#    #+#             */
-/*   Updated: 2022/04/03 21:08:29 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/04 13:25:09 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class contact {
 		std::string phone_number;
 		std::string darkest_secret;
 		std::string reSizeInfo(std::string field);
+		bool myIsSpace(std::string field);
 
 	public:
 		void fillInfo();
