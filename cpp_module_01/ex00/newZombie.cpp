@@ -6,14 +6,13 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 18:49:00 by soum              #+#    #+#             */
-/*   Updated: 2022/04/01 18:50:43 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/03 22:40:19 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie* newZombie( std::string name)
+Zombie* newZombie(std::string name)
 {
-
-	return (NULL);
+	return (new Zombie(name));
 }

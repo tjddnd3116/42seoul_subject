@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 11:22:34 by soum              #+#    #+#              #
-#    Updated: 2022/04/03 21:52:13 by soum             ###   ########.fr        #
+#    Updated: 2022/04/03 22:18:31 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = test.cpp \
 			 Account.cpp
+
 .cpp.o :
 	$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)
 

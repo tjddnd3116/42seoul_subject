@@ -6,18 +6,17 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/03 22:16:52 by soum              #+#    #+#              #
-#    Updated: 2022/04/03 23:00:11 by soum             ###   ########.fr        #
+#    Updated: 2022/04/03 23:00:55 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = BraiiiiiiinnnzzzZ
+NAME = MoarBrainz
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp \
-			 newZombie.cpp \
-			 randomChump.cpp \
-			 Zombie.cpp
+			 Zombie.cpp \
+			 ZombieHorde.cpp
 
 .cpp.o :
 	$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)

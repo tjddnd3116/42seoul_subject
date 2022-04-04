@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 18:40:51 by soum              #+#    #+#             */
-/*   Updated: 2022/04/03 22:38:33 by soum             ###   ########.fr       */
+/*   Created: 2022/04/03 23:57:44 by soum              #+#    #+#             */
+/*   Updated: 2022/04/04 01:02:15 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#include "HumanB.hpp"
+#include <cstddef>
 
-#include <iostream>
-#include <string>
+HumanB::HumanB()
+{}
 
-class Zombie
+HumanB::HumanB(std::string name)
 {
-	private:
-		std::string name;
-	public:
-		void announce(void);
-		Zombie( std::string name );
-		~Zombie();
-};
+	this->name = name;
+	weapon = NULL;
+}
 
-Zombie* newZombie( std::string name );
-void randomChump( std::string name );
+void HumanB::setWeapon(Weapon& weapon)
+{
+	this->weapon = &weapon;
+}
 
-#endif
+void HumanB::attack()
+{
+	std::cout << name << " attacks with his ";
+	if (weapon == nullptr)
+		std::cout << "hand" << std::endl;
+	else
+		std::cout << weapon->getType() << std::endl;
+}
