@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 01:10:02 by soum              #+#    #+#              #
-#    Updated: 2022/04/04 01:11:20 by soum             ###   ########.fr        #
+#    Updated: 2022/04/04 19:40:51 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp \
+	   myReplace.cpp \
+
 
 .cpp.o :
 	$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)
