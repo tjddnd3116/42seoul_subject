@@ -1,6 +1,6 @@
 | Circle | Project                                                      |            Language            |                            Score                             |
 | :----: | :----------------------------------------------------------- | :----------------------------: | :----------------------------------------------------------: |
-|   00   | [**Libft**](https://github.com/tjddnd3116/42seoul_subject/tree/main/Libft)    |               C                |  ![](https://badge42.herokuapp.com/api/project/soum/Libft)   |
+|   00   | [**Libft**](https://github.com/tjddnd3116/42seoul_subject/tree/main/Libft)    |               C                | [![soum's 42 Libft Score](https://badge42.vercel.app/api/v2/cl1li0ev4001609l6y3uttc20/project/2166451)](https://github.com/JaeSeoKim/badge42)   |
 |   01   | [**get_next_line**](https://github.com/tjddnd3116/42seoul_subject/tree/main/get_next_line)|               C                | ![](https://badge42.herokuapp.com/api/project/soum/get_next_line) |
 |        | [**ft_pritf**](https://github.com/tjddnd3116/42seoul_subject/tree/main/ft_printf)|               C                | ![](https://badge42.herokuapp.com/api/project/soum/ft_printf) |
 |        | **netwhat**                                                  |              network               | ![](https://badge42.herokuapp.com/api/project/soum/netwhat)  |
