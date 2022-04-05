@@ -18,4 +18,10 @@
 |   	   | [**CPP Module 00**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_00) |              C++               | [![soum's 42 CPP Module 00 Score](https://badge42.vercel.app/api/v2/cl1li0ev4001609l6y3uttc20/project/2497359)](https://github.com/JaeSeoKim/badge42) |
 |   	   | [**CPP Module 01**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_01) |              C++               | [![soum's 42 CPP Module 01 Score](https://badge42.vercel.app/api/v2/cl1li0ev4001609l6y3uttc20/project/2550548)](https://github.com/JaeSeoKim/badge42) |
 
-[![soum's 42 stats](https://badge42.vercel.app/api/v2/cl1li0ev4001609l6y3uttc20/stats?cursusId=21&coalitionId=87)](https://github.com/JaeSeoKim/badge42)
+|   	   | [**CPP Module 02**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_02) |              C++               | score field |
+|   	   | [**CPP Module 03**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_03) |              C++               | score field |
+|   	   | [**CPP Module 04**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_04) |              C++               | score field |
+|   	   | [**CPP Module 05**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_05) |              C++               | score field |
+|   	   | [**CPP Module 06**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_06) |              C++               | score field |
+|   	   | [**CPP Module 07**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_07) |              C++               | score field |
+|   	   | [**CPP Module 08**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_08) |              C++               | score field |
