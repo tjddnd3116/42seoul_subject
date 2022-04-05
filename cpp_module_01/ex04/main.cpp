@@ -6,11 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 01:10:08 by soum              #+#    #+#             */
-/*   Updated: 2022/04/05 16:23:22 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/05 20:55:59 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "myReplace.hpp"
+#include "MyReplace.hpp"
 #include <iostream>
 
 int main(int argc, char **argv)

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   myReplace.cpp                                      :+:      :+:    :+:   */
+/*   MyReplace.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:26:32 by soum              #+#    #+#             */
-/*   Updated: 2022/04/05 16:25:49 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/05 20:56:11 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "myReplace.hpp"
+#include "MyReplace.hpp"
 
 MyReplace::MyReplace(std::string filename, std::string string1, std::string string2)
 {
