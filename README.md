@@ -1,3 +1,5 @@
+[![soum's 42 stats](https://badge42.vercel.app/api/v2/cl1li0ev4001609l6y3uttc20/stats?cursusId=21&coalitionId=87)](https://github.com/JaeSeoKim/badge42)
+
 | Circle | Project                                                      |            Language            |                            Score                             |
 | :----: | :----------------------------------------------------------- | :----------------------------: | :----------------------------------------------------------: |
 |   00   | [**Libft**](https://github.com/tjddnd3116/42seoul_subject/tree/main/Libft)    |               C                | [![soum's 42 Libft Score](https://badge42.vercel.app/api/v2/cl1li0ev4001609l6y3uttc20/project/2166451)](https://github.com/JaeSeoKim/badge42)   |
