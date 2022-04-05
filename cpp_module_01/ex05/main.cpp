@@ -5,28 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 01:10:08 by soum              #+#    #+#             */
-/*   Updated: 2022/04/05 16:23:22 by soum             ###   ########.fr       */
+/*   Created: 2022/04/05 16:31:41 by soum              #+#    #+#             */
+/*   Updated: 2022/04/05 19:40:19 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "myReplace.hpp"
-#include <iostream>
+#include "Harl.h"
 
-int main(int argc, char **argv)
+int main(void)
 {
-	if (argc != 4)
-	{
-		std::cout << "./replace \"filename\" \"s1\" \"s2\"" << std::endl;
-		return (1);
-	}
-	MyReplace myreplace(argv[1], argv[2], argv[3]);
-	if (!myreplace.CheckFile())
-	{
-		std::cout << "File Error " <<std::endl;
-		return (1);
-	}
-	myreplace.DoReplace();
-	std::cout << argv[1] << " replace finish!\ncheck " << argv[1] << ".replace" << std::endl;
+	Harl harl;
+
+	harl.complain("DEBUG");
+	harl.complain("INFO");
+	harl.complain("WARNING");
+	harl.complain("ERROR");
 	return (0);
 }
