@@ -17,7 +17,6 @@
 |   04   | [**Exam Rank 04**](https://github.com/tjddnd3116/42seoul_subject/tree/main/Exam_Rank_04) |               C                | ![](https://badge42.herokuapp.com/api/project/soum/Exam%20Rank%2004) |
 |   	   | [**CPP Module 00**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_00) |              C++               | [![soum's 42 CPP Module 00 Score](https://badge42.vercel.app/api/v2/cl1li0ev4001609l6y3uttc20/project/2497359)](https://github.com/JaeSeoKim/badge42) |
 |   	   | [**CPP Module 01**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_01) |              C++               | [![soum's 42 CPP Module 01 Score](https://badge42.vercel.app/api/v2/cl1li0ev4001609l6y3uttc20/project/2550548)](https://github.com/JaeSeoKim/badge42) |
-
 |   	   | [**CPP Module 02**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_02) |              C++               | score field |
 |   	   | [**CPP Module 03**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_03) |              C++               | score field |
 |   	   | [**CPP Module 04**](https://github.com/tjddnd3116/42seoul_subject/tree/main/cpp_module_04) |              C++               | score field |
