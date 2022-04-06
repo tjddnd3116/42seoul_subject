@@ -6,18 +6,19 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 21:14:12 by soum              #+#    #+#             */
-/*   Updated: 2022/04/05 22:04:34 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/06 21:07:01 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
+#include <ios>
 #include <iostream>
 
 int main(void)
 {
 	Fixed a;
 	Fixed const b( 10 );
-	Fixed const c( 42.42f );
+	Fixed const c( 42.21f );
 	Fixed const d( b );
 
 	a = Fixed( 1234.4321f );

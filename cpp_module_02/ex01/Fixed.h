@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 21:02:12 by soum              #+#    #+#             */
-/*   Updated: 2022/04/05 21:56:21 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/06 19:04:03 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <ostream>
+#include <cmath>
 
 class Fixed {
 	private:
