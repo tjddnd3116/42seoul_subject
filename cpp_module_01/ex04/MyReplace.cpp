@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:26:32 by soum              #+#    #+#             */
-/*   Updated: 2022/04/05 20:56:11 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/06 17:18:54 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ void MyReplace::DoReplace()
 				_writeFile.write(bufToString.c_str(), bufToString.size());
 				break;
 			}
+		}
+		if (_readFile.fail() && !_readFile.eof())
+		{
+			_readFile.clear();
+			continue;
 		}
 		if (!_readFile.eof())
 			_writeFile.write("\n", 1);

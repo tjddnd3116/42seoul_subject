@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 23:56:45 by soum              #+#    #+#             */
-/*   Updated: 2022/04/04 00:36:36 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/06 13:47:14 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 class HumanB {
 	private:
-		Weapon *weapon;
-		std::string name;
+		Weapon *_weapon;
+		std::string _name;
 	public:
 		void setWeapon(Weapon& weapon);
 		void attack();

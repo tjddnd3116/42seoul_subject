@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   Fixed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/03 23:53:56 by soum              #+#    #+#             */
-/*   Updated: 2022/04/06 13:46:25 by soum             ###   ########.fr       */
+/*   Created: 2022/04/05 21:02:12 by soum              #+#    #+#             */
+/*   Updated: 2022/04/05 21:56:21 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_HPP
-#define HUMANA_HPP
+#ifndef FIXED_H
+#define FIXED_H
 
-#include "Weapon.hpp"
+#include <string>
 #include <iostream>
-#include <string.h>
+#include <ostream>
 
-class HumanA {
+class Fixed {
 	private:
-		std::string _name;
-		Weapon &_weapon;
+		int _fixedPointNum;
+		static const int _bits;
 	public:
-		void attack();
-		HumanA(std::string name, Weapon &weapon);
-		HumanA();
+		Fixed();
+		Fixed(const int num);
+		Fixed(const float num);
+		Fixed(const Fixed& fixed);
+		const Fixed & operator=(const Fixed& fixed);
+		~Fixed();
+		int getRawBits( void ) const;
+		void setRawBits( int const raw );
+		float toFloat( void ) const;
+		int toInt( void ) const;
+		std::ostream& operator<<(std::ostream& os);
 };
 
 #endif

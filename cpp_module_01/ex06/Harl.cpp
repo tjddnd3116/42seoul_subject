@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 16:32:52 by soum              #+#    #+#             */
-/*   Updated: 2022/04/05 20:10:11 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/06 17:53:53 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,16 @@ void Harl::error(void)
 
 void Harl::complain(std::string level)
 {
+	char cmd;
 	void (Harl::*fp[4])() = {
 		&Harl::debug,
 		&Harl::info,
 		&Harl::warning,
 		&Harl::error
 	};
-	switch (level.at(0)) {
+
+	cmd = level.at(0);
+	switch (cmd) {
 		case 'D':
 			(this->*fp[0])();
 		case 'I':

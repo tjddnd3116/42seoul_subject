@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 23:47:45 by soum              #+#    #+#             */
-/*   Updated: 2022/04/04 00:32:37 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/06 13:37:03 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@
 class Weapon {
 
 	private:
-		std::string type;
+		std::string _type;
 
 	public:
-		const std::string &getType(void);
+		const std::string& getType(void);
 		void setType(std::string type);
-		Weapon(void);
-		Weapon(std::string type);
+		Weapon(const std::string& type);
 };
 
 #endif

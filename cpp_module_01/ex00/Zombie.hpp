@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 18:40:51 by soum              #+#    #+#             */
-/*   Updated: 2022/04/03 22:38:33 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/06 12:55:25 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 class Zombie
 {
 	private:
-		std::string name;
+		std::string _name;
 	public:
-		void announce(void);
+		void announce( void );
 		Zombie( std::string name );
 		~Zombie();
 };
