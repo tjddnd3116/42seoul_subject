@@ -6,19 +6,19 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 21:02:11 by soum              #+#    #+#             */
-/*   Updated: 2022/04/06 21:13:48 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/07 22:23:37 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
-#include <cmath>
+#include <ostream>
 
 const int Fixed::_bits = 8;
 
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called" << std::endl;
-	_fixedPointNum = 0;
+	_fixedPointNum = 0 << _bits;
 }
 
 Fixed::Fixed(const int num)
@@ -30,22 +30,20 @@ Fixed::Fixed(const int num)
 Fixed::Fixed(const float num)
 {
 	std::cout << "Float constructor called" << std::endl;
-
 	_fixedPointNum = (int)roundf(num * (1 << _bits));
-	_fixedPointNum = (int)roundf(num << _bits));
 }
 
 Fixed::Fixed(const Fixed& fixed)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = fixed;
-	// _fixedPointNum = fixed.getRawBits();
 }
 
-const Fixed& Fixed::operator=(const Fixed& fixed)
+Fixed& Fixed::operator=(const Fixed& fixed)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	return (fixed);
+	_fixedPointNum = fixed.getRawBits();
+	return (*this);
 }
 
 Fixed::~Fixed()
@@ -55,7 +53,6 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (_fixedPointNum);
 }
 
@@ -63,7 +60,7 @@ float Fixed::toFloat() const
 {
 	float result;
 
-	result = _fixedPointNum >> _bits;
+	result = float(_fixedPointNum / 256.0);
 	return (result);
 }
 
@@ -75,8 +72,8 @@ int Fixed::toInt() const
 	return (result);
 }
 
-std::ostream& Fixed::operator<<(std::ostream &os)
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
 {
-	os << this->_fixedPointNum;
+	os <<  ((float)fixed.getRawBits() / (float)(1 << 8));
 	return (os);
 }

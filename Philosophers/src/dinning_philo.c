@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 16:44:18 by soum              #+#    #+#             */
-/*   Updated: 2022/01/06 16:30:08 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/07 22:34:03 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	*eat_think_sleep(void *v_philo)
 	t_philo	*philo;
 
 	philo = (t_philo *)v_philo;
-	wait_other_philo(philo);
+	/** wait_other_philo(philo); */
 	if (philo->id % 2 == 1)
 		usleep(10000);
 	while (!philo->info->philo_die)
