@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 20:00:48 by soum              #+#    #+#             */
-/*   Updated: 2022/04/08 22:21:52 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/09 15:26:37 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,32 +39,27 @@ Point& Point::operator=(const Point &point)
 Point::~Point()
 {}
 
-Fixed Point::getB(Point& point)
+Fixed Point::getA(Point& point) const
 {
-	// double  A = x1 - x0;
-	return (point._x - _x);
-}
-
-Fixed Point::getA(Point& point)
-{
-	// double	B = -(y1 - y0);
-	// 				y0 - y1
 	return (_y - point._y);
 }
 
-Fixed Point::getC(Point& point)
+Fixed Point::getB(Point& point) const
 {
-	// double	C = -B * x0 - A * y0;
-	//				(y1 - y0) * x0 -(x1 - x0) * y0
+	return (point._x - _x);
+}
+
+Fixed Point::getC(Point& point) const
+{
 	return (((point._y - _y) * _x.toFloat()) - ((point._x - _x) * _y.toFloat()));
 }
 
-Fixed Point::get_x()
+Fixed Point::get_x() const
 {
 	return (_x);
 }
 
-Fixed Point::get_y()
+Fixed Point::get_y() const
 {
 	return (_y);
 }

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 20:00:47 by soum              #+#    #+#             */
-/*   Updated: 2022/04/08 21:32:56 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/09 15:26:50 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ class Point {
 		Point( const Point& point);
 		Point& operator=( const Point& point);
 		~Point();
-		Fixed getA(Point& point);
-		Fixed getB(Point& point);
-		Fixed getC(Point& point);
-		Fixed get_x( void );
-		Fixed get_y( void );
+		Fixed getA(Point& point) const;
+		Fixed getB(Point& point) const;
+		Fixed getC(Point& point) const;
+		Fixed get_x( void ) const;
+		Fixed get_y( void ) const;
 };
 
 bool bsp( Point const a, Point const b, Point const c, Point const point);

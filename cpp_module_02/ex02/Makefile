@@ -6,19 +6,19 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/08 16:46:29 by soum              #+#    #+#              #
-#    Updated: 2022/04/08 16:46:51 by soum             ###   ########.fr        #
+#    Updated: 2022/04/09 16:10:16 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = a.out
-CXX = C++
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp \
 	   Fixed.cpp
 
 .cpp.o :
-	$(CC) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)
+	$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)
 
 OBJS = $(SRCS:.cpp=.o)
 
