@@ -6,15 +6,13 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 21:02:11 by soum              #+#    #+#             */
-/*   Updated: 2022/04/07 22:23:37 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/08 17:04:30 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
-#include <ostream>
 
 const int Fixed::_bits = 8;
-
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called" << std::endl;
@@ -24,7 +22,7 @@ Fixed::Fixed()
 Fixed::Fixed(const int num)
 {
 	std::cout << "Int constructor called" << std::endl;
-	_fixedPointNum = num << _bits;
+	_fixedPointNum = num <<_bits;
 }
 
 Fixed::Fixed(const float num)
@@ -60,7 +58,7 @@ float Fixed::toFloat() const
 {
 	float result;
 
-	result = float(_fixedPointNum / 256.0);
+	result = float(_fixedPointNum / (float)(1 << 8));
 	return (result);
 }
 
@@ -72,8 +70,8 @@ int Fixed::toInt() const
 	return (result);
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
+std::ostream& operator<<(std::ostream &os, const Fixed& fixed)
 {
-	os <<  ((float)fixed.getRawBits() / (float)(1 << 8));
+	os << (float(fixed.getRawBits()) / (float)(1 << 8));
 	return (os);
 }
