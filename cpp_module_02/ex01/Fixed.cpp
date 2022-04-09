@@ -6,13 +6,14 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 21:02:11 by soum              #+#    #+#             */
-/*   Updated: 2022/04/08 17:04:30 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/09 12:37:45 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
 
 const int Fixed::_bits = 8;
+
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called" << std::endl;
@@ -54,11 +55,16 @@ int Fixed::getRawBits() const
 	return (_fixedPointNum);
 }
 
+void Fixed::setRawBits(const int raw)
+{
+	_fixedPointNum = raw << _bits;
+}
+
 float Fixed::toFloat() const
 {
 	float result;
 
-	result = float(_fixedPointNum / (float)(1 << 8));
+	result = float(_fixedPointNum / (float)(1 << _bits));
 	return (result);
 }
 

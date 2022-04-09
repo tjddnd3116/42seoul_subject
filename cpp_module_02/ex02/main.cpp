@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 17:12:25 by soum              #+#    #+#             */
-/*   Updated: 2022/04/08 19:54:53 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/09 15:15:32 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ int		main( void ) {
 	std::cout << b << std::endl;
 
 	std::cout << Fixed::max( a, b ) << std::endl;
-
 	return 0;
 }
