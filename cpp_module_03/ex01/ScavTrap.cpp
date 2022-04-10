@@ -6,12 +6,12 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:31:48 by soum              #+#    #+#             */
-/*   Updated: 2022/04/10 22:25:13 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/11 00:03:29 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.h"
-#include "ClapTrap.h"
+#include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 
 ScavTrap::ScavTrap( std::string name )
 	: ClapTrap(name)

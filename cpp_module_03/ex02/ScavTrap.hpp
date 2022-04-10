@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.h                                         :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:31:50 by soum              #+#    #+#             */
-/*   Updated: 2022/04/10 22:23:34 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/11 00:05:26 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_H
-#define	SCAVTRAP_H
+#ifndef SCAVTRAP_HPP
+#define	SCAVTRAP_HPP
 
-#include "ClapTrap.h"
+#include "ClapTrap.hpp"
 
 class ScavTrap : public ClapTrap {
 

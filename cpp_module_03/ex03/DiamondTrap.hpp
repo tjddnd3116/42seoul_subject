@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:57:07 by soum              #+#    #+#             */
-/*   Updated: 2022/04/10 22:57:34 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/11 00:05:56 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define DiamondTrap_hpp
 
 #include "FragTrap.hpp"
-#include "ScavTrap.h"
+#include "ScavTrap.hpp"
 
 class DiamondTrap
 {

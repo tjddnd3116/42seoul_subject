@@ -6,11 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 19:45:02 by soum              #+#    #+#             */
-/*   Updated: 2022/04/10 21:45:16 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/11 00:03:15 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.h"
+#include "ClapTrap.hpp"
 #include <iomanip>
 
 ClapTrap::ClapTrap( std::string name )
