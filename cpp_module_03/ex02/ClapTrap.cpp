@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 19:45:02 by soum              #+#    #+#             */
-/*   Updated: 2022/04/10 16:25:58 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/10 21:45:16 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,4 +114,39 @@ void ClapTrap::showStatus( void )
 		<< "|" << std::setw(15) << _hitPoints \
 		<< "|" << std::setw(15) << _energyPoints \
 		<< "|" << std::setw(15) << _attackDamage << "\033[0m" << std::endl;
+}
+
+void ClapTrap::setHitPoints(unsigned int amount)
+{
+	_hitPoints = amount;
+}
+
+void ClapTrap::setEnergyPoints(unsigned int amount)
+{
+	_energyPoints = amount;
+}
+
+void ClapTrap::setAttackDamage(unsigned int amount)
+{
+	_attackDamage = amount;
+}
+
+std::string ClapTrap::getName( void )
+{
+	return (_name);
+}
+
+void ClapTrap::setName( std::string name )
+{
+	_name = name;
+}
+
+unsigned int ClapTrap::getHitPoints( void )
+{
+	return (_hitPoints);
+}
+
+unsigned int ClapTrap::getEnergyPoints( void )
+{
+	return (_energyPoints);
 }

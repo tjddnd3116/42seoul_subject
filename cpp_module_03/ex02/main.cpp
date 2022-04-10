@@ -6,37 +6,23 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 15:23:39 by soum              #+#    #+#             */
-/*   Updated: 2022/04/10 20:07:42 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/10 22:49:21 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.h"
-#include <iostream>
+#include "ScavTrap.h"
+#include "FragTrap.hpp"
 
 int main(void)
 {
-	ClapTrap thor("thor");
-	ClapTrap loki("loki");
+	FragTrap thor("thor");
+	FragTrap loki("loki");
 
-
 	thor.attack("loki");
 	loki.takeDamage(thor.getAttackDamage());
 	thor.attack("loki");
 	loki.takeDamage(thor.getAttackDamage());
-	thor.attack("loki");
-	loki.takeDamage(thor.getAttackDamage());
-	thor.attack("loki");
-	loki.takeDamage(thor.getAttackDamage());
-	loki.beRepaired(2);
-	loki.attack("thor");
-	thor.takeDamage(loki.getAttackDamage());
-	thor.beRepaired(2);
-	thor.beRepaired(2);
-	thor.beRepaired(2);
-	thor.beRepaired(2);
-	thor.beRepaired(2);
-	thor.beRepaired(2);
-	thor.beRepaired(2);
+	thor.highFivesGuys();
 
 	return (0);
 }
