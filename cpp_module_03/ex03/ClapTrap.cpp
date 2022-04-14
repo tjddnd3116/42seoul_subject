@@ -6,20 +6,29 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 19:45:02 by soum              #+#    #+#             */
-/*   Updated: 2022/04/11 00:05:40 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/14 21:56:06 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include <iomanip>
 
+ClapTrap::ClapTrap()
+{
+	_name = "no name";
+	_hitPoints = 10;
+	_energyPoints = 10;
+	_attackDamage = 0;
+	std::cout << "ClapTrap "<< _name << " created" << std::endl;
+}
+
 ClapTrap::ClapTrap( std::string name )
 {
-	std::cout << "ClapTrap "<< name << " created" << std::endl;
 	_name = name;
 	_hitPoints = 10;
 	_energyPoints = 10;
 	_attackDamage = 0;
+	std::cout << "ClapTrap "<< name << " created" << std::endl;
 }
 
 ClapTrap::ClapTrap( ClapTrap& clapTrap )
@@ -116,17 +125,17 @@ void ClapTrap::showStatus( void )
 		<< "|" << std::setw(15) << _attackDamage << "\033[0m" << std::endl;
 }
 
-void ClapTrap::setHitPoints(unsigned int amount)
+void ClapTrap::setHitPoints( unsigned int amount )
 {
 	_hitPoints = amount;
 }
 
-void ClapTrap::setEnergyPoints(unsigned int amount)
+void ClapTrap::setEnergyPoints( unsigned int amount )
 {
 	_energyPoints = amount;
 }
 
-void ClapTrap::setAttackDamage(unsigned int amount)
+void ClapTrap::setAttackDamage( unsigned int amount )
 {
 	_attackDamage = amount;
 }

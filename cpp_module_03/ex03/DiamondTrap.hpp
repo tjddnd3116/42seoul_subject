@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:57:07 by soum              #+#    #+#             */
-/*   Updated: 2022/04/11 00:05:56 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/14 22:32:57 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,22 @@
 
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 
-class DiamondTrap
+class DiamondTrap :public FragTrap, public ScavTrap
 {
-		private:
 
+		private:
+			// std::string name;
+			// std::string _name;
 		public:
+			DiamondTrap( void );
+			DiamondTrap( std::string name );
+			~DiamondTrap();
+			void attack( const std::string& target );
+			void whoAmI( void );
+			void showStatus( void );
 
 };
+
 #endif

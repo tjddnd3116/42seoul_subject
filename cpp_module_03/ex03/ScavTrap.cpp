@@ -6,37 +6,46 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:31:48 by soum              #+#    #+#             */
-/*   Updated: 2022/04/11 00:06:11 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/14 22:04:40 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap()
+	: ClapTrap()
+{
+	std::cout << "ScavTrap "<< getName() << " created" << std::endl;
+	setHitPoints(100);
+	setEnergyPoints(50);
+	setAttackDamage(20);
+}
+
 ScavTrap::ScavTrap( std::string name )
 	: ClapTrap(name)
 {
-	std::cout << "ScavTrap "<< name << " created" << std::endl;
-	ClapTrap::setHitPoints(100);
-	ClapTrap::setEnergyPoints(50);
-	ClapTrap::setAttackDamage(20);
+	std::cout << "ScavTrap "<< getName() << " created" << std::endl;
+	setHitPoints(100);
+	setEnergyPoints(50);
+	setAttackDamage(20);
 }
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap " << ClapTrap::getName() << " deleted" << std::endl;
+	std::cout << "ScavTrap " << getName() << " deleted" << std::endl;
 }
 
 void ScavTrap::attack(const std::string &target)
 {
-	if (ClapTrap::getEnergyPoints() && ClapTrap::getHitPoints())
+	if (getEnergyPoints() && getHitPoints())
 	{
-		ClapTrap::setEnergyPoints(ClapTrap::getEnergyPoints() - 1);
-		std::cout << "ScavTrap " << ClapTrap::getName() \
+		setEnergyPoints(getEnergyPoints() - 1);
+		std::cout << "ScavTrap " << getName() \
 			<< " attacks " << target << ", causing " \
-			<< ClapTrap::getAttackDamage() << " points of damage!" << std::endl;
+			<< getAttackDamage() << " points of damage!" << std::endl;
 	}
 	else {
-		std::cout << "ScavTrap " << ClapTrap::getName() \
+		std::cout << "ScavTrap " << getName() \
 			<< " has no _energyPoints or dead" \
 			<< std::endl;
 	}
@@ -45,8 +54,18 @@ void ScavTrap::attack(const std::string &target)
 
 void ScavTrap::guardGate( void )
 {
-	std::cout << "ScavTrap " << ClapTrap::getName() \
-		<< "is now in Gate keeper mode" << std::endl;
+	if (getEnergyPoints() && getHitPoints())
+	{
+		setEnergyPoints(getEnergyPoints() - 1);
+		std::cout << "ScavTrap " << getName() \
+			<< "is now in Gate keeper mode" << std::endl;
+	}
+	else {
+		std::cout << "ScavTrap " << getName() \
+			<< " has no _energyPoints or dead" \
+			<< std::endl;
+	}
+	showStatus();
 }
 
 void ScavTrap::showStatus( void )
@@ -55,9 +74,9 @@ void ScavTrap::showStatus( void )
 		<< "|" << std::setw(15) << "hit points" \
 		<< "|" << std::setw(15) << "energy points" \
 		<< "|" << std::setw(15) << "attack damage" << std::endl;
-	std::cout << "|" << std::setw(15) << ClapTrap::getName() \
-		<< "|" << std::setw(15) << ClapTrap::getHitPoints() \
-		<< "|" << std::setw(15) << ClapTrap::getEnergyPoints() \
-		<< "|" << std::setw(15) << ClapTrap::getAttackDamage() \
+	std::cout << "|" << std::setw(15) << getName() \
+		<< "|" << std::setw(15) << getHitPoints() \
+		<< "|" << std::setw(15) << getEnergyPoints() \
+		<< "|" << std::setw(15) << getAttackDamage() \
 		<< "\033[0m" << std::endl;
 }

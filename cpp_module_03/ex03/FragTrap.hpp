@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:36:48 by soum              #+#    #+#             */
-/*   Updated: 2022/04/11 00:06:03 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/14 21:48:45 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ class FragTrap : public ClapTrap
 			void showStatus( void );
 
 		public:
+			FragTrap();
 			FragTrap( std::string name );
 			~FragTrap();
 			void attack( const std::string& target );
 			void highFivesGuys( void );
-
 };
 
 #endif
