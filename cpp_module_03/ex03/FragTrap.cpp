@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:37:02 by soum              #+#    #+#             */
-/*   Updated: 2022/04/14 22:02:36 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/15 19:09:16 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void FragTrap::highFivesGuys( void )
 	{
 		setEnergyPoints(getEnergyPoints() - 1);
 		std::cout << getName() \
-			<< " : Look out, everybody, things are about to get awesome!" << std::endl;
+			<< " High Five guyyyyyyss!" << std::endl;
 	}
 	else {
 		std::cout << "FragTrap " << getName() \
