@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:36:48 by soum              #+#    #+#             */
-/*   Updated: 2022/04/14 21:48:45 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/15 12:47:15 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 		private:
 			void showStatus( void );
