@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 19:45:03 by soum              #+#    #+#             */
-/*   Updated: 2022/04/15 20:56:37 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/16 16:55:38 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,22 @@ class ClapTrap {
 		void showStatus( void );
 
 	public:
+		// Orthodox Canonical Form
 		ClapTrap();
 		ClapTrap( std::string name );
-		ClapTrap( ClapTrap& clapTrap );
+		ClapTrap( const ClapTrap& clapTrap );
 		ClapTrap & operator=( ClapTrap& clapTrap );
 		~ClapTrap();
+		// member functions
 		void attack( const std::string& target );
 		void takeDamage( unsigned int amount );
 		void beRepaired( unsigned int amount );
+		// getter
 		std::string getName( void ) const;
 		unsigned int getHitPoints( void ) const;
 		unsigned int getEnergyPoints( void ) const;
 		unsigned int getAttackDamage( void ) const;
+		// setter
 		void setName( std::string name );
 		void setHitPoints( unsigned int amount );
 		void setEnergyPoints( unsigned int amount );

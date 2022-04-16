@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:37:02 by soum              #+#    #+#             */
-/*   Updated: 2022/04/15 19:09:16 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/16 17:09:57 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,24 @@ FragTrap::FragTrap( std::string name )
 	setAttackDamage(30);
 }
 
+FragTrap::FragTrap( const FragTrap& fragTrap )
+	: ClapTrap(fragTrap.getName())
+{
+	this->setName(fragTrap.getName() + "_copy");
+	this->setAttackDamage(fragTrap.getAttackDamage());
+	this->setEnergyPoints(fragTrap.getEnergyPoints());
+	this->setHitPoints(fragTrap.getHitPoints());
+
+}
+
+FragTrap& FragTrap::operator=( FragTrap &fragTrap )
+{
+	setName(fragTrap.getName());
+	setHitPoints(fragTrap.getHitPoints());
+	setEnergyPoints(fragTrap.getEnergyPoints());
+	setAttackDamage(fragTrap.getAttackDamage());
+	return (*this);
+}
 
 FragTrap::~FragTrap()
 {
@@ -67,7 +85,6 @@ void FragTrap::highFivesGuys( void )
 			<< std::endl;
 	}
 	showStatus();
-
 }
 
 void FragTrap::showStatus( void )

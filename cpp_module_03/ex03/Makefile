@@ -6,13 +6,13 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:58:22 by soum              #+#    #+#              #
-#    Updated: 2022/04/10 22:56:17 by soum             ###   ########.fr        #
+#    Updated: 2022/04/16 17:08:48 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = diamondtrap
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
 
 SRCS = main.cpp \
 	   ClapTrap.cpp \

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 19:45:02 by soum              #+#    #+#             */
-/*   Updated: 2022/04/15 19:03:51 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/16 16:57:56 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,12 @@ ClapTrap::ClapTrap( std::string name )
 	std::cout << "ClapTrap "<< _name << " created" << std::endl;
 }
 
-ClapTrap::ClapTrap( ClapTrap& clapTrap )
+ClapTrap::ClapTrap( const ClapTrap& clapTrap )
 {
-	*this = clapTrap;
+	_name = clapTrap.getName() + "_copy";
+	_attackDamage = clapTrap.getAttackDamage();
+	_energyPoints = clapTrap.getEnergyPoints();
+	_hitPoints = clapTrap.getHitPoints();
 }
 
 ClapTrap& ClapTrap::operator=( ClapTrap &clapTrap )

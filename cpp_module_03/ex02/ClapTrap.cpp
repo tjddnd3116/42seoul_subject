@@ -6,25 +6,37 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 19:45:02 by soum              #+#    #+#             */
-/*   Updated: 2022/04/11 00:04:52 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/16 17:13:16 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include <iomanip>
 
+ClapTrap::ClapTrap()
+{
+	_name = "no name";
+	_hitPoints = 10;
+	_energyPoints = 10;
+	_attackDamage = 0;
+	std::cout << "ClapTrap "<< _name << " created" << std::endl;
+}
+
 ClapTrap::ClapTrap( std::string name )
 {
-	std::cout << "ClapTrap "<< name << " created" << std::endl;
 	_name = name;
 	_hitPoints = 10;
 	_energyPoints = 10;
 	_attackDamage = 0;
+	std::cout << "ClapTrap "<< _name << " created" << std::endl;
 }
 
-ClapTrap::ClapTrap( ClapTrap& clapTrap )
+ClapTrap::ClapTrap( const ClapTrap& clapTrap )
 {
-	*this = clapTrap;
+	_name = clapTrap.getName() + "_copy";
+	_attackDamage = clapTrap.getAttackDamage();
+	_energyPoints = clapTrap.getEnergyPoints();
+	_hitPoints = clapTrap.getHitPoints();
 }
 
 ClapTrap& ClapTrap::operator=( ClapTrap &clapTrap )
@@ -94,16 +106,6 @@ void ClapTrap::beRepaired(unsigned int amount)
 	showStatus();
 }
 
-unsigned int ClapTrap::getAttackDamage( void )
-{
-	if (_energyPoints && _hitPoints)
-		return (_attackDamage);
-	else
-		return (0);
-}
-
-
-
 void ClapTrap::showStatus( void )
 {
 	std::cout << "\033[31m" << "|" << std::setw(15) << "name" \
@@ -131,22 +133,30 @@ void ClapTrap::setAttackDamage(unsigned int amount)
 	_attackDamage = amount;
 }
 
-std::string ClapTrap::getName( void )
-{
-	return (_name);
-}
-
 void ClapTrap::setName( std::string name )
 {
 	_name = name;
 }
 
-unsigned int ClapTrap::getHitPoints( void )
+std::string ClapTrap::getName( void ) const
+{
+	return (_name);
+}
+
+unsigned int ClapTrap::getHitPoints( void ) const
 {
 	return (_hitPoints);
 }
 
-unsigned int ClapTrap::getEnergyPoints( void )
+unsigned int ClapTrap::getEnergyPoints( void ) const
 {
 	return (_energyPoints);
+}
+
+unsigned int ClapTrap::getAttackDamage( void ) const
+{
+	if (_energyPoints && _hitPoints)
+		return (_attackDamage);
+	else
+		return (0);
 }

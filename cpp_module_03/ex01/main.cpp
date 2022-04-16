@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 15:23:39 by soum              #+#    #+#             */
-/*   Updated: 2022/04/11 00:03:23 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/16 16:09:44 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int main(void)
 	loki.takeDamage(thor.getAttackDamage());
 	thor.attack("loki");
 	loki.takeDamage(thor.getAttackDamage());
+	loki.beRepaired(10);
 	loki.guardGate();
 
 	return (0);

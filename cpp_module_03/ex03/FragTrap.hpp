@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:36:48 by soum              #+#    #+#             */
-/*   Updated: 2022/04/15 19:42:40 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/16 17:01:11 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,13 @@ class FragTrap : virtual public ClapTrap
 			void showStatus( void );
 
 		public:
+			// Orthodox Canonical Form
 			FragTrap();
 			FragTrap( std::string name );
+			FragTrap( const FragTrap& fragTrap );
+			FragTrap & operator=(FragTrap& fragTrap );
 			~FragTrap();
+			// member funtions
 			void attack( const std::string& target );
 			void highFivesGuys( void );
 };

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:31:48 by soum              #+#    #+#             */
-/*   Updated: 2022/04/14 22:04:40 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/16 17:10:02 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,24 @@ ScavTrap::ScavTrap( std::string name )
 	setHitPoints(100);
 	setEnergyPoints(50);
 	setAttackDamage(20);
+}
+
+ScavTrap::ScavTrap( const ScavTrap& scavTrap )
+	:ClapTrap(scavTrap.getName())
+{
+	this->setName(scavTrap.getName() + "_copy");
+	this->setAttackDamage(scavTrap.getAttackDamage());
+	this->setEnergyPoints(scavTrap.getEnergyPoints());
+	this->setHitPoints(scavTrap.getHitPoints());
+}
+
+ScavTrap& ScavTrap::operator=( ScavTrap &scavTrap )
+{
+	setName(scavTrap.getName());
+	setHitPoints(scavTrap.getHitPoints());
+	setEnergyPoints(scavTrap.getEnergyPoints());
+	setAttackDamage(scavTrap.getAttackDamage());
+	return (*this);
 }
 
 ScavTrap::~ScavTrap()

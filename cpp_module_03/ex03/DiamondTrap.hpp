@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:57:07 by soum              #+#    #+#             */
-/*   Updated: 2022/04/15 19:40:41 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/16 17:07:16 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,15 @@ class DiamondTrap :public FragTrap, public ScavTrap
 			std::string _name;
 
 		public:
-			DiamondTrap( void );
+			// Orthodox Canonical Form
+			DiamondTrap();
 			DiamondTrap( std::string name );
+			DiamondTrap( const DiamondTrap& diamondTrap );
+			DiamondTrap & operator=(DiamondTrap& diamondTrap );
 			~DiamondTrap();
+			// member funtions
 			void attack( const std::string& target );
 			void whoAmI( void );
-
 };
 
 #endif
