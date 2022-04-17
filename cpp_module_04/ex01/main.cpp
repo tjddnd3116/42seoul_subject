@@ -6,28 +6,29 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 18:00:38 by soum              #+#    #+#             */
-/*   Updated: 2022/04/17 00:22:38 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/17 22:38:29 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int main(void)
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	// const Animal*j = new Cat();
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	// j->makeSound();
+	// delete j;
 
-	delete meta;
-	delete j;
-	delete i;
+	Cat *cat = new Cat;
+	Cat cat2;
+
+	cat2 = *cat;
+
+
+	delete cat;
 	return (0);
 }

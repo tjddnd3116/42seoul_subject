@@ -11,7 +11,7 @@ Animal::Animal(Animal& animal)
 	*this = animal;
 }
 
-Animal& Animal::operator=(Animal & animal)
+Animal& Animal::operator=(const Animal & animal)
 {
 	_type = animal.getType();
 	return (*this);
@@ -19,7 +19,7 @@ Animal& Animal::operator=(Animal & animal)
 
 Animal::~Animal()
 {
-	std::cout << "animal deleted" << std::endl;
+	std::cout << _type << " deleted" << std::endl;
 }
 
 void Animal::makeSound( void ) const

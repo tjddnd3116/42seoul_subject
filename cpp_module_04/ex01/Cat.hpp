@@ -2,11 +2,12 @@
 #define Cat_hpp
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal
 {
 		private:
-
+			Brain* _brain;
 		public:
 			// Orthodox Canonical Form
 			Cat();

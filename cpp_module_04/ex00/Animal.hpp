@@ -12,7 +12,7 @@ class Animal
 			// Orthodox Canonical Form
 			Animal();
 			Animal( Animal& animal);
-			Animal& operator=(Animal & animal);
+			Animal& operator=( const Animal & animal );
 			virtual ~Animal();
 			// member functions
 			virtual void makeSound( void ) const;

@@ -2,11 +2,12 @@
 #define Dog_hpp
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal
 {
 		private:
-
+			Brain* _brain;
 		public:
 			// Orthodox Canonical Form
 			Dog();

@@ -1,9 +1,9 @@
 #include "Dog.hpp"
-#include "Animal.hpp"
 
 Dog::Dog()
 	:Animal()
 {
+	_brain = new Brain("cat");
 	setType("Dog");
 	std::cout << getType() << " created" << std::endl;
 }
@@ -23,6 +23,7 @@ Dog& Dog::operator=(const Dog &dog)
 Dog::~Dog()
 {
 	std::cout << getType() << " deleted" << std::endl;
+	delete []_brain;
 }
 
 void Dog::makeSound( void ) const
