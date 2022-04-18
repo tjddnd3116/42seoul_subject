@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:56:54 by soum              #+#    #+#             */
-/*   Updated: 2022/04/19 01:43:21 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/19 04:56:12 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ class Character : public ICharacter
 		private:
 			std::string _name;
 			AMateria* _materia_slot[4];
-			AMateria* _materia_trash[99];
+			AMateria* _materia_trash[10];
 
 		public:
 			// Orthodox
+			Character();
 			Character( std::string name );
 			Character( Character& character );
+			Character( ICharacter& character );
 			Character& operator=( Character& character );
 			~Character();
 			// getter
@@ -39,5 +41,7 @@ class Character : public ICharacter
 			void equip( AMateria* m );
 			void unequip( int idx );
 			void use( int idx, ICharacter& target );
+			// member functions
+			int materiaToTrash( AMateria* m );
 };
 #endif

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 23:41:30 by soum              #+#    #+#             */
-/*   Updated: 2022/04/19 00:49:27 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/19 03:16:19 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ AMateria* MateriaSource::createMateria(const std::string &type)
 			return (_materia_slot[i]->clone());
 		}
 	}
-	std::cout << "Materia Source did't learn" << type << " materia" << std::endl;
+	std::cout << "Materia Source did't learn " << type << " materia" << std::endl;
 	return (0);
 }
