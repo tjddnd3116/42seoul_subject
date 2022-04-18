@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 16:03:32 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:32 by soum             ###   ########.fr       */
+/*   Created: 2022/04/18 16:03:22 by soum              #+#    #+#             */
+/*   Updated: 2022/04/18 16:09:37 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Dog_hpp
-#define Dog_hpp
+#ifndef Animal_hpp
+#define Animal_hpp
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <iostream>
 
-class Dog : public Animal
+class Animal
 {
 		private:
-			Brain* _brain;
+			std::string _type;
+
 		public:
 			// Orthodox Canonical Form
-			Dog();
-			Dog( const Dog& dog );
-			Dog& operator=( const Dog& dog );
-			~Dog();
+			Animal();
+			Animal( Animal& animal);
+			Animal& operator=( const Animal & animal );
+			virtual ~Animal();
 			// member functions
-			void makeSound( void ) const;
+			virtual void makeSound( void ) const = 0;
+			// getter
+			std::string getType( void ) const;
+			// setter
+			void setType( std::string type );
 };
 #endif

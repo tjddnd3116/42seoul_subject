@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/18 12:30:14 by soum              #+#    #+#             */
+/*   Updated: 2022/04/18 16:20:32 by soum             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Dog.hpp"
 
 Dog::Dog()
@@ -16,14 +28,15 @@ Dog::Dog(const Dog& dog)
 
 Dog& Dog::operator=(const Dog &dog)
 {
+	(*this->_brain) = (*dog._brain);
 	this->setType(dog.getType());
 	return (*this);
 }
 
 Dog::~Dog()
 {
+	delete _brain;
 	std::cout << getType() << " deleted" << std::endl;
-	delete []_brain;
 }
 
 void Dog::makeSound( void ) const

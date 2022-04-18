@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/18 12:30:15 by soum              #+#    #+#             */
+/*   Updated: 2022/04/18 16:20:26 by soum             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Cat.hpp"
-#include "Brain.hpp"
 
 Cat::Cat()
 	:Animal()
@@ -25,8 +36,8 @@ Cat& Cat::operator=(const Cat& cat)
 
 Cat::~Cat()
 {
-	std::cout << getType() << " deleted" << std::endl;
 	delete _brain;
+	std::cout << getType() << " deleted" << std::endl;
 }
 
 void Cat::makeSound( void ) const

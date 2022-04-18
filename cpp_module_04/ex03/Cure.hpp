@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 16:03:01 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:01 by soum             ###   ########.fr       */
+/*   Created: 2022/04/18 18:13:54 by soum              #+#    #+#             */
+/*   Updated: 2022/04/18 22:20:52 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#ifndef Cure_hpp
+#define Cure_hpp
 
-Cat::Cat()
-	:Animal()
+#include "AMateria.hpp"
+#include "Character.hpp"
+
+class Cure : public AMateria
 {
-	setType("Cat");
-	std::cout << getType() << " created" << std::endl;
-}
-
-Cat::Cat(const Cat& cat)
-	:Animal()
-{
-	*this = cat;
-}
+		public:
+			Cure();
+			AMateria* clone() const;
+			void use(ICharacter& target);
 
 
-Cat& Cat::operator=(const Cat& cat)
-{
-	this->setType(cat.getType());
-	return (*this);
-}
-
-Cat::~Cat()
-{
-	std::cout << getType() << " deleted" << std::endl;
-}
-
-void Cat::makeSound( void ) const
-{
-	std::cout << "..." << std::endl;
-}
+};
+#endif

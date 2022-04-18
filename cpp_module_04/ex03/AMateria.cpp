@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 16:03:01 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:01 by soum             ###   ########.fr       */
+/*   Created: 2022/04/18 18:37:52 by soum              #+#    #+#             */
+/*   Updated: 2022/04/19 00:28:47 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "AMateria.hpp"
 
-Cat::Cat()
-	:Animal()
+AMateria::AMateria( std::string const& type )
 {
-	setType("Cat");
-	std::cout << getType() << " created" << std::endl;
+	_type = type;
 }
 
-Cat::Cat(const Cat& cat)
-	:Animal()
+AMateria::AMateria( const AMateria& amateria )
 {
-	*this = cat;
+	*this = amateria;
 }
 
-
-Cat& Cat::operator=(const Cat& cat)
+AMateria& AMateria::operator=(const AMateria &amateria)
 {
-	this->setType(cat.getType());
+	this->_type = amateria.getType();
 	return (*this);
 }
 
-Cat::~Cat()
+AMateria::~AMateria()
+{}
+
+std::string const & AMateria::getType() const
 {
-	std::cout << getType() << " deleted" << std::endl;
+	return (_type);
 }
 
-void Cat::makeSound( void ) const
-{
-	std::cout << "..." << std::endl;
-}
+// void AMateria::use(ICharacter& target)
+// {
+//
+// }

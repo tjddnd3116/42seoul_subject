@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 16:03:01 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:01 by soum             ###   ########.fr       */
+/*   Created: 2022/04/18 17:07:08 by soum              #+#    #+#             */
+/*   Updated: 2022/04/19 00:01:22 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#ifndef IMateriaSource_hpp
+#define IMateriaSource_hpp
 
-Cat::Cat()
-	:Animal()
+#include <iostream>
+#include "AMateria.hpp"
+
+class IMateriaSource
 {
-	setType("Cat");
-	std::cout << getType() << " created" << std::endl;
-}
+		public:
+			virtual ~IMateriaSource() {}
+			virtual void learnMateria( AMateria* ) = 0;
+			virtual AMateria* createMateria( std::string const & type ) = 0;
+};
 
-Cat::Cat(const Cat& cat)
-	:Animal()
-{
-	*this = cat;
-}
-
-
-Cat& Cat::operator=(const Cat& cat)
-{
-	this->setType(cat.getType());
-	return (*this);
-}
-
-Cat::~Cat()
-{
-	std::cout << getType() << " deleted" << std::endl;
-}
-
-void Cat::makeSound( void ) const
-{
-	std::cout << "..." << std::endl;
-}
+#endif

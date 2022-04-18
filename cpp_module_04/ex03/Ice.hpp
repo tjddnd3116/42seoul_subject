@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 16:03:01 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:01 by soum             ###   ########.fr       */
+/*   Created: 2022/04/18 22:20:59 by soum              #+#    #+#             */
+/*   Updated: 2022/04/18 22:21:01 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#ifndef Ice_hpp
+#define Ice_hpp
 
-Cat::Cat()
-	:Animal()
+#include "AMateria.hpp"
+#include "Character.hpp"
+
+class Ice : public AMateria
 {
-	setType("Cat");
-	std::cout << getType() << " created" << std::endl;
-}
+		public:
+			Ice();
+			AMateria* clone() const;
+			void use(ICharacter& target);
 
-Cat::Cat(const Cat& cat)
-	:Animal()
-{
-	*this = cat;
-}
-
-
-Cat& Cat::operator=(const Cat& cat)
-{
-	this->setType(cat.getType());
-	return (*this);
-}
-
-Cat::~Cat()
-{
-	std::cout << getType() << " deleted" << std::endl;
-}
-
-void Cat::makeSound( void ) const
-{
-	std::cout << "..." << std::endl;
-}
+};
+#endif

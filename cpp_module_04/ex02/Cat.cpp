@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 16:03:01 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:01 by soum             ###   ########.fr       */
+/*   Created: 2022/04/18 12:30:15 by soum              #+#    #+#             */
+/*   Updated: 2022/04/18 16:19:36 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 Cat::Cat()
 	:Animal()
 {
+	_brain = new Brain("dog");
 	setType("Cat");
 	std::cout << getType() << " created" << std::endl;
 }
@@ -28,12 +29,14 @@ Cat::Cat(const Cat& cat)
 
 Cat& Cat::operator=(const Cat& cat)
 {
+	(*this->_brain) = (*cat._brain);
 	this->setType(cat.getType());
 	return (*this);
 }
 
 Cat::~Cat()
 {
+	delete _brain;
 	std::cout << getType() << " deleted" << std::endl;
 }
 

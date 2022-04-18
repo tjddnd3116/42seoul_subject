@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 16:03:01 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:01 by soum             ###   ########.fr       */
+/*   Created: 2022/04/18 18:13:55 by soum              #+#    #+#             */
+/*   Updated: 2022/04/18 22:20:54 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Cure.hpp"
 
-Cat::Cat()
-	:Animal()
+Cure::Cure()
+	:AMateria("cure")
+{}
+
+AMateria* Cure::clone() const
 {
-	setType("Cat");
-	std::cout << getType() << " created" << std::endl;
+	Cure* cur_clone = new Cure;
+	return (cur_clone);
 }
 
-Cat::Cat(const Cat& cat)
-	:Animal()
+void Cure::use(ICharacter& target)
 {
-	*this = cat;
-}
+	std::string name;
 
 
-Cat& Cat::operator=(const Cat& cat)
-{
-	this->setType(cat.getType());
-	return (*this);
-}
-
-Cat::~Cat()
-{
-	std::cout << getType() << " deleted" << std::endl;
-}
-
-void Cat::makeSound( void ) const
-{
-	std::cout << "..." << std::endl;
+	name = ((Character*)(&target))->getName();
+	std::cout << "* heals " << name << "'s wounds *" << std::endl;
 }

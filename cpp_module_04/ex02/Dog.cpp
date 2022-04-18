@@ -1,43 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 16:03:01 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:01 by soum             ###   ########.fr       */
+/*   Created: 2022/04/18 12:30:14 by soum              #+#    #+#             */
+/*   Updated: 2022/04/18 16:19:41 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Dog.hpp"
 
-Cat::Cat()
+Dog::Dog()
 	:Animal()
 {
-	setType("Cat");
+	_brain = new Brain("cat");
+	setType("Dog");
 	std::cout << getType() << " created" << std::endl;
 }
 
-Cat::Cat(const Cat& cat)
+Dog::Dog(const Dog& dog)
 	:Animal()
 {
-	*this = cat;
+	*this = dog;
 }
 
-
-Cat& Cat::operator=(const Cat& cat)
+Dog& Dog::operator=(const Dog &dog)
 {
-	this->setType(cat.getType());
+	(*this->_brain) = (*dog._brain);
+	this->setType(dog.getType());
 	return (*this);
 }
 
-Cat::~Cat()
+Dog::~Dog()
 {
+	delete _brain;
 	std::cout << getType() << " deleted" << std::endl;
 }
 
-void Cat::makeSound( void ) const
+void Dog::makeSound( void ) const
 {
-	std::cout << "..." << std::endl;
+	std::cout << "Arf! Arf!" << std::endl;
 }

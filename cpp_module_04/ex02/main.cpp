@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 18:00:38 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 19:31:56 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/18 21:15:14 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int main(void)
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 
+
 	j->makeSound();
 	i->makeSound();
 
@@ -36,17 +37,18 @@ int main(void)
 	// munt delete directly dogs and cats as Animal							|
 	// ----------------------------------------------------------------------
 
-	// const Animal *(animalArr[6]);
-	// for (int i = 0; i < 6; i++)
+	// const Animal *animalArr[6];
+    //
+	// for (int i = 1; i < 6; i++)
 	// {
-		// animalArr[i] = new Dog();
-		// i++;
-		// animalArr[i] = new Cat();
+	//     // animalArr[i] = new Dog();
+	//     // i++;
+	//     // animalArr[i] = new Cat();
 	// }
 	// for (int i = 0; i < 6; i++)
-		// animalArr[i]->makeSound();
+	//     animalArr[i]->makeSound();
 	// for (int i = 0; i < 6; i++)
-		// delete animalArr[i];
+	//     delete animalArr[i];
 
 	// <custom test2>
 	// -----------------------------------
@@ -75,6 +77,14 @@ int main(void)
 	// ii.makeSound();
     //
 	// delete jj;
+
+	// <custom test3>
+	// -------------------------------------------------
+	// default Animal class should not be instantiable |
+	// -------------------------------------------------
+
+	// const Animal* a = new Animal();
+	// Animal b;
 
 	return (0);
 }

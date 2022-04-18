@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 16:03:01 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:01 by soum             ###   ########.fr       */
+/*   Created: 2022/04/18 12:55:06 by soum              #+#    #+#             */
+/*   Updated: 2022/04/18 16:17:37 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#ifndef Cat_hpp
+#define Cat_hpp
 
-Cat::Cat()
-	:Animal()
+#include "Animal.hpp"
+#include "Brain.hpp"
+
+class Cat : public Animal
 {
-	setType("Cat");
-	std::cout << getType() << " created" << std::endl;
-}
+		private:
+			Brain* _brain;
+		public:
+			// Orthodox Canonical Form
+			Cat();
+			Cat(const Cat& cat);
+			Cat& operator=(const Cat& cat);
+			~Cat();
+			// member functions
+			void makeSound( void ) const;
+};
 
-Cat::Cat(const Cat& cat)
-	:Animal()
-{
-	*this = cat;
-}
-
-
-Cat& Cat::operator=(const Cat& cat)
-{
-	this->setType(cat.getType());
-	return (*this);
-}
-
-Cat::~Cat()
-{
-	std::cout << getType() << " deleted" << std::endl;
-}
-
-void Cat::makeSound( void ) const
-{
-	std::cout << "..." << std::endl;
-}
+#endif
