@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:03:06 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:06 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/20 00:16:26 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Dog : public Animal
 		public:
 			// Orthodox Canonical Form
 			Dog();
-			Dog(const Dog& dog);
-			Dog& operator=(const Dog& dog);
+			Dog( const Dog& dog );
+			Dog& operator=( const Dog& dog );
 			~Dog();
 			// member functions
 			void makeSound( void ) const;

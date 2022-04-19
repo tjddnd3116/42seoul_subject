@@ -6,12 +6,14 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 18:27:57 by soum              #+#    #+#             */
-/*   Updated: 2022/04/19 05:18:58 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/20 04:05:41 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 #include "AMateria.hpp"
+
+AMateria* Character::_materia_remember[] = {0,};
 
 Character::Character()
 {
@@ -33,11 +35,19 @@ Character::Character( std::string name )
 
 Character::Character( Character &character )
 {
+	for (int i = 0; i < 4; i++)
+		_materia_slot[i] = NULL;
+	for (int i = 0; i < 10; i++)
+		_materia_trash[i] = NULL;
 	*this = character;
 }
 
 Character::Character( ICharacter& character)
 {
+	for (int i = 0; i < 4; i++)
+		_materia_slot[i] = NULL;
+	for (int i = 0; i < 10; i++)
+		_materia_trash[i] = NULL;
 	*this = *(Character*)(&character);
 }
 
@@ -48,10 +58,6 @@ Character& Character::operator=( Character & character )
 	_name = character.getName();
 	int this_idx = 0;
 
-	for (int i = 0; i < 4; i++)
-		_materia_slot[i] = NULL;
-	for (int i = 0; i < 10; i++)
-		_materia_trash[i] = NULL;
 	for (int i = 0; i < 4; i++)
 	{
 		if (character.getMateriaSlot(i) != NULL)
@@ -103,6 +109,14 @@ void Character::equip(AMateria *m)
 		std::cout << "there are no materia" << std::endl;
 		return ;
 	}
+	for (int i = 0; i < 100; i++)
+	{
+		if (m == _materia_remember[i])
+		{
+			std::cout << "already someone have this materia!" << std::endl;
+			return ;
+		}
+	}
 	for (int i = 0; i < 4; i++)
 	{
 		if (_materia_slot[i] == NULL)
@@ -110,7 +124,12 @@ void Character::equip(AMateria *m)
 			_materia_slot[i] = m;
 			std::cout << getName() << " get " << m->getType() \
 				<< " materia!" << std::endl;
-			m = NULL;
+			for (int i = 0; i < 100; i++)
+				if (_materia_remember[i] == NULL)
+				{
+					_materia_remember[i] = m;
+					break;
+				}
 			return ;
 		}
 	}
@@ -120,6 +139,11 @@ void Character::equip(AMateria *m)
 
 void Character::unequip(int idx)
 {
+	if (idx < 0 || idx > 3)
+	{
+		std::cout << "check your materia slot!!" << std::endl;
+		return ;
+	}
 	if (_materia_slot[idx] == NULL)
 	{
 		std::cout << getName() << " have no materia your [" << idx << "]slot" << std::endl;
@@ -140,6 +164,11 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter &target)
 {
+	if (idx < 0 || idx > 3)
+	{
+		std::cout << "check your materia slot!!" << std::endl;
+		return ;
+	}
 	if (_materia_slot[idx] == NULL)
 	{
 		std::cout << getName() << " have no materia your [" << idx << "]slot" << std::endl;

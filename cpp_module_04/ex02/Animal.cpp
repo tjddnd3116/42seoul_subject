@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:03:20 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:21 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/20 00:25:17 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ Animal::Animal()
 	std::cout << _type << " created" << std::endl;
 }
 
-Animal::Animal(Animal& animal)
+Animal::Animal( const Animal& animal)
 {
 	*this = animal;
 }
 
-Animal& Animal::operator=(const Animal & animal)
+Animal& Animal::operator=( const Animal & animal )
 {
 	_type = animal.getType();
 	return (*this);

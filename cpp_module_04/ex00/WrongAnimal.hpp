@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:03:12 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:12 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/20 00:17:40 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class WrongAnimal
 		public:
 			// Orthodox Canonical Form
 			WrongAnimal();
-			WrongAnimal( WrongAnimal& wronganimal );
+			WrongAnimal( const WrongAnimal& wronganimal );
 			WrongAnimal& operator=( const WrongAnimal& wronganimal );
 			virtual ~WrongAnimal();
 			// member functions

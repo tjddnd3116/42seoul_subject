@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 12:56:12 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:20:38 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/20 02:14:22 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 WrongCat::WrongCat()
 	:WrongAnimal()
 {
-	_brain = new Brain("god");
+	_brain = new Brain;
 	setType("WrongCat");
 	std::cout << "\033[31m" << getType() << " created" << "\033[0m" << std::endl;
 }
@@ -23,7 +23,8 @@ WrongCat::WrongCat()
 WrongCat::WrongCat(const WrongCat& wrongcat)
 	:WrongAnimal()
 {
-	*this = wrongcat; 
+	_brain = new Brain("god");
+	*this = wrongcat;
 }
 
 WrongCat& WrongCat::operator=(const WrongCat &wrongcat)
@@ -42,4 +43,17 @@ WrongCat::~WrongCat()
 void WrongCat::makeSound( void ) const
 {
 	std::cout << "\033[31m" << "W...W" << "\033[0m" << std::endl;
+}
+
+WrongCat::WrongCat( std::string idea )
+	:WrongAnimal()
+{
+	_brain = new Brain(idea);
+	setType("WrongCat");
+	std::cout << "\033[31m" << getType() << " created" << "\033[0m" << std::endl;
+}
+
+void WrongCat::makeThink( void ) const
+{
+	_brain->brainSound();
 }

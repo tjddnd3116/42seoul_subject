@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:56:54 by soum              #+#    #+#             */
-/*   Updated: 2022/04/19 04:56:12 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/20 03:32:14 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Character : public ICharacter
 			std::string _name;
 			AMateria* _materia_slot[4];
 			AMateria* _materia_trash[10];
+			static AMateria* _materia_remember[100];
 
 		public:
 			// Orthodox

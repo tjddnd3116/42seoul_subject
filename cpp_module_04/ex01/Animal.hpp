@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:03:22 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:07:45 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/20 00:25:04 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Animal
 		public:
 			// Orthodox Canonical Form
 			Animal();
-			Animal( Animal& animal);
+			Animal( const Animal& animal);
 			Animal& operator=( const Animal & animal );
 			virtual ~Animal();
 			// member functions

@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/04/17 18:29:10 by soum             ###   ########.fr        #
+#    Updated: 2022/04/20 00:32:00 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS = main.cpp \
 	   Dog.cpp \
 	   Cat.cpp \
 	   WrongAnimal.cpp \
-	   WrongCat.cpp 
+	   WrongCat.cpp
 
 .cpp.o :
 	$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)

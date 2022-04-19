@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:03:03 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:03 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/20 00:13:35 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Cat : public Animal
 		public:
 			// Orthodox Canonical Form
 			Cat();
-			Cat(const Cat& cat);
-			Cat& operator=(const Cat& cat);
+			Cat( const Cat& cat );
+			Cat& operator=( const Cat& cat );
 			~Cat();
 			// member functions
 			void makeSound( void ) const;

@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/04/17 22:38:44 by soum             ###   ########.fr        #
+#    Updated: 2022/04/20 00:35:06 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ $(NAME) : $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 debug : all
-	$(CXX) $(CXXFLAGS) -g -fsanitize=address $(SRCS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) -g $(SRCS) -o $(NAME)
 	$(shell cp ~/vimspector.json ./.vimspector.json)
 	$(shell perl -pi -e 's/filename/a.out/g' .vimspector.json)
 

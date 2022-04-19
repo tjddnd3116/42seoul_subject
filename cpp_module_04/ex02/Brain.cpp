@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:03:23 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:23 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/20 02:09:07 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,10 @@ Brain& Brain::operator=(const Brain &brain)
 Brain::~Brain()
 {
 	std::cout << "brain delete" << std::endl;
+}
+
+void Brain::brainSound( void ) const
+{
+	for (int i = 0; i < 100; i++)
+		std::cout << _ideas[i] << std::endl;
 }
