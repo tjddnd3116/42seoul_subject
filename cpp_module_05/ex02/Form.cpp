@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 07:01:59 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 13:00:42 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/20 14:13:49 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include <iomanip>
 
 Form::Form(const std::string name, int grade_sign, int grade_exec)
-	:_name(name), _gradeSign(grade_sign), _gradeExec(grade_exec), _isSigned(false)
+	:_name(name), _gradeSign(grade_sign), _gradeExec(grade_exec)
 {
+	_isSigned = false;
 	if (_gradeSign < 1 || _gradeExec < 1)
 		throw GradeTooHighException("sign grade or execute grade is too high correct grade is [1] to [150]");
 	if (_gradeSign > 150 || _gradeExec > 150)
@@ -86,6 +87,18 @@ const char* Form::GradeTooLowException::what() const throw()
 }
 
 Form::GradeTooLowException::~GradeTooLowException() throw()
+{}
+
+Form::NoSignedException::NoSignedException( const std::string err_msg )
+	:_errMsg(err_msg)
+{}
+
+const char* Form::NoSignedException::what() const throw()
+{
+	return (_errMsg.c_str());
+}
+
+Form::NoSignedException::~NoSignedException() throw()
 {}
 
 std::ostream& operator<<( std::ostream &os, const Form& form )

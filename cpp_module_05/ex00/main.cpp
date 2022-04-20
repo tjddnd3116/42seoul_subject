@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:47:30 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 06:51:46 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/20 10:23:21 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int main(void)
 	try {
 	Bureaucrat soum("soum", 149);
 	std::cout << soum << std::endl;
-	soum.decrement();
+	soum.decrement(1);
 	std::cout << soum << std::endl;
-	soum.decrement();
+	soum.decrement(1);
 	std::cout << soum << std::endl;
 	}
 	catch (std::exception &e) {

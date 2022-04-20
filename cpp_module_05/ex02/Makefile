@@ -6,17 +6,20 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 10:30:28 by soum              #+#    #+#              #
-#    Updated: 2022/04/20 12:33:48 by soum             ###   ########.fr        #
+#    Updated: 2022/04/20 12:41:38 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = form
+NAME = specific_form
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp \
 	   Bureaucrat.cpp \
-	   Form.cpp
+	   Form.cpp \
+	   PresidentialPardonForm.cpp \
+	   RobotomyRequestForm.cpp \
+	   ShrubberyCreationForm.cpp
 
 .cpp.o :
 	$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)
@@ -31,7 +34,7 @@ $(NAME) : $(OBJS)
 debug : all
 	$(CXX) $(CXXFLAGS) -g $(SRCS) -o $(NAME)
 	$(shell cp ~/vimspector.json ./.vimspector.json)
-	$(shell perl -pi -e 's/filename/form/g' .vimspector.json)
+	$(shell perl -pi -e 's/filename/specific_form/g' .vimspector.json)
 
 clean :
 	rm -f $(OBJS)

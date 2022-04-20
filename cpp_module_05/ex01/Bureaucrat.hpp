@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 18:31:49 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 07:24:07 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/20 10:20:30 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <exception>
 #include <iostream>
 
+class Form;
 class Bureaucrat
 {
 	private:
@@ -32,8 +33,9 @@ class Bureaucrat
 		std::string getName( void ) const;
 		int getGrade( void ) const;
 		// member funtions
-		void increment( void );
-		void decrement( void );
+		void increment( int grade );
+		void decrement( int grade );
+		void signForm( Form& form );
 		// exception class implement inheritance std::exception
 		class GradeTooHighException : public std::exception{
 			const char* what() const throw(); };

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 07:01:59 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 11:57:53 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/20 14:11:46 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ class Form
 			const int _gradeExec;
 
 		public:
-		// Orthodox Canonical Form
-			Form( const std::string name, int grade_sign, int grade_exec );
+			// Orthodox Canonical Form
+			Form( const std::string name, int grade_sign, int grade_exec);
 			Form( const Form& from );
 			Form& operator=( const Form& from );
 			~Form();
@@ -38,7 +38,9 @@ class Form
 			int getGradeSign( void ) const;
 			int getGradeExec( void ) const;
 			// member fucntions
-			void beSigned( Bureaucrat& bureaucrat);
+			void beSigned( Bureaucrat& bureaucrat );
+			// pure virtual funtions
+			virtual void execute( Bureaucrat const & bureaucrat ) const = 0;
 			// exception class implement inheritance std::exception
 			class GradeTooHighException : public std::exception{
 					std::string _errMsg;
@@ -52,6 +54,13 @@ class Form
 				public:
 					GradeTooLowException( const std::string err_msg );
 					~GradeTooLowException() throw();
+					const char* what() const throw();
+			};
+			class NoSignedException : public std::exception{
+					std::string _errMsg;
+				public:
+					NoSignedException( const std::string err_msg );
+					~NoSignedException() throw();
 					const char* what() const throw();
 			};
 };
