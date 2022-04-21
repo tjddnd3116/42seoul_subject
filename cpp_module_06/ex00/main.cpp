@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 16:02:59 by soum              #+#    #+#             */
-/*   Updated: 2022/04/21 14:53:49 by soum             ###   ########.fr       */
+/*   Created: 2022/04/21 12:53:25 by soum              #+#    #+#             */
+/*   Updated: 2022/04/21 16:02:22 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Animal_hpp
-#define Animal_hpp
-
+#include "Cast.hpp"
 #include <iostream>
+#include <string>
 
-class Animal
+int main(int argc, char **argv)
 {
-		protected:
-			std::string _type;
-
-		public:
-			// Orthodox Canonical Form
-			Animal();
-			Animal( const Animal& animal);
-			Animal& operator=( const Animal & animal );
-			virtual ~Animal();
-			// member functions
-			virtual void makeSound( void ) const;
-			// getter
-			std::string getType( void ) const;
-			// setter
-			void setType( std::string type );
-};
-#endif
+		if (argc != 2)
+		{
+			std::cout << "check arg cnt! use ./convert [number to convert you want]" \
+				<< std::endl;
+			return (1);
+		}
+		try {
+		Cast convert(argv[1]);
+		std::cout << convert << std::endl;
+		} catch (std::exception& e) {
+			std::cout << e.what();
+		}
+		return (0);
+}

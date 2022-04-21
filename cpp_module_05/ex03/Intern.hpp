@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:59:04 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 19:51:22 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/21 18:02:45 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 class Intern
 {
 		private:
-			std::string _brain;
 		public:
 			// Orthodox Canonical Form
 			Intern();
@@ -29,6 +28,5 @@ class Intern
 			~Intern();
 			// member fucntions
 			Form* makeForm( const std::string& name, const std::string& target);
-			std::string getBrain( void ) const;
 };
 #endif

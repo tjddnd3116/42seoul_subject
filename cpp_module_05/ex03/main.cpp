@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:47:30 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 20:00:07 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/21 18:15:38 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int main(void)
 		Intern someRandomIntern;
 		Form* rrf;
 
-		rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
+		Intern &a = someRandomIntern;
 
+		rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
 		if (rrf)
 			std::cout << *rrf << std::endl;
 

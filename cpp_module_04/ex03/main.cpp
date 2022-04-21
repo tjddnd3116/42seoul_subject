@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:24:52 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 04:02:44 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/21 14:56:22 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int main(void)
 
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	me->equip(tmp);
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);

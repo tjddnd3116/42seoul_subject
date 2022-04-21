@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:59:03 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 20:00:27 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/21 18:15:04 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 #include "ShrubberyCreationForm.hpp"
 
 Intern::Intern()
-{
-	_brain = "...";
-}
+{}
 
 Intern::Intern( const Intern& intern )
 {
@@ -27,7 +25,7 @@ Intern::Intern( const Intern& intern )
 
 Intern& Intern::operator=( const Intern& intern )
 {
-	_brain = intern.getBrain();
+	(void)intern;
 	return (*this);
 }
 
@@ -65,9 +63,4 @@ Form* Intern::makeForm( const std::string& name, const std::string& target)
 		delete form[2];
 	}
 	return (NULL);
-}
-
-std::string Intern::getBrain( void ) const
-{
-	return (_brain);
 }
