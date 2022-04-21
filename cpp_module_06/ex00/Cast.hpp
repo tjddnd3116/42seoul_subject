@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:56:33 by soum              #+#    #+#             */
-/*   Updated: 2022/04/21 18:54:31 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/21 23:22:10 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ class Cast
 			int _ival;
 			float _fval;
 			double _dval;
+			int _cvalOverFlowFlag;
+			int _ivalOverFlowFlag;
+			int _fvalOverFlowFlag;
 			// member functions
 			void checkNum( std::string num_str );
 			void convert ( void );
@@ -43,6 +46,7 @@ class Cast
 			// getter
 			std::string getType( void ) const;
 			std::string getNumStr( void ) const;
+			int getFlags( int idx ) const;
 			char getCval( void ) const;
 			int getIval( void ) const;
 			float getFval( void ) const;

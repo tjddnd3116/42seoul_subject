@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:56:31 by soum              #+#    #+#             */
-/*   Updated: 2022/04/21 18:50:26 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/22 01:02:18 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ Cast::Cast( std::string num_str )
 	_ival = 0;
 	_fval = 0.0f;
 	_dval = 0.0;
+	_cvalOverFlowFlag = 0;
+	_ivalOverFlowFlag = 0;
+	_fvalOverFlowFlag = 0;
 	checkNum(num_str);
+	overflowCheck();
 	convert();
 }
 
@@ -68,6 +72,19 @@ double Cast::getDval( void ) const
 	return (_dval);
 }
 
+int Cast::getFlags( int idx ) const
+{
+	int result_flag = 0;
+
+	if (idx == 0)
+		result_flag = _cvalOverFlowFlag;
+	else if (idx == 1)
+		result_flag = _ivalOverFlowFlag;
+	else if (idx == 2)
+		result_flag = _fvalOverFlowFlag;
+	return (result_flag);
+}
+
 Cast::MyException::MyException( const std::string err_msg )
 	:_errMsg(err_msg)
 {}
@@ -82,6 +99,7 @@ const char* Cast::MyException::what() const throw()
 
 void Cast::checkNum( std::string num_str )
 {
+	std::stringstream string_s;
 	int len = num_str.length();
 	int idx = 0;
 
@@ -96,6 +114,7 @@ void Cast::checkNum( std::string num_str )
 	if (num_str.at(0) == '+' || num_str.at(0) == '-')
 		idx++;
 	_type = "itype";
+
 	for (; idx < len; idx++)
 	{
 		if (num_str.at(idx) == '.' && _type != "dtype")
@@ -111,6 +130,7 @@ void Cast::checkNum( std::string num_str )
 			break;
 		}
 	}
+
 	if (_type == "unknown")
 	{
 		if (num_str == "nan"
@@ -133,6 +153,25 @@ void Cast::checkNum( std::string num_str )
 		}
 	}
 	_numStr = num_str;
+
+	if (_type == "itype")
+	{
+		long overflow_test;
+		string_s.str(_numStr);
+		while (string_s >> overflow_test);
+		if (overflow_test > std::numeric_limits<int>::max()\
+				|| overflow_test < std::numeric_limits<int>::min())
+			throw MyException("overflow! you can not convert it");
+	}
+	else if(_type == "ftype")
+	{
+		double overflow_test;
+		string_s.str(_numStr);
+		while (string_s >> overflow_test);
+		if (overflow_test > std::numeric_limits<float>::max()\
+				|| overflow_test < std::numeric_limits<float>::min())
+			throw MyException("overflow! you cna not convert it");
+	}
 	if (_type == "unknown")
 		throw MyException("unknown type literal check string");
 }
@@ -141,16 +180,6 @@ void Cast::convert( void )
 {
 	std::stringstream string_s;
 
-	long overflow_test;
-	if (_type == "itype")
-	{
-		string_s.str(_numStr);
-		while (string_s >> overflow_test);
-		if (overflow_test > std::numeric_limits<int>::max()\
-				|| overflow_test < std::numeric_limits<int>::min())
-			throw MyException("overflow! you can not convert it");
-	}
-	string_s.clear();
 	if (_type == "ctype")
 		casting(_cval);
 	else if (_type == "itype")
@@ -183,35 +212,55 @@ void Cast::casting( char val )
 
 void Cast::casting( int val )
 {
-	_cval = static_cast<char>(val);
+	if (val > std::numeric_limits<char>::max() \
+			|| val < std::numeric_limits<char>::min())
+		_cvalOverFlowFlag = 1;
+	else
+		_cval = static_cast<char>(val);
 	_fval = static_cast<float>(val);
 	_dval = static_cast<double>(val);
 }
 
 void Cast::casting( float val )
 {
+	if (isnan(val) || isinf(val))
+	{
+		_cvalOverFlowFlag = 1;
+		_ivalOverFlowFlag = 1;
+	}
+	if (val > std::numeric_limits<char>::max() \
+			|| val < std::numeric_limits<char>::min())
+		_cvalOverFlowFlag = 1;
+	else
+		_cval = static_cast<char>(val);
+	if (val >)
 	_ival = static_cast<int>(val);
-	_cval = static_cast<char>(val);
 	_dval = static_cast<double>(val);
 }
 
 void Cast::casting( double val )
 {
+
 	_ival = static_cast<int>(val);
 	_fval = static_cast<float>(val);
 	_cval = static_cast<char>(val);
 }
 
+void Cast::overflowCheck( void )
+{
+
+}
+
 std::ostream& operator<<(std::ostream &os, const Cast& cast)
 {
-	if (!std::isprint(cast.getCval()))
-		os << "char: " << cast.getCval() << std::endl;
-		// os << "char: " << "Non displayable" << std::endl;
+	if (cast.getFlags(0))
+		os << "char: impossible"  << std::endl;
+	else if (!std::isprint(cast.getCval()))
+		os << "char: " << "Non displayable" << std::endl;
 	else
 		os << "char: " << cast.getCval() << std::endl;
 
-	os << cast.getType() << std::endl;
-	os << cast.getCval() << std::endl;
+
 	os << cast.getIval() << std::endl;
 	os << cast.getFval() << std::endl;
 	os << cast.getDval();
