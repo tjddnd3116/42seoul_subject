@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 07:01:59 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 14:11:46 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/22 20:56:03 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ class Form
 			bool _isSigned;
 			const int _gradeSign;
 			const int _gradeExec;
+			void checkGrade( int grade , const std::string grade_type ) const;
 
 		public:
 			// Orthodox Canonical Form
 			Form( const std::string name, int grade_sign, int grade_exec);
 			Form( const Form& from );
 			Form& operator=( const Form& from );
-			~Form();
+			virtual ~Form();
 			// getter
 			std::string getName( void ) const;
 			bool getIsSigned( void ) const;

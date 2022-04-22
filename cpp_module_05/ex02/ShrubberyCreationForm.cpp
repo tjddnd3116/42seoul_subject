@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 13:30:14 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 17:29:14 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/22 20:42:56 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 const std::string ShrubberyCreationForm::_ascii_tree =\
 "                                                         .\n"
 "                                              .         ;\n"
-"                 .              .              ;%     ;;\n" 
-"                   ,           ,                :;%  %;\n" 
+"                 .              .              ;%     ;;\n"
+"                   ,           ,                :;%  %;\n"
 "                    :         ;                   :;%;'     .,\n"
 "           ,.        %;     %;            ;        %;'    ,;\n"
 "             ;       ;%;  %%;        ,     %;    ;%;    ,%'\n"
@@ -74,7 +74,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &bureaucrat) const
 	{
 		std::ofstream writeFile;
 
-		writeFile.open(getTarget() + "_shrubbery");
+		writeFile.open((getTarget() + "_shrubbery").c_str());
 		if (writeFile.is_open())
 			writeFile.write(_ascii_tree.c_str(), _ascii_tree.length());
 		writeFile.close();

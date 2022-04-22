@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 07:01:59 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 14:13:49 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/22 20:27:45 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 #include <iomanip>
 
 Form::Form(const std::string name, int grade_sign, int grade_exec)
-	:_name(name), _gradeSign(grade_sign), _gradeExec(grade_exec)
+	:_name(name), _isSigned(false),\
+		 _gradeSign(grade_sign > 150 || grade_sign < 1 ? grade_sign > 150 ? 150 : 1 : grade_sign), \
+		_gradeExec(grade_exec > 150 || grade_exec < 1 ? grade_exec > 150 ? 150 : 1 : grade_exec)
 {
-	_isSigned = false;
-	if (_gradeSign < 1 || _gradeExec < 1)
-		throw GradeTooHighException("sign grade or execute grade is too high correct grade is [1] to [150]");
-	if (_gradeSign > 150 || _gradeExec > 150)
-		throw GradeTooLowException("sign grade or execute grade is too low correct grade is [1] to [150]");
+	checkGrade(grade_sign, "sign grade");
+	checkGrade(grade_exec, "execute grade");
 }
 
 Form::Form( const Form& form )
@@ -65,6 +64,17 @@ void Form::beSigned( Bureaucrat& bureaucrat )
 		_isSigned = true;
 }
 
+void Form::checkGrade( int grade , const std::string grade_type ) const
+{
+	try {
+	if (grade < 1)
+		throw GradeTooHighException(grade_type + " is too high, correct grade is [1] to [150] so form sign grade be [1]");
+	else if (grade > 150)
+		throw GradeTooLowException(grade_type + " is too low, correct grade is [1] to [150] so form sign grade be [150]");
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+}
 Form::GradeTooHighException::GradeTooHighException( const std::string err_msg )
 	:_errMsg(err_msg)
 {}

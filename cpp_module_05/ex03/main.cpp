@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:47:30 by soum              #+#    #+#             */
-/*   Updated: 2022/04/21 18:15:38 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/22 20:53:28 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,15 @@
 
 int main(void)
 {
-	try {
 	// < subject test >
-		Intern someRandomIntern;
-		Form* rrf;
-
-		Intern &a = someRandomIntern;
-
-		rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
-		if (rrf)
-			std::cout << *rrf << std::endl;
-
-		delete rrf;
+		// Intern someRandomIntern;
+		// Form* rrf;
+        //
+		// rrf = someRandomIntern.makeForm("presidential pardo", "Bender");
+		// if (rrf)
+		//     std::cout << *rrf << std::endl;
+        //
+		// delete rrf;
 	// <  form status test >
 	// Form *form1 = new PresidentialPardonForm("target1");
 	// std::cout << *form1 << std::endl;
@@ -55,16 +52,23 @@ int main(void)
 	// Bureaucrat test1("test1", 1);
 	// test1.signForm(*form1);
 	// std::cout << *form1 << std::endl;
+	// test1.signForm(*form2);
+	// std::cout << *form2 << std::endl;
+	// test1.signForm(*form3);
+	// std::cout << *form3 << std::endl;
     //
 	// test1.executeForm(*form1);
 	// test1.executeForm(*form2);
 	// test1.executeForm(*form3);
-
-	// 2. grade lower than execute grade
+    //
+	// // 2. grade lower than execute grade
 	// Bureaucrat test2("test2", 150);
 	// test2.executeForm(*form1);
 	// test2.executeForm(*form2);
 	// test2.executeForm(*form3);
+	// delete form1;
+	// delete form2;
+	// delete form3;
 
 	// 3. not signed
 	// Form *form4 = new PresidentialPardonForm("target4");
@@ -74,9 +78,9 @@ int main(void)
 	// test1.executeForm(*form4);
 	// test1.executeForm(*form5);
 	// test1.executeForm(*form6);
-	}
-	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
+	//
+	// delete form4;
+	// delete form5;
+	// delete form6;
 	return (0);
 }

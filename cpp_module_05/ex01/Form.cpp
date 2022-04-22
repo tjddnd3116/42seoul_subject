@@ -6,24 +6,23 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 07:01:59 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 13:00:42 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/22 22:12:04 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
-#include <iomanip>
 
 Form::Form(const std::string name, int grade_sign, int grade_exec)
-	:_name(name), _gradeSign(grade_sign), _gradeExec(grade_exec), _isSigned(false)
+	:_name(name), _isSigned(false),\
+		 _gradeSign(grade_sign > 150 || grade_sign < 1 ? grade_sign > 150 ? 150 : 1 : grade_sign), \
+		_gradeExec(grade_exec > 150 || grade_exec < 1 ? grade_exec > 150 ? 150 : 1 : grade_exec)
 {
-	if (_gradeSign < 1 || _gradeExec < 1)
-		throw GradeTooHighException("sign grade or execute grade is too high correct grade is [1] to [150]");
-	if (_gradeSign > 150 || _gradeExec > 150)
-		throw GradeTooLowException("sign grade or execute grade is too low correct grade is [1] to [150]");
+	checkGrade(grade_sign, "sign grade");
+	checkGrade(grade_exec, "execute grade");
 }
 
 Form::Form( const Form& form )
-	:_name(form.getName()),_isSigned(form.getIsSigned()),\
+	:_name(form.getName()), _isSigned(form.getIsSigned()),\
 		 _gradeSign(form.getGradeSign()), _gradeExec(form.getGradeExec())
 {}
 
@@ -62,6 +61,18 @@ void Form::beSigned( Bureaucrat& bureaucrat )
 		throw GradeTooLowException("bureaucrat grade is too lower than form sign grade");
 	else
 		_isSigned = true;
+}
+
+void Form::checkGrade( int grade , const std::string grade_type ) const
+{
+	try {
+	if (grade < 1)
+		throw GradeTooHighException(grade_type + " is too high, correct grade is [1] to [150] so form sign grade be [1]");
+	else if (grade > 150)
+		throw GradeTooLowException(grade_type + " is too low, correct grade is [1] to [150] so form sign grade be [150]");
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 }
 
 Form::GradeTooHighException::GradeTooHighException( const std::string err_msg )

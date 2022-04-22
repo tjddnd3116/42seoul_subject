@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:59:04 by soum              #+#    #+#             */
-/*   Updated: 2022/04/21 18:02:45 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/22 20:30:02 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 class Intern
 {
 		private:
+			std::string _formNameArr[3];
 		public:
 			// Orthodox Canonical Form
 			Intern();

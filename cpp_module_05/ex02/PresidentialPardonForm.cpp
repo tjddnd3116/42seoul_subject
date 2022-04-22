@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 12:41:55 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 17:23:59 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/22 22:02:31 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void PresidentialPardonForm::execute(Bureaucrat const &bureaucrat) const
 		throw GradeTooLowException("bureaucrat grade is too lower than form execute grade");
 	else
 	{
-		std::cout << getTarget() << " has been  pardoned by Zaphod Beeblebrox." << std::endl;;
+		std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;;
 		std::cout << bureaucrat.getName() << " executed " << this->getName() << std::endl;
 	}
 }

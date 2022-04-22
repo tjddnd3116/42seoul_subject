@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:47:30 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 17:21:18 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/22 21:42:14 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-#include <exception>
 
 
 int main(void)
 {
-	try {
 	// <  form status test >
 	Form *form1 = new PresidentialPardonForm("target1");
 	std::cout << *form1 << std::endl;
@@ -30,9 +28,9 @@ int main(void)
 
 	// < sign test >
 	Bureaucrat soum("soum", 50);
-	soum.signForm(*form1); // can't sign it
-	soum.signForm(*form2); // can sign it
-	soum.signForm(*form3); // can sign it
+	soum.signForm(form1); // can't sign it
+	soum.signForm(form2); // can sign it
+	soum.signForm(form3); // can sign it
 
 	std::cout << *form1 << std::endl;
 	std::cout << *form2 << std::endl;
@@ -41,7 +39,7 @@ int main(void)
 	// < execute test>
 	// 1. all signed
 	Bureaucrat test1("test1", 1);
-	test1.signForm(*form1);
+	test1.signForm(form1);
 	std::cout << *form1 << std::endl;
 
 	test1.executeForm(*form1);
@@ -54,6 +52,10 @@ int main(void)
 	test2.executeForm(*form2);
 	test2.executeForm(*form3);
 
+	delete form1;
+	delete form2;
+	delete form3;
+
 	// 3. not signed
 	Form *form4 = new PresidentialPardonForm("target4");
 	Form *form5 = new PresidentialPardonForm("target5");
@@ -62,9 +64,9 @@ int main(void)
 	test1.executeForm(*form4);
 	test1.executeForm(*form5);
 	test1.executeForm(*form6);
-	}
-	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
+
+	delete form4;
+	delete form5;
+	delete form6;
 	return (0);
 }

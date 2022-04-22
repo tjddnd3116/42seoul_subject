@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:47:30 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 10:23:21 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/22 21:19:23 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,29 @@
 
 int main(void)
 {
-	try {
-	Bureaucrat soum("soum", 149);
-	std::cout << soum << std::endl;
-	soum.decrement(1);
-	std::cout << soum << std::endl;
-	soum.decrement(1);
-	std::cout << soum << std::endl;
-	}
-	catch (std::exception &e) {
-		std::cout << e.what();
-	}
+	Bureaucrat test1("test1", 50);
+
+	std::cout << test1 << std::endl;
+	test1.decrement(1);
+	std::cout << test1 << std::endl;
+	test1.decrement(1);
+	std::cout << test1 << std::endl;
+
+	Bureaucrat test2("test2", 0); // exception call grade be 1
+	std::cout << test2 << std::endl;
+	test2.increment(1); // exception call grade be 1
+	std::cout << test2 << std::endl;
+	test2.decrement(150); // exception call grade be 150
+	std::cout << test2 << std::endl;
+
+	Bureaucrat test3("test3", 151); // exception call grade be 150
+	std::cout << test3 << std::endl;
+	test3.increment(150); // exception call grade be 1
+	std::cout << test3 << std::endl;
+	test3.decrement(150); // exception call grade be 150
+	std::cout << test3 << std::endl;
+
+
+
 	return (0);
 }
