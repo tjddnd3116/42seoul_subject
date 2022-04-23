@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:56:31 by soum              #+#    #+#             */
-/*   Updated: 2022/04/22 01:02:18 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/23 22:22:47 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ Cast::Cast( std::string num_str )
 
 Cast::Cast( const Cast& cast )
 {
-	*this =  cast;
+	Cast tmp(cast.getNumStr());
+	*this = tmp;
 }
 
 Cast& Cast::operator=( const Cast &cast )
@@ -223,27 +224,47 @@ void Cast::casting( int val )
 
 void Cast::casting( float val )
 {
+	_dval = static_cast<double>(val);
 	if (isnan(val) || isinf(val))
 	{
 		_cvalOverFlowFlag = 1;
 		_ivalOverFlowFlag = 1;
+		return ;
 	}
 	if (val > std::numeric_limits<char>::max() \
 			|| val < std::numeric_limits<char>::min())
 		_cvalOverFlowFlag = 1;
 	else
 		_cval = static_cast<char>(val);
-	if (val >)
-	_ival = static_cast<int>(val);
-	_dval = static_cast<double>(val);
+	if (val > 2147483647.0 || val < -2147483648.0)
+		_ivalOverFlowFlag = 1;
+	else
+		_ival = static_cast<int>(val);
 }
 
 void Cast::casting( double val )
 {
-
-	_ival = static_cast<int>(val);
-	_fval = static_cast<float>(val);
-	_cval = static_cast<char>(val);
+	if (isnan(val) || isinf(val))
+	{
+		_cvalOverFlowFlag = 1;
+		_ivalOverFlowFlag = 1;
+		_fval = static_cast<float>(val);
+		return ;
+	}
+	if (val > std::numeric_limits<char>::max() \
+			|| val < std::numeric_limits<char>::min())
+		_cvalOverFlowFlag = 1;
+	else
+		_cval = static_cast<char>(val);
+	if (val > 2147483647.0 || val < -2147483648.0)
+		_ivalOverFlowFlag = 1;
+	else
+		_ival = static_cast<int>(val);
+	if (val > std::numeric_limits<float>::max() \
+			|| val < std::numeric_limits<float>::min())
+		_fvalOverFlowFlag = 1;
+	else
+		_fval = static_cast<float>(val);
 }
 
 void Cast::overflowCheck( void )
