@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:59:03 by soum              #+#    #+#             */
-/*   Updated: 2022/04/22 20:40:40 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/23 16:03:20 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ Form* Intern::makeForm( const std::string& name, const std::string& target)
 				return (form[i]);
 			}
 		}
-		throw 1;
-	}catch(int err_idx){
-		std::cout << "can't find " << name << " form" << std::endl;
+		throw "can't find ";
+	}catch(char const* err_msg){
+		std::cout << err_msg << name << " form" << std::endl;
 		delete form[0];
 		delete form[1];
 		delete form[2];

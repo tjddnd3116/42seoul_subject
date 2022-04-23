@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 13:30:14 by soum              #+#    #+#             */
-/*   Updated: 2022/04/22 20:42:56 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/23 13:56:50 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,18 @@ const std::string ShrubberyCreationForm::_ascii_tree =\
 ShrubberyCreationForm::ShrubberyCreationForm( std::string target )
 	:Form("ShrubberyCreationForm", 145, 137)
 {
-	_target = target;
+	setTarget(target);
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& scf)
 	:Form(scf)
 {
-	_target = scf.getTarget();
+	*this = scf;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &scf)
 {
-	std::cout << "really do you want copy only sign of " << scf.getName() \
-		<< "?? \n\033[30myou can't do that!\033[0m" << std::endl;
+	setTarget(scf.getTarget());
 	return (*this);
 }
 
@@ -80,9 +79,4 @@ void ShrubberyCreationForm::execute(const Bureaucrat &bureaucrat) const
 		writeFile.close();
 		std::cout << bureaucrat.getName() << " executed " << this->getName() << std::endl;
 	}
-}
-
-const std::string ShrubberyCreationForm::getTarget( void ) const
-{
-	return (_target);
 }

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 13:28:08 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 15:57:47 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/23 13:56:58 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 class ShrubberyCreationForm : public Form
 {
 		private:
-			std::string _target;
 			static const std::string _ascii_tree;
 		public:
 			// Orthodox Canonical Form
@@ -29,6 +28,5 @@ class ShrubberyCreationForm : public Form
 			~ShrubberyCreationForm();
 			// overriding virtual funtions
 			void execute( Bureaucrat const & bureaucrat ) const;
-			const std::string getTarget( void ) const;
 };
 #endif

@@ -6,12 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 07:01:59 by soum              #+#    #+#             */
-/*   Updated: 2022/04/22 20:27:45 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/23 16:01:03 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
-#include <iomanip>
 
 Form::Form(const std::string name, int grade_sign, int grade_exec)
 	:_name(name), _isSigned(false),\
@@ -23,14 +22,17 @@ Form::Form(const std::string name, int grade_sign, int grade_exec)
 }
 
 Form::Form( const Form& form )
-	:_name(form.getName()),_isSigned(form.getIsSigned()),\
+	:_name(form.getName()), _isSigned(form.getIsSigned()),\
 		 _gradeSign(form.getGradeSign()), _gradeExec(form.getGradeExec())
 {}
 
 Form& Form::operator=(const Form &form)
 {
-	std::cout << "really do you want copy only sign of " << form.getName() \
-		<< "?? \n\033[30myou can't do that!\033[0m" << std::endl;
+	if (this != &form)
+	{
+		std::cout << "really do you want copy only sign of " << form.getName() \
+			<< "?? \n\033[30myou can't do that!\033[0m" << std::endl;
+	}
 	return (*this);
 }
 
@@ -56,6 +58,17 @@ int Form::getGradeExec( void ) const
 {
 	return (_gradeExec);
 }
+
+std::string Form::getTarget( void ) const
+{
+	return (_target);
+}
+
+void Form::setTarget( const std::string target )
+{
+	_target = target;
+}
+
 void Form::beSigned( Bureaucrat& bureaucrat )
 {
 	if (bureaucrat.getGrade() > _gradeSign)
@@ -75,6 +88,7 @@ void Form::checkGrade( int grade , const std::string grade_type ) const
 		std::cout << e.what() << std::endl;
 	}
 }
+
 Form::GradeTooHighException::GradeTooHighException( const std::string err_msg )
 	:_errMsg(err_msg)
 {}
@@ -113,6 +127,8 @@ Form::NoSignedException::~NoSignedException() throw()
 
 std::ostream& operator<<( std::ostream &os, const Form& form )
 {
+	if (!(Form *)&form)
+		return os;
 	int len = form.getName().length();
 	os << "\033[33m";
 	os << std::setw(32 + len) << std::setfill('-') << " " << std::setfill(' ') << std::endl;

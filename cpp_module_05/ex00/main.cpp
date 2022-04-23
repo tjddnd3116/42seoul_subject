@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:47:30 by soum              #+#    #+#             */
-/*   Updated: 2022/04/22 21:19:23 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/23 13:03:35 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ int main(void)
 	std::cout << test3 << std::endl;
 	test3.decrement(150); // exception call grade be 150
 	std::cout << test3 << std::endl;
-
-
 
 	return (0);
 }

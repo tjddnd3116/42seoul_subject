@@ -6,13 +6,12 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 18:31:39 by soum              #+#    #+#             */
-/*   Updated: 2022/04/22 20:25:27 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/23 15:58:32 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
-#include <exception>
 
 Bureaucrat::Bureaucrat( std::string name, int grade )
 	:_name(name)
@@ -78,24 +77,30 @@ void Bureaucrat::increment( int grade )
 void Bureaucrat::decrement( int grade )
 {
 	try {
-	if (_grade + grade > 150)
-	{
-		grade = 150;
-		throw GradeTooLowException();
-	}
-	else
-		_grade += grade;
+		if (_grade + grade > 150)
+		{
+			grade = 150;
+			throw GradeTooLowException();
+
+		}
+		else
+			_grade += grade;
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 }
-void Bureaucrat::signForm( Form& form )
+
+void Bureaucrat::signForm( Form* form )
 {
 	try {
-		form.beSigned(*this);
-		std::cout << getName() << " signed " << form.getName() << std::endl;
+		if (form == NULL)
+			throw "can't access form";
+		form->beSigned(*this);
+		std::cout << getName() << " signed " << form->getName() << std::endl;
+	} catch (char const* err_msg) {
+		std::cout << err_msg << std::endl;
 	} catch (std::exception &e) {
-		std::cout << getName() << " coudn't sign " << form.getName() \
+		std::cout << getName() << " coudn't sign " << form->getName() \
 			<< " because " << e.what() << std::endl;
 	}
 }
@@ -103,7 +108,11 @@ void Bureaucrat::signForm( Form& form )
 void Bureaucrat::executeForm( Form const & form )
 {
 	try {
+		if (!(Form *)&form)
+			throw "can't access form";
 		form.execute(*this);
+	} catch(char const* err_msg) {
+		std::cout << err_msg << std::endl;
 	} catch (std::exception &e) {
 		std::cout << getName() << " coudn't execute " << form.getName() \
 			<< " because " << e.what() << std::endl;

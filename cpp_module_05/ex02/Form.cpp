@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 07:01:59 by soum              #+#    #+#             */
-/*   Updated: 2022/04/22 21:36:41 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/23 13:49:33 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ Form::Form( const Form& form )
 
 Form& Form::operator=(const Form &form)
 {
-	std::cout << "really do you want copy only sign of " << form.getName() \
-		<< "?? \n\033[30myou can't do that!\033[0m" << std::endl;
+	if (this != &form)
+	{
+		std::cout << "really do you want copy only sign of " << form.getName() \
+			<< "?? \n\033[30myou can't do that!\033[0m" << std::endl;
+	}
 	return (*this);
 }
 
@@ -55,6 +58,17 @@ int Form::getGradeExec( void ) const
 {
 	return (_gradeExec);
 }
+
+std::string Form::getTarget( void ) const
+{
+	return (_target);
+}
+
+void Form::setTarget( const std::string target )
+{
+	_target = target;
+}
+
 void Form::beSigned( Bureaucrat& bureaucrat )
 {
 	if (bureaucrat.getGrade() > _gradeSign)

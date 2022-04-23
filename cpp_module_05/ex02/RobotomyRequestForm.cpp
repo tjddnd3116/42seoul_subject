@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 13:25:25 by soum              #+#    #+#             */
-/*   Updated: 2022/04/22 20:58:22 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/23 13:56:25 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 RobotomyRequestForm::RobotomyRequestForm( std::string target )
 	:Form("RobotomyRequestForm", 72, 45)
 {
-	_target = target;
+	setTarget(target);
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& rrf)
 	:Form(rrf)
 {
-	_target = rrf.getTarget();
+	*this = rrf;
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &rrf)
 {
-	std::cout << "really do you want copy only sign of " << rrf.getName() \
-		<< "?? \n\033[30myou can't do that!\033[0m" << std::endl;
+	setTarget(rrf.getTarget());
 	return (*this);
 }
 
@@ -42,19 +41,16 @@ void RobotomyRequestForm::execute(const Bureaucrat &bureaucrat) const
 		throw GradeTooLowException("bureaucrat grade is too lower than form execute grade");
 	else
 	{
-		char *rnd_addr;
-		std::string rnd_num_str = std::to_string((unsigned int)(long)(&rnd_addr)*(unsigned int)(long)(&rnd_addr));
-		// std::string rnd_num_str = "1234"; // for valgrind test
+		// char *rnd_addr;
+		// std::string rnd_num_str = std::to_string((unsigned int)(long)(&rnd_addr)*(unsigned int)(long)(&rnd_addr));
+		std::string rnd_num_str = "1234"; // for valgrind test
+		std::cout << "##################################" << std::endl;
 		std::cout << "########## drill noise ###########" << std::endl;
-		if (rnd_num_str.at(4) % 2)
+		std::cout << "##################################" << std::endl;
+		if (rnd_num_str.at(3) % 2)
 			std::cout << getTarget() << " has been robotomized successfully" << std::endl;
 		else
 			std::cout << getTarget() << " has been robotomized fail" << std::endl;
 		std::cout << bureaucrat.getName() << " executed " << this->getName() << std::endl;
 	}
-}
-
-const std::string RobotomyRequestForm::getTarget( void ) const
-{
-	return (_target);
 }

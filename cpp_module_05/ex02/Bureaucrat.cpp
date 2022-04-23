@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 18:31:39 by soum              #+#    #+#             */
-/*   Updated: 2022/04/22 21:36:13 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/23 13:20:53 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,19 @@ void Bureaucrat::increment( int grade )
 void Bureaucrat::decrement( int grade )
 {
 	try {
-	if (_grade + grade > 150)
-	{
-		grade = 150;
-		throw GradeTooLowException();
-	}
-	else
-		_grade += grade;
+		if (_grade + grade > 150)
+		{
+			grade = 150;
+			throw GradeTooLowException();
+
+		}
+		else
+			_grade += grade;
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 }
+
 void Bureaucrat::signForm( Form* form )
 {
 	try {

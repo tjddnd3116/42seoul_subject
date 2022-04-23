@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 10:30:28 by soum              #+#    #+#              #
-#    Updated: 2022/04/21 17:59:57 by soum             ###   ########.fr        #
+#    Updated: 2022/04/23 15:34:56 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ $(NAME) : $(OBJS)
 debug : all
 	$(CXX) $(CXXFLAGS) -g $(SRCS) -o $(NAME)
 	$(shell cp ~/vimspector.json ./.vimspector.json)
-	$(shell perl -pi -e 's/filename/intern/g' .vimspector.json)
+	$(shell perl -pi -e 's/filename/specific_form/g' .vimspector.json)
 
 clean :
 	rm -f $(OBJS)

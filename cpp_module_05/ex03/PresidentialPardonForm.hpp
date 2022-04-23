@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 12:41:54 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 13:45:39 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/23 13:56:33 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 class PresidentialPardonForm : public Form
 {
-		private:
-			std::string _target;
 		public:
 			// Orthodox Canonical Form
 			PresidentialPardonForm( const std::string& target );
@@ -27,8 +25,6 @@ class PresidentialPardonForm : public Form
 			~PresidentialPardonForm();
 			// overriding virtual funtions
 			void execute( Bureaucrat const & bureaucrat ) const;
-			// getter
-			const std::string getTarget( void ) const;
 
 };
 #endif

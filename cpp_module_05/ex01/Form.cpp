@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 07:01:59 by soum              #+#    #+#             */
-/*   Updated: 2022/04/22 22:12:04 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/23 13:25:19 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ Form::Form( const Form& form )
 
 Form& Form::operator=(const Form &form)
 {
-	std::cout << "really do you want copy only sign of " << form.getName() \
-		<< "?? \n\033[30myou can't do that!\033[0m" << std::endl;
+	if (this != &form)
+	{
+		std::cout << "really do you want copy only sign of " << form.getName() \
+			<< "?? \n\033[31myou can NOT do that!\033[0m" << std::endl;
+	}
 	return (*this);
 }
 
