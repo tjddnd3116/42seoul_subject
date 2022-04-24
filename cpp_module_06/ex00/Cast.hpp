@@ -6,16 +6,18 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:56:33 by soum              #+#    #+#             */
-/*   Updated: 2022/04/21 23:22:10 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/24 14:06:34 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef Cast_hpp
 #define Cast_hpp
 
+#include <cctype>
 #include <exception>
 #include <iostream>
-#include <ostream>
+#include <limits>
+#include <sstream>
 
 class Cast
 {
@@ -37,8 +39,13 @@ class Cast
 			void casting ( int val );
 			void casting ( float val );
 			void casting ( double val );
-			void overflowCheck( void );
+			bool myIsnan( float val );
+			bool myIsnan( double val );
+			bool myIsinf( float val );
+			bool myIsinf( double val );
+
 		public:
+			// Orthodox Canonical Form
 			Cast( std::string num_str );
 			Cast( const Cast& );
 			Cast& operator=( const Cast& cast );

@@ -6,15 +6,12 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:56:31 by soum              #+#    #+#             */
-/*   Updated: 2022/04/23 22:22:47 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/24 14:16:58 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cast.hpp"
-#include <cctype>
-#include <exception>
-#include <limits>
-#include <sstream>
+#include <ios>
 
 Cast::Cast( std::string num_str )
 {
@@ -26,19 +23,19 @@ Cast::Cast( std::string num_str )
 	_ivalOverFlowFlag = 0;
 	_fvalOverFlowFlag = 0;
 	checkNum(num_str);
-	overflowCheck();
 	convert();
 }
 
 Cast::Cast( const Cast& cast )
 {
-	Cast tmp(cast.getNumStr());
-	*this = tmp;
+	*this = cast;
 }
 
 Cast& Cast::operator=( const Cast &cast )
 {
 	_numStr = cast.getNumStr();
+	checkNum(_numStr);
+	convert();
 	return (*this);
 }
 
@@ -108,7 +105,6 @@ void Cast::checkNum( std::string num_str )
 	{
 		_type = "ctype";
 		_cval = num_str.at(0);
-		std::cout << _cval  << std::endl;
 		_numStr = num_str;
 		return ;
 	}
@@ -167,6 +163,7 @@ void Cast::checkNum( std::string num_str )
 	else if(_type == "ftype")
 	{
 		double overflow_test;
+		_numStr.pop_back();
 		string_s.str(_numStr);
 		while (string_s >> overflow_test);
 		if (overflow_test > std::numeric_limits<float>::max()\
@@ -197,7 +194,6 @@ void Cast::convert( void )
 	}
 	else if (_type == "ftype")
 	{
-		_numStr.pop_back();
 		string_s.str(_numStr);
 		while (string_s >> _fval);
 		casting(_fval);
@@ -225,7 +221,7 @@ void Cast::casting( int val )
 void Cast::casting( float val )
 {
 	_dval = static_cast<double>(val);
-	if (isnan(val) || isinf(val))
+	if (myIsnan(val) || myIsinf(val))
 	{
 		_cvalOverFlowFlag = 1;
 		_ivalOverFlowFlag = 1;
@@ -244,7 +240,7 @@ void Cast::casting( float val )
 
 void Cast::casting( double val )
 {
-	if (isnan(val) || isinf(val))
+	if (myIsnan(val) || myIsinf(val))
 	{
 		_cvalOverFlowFlag = 1;
 		_ivalOverFlowFlag = 1;
@@ -267,9 +263,36 @@ void Cast::casting( double val )
 		_fval = static_cast<float>(val);
 }
 
-void Cast::overflowCheck( void )
+bool Cast::myIsnan( float val )
 {
+	if ((*(int32_t *)(&val) & 0x7fffffff) == 0x7fffffff)
+		return (true);
+	return (false);
+}
 
+bool Cast::myIsnan( double val )
+{
+	if ((*(int64_t *)(&val) & 0x7fffffffffffffff) == 0x7fffffffffffffff)
+		return (true);
+	return (false);
+}
+
+bool Cast::myIsinf( float val )
+{
+	if ((*(int32_t *)(&val) & 0x7f800000) == 0x7f800000)
+		return (true);
+	if ((*(int32_t *)(&val) & 0xff800000) == 0xff800000)
+		return (true);
+	return (false);
+}
+
+bool Cast::myIsinf( double val )
+{
+	if ((*(int64_t *)(&val) & 0x7ff0000000000000) == 0x7ff0000000000000)
+		return (true);
+	if ((*(int64_t *)(&val) & 0xfff0000000000000) == 0xfff0000000000000)
+		return (true);
+	return (false);
 }
 
 std::ostream& operator<<(std::ostream &os, const Cast& cast)
@@ -279,11 +302,27 @@ std::ostream& operator<<(std::ostream &os, const Cast& cast)
 	else if (!std::isprint(cast.getCval()))
 		os << "char: " << "Non displayable" << std::endl;
 	else
-		os << "char: " << cast.getCval() << std::endl;
+		os << "char: '" << cast.getCval() << "'" << std::endl;
 
+	if (cast.getFlags(1))
+		os << "int: impossible" << std::endl;
+	else
+		os << "int: " << cast.getIval() << std::endl;
 
-	os << cast.getIval() << std::endl;
-	os << cast.getFval() << std::endl;
-	os << cast.getDval();
+	if (cast.getFlags(2))
+		os << "float: impossible" << std::endl;
+	else
+	{
+		if (cast.getType() == "itype" || cast.getType() == "ctype")
+			os << "float: " << cast.getFval() << ".0";
+		else
+			os << "float: " << std::fixed << cast.getFval();
+		os << "f" << std::endl;
+	}
+
+	if (cast.getType() == "itype" || cast.getType() == "ctype")
+		os << "double: " << cast.getDval() << ".0";
+	else
+		os << "double: " << std::fixed << cast.getDval();
 	return (os);
 }

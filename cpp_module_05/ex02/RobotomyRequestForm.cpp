@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 13:25:25 by soum              #+#    #+#             */
-/*   Updated: 2022/04/23 13:56:25 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/24 15:18:58 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void RobotomyRequestForm::execute(const Bureaucrat &bureaucrat) const
 		throw GradeTooLowException("bureaucrat grade is too lower than form execute grade");
 	else
 	{
-		// char *rnd_addr;
-		// std::string rnd_num_str = std::to_string((unsigned int)(long)(&rnd_addr)*(unsigned int)(long)(&rnd_addr));
-		std::string rnd_num_str = "1234"; // for valgrind test
+		char *rnd_addr;
+		std::string rnd_num_str = std::to_string((unsigned int)(long)(&rnd_addr)*(unsigned int)(long)(&rnd_addr));
+		// std::string rnd_num_str = "1234"; // for valgrind test
 		std::cout << "##################################" << std::endl;
 		std::cout << "########## drill noise ###########" << std::endl;
 		std::cout << "##################################" << std::endl;

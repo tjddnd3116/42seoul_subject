@@ -5,27 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 12:53:25 by soum              #+#    #+#             */
-/*   Updated: 2022/04/24 14:14:02 by soum             ###   ########.fr       */
+/*   Created: 2022/04/24 17:48:48 by soum              #+#    #+#             */
+/*   Updated: 2022/04/24 18:58:42 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cast.hpp"
+#include "iter.hpp"
 #include <iostream>
-#include <string>
 
-int main(int argc, char **argv)
+int main(void)
 {
-		try {
-			if (argc !=2)
-				throw "check arg cnt! us ./convert [number to convert you want]";
-			Cast test(argv[1]);
-			std::cout << test << std::endl;
-		} catch ( char const* err_msg) {
-			std::cout << err_msg << std::endl;
-			return (1);
-		}catch (std::exception& e) {
-			std::cout << e.what();
-		}
-		return (0);
+	int i_arr[3] = {1, 2, 3};
+
+	::iter(i_arr, sizeof(i_arr) / sizeof(*i_arr), ::print_val);
+	::iter(i_arr, sizeof(i_arr) / sizeof(*i_arr), ::print_addr);
+
+	std::string s_arr[5] = {"a", "b", "c", "d", "e"};
+
+	::iter(s_arr, sizeof(s_arr) / sizeof(*s_arr), ::print_val);
+	::iter(s_arr, sizeof(s_arr) / sizeof(*s_arr), ::print_addr);
+
+
+	return (0);
 }

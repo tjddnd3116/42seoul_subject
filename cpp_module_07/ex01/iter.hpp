@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 12:53:25 by soum              #+#    #+#             */
-/*   Updated: 2022/04/24 14:14:02 by soum             ###   ########.fr       */
+/*   Created: 2022/04/24 17:48:19 by soum              #+#    #+#             */
+/*   Updated: 2022/04/24 18:58:08 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cast.hpp"
 #include <iostream>
-#include <string>
+#include <exception>
 
-int main(int argc, char **argv)
+template <typename T>
+void iter(T* addr, unsigned long long len, void(*f)(T*))
 {
-		try {
-			if (argc !=2)
-				throw "check arg cnt! us ./convert [number to convert you want]";
-			Cast test(argv[1]);
-			std::cout << test << std::endl;
-		} catch ( char const* err_msg) {
-			std::cout << err_msg << std::endl;
-			return (1);
-		}catch (std::exception& e) {
-			std::cout << e.what();
-		}
-		return (0);
+	if (addr == NULL || f == NULL)
+		return ;
+	for (unsigned long long i = 0; i < len; i++)
+		f(&addr[i]);
+}
+
+template <typename T>
+void print_val(T* a)
+{
+	std::cout << *a << std::endl;
+}
+
+template <typename T>
+void print_addr(T* a)
+{
+	std::cout << a << std::endl;
 }

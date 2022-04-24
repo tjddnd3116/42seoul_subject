@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 12:53:25 by soum              #+#    #+#             */
-/*   Updated: 2022/04/24 14:14:02 by soum             ###   ########.fr       */
+/*   Created: 2022/04/24 17:09:40 by soum              #+#    #+#             */
+/*   Updated: 2022/04/24 17:45:35 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cast.hpp"
-#include <iostream>
-#include <string>
-
-int main(int argc, char **argv)
+template<typename T1>
+void swap(T1& a, T1& b)
 {
-		try {
-			if (argc !=2)
-				throw "check arg cnt! us ./convert [number to convert you want]";
-			Cast test(argv[1]);
-			std::cout << test << std::endl;
-		} catch ( char const* err_msg) {
-			std::cout << err_msg << std::endl;
-			return (1);
-		}catch (std::exception& e) {
-			std::cout << e.what();
-		}
-		return (0);
+	T1 tmp;
+
+	tmp = a;
+	a = b;
+	b = tmp;
+}
+
+
+template<typename T1>
+T1 min(const T1& a, const T1& b) 
+{
+	if (a < b)
+		return (a);
+	else
+		return (b);
+}
+
+template<typename T1>
+T1 max(const T1& a, const T1& b)
+{
+	if (a > b)
+		return a;
+	else
+		return b;
 }
