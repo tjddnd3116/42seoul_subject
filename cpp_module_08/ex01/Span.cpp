@@ -1,40 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/24 17:09:40 by soum              #+#    #+#             */
-/*   Updated: 2022/04/24 22:46:12 by soum             ###   ########.fr       */
+/*   Created: 2022/04/24 22:44:45 by soum              #+#    #+#             */
+/*   Updated: 2022/04/24 22:53:56 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-template<typename T1>
-void swap(T1& a, T1& b)
-{
-	T1 tmp;
+#include "Span.hpp"
 
-	tmp = a;
-	a = b;
-	b = tmp;
+Span::Span( unsigned int arr_len )
+{
+	_iArr.resize(arr_len);
 }
 
-
-template<typename T1>
-T1 min(const T1& a, const T1& b)
+Span::Span( const Span& span )
 {
-	if (a < b)
-		return (a);
-	else
-		return (b);
+	*this = span;
 }
 
-template<typename T1>
-T1 max(const T1& a, const T1& b)
+Span& Span::operator=( const Span& span )
 {
-	if (a > b)
-		return a;
-	else
-		return b;
+	return (*this);
+}
+
+Span::~Span()
+{
+
+}
+
+void Span::addNumber( int num )
+{
+
+	_iArr.push_back(num);
+}
+
+int Span::shortestSpan( void ) const
+{
+
+}
+
+int Span::LongSpan( void ) const
+{
+
 }
