@@ -6,9 +6,12 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 17:09:40 by soum              #+#    #+#             */
-/*   Updated: 2022/04/24 22:46:12 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/25 13:48:52 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef whatever_hpp
+#define whatever_hpp
 
 template<typename T1>
 void swap(T1& a, T1& b)
@@ -38,3 +41,5 @@ T1 max(const T1& a, const T1& b)
 	else
 		return b;
 }
+
+#endif

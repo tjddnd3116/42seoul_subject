@@ -6,15 +6,19 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 22:44:40 by soum              #+#    #+#             */
-/*   Updated: 2022/04/24 22:53:02 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/25 13:53:02 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef Span_hpp
 #define Span_hpp
 
-
+#include <iostream>
+#include <exception>
 #include <vector>
+#include <algorithm>
+#include <climits>
+
 class Span
 {
 		private:
@@ -26,9 +30,19 @@ class Span
 			Span( const Span& span );
 			Span& operator=( const Span& span );
 			~Span();
+			// getter
+			std::vector<int>* getArr( void ) const;
 			// member functions
+			void addManyNumbers( void );
 			void addNumber( int num );
-			int shortestSpan( void ) const;
-			int LongSpan( void ) const;
+			long shortestSpan( void ) const;
+			long LongSpan( void ) const;
+			// exception class inheritance
+			class FullFilled : public std::exception {
+				const char* what() const throw();
+			};
+			class TooShortArr : public std::exception {
+				const char* what() const throw();
+			};
 };
 #endif //Span_hpp

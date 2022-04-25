@@ -6,9 +6,12 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 19:00:56 by soum              #+#    #+#             */
-/*   Updated: 2022/04/24 22:00:17 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/25 13:49:43 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef Array_hpp
+#define Array_hpp
 
 #include <exception>
 #include <iostream>
@@ -67,3 +70,5 @@ class Array
 			return (_arr[idx]);
 		}
 };
+
+#endif
