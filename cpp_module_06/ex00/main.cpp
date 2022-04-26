@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:53:25 by soum              #+#    #+#             */
-/*   Updated: 2022/04/24 14:14:02 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/26 13:36:37 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 {
 		try {
 			if (argc !=2)
-				throw "check arg cnt! us ./convert [number to convert you want]";
+				throw "check arg! ./convert [number to convert you want]";
 			Cast test(argv[1]);
 			std::cout << test << std::endl;
 		} catch ( char const* err_msg) {
@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 			return (1);
 		}catch (std::exception& e) {
 			std::cout << e.what();
+			return (1);
 		}
 		return (0);
 }

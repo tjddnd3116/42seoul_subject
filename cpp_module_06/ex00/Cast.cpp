@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:56:31 by soum              #+#    #+#             */
-/*   Updated: 2022/04/24 14:16:58 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/26 13:32:49 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ void Cast::checkNum( std::string num_str )
 		{
 			_type = "ftype";
 			_numStr = num_str;
+			_numStr.pop_back();
 			return ;
 		}
 	}

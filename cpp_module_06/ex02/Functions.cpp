@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 15:14:43 by soum              #+#    #+#             */
-/*   Updated: 2022/04/24 16:18:46 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/26 14:03:48 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ void identify( Base& p )
 	try {
 	A a = dynamic_cast<A&>(p);
 	std::cout << "A" << std::endl;
-	} catch (...) {}
+	} catch (std::exception& e) {}
 	try {
 	B b = dynamic_cast<B&>(p);
 	std::cout << "B" << std::endl;
-	} catch (...) {}
+	} catch (std::exception& e) {}
 	try {
 	C c = dynamic_cast<C&>(p);
 	std::cout << "C" << std::endl;
-	} catch (...) {}
+	} catch (std::exception& e) {}
 }
