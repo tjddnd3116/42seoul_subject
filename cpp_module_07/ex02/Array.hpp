@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 19:00:56 by soum              #+#    #+#             */
-/*   Updated: 2022/04/25 13:49:43 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/26 20:33:17 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ class Array
 		}
 		// exception class inheritance
 		class OutOfRange : public std::exception{
-			const char* what() const throw(){
-				return "out of range";
-			} };
+			const char* what() const throw() {
+				return "out of range"; }
+		};
 		// operator overloading
 		T& operator[] ( int idx ) {
 			if (idx < 0 || idx >= int(_arrLen))

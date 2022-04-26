@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:07:39 by soum              #+#    #+#             */
-/*   Updated: 2022/04/25 18:57:19 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/26 21:53:50 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,19 @@ class MutantStack : public std::stack<T, Container>
 
 	public:
 		MutantStack(){}
-		MutantStack( const MutantStack<T, Container>& mutantstack )
-		{
+		MutantStack( const MutantStack<T, Container>& mutantstack ) {
+			*this = mutantstack; }
+		MutantStack<T, Container>& operator=( const MutantStack<T, Container>& mutantstack) {
 			*this = mutantstack;
-		}
-		MutantStack<T, Container>& operator=( const MutantStack<T, Container>& mutantstack)
-		{
-			*this = mutantstack;
-			return (*this);
-		}
+			return (*this); }
 		~MutantStack(){}
 		// begin end overriding
 		typedef typename std::stack<T, Container>::container_type::iterator iterator;
-		iterator begin()
-		{
-			return (this->c.begin());
-		}
+		iterator begin() {
+			return (this->c.begin()); }
 
-		iterator end()
-		{
-			return (this->c.end());
-		}
+		iterator end() {
+			return (this->c.end()); }
 };
 
 #endif
