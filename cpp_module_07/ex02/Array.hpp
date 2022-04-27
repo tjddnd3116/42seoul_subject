@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 19:00:56 by soum              #+#    #+#             */
-/*   Updated: 2022/04/26 20:33:17 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/27 18:23:34 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define Array_hpp
 
 #include <exception>
-#include <iostream>
 
 template <typename T>
 class Array
@@ -28,9 +27,9 @@ class Array
 			_arrLen = 0;
 			_arr = new T[_arrLen]();
 		}
-		Array( unsigned int arr_len ){
-			_arrLen = arr_len;
-			_arr = new T[arr_len]();
+		Array( unsigned int n ){
+			_arrLen = n;
+			_arr = new T[n]();
 		}
 		Array( const Array& array ) {
 			_arrLen = array.size();
@@ -38,7 +37,7 @@ class Array
 			*this = array;
 		}
 		Array& operator=( const Array& array ){
-			delete []_arr;
+			delete[] _arr;
 			_arr = NULL;
 			_arrLen = array.size();
 			_arr = new T[_arrLen]();
@@ -47,16 +46,16 @@ class Array
 			return (*this);
 		}
 		~Array() {
-			delete [] _arr;
+			delete[] _arr;
 			_arr = NULL;
 		}
 		// exception class inheritance
 		class OutOfRange : public std::exception{
 			const char* what() const throw() {
-				return "out of range"; }
+				return "exception: out of range"; }
 		};
 		// operator overloading
-		T& operator[] ( int idx ) {
+		T& operator[] ( int idx ) const {
 			if (idx < 0 || idx >= int(_arrLen))
 				throw OutOfRange();
 			return (_arr[idx]);

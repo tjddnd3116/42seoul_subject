@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 22:43:57 by soum              #+#    #+#             */
-/*   Updated: 2022/04/25 15:47:10 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/27 21:40:42 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,16 @@ int main(void)
 	std::srand(time(NULL));
 	for (int i = 0; i < MAX_VAL; i++)
 		test.addNumber(std::rand());
-	// test.addNumber(-2147483648);
-	// test.addNumber(2147483647);
-	// test.addNumber(0);
+
+	Span *test2 = new Span(3);
+
+	std::cout << test2->shortestSpan() << std::endl;
+	std::cout << test2->LongSpan() << std::endl;
+	*test2 = test;
+	std::cout << test2->shortestSpan() << std::endl;
+	std::cout << test2->LongSpan() << std::endl;
+
+	delete test2;
 
 	std::cout << test.shortestSpan() << std::endl;
 	std::cout << test.LongSpan() << std::endl;

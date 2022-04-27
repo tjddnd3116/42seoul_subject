@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 22:44:40 by soum              #+#    #+#             */
-/*   Updated: 2022/04/25 13:53:02 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/27 20:45:58 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ class Span
 
 		public:
 			// Orthodox Canonical Form
-			Span( unsigned int arr_len );
+			Span( unsigned int n );
 			Span( const Span& span );
 			Span& operator=( const Span& span );
 			~Span();
 			// getter
-			std::vector<int>* getArr( void ) const;
+			const std::vector<int>& getArr( void ) const;
 			// member functions
 			void addManyNumbers( void );
 			void addNumber( int num );

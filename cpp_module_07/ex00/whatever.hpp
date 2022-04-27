@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 17:09:40 by soum              #+#    #+#             */
-/*   Updated: 2022/04/25 13:48:52 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/27 18:42:53 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void swap(T1& a, T1& b)
 	a = b;
 	b = tmp;
 }
-
 
 template<typename T1>
 T1 min(const T1& a, const T1& b)

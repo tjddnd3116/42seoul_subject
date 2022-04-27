@@ -6,15 +6,15 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 22:44:45 by soum              #+#    #+#             */
-/*   Updated: 2022/04/25 15:45:52 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/27 21:37:36 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span( unsigned int arr_len )
+Span::Span( unsigned int n )
 {
-	_iArr.reserve(arr_len);
+	_iArr.reserve(n);
 }
 
 Span::Span( const Span& span )
@@ -24,21 +24,16 @@ Span::Span( const Span& span )
 
 Span& Span::operator=( const Span& span )
 {
-	std::vector<int> *tmp = span.getArr();
-
-	_iArr = *tmp;
-	delete tmp;
+	_iArr = span.getArr();
 	return (*this);
 }
 
 Span::~Span()
 {}
 
-std::vector<int>* Span::getArr( void ) const
+const std::vector<int>& Span::getArr( void ) const
 {
-	std::vector<int> *tmp = new std::vector<int>(_iArr);
-
-	return (tmp);
+	return (_iArr);
 }
 
 void Span::addManyNumbers( void )
@@ -75,11 +70,7 @@ long Span::shortestSpan( void ) const
 		std::sort(tmp.begin(), tmp.end());
 		std::vector<int>::iterator iter;
 		for (iter = tmp.begin() + 1; iter != tmp.end(); iter++)
-		{
 			shortest_num = std::min(long(*iter) - long(*(iter - 1)), shortest_num);
-			// if (*iter - *(iter - 1) < shortest_num)
-			//     shortest_num = long(*iter) - long(*(iter - 1));
-		}
 		return (shortest_num);
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
