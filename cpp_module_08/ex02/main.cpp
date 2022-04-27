@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 13:50:18 by soum              #+#    #+#             */
-/*   Updated: 2022/04/27 22:02:48 by soum             ###   ########.fr       */
+/*   Updated: 2022/04/27 22:13:01 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int main()
 	std::cout << mstack.top() << std::endl;
 	std::cout << mstack.size() << std::endl;
 	// MutantStack<int>::iterator it;
-	MutantStack<int>::const_reverse_iterator it = mstack.crbegin();
-	MutantStack<int>::const_reverse_iterator ite = mstack.crend();
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
 	++it;
 	--it;
 	while (it != ite)
@@ -40,5 +40,7 @@ int main()
 	++it;
 	}
 	std::stack<int> s(mstack);
+	// std::cout << s.top() << std::endl;
+	// std::cout << s.size() << std::endl;
 	return 0;
 }
