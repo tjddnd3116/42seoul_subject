@@ -6,11 +6,11 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/04/24 22:43:51 by soum             ###   ########.fr        #
+#    Updated: 2022/05/01 14:43:51 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = span
+NAME = ex01
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -30,7 +30,7 @@ $(NAME) : $(OBJS)
 debug : all
 	$(CXX) $(CXXFLAGS) -g $(SRCS) -o $(NAME)
 	$(shell cp ~/vimspector.json ./.vimspector.json)
-	$(shell perl -pi -e 's/filename/span/g' .vimspector.json)
+	$(shell perl -pi -e 's/filename/ex01/g' .vimspector.json)
 
 clean :
 	rm -f $(OBJS)

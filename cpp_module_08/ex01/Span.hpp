@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 22:44:40 by soum              #+#    #+#             */
-/*   Updated: 2022/04/27 20:45:58 by soum             ###   ########.fr       */
+/*   Updated: 2022/05/01 14:37:53 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,20 @@ class Span
 			Span( const Span& span );
 			Span& operator=( const Span& span );
 			~Span();
-			// getter
-			const std::vector<int>& getArr( void ) const;
 			// member functions
 			void addManyNumbers( void );
-			void addNumber( int num );
+			void addNumber( long int num );
 			long shortestSpan( void ) const;
-			long LongSpan( void ) const;
+			long longestSpan( void ) const;
+			void printArr( void ) const;
 			// exception class inheritance
 			class FullFilled : public std::exception {
 				const char* what() const throw();
 			};
 			class TooShortArr : public std::exception {
+				const char* what() const throw();
+			};
+			class OverflowError : public std::exception {
 				const char* what() const throw();
 			};
 };

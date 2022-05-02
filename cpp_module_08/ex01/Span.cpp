@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 22:44:45 by soum              #+#    #+#             */
-/*   Updated: 2022/04/27 21:37:36 by soum             ###   ########.fr       */
+/*   Updated: 2022/05/01 14:48:58 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,12 @@ Span::Span( const Span& span )
 
 Span& Span::operator=( const Span& span )
 {
-	_iArr = span.getArr();
+	_iArr = span._iArr;
 	return (*this);
 }
 
 Span::~Span()
 {}
-
-const std::vector<int>& Span::getArr( void ) const
-{
-	return (_iArr);
-}
 
 void Span::addManyNumbers( void )
 {
@@ -46,12 +41,14 @@ void Span::addManyNumbers( void )
 		*iter = std::rand();
 }
 
-void Span::addNumber( int num )
+void Span::addNumber( long int num )
 {
 	try {
+		if (num > std::numeric_limits<int>::max() || num < std::numeric_limits<int>::min())
+			throw OverflowError();
 		if (_iArr.size() == _iArr.capacity())
 			throw FullFilled();
-		_iArr.push_back(num);
+		_iArr.push_back(static_cast<int>(num));
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -74,11 +71,11 @@ long Span::shortestSpan( void ) const
 		return (shortest_num);
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
-		return (0);
+		return (-1);
 	}
 }
 
-long Span::LongSpan( void ) const
+long Span::longestSpan( void ) const
 {
 	try {
 		if (_iArr.size() == 0 || _iArr.size() == 1)
@@ -93,8 +90,16 @@ long Span::LongSpan( void ) const
 		return (longest_num);
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
-		return (0);
+		return (-1);
 	}
+}
+
+void Span::printArr( void ) const
+{
+	std::vector<int>::const_iterator it;
+
+	for (it = _iArr.begin(); it != _iArr.end(); it++)
+		std::cout << *it << std::endl;
 }
 
 const char* Span::FullFilled::what() const throw()
@@ -105,4 +110,9 @@ const char* Span::FullFilled::what() const throw()
 const char* Span::TooShortArr::what() const throw()
 {
 	return ("exception : array is too short");
+}
+
+const char* Span::OverflowError::what() const throw()
+{
+	return ("exception : overflow");
 }

@@ -6,16 +6,16 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:07:39 by soum              #+#    #+#             */
-/*   Updated: 2022/04/27 22:08:57 by soum             ###   ########.fr       */
+/*   Updated: 2022/05/01 15:05:19 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MutantStack_hpp
 #define MutantStack_hpp
 
+#include <memory>
 #include <stack>
 #include <iterator>
-#include <vector>
 #include <deque>
 #include <list>
 
@@ -23,8 +23,6 @@
 template< typename T, class Container = std::deque<T> >
 class MutantStack : public std::stack<T, Container>
 {
-	private:
-
 	public:
 		MutantStack(){}
 		MutantStack( const MutantStack<T, Container>& mutantstack ) {
