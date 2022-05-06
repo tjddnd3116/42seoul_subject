@@ -6,7 +6,7 @@
 #    By: semin <semin@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/11 12:49:29 by soum              #+#    #+#              #
-#    Updated: 2022/02/12 18:18:43 by soum             ###   ########.fr        #
+#    Updated: 2022/05/04 21:55:30 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,8 @@ INCLUDES = ./includes/minishell.h
 
 CC = gcc
 CFLAGES = -Wall -Wextra -Werror
-COMFILE_FLAGS = -lreadline -L/opt/homebrew/opt/readline/lib
-OBJ_FLAGS = -I/opt/homebrew/opt/readline/include
+COMFILE_FLAGS = -lreadline -L ~/.brew/opt/readline/lib
+OBJ_FLAGS = -I ~/.brew/opt/readline/include
 
 .c.o :
 	$(CC) $(CFLAGES) $(OBJ_FLAGS) -c $< -o $(<:.c=.o) -I $(INCLUDES)

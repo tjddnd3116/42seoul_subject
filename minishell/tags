@@ -8,7 +8,7 @@ CC	Libft/Makefile	/^CC = gcc$/;"	m
 CC	Makefile	/^CC = gcc$/;"	m
 CFLAGES	Makefile	/^CFLAGES = -Wall -Wextra -Werror$/;"	m
 CFLAGS	Libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
-COMFILE_FLAGS	Makefile	/^COMFILE_FLAGS = -lreadline -L\/opt\/homebrew\/opt\/readline\/lib$/;"	m
+COMFILE_FLAGS	Makefile	/^COMFILE_FLAGS = -lreadline -L ~\/.brew\/opt\/readline\/lib$/;"	m
 INCLUDES	Libft/Makefile	/^INCLUDES = ..\/includes\/libft.h$/;"	m
 INCLUDES	Makefile	/^INCLUDES = .\/includes\/minishell.h$/;"	m
 LIBFT	Makefile	/^LIBFT = libft$/;"	m
@@ -20,7 +20,7 @@ NAME	Makefile	/^NAME = minishell$/;"	m
 OBJS	Libft/Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
 OBJS	Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
 OBJS_B	Libft/Makefile	/^OBJS_B = $(SRCS_B:.c=.o)$/;"	m
-OBJ_FLAGS	Makefile	/^OBJ_FLAGS = -I\/opt\/homebrew\/opt\/readline\/include$/;"	m
+OBJ_FLAGS	Makefile	/^OBJ_FLAGS = -I ~\/.brew\/opt\/readline\/include$/;"	m
 SRCS	Libft/Makefile	/^SRCS = ft_bzero.c ft_memset.c ft_strlen.c ft_memcpy.c \\$/;"	m
 SRCS	Makefile	/^SRCS = main.c \\$/;"	m
 SRCS_B	Libft/Makefile	/^SRCS_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \\$/;"	m
