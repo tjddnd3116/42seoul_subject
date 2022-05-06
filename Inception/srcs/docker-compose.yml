@@ -7,8 +7,8 @@ services:
       # context: .
       # dockerfile: ./requirements/mariadb/Dockerfile
     restart: unless-stopped
-    ports:
-      - "3306:3306"
+    # ports:
+    #   - "3306:3306"
 
   wordpress:
     container_name: wordpress
@@ -16,10 +16,10 @@ services:
       # context: .
       # dockerfile: ./requirements/wordpress/Dockerfile
     restart: unless-stopped
-    ports:
-      - "9000:9000"
+    # ports:
+    #   - "9000:9000"
     volumes:
-      - ~/wordpress/:/var/www/soum/html
+      - ~/docker:/var/www/
     depends_on:
       - mariadb
 
@@ -32,6 +32,6 @@ services:
     ports:
       - "443:443"
     volumes:
-      - ~/wordpress:/var/www/soum/html
+      - ~/docker:/var/www/
     depends_on:
       - wordpress

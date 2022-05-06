@@ -29,7 +29,7 @@ define( 'DB_USER', 'soum' );
 define( 'DB_PASSWORD', '12345' );
 
 /** Database hostname */
-define( 'DB_HOST', '172.17.0.2' );
+define( 'DB_HOST', 'mariadb' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );

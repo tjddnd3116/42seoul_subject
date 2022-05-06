@@ -15,8 +15,6 @@ RUN perl -pi -e 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY ./tools/mariadb.sh /
 RUN service mysql start && mariadb < mariadb.sh
 RUN rm mariadb.sh
-CMD mariadb
+CMD mysqld
 
 EXPOSE 3306
-
-
