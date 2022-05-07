@@ -6,18 +6,20 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ~/docker/wordpress
+      device: /Users/soum/docker/wordpress
   db:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ~/docker/mariadb
+      device: /Users/soum/docker/mariadb
 
 services:
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb
+    env_file:
+      - .env
     restart: unless-stopped
     volumes:
       - db:/var/lib/mysql
@@ -25,19 +27,23 @@ services:
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
+    env_file:
+      - .env
     restart: unless-stopped
     volumes:
-      - wp:/var/www/
+      - wp:/var/www/wordpress
     depends_on:
       - mariadb
 
   nginx:
     container_name: nginx
     build: ./requirements/nginx
+    env_file:
+      - ./.env
     restart: unless-stopped
     ports:
       - "443:443"
     volumes:
-      - wp:/var/www/
+      - wp:/var/www/wordpress
     depends_on:
       - wordpress

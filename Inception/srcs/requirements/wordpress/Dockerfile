@@ -18,9 +18,9 @@ RUN mkdir /var/run/php
 # insert port conf
 RUN perl -p -i -e '$.==37 and print "listen = 9000\n"' /etc/php/7.3/fpm/pool.d/www.conf
 COPY ./conf/wp-config.php /wordpress
-# RUN mkdir -p /var/www/soum/html
-# RUN cp -r /wordpress/* /var/www/soum/html/
+RUN mkdir -p /var/www/wordpress/
+RUN mv /wordpress/* /var/www/wordpress/
 
-CMD mv /wordpress /var/www/ && php-fpm7.3 -F
+CMD php-fpm7.3 -F
 
 EXPOSE 9000
