@@ -1,37 +1,43 @@
 version: '3'
 
+volumes:
+  wp:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ~/docker/wordpress
+  db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ~/docker/mariadb
+
 services:
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb
-      # context: .
-      # dockerfile: ./requirements/mariadb/Dockerfile
     restart: unless-stopped
-    # ports:
-    #   - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
 
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
-      # context: .
-      # dockerfile: ./requirements/wordpress/Dockerfile
     restart: unless-stopped
-    # ports:
-    #   - "9000:9000"
     volumes:
-      - ~/docker:/var/www/
+      - wp:/var/www/
     depends_on:
       - mariadb
 
   nginx:
     container_name: nginx
     build: ./requirements/nginx
-      # context: .
-      # dockerfile: ./requirements/nginx/Dockerfile
     restart: unless-stopped
     ports:
       - "443:443"
     volumes:
-      - ~/docker:/var/www/
+      - wp:/var/www/
     depends_on:
       - wordpress
