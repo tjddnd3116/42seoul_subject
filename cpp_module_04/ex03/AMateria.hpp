@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:06:20 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 16:12:38 by soum             ###   ########.fr       */
+/*   Updated: 2022/05/12 17:15:19 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 #define AMateria_hpp
 
 #include <iostream>
+#include "ICharacter.hpp"
 
-
-class ICharacter;
 
 class AMateria
 {

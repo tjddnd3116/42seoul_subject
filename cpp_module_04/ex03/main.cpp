@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:24:52 by soum              #+#    #+#             */
-/*   Updated: 2022/04/21 14:56:22 by soum             ###   ########.fr       */
+/*   Updated: 2022/05/12 16:06:23 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,27 @@ int main(void)
 	src->learnMateria(new Cure());
 
 	ICharacter* me = new Character("me");
+	ICharacter* you = new Character("you");
 
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
+	tmp = src->createMateria("cure");
+
 	me->equip(tmp);
 	me->equip(tmp);
+	you->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 
-	ICharacter* bob = new Character("bob");
-
-	me->use(0, *bob);
-	me->use(1, *bob);
-
-	delete bob;
-	delete me;
-	delete src;
+	// ICharacter* bob = new Character("bob");
+    //
+	// me->use(0, *bob);
+	// me->use(1, *bob);
+    //
+	// delete bob;
+	// delete me;
+	// delete src;
 
 	// <custom test>
 	// 1. unequip test
