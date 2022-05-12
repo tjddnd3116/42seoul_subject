@@ -1,17 +1,23 @@
 FROM debian:buster
 
+ARG MYSQL_DATABASE
+ARG MYSQL_USER
+ARG MYSQL_PASSWORD
+ARG MYSQL_ROOT
+ARG MYSQL_ROOT_PASSWORD
+
 LABEL email="soum@student.42seoul.kr"
 LABEL name="soum"
 LABEL version="1.0"
 LABEL description="mariadb"
 
 RUN apt-get update -y && apt-get install -y vim && apt-get install -y mariadb-server
-RUN perl -p -i -e '$.==19 and print "port = 3306\n"' /etc/mysql/mariadb.conf.d/50-server.cnf
-RUN perl -pi -e 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
-COPY ./tools/mariadb.sh /
+COPY ./tools/conf.sh /
+RUN chmod +x /conf.sh
+RUN ./conf.sh
 RUN service mysql start && mariadb < mariadb.sh
 RUN rm mariadb.sh
-#RUN chown -R mysql:mysql /var/lib/mysql
+
 CMD mysqld
 
 EXPOSE 3306

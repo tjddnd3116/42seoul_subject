@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:03:04 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 00:16:58 by soum             ###   ########.fr       */
+/*   Updated: 2022/05/10 21:21:53 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 Dog::Dog()
 	:Animal()
 {
+	a = new int(10);
 	setType("Dog");
 	std::cout << getType() << " created" << std::endl;
 }
@@ -22,6 +23,7 @@ Dog::Dog()
 Dog::Dog( const Dog& dog )
 	:Animal()
 {
+	a = new int(10);
 	*this = dog;
 }
 

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:02:59 by soum              #+#    #+#             */
-/*   Updated: 2022/04/21 14:53:49 by soum             ###   ########.fr       */
+/*   Updated: 2022/05/10 21:25:51 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Animal
 			Animal();
 			Animal( const Animal& animal);
 			Animal& operator=( const Animal & animal );
-			virtual ~Animal();
+			~Animal();
 			// member functions
 			virtual void makeSound( void ) const;
 			// getter
