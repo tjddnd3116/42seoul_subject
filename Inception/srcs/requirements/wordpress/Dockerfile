@@ -15,5 +15,3 @@ RUN chmod +x /conf.sh
 COPY ./conf/wp-config.php /wordpress
 
 CMD /conf.sh
-
-EXPOSE 9000

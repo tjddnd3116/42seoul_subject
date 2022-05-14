@@ -19,5 +19,3 @@ RUN service mysql start && mariadb < mariadb.sh
 RUN rm mariadb.sh
 
 CMD mysqld
-
-EXPOSE 3306

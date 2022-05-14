@@ -28,9 +28,13 @@ services:
         MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     env_file:
       - .env
+    expose:
+      - "3306"
     restart: unless-stopped
     volumes:
       - db:/var/lib/mysql
+    networks:
+      - inception_net
 
   wordpress:
     image: wordpress:${TAG}
@@ -38,11 +42,15 @@ services:
     build: ./requirements/wordpress
     env_file:
       - .env
+    expose:
+      - "9000"
     restart: unless-stopped
     volumes:
       - wp:/var/www/wordpress
     depends_on:
       - mariadb
+    networks:
+      - inception_net
 
   nginx:
     image:  nginx:${TAG}
@@ -61,3 +69,10 @@ services:
       - wp:/var/www/wordpress
     depends_on:
       - wordpress
+    networks:
+      - inception_net
+
+networks:
+  inception_net:
+    name: inception_net
+    driver: bridge

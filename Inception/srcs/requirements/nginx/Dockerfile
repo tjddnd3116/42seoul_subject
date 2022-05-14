@@ -17,6 +17,4 @@ COPY $KEYS /etc/ssl/private
 
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 
-EXPOSE 443
-
 CMD nginx
