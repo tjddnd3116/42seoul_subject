@@ -6,38 +6,51 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/05/11 13:16:09 by soum             ###   ########.fr        #
+#    Updated: 2022/05/16 19:40:54 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = a.out
+NAME = cub3d
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS = main.c
 
+LIBFT = libft
+LIBFT_LIB = libft/libft.a
+MLX42 = MLX42
+MLX42_LIB = MLX42/libmlx42.a
+INCLUDES = ./includes/cub3d.h
+
+
 .c.o :
-	$(C) $(CFLAGS) -c $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I $(INCLUDES)
 
 OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(C) $(CFLAGS) -o $@ $^
+	make all -C $(LIBFT)
+	make all -C $(MLX42)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) $(MLX42_LIB) -I include -lglfw -L "/Users/soum/.brew/opt/glfw/lib/" -o $(NAME)
 
 debug : all
-	$(C) $(CFLAGS) -g $(SRCS) -o $(NAME)
+	$(CC) $(CFLAGS) -g $(SRCS) -o $(NAME)
 	$(shell cp ~/vimspector.json ./.vimspector.json)
-	$(shell perl -pi -e 's/filename/a.out/g' .vimspector.json)
+	$(shell perl -pi -e 's/filename/cub3d/g' .vimspector.json)
 
 clean :
 	rm -f $(OBJS)
 	rm -f .vimspector.json
 	rm -rf $(NAME).dSYM
+	make clean -C $(LIBFT)
+	make clean -C $(MLX42)
 
 fclean : clean
 	rm -f $(NAME)
+	make fclean -C $(LIBFT)
+	make fclean -C $(MLX42)
 
 re : clean all
 
