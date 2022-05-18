@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/05/16 19:40:54 by soum             ###   ########.fr        #
+#    Updated: 2022/05/18 11:27:02 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,13 @@ NAME = cub3d
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c
+SRCS = main.c \
+	   drawline.c \
+	   ./srcs/hook.c \
+	   ./srcs/put_img.c \
+	   ./srcs/init_data.c \
+	   ./srcs/detect_wall.c \
+	   ./srcs/fov.c
 
 LIBFT = libft
 LIBFT_LIB = libft/libft.a
@@ -36,7 +42,7 @@ $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) $(MLX42_LIB) -I include -lglfw -L "/Users/soum/.brew/opt/glfw/lib/" -o $(NAME)
 
 debug : all
-	$(CC) $(CFLAGS) -g $(SRCS) -o $(NAME)
+	$(CC) $(CFLAGS) -g $(SRCS) $(LIBFT_LIB) $(MLX42_LIB) -I include -lglfw -L "/Users/soum/.brew/opt/glfw/lib/" -o $(NAME)
 	$(shell cp ~/vimspector.json ./.vimspector.json)
 	$(shell perl -pi -e 's/filename/cub3d/g' .vimspector.json)
 
