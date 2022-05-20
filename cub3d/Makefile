@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/05/18 11:27:02 by soum             ###   ########.fr        #
+#    Updated: 2022/05/19 21:01:29 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,13 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS = main.c \
-	   drawline.c \
+	   ./srcs/drawline.c \
 	   ./srcs/hook.c \
 	   ./srcs/put_img.c \
 	   ./srcs/init_data.c \
 	   ./srcs/detect_wall.c \
-	   ./srcs/fov.c
+	   ./srcs/fov.c \
+	   ./srcs/draw_cub.c \
 
 LIBFT = libft
 LIBFT_LIB = libft/libft.a

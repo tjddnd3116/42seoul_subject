@@ -1,4 +1,4 @@
-#include "./includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 static void	swap_point(t_point **p0, t_point **p1);
 static void	drawline_low_up(mlx_image_t *img, t_point p0, t_point p1);
