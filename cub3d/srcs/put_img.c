@@ -11,7 +11,7 @@ void put_bg_img(t_mlx_data *data)
 			for (int x = pos_x * GRID; x < pos_x * GRID + GRID; x++)
 			{
 				for (int y = pos_y * GRID; y < pos_y * GRID + GRID; y++)
-					mlx_put_pixel(data->bg_img, x, y, 0xfffffff0);
+					mlx_put_pixel(data->bg_img, x, y, 0xffffffaf);
 			}
 		}
 		pos_x++;

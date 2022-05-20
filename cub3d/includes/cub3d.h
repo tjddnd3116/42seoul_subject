@@ -16,7 +16,7 @@
 #define IMG_SIZE 32
 #define PI 3.1415926535897
 #define MAP_SPACE 8
-#define SPEED 2
+#define SPEED 5
 #define MAP_MAX_LEN 1448.0
 #define PER_CUBE_LINE WIDTH / 60
 

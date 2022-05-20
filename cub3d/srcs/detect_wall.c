@@ -43,8 +43,6 @@ double detect_y_wall(int32_t *y_wall_x, int32_t *y_wall_y, t_mlx_data *data, int
 			wall_x = ray_x + (ray_y - wall_y) * tan(degree);
 		if (is_wall(wall_x, wall_y, data->map))
 		{
-			/** if (idx == 150) */
-				/** printf("wall_x : %d, wall_y : %d\n", wall_x, wall_y); */
 			*y_wall_x = wall_x;
 			*y_wall_y = wall_y;
 			return (sqrt(pow(wall_x - ray_x, 2.0) + pow(wall_y - ray_y, 2.0)));
@@ -84,7 +82,6 @@ double detect_x_wall(int32_t *x_wall_x, int32_t *x_wall_y, t_mlx_data *data, int
 			wall_y = ray_y + (ray_x - wall_x) / tan(degree);
 		if (is_wall(wall_x, wall_y, data->map))
 		{
-			/** printf("wall_x : %d, wall_y : %d\n", wall_x, wall_y); */
 			*x_wall_x = wall_x;
 			*x_wall_y = wall_y;
 			return (sqrt(pow(wall_x - ray_x, 2.0) + pow(wall_y - ray_y, 2.0)));
@@ -130,6 +127,4 @@ void detect_wall(t_point *point, t_mlx_data *data, int i)
 		point->grid_x = x_wall_x / GRID;
 		point->grid_y = x_wall_y / GRID;
 	}
-	/** if (i == 150) */
-	/**     printf("x : %f, y : %f, len : %f, angle : %f\n", point->x, point->y, point->wall_len, point->angle); */
 }

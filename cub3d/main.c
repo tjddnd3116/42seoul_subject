@@ -28,8 +28,6 @@ int main(void)
 	mlx_image_to_window(data.mlx, data.cub_img, WIDTH, 0);
 	mlx_image_to_window(data.mlx, data.camera_img, 128, 128);
 	mlx_loop_hook(data.mlx, my_hook, &data);
-	mlx_key_hook(data.mlx, key_hook, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
-
 }
