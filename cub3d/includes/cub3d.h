@@ -9,6 +9,7 @@
 #include <memory.h>
 #include <math.h>
 #include <stdint.h>
+#include "../Libft/libft.h"
 
 #define WIDTH 128*8
 #define HEIGHT 128*8

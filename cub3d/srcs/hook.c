@@ -1,4 +1,5 @@
 #include "../includes/cub3d.h"
+#include <stdint.h>
 
 void my_hook(void *param)
 {
@@ -28,10 +29,10 @@ void key_hook(mlx_key_data_t keydata, void *param)
 	t_mlx_data *data = param;
 	mlx_t	*mlx;
 	int angle = data->fov.angle;
-	/** int grid_x1 = data->camera_img->instances[0].x / GRID; */
-	/** int grid_x2 = (data->camera_img->instances[0].x + IMG_SIZE / 2) / GRID; */
-	/** int grid_y1 = data->camera_img->instances[0].y / GRID; */
-	/** int grid_y2 = (data->camera_img->instances[0].y + IMG_SIZE / 2) / GRID; */
+	int grid_x1 = data->camera_img->instances[0].x / GRID;
+	int grid_x2 = (data->camera_img->instances[0].x + IMG_SIZE) / GRID;
+	int grid_y1 = data->camera_img->instances[0].y / GRID;
+	int grid_y2 = (data->camera_img->instances[0].y + IMG_SIZE) / GRID;
 
 	double move_x;
 	double move_y;
@@ -39,67 +40,69 @@ void key_hook(mlx_key_data_t keydata, void *param)
 
 	move_x = SPEED * sin(angle * M_PI / 180);
 	move_y = SPEED * -cos(angle * M_PI / 180);
+	printf("c_x1 : %d, c_x2 : %d, c_y1 : %d, c_y2 : %d\n", (data->camera_img->instances[0].x), (data->camera_img->instances[0].x + IMG_SIZE), data->camera_img->instances[0].y, data->camera_img->instances[0].y + IMG_SIZE);
+	printf("x1 : %d, x2 : %d, y1 : %d, y2 : %d\n", grid_x1, grid_x2, grid_y1, grid_y2);
+	printf("move_x : %f,  move_y : %f\n", move_x, move_y);
 
 	mlx = data->mlx;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_W))
 	{
-		/** data->camera_img->instances[0].y -= SPEED; */
-		data->camera_img->instances[0].x += move_x;
+		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x2 + grid_y1 * 8] \
+				|| data->map[grid_x1 + grid_y2 * 8] || data->map[grid_x2 + grid_y2 * 8])
+			data->camera_img->instances[0].y -= move_y;
+
 		data->camera_img->instances[0].y += move_y;
-		/** if (data->map[grid_x1 + grid_y1 * 8] == 1 || data->map[(grid_x2 + grid_y1 * 8)] == 1) */
-		/**     data->camera_img->instances[0].y -= move_y; */
-		/** if (data->map[grid_x1 + grid_y1 * 8] == 1 || data->map[(grid_x1 + grid_y2 * 8)] == 1) */
-		/**     data->camera_img->instances[0].x -= move_x; */
-			/** data->camera_img->instances[0].x -= move_x; */
-			/** data->camera_img->instances[0].y += SPEED; */
+
+		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x2 + grid_y1 * 8] \
+				|| data->map[grid_x1 + grid_y2 * 8] || data->map[grid_x2 + grid_y2 * 8])
+			data->camera_img->instances[0].y -= move_y;
+
+
+		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x1 + grid_y2 * 8] \
+				|| data->map[grid_x2 + grid_y1 * 8] || data->map[grid_x2 + grid_y2 * 8])
+			data->camera_img->instances[0].x -= move_x;
+
+		data->camera_img->instances[0].x += move_x;
+
+		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x1 + grid_y2 * 8] \
+				|| data->map[grid_x2 + grid_y1 * 8] || data->map[grid_x2 + grid_y2 * 8])
+			data->camera_img->instances[0].x -= move_x;
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_S))
 	{
-		/** data->camera_img->instances[0].y += SPEED; */
-		data->camera_img->instances[0].x -= move_x;
+		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x2 + grid_y1 * 8] \
+				|| data->map[grid_x1 + grid_y2 * 8] || data->map[grid_x2 + grid_y2 * 8])
+			data->camera_img->instances[0].y += move_y;
+
 		data->camera_img->instances[0].y -= move_y;
-		/** if (data->map[grid_x1 + grid_y1 * 8] == 1 || data->map[(grid_x2 + grid_y1 * 8)] == 1) */
-		/**     data->camera_img->instances[0].y += move_y; */
-		/** if (data->map[grid_x1 + grid_y1 * 8] == 1 || data->map[(grid_x1 + grid_y2 * 8)] == 1) */
-		/**     data->camera_img->instances[0].x += move_x; */
-			/** data->camera_img->instances[0].y -= SPEED; */
+
+		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x2 + grid_y1 * 8] \
+				|| data->map[grid_x1 + grid_y2 * 8] || data->map[grid_x2 + grid_y2 * 8])
+			data->camera_img->instances[0].y += move_y;
+
+
+		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x1 + grid_y2 * 8] \
+				|| data->map[grid_x2 + grid_y1 * 8] || data->map[grid_x2 + grid_y2 * 8])
+			data->camera_img->instances[0].x += move_x;
+
+		data->camera_img->instances[0].x -= move_x;
+
+		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x1 + grid_y2 * 8] \
+				|| data->map[grid_x2 + grid_y1 * 8] || data->map[grid_x2 + grid_y2 * 8])
+			data->camera_img->instances[0].x += move_x;
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_A))
 	{
 		data->fov.angle -= 5;
 		if (data->fov.angle < 0)
 			data->fov.angle += 360;
-		/** data->camera_img->instances[0].x -= SPEED; */
-		/** grid_y1 = data->camera_img->instances[0].y / GRID; */
-		/** grid_x1 = data->camera_img->instances[0].x / GRID; */
-		/** grid_y2 = (data->camera_img->instances[0].y + IMG_SIZE / 2) / GRID; */
-		/** if (data->map[grid_x1 + grid_y1 * 8] == 1 || data->map[(grid_x1 + grid_y2 * 8)] == 1) */
-		/**     data->camera_img->instances[0].x += SPEED; */
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_D))
 	{
 		data->fov.angle += 5;
 		if (data->fov.angle >= 360)
 			data->fov.angle -= 360;
-		/** data->camera_img->instances[0].x += SPEED; */
-		/** grid_y1 = data->camera_img->instances[0].y / GRID; */
-		/** grid_x1 = (data->camera_img->instances[0].x + IMG_SIZE / 2) / GRID; */
-		/** grid_y2 = (data->camera_img->instances[0].y + IMG_SIZE / 2) / GRID; */
-		/** if (data->map[grid_x1 + grid_y1 * 8] == 1 || data->map[(grid_x1 + grid_y2 * 8)] == 1) */
-		/**     data->camera_img->instances[0].x -= SPEED; */
 	}
-	/** if (mlx_is_key_down(mlx, MLX_KEY_E)) */
-	/** { */
-	/**     data->fov.angle += 1; */
-	/**     if (data->fov.angle == 360) */
-	/**         data->fov.angle = 0; */
-	/** } */
-	/** if (mlx_is_key_down(mlx, MLX_KEY_Q)) */
-	/** { */
-	/**     data->fov.angle -= 1; */
-	/**     if (data->fov.angle == 0) */
-	/**         data->fov.angle = 360; */
-	/** } */
 }

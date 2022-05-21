@@ -6,13 +6,14 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/05/20 23:05:16 by soum             ###   ########.fr        #
+#    Updated: 2022/05/21 16:58:01 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror \
+		 # -fsanitize=address -g
 
 SRCS = main.c \
 	   ./srcs/drawline.c \

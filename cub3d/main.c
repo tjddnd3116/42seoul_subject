@@ -7,10 +7,10 @@ int map[]=           //the map array. Edit to change level but keep the outer wa
  1,1,1,1,1,1,1,1,
  1,0,0,0,0,0,0,1,
  1,0,1,0,0,1,0,1,
- 1,0,0,0,1,0,0,1,
  1,0,0,0,0,0,0,1,
- 1,0,1,1,0,1,0,1,
  1,0,0,0,0,0,0,1,
+ 1,0,1,0,0,1,1,1,
+ 1,0,0,0,0,1,1,1,
  1,1,1,1,1,1,1,1,
 };
 
@@ -26,7 +26,7 @@ int main(void)
 	put_bg_img(&data);
 	mlx_image_to_window(data.mlx, data.bg_img, 0, 0);
 	mlx_image_to_window(data.mlx, data.cub_img, WIDTH, 0);
-	mlx_image_to_window(data.mlx, data.camera_img, 128, 128);
+	mlx_image_to_window(data.mlx, data.camera_img, 129, 129);
 	mlx_loop_hook(data.mlx, my_hook, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);

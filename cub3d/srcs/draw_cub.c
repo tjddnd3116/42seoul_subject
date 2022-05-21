@@ -9,7 +9,6 @@ void draw_wall(mlx_image_t *cub, t_point *ray, int idx)
 	double end_x;
 
 
-	ray->wall_len *= cos(ray->angle * M_PI / 180);
 	draw_pixel_y = ( 128 * HEIGHT / ray->wall_len);
 	if (ray->wall_len <= 128)
 		draw_pixel_y = HEIGHT;
