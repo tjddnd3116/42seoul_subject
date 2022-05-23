@@ -6,30 +6,21 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/05/24 03:17:19 by soum             ###   ########.fr        #
+#    Updated: 2022/05/24 04:33:26 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-#-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 SRCS = main.c \
-	   ./srcs/drawline.c \
-	   ./srcs/hook.c \
-	   ./srcs/put_img.c \
-	   ./srcs/init_data.c \
-	   ./srcs/detect_wall.c \
-	   ./srcs/fov.c \
-	   ./srcs/draw_cub.c \
-	   ./srcs/util.c \
 
-LIBFT = libft
-LIBFT_LIB = libft/libft.a
-MLX42 = MLX42
-MLX42_LIB = MLX42/libmlx42.a
-INCLUDES = ./includes/cub3d.h
+LIBFT = ../libft
+LIBFT_LIB = ../libft/libft.a
+MLX42 = ../MLX42
+MLX42_LIB = ../MLX42/libmlx42.a
+INCLUDES = ../includes/cub3d.h
 
 
 .c.o :

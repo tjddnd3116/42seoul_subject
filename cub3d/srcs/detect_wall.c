@@ -110,7 +110,7 @@ void detect_wall(t_point *point, t_mlx_data *data, int i)
 	b_len = detect_x_wall(&x_wall_x, &x_wall_y, data, i);
 	if (a_len < b_len)
 	{
-		if (y_wall_x % GRID == 0)
+		if (y_wall_x % GRID == 0 || y_wall_x % GRID == 1 || y_wall_x % GRID == 127)
 			point->is_line = 1;
 		else
 			point->is_line = 0;
@@ -121,7 +121,7 @@ void detect_wall(t_point *point, t_mlx_data *data, int i)
 		point->grid_y = y_wall_y / GRID;
 	}
 	else {
-		if (x_wall_y % GRID == 0)
+		if (x_wall_y % GRID == 0 || x_wall_y % GRID == 1 || x_wall_y % GRID == 127)
 			point->is_line = 1;
 		else
 			point->is_line = 0;

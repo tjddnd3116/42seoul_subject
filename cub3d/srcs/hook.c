@@ -1,6 +1,39 @@
 #include "../includes/cub3d.h"
 #include <stdint.h>
 
+void mouse_hook(double xdelta, double ydelta, void *param)
+{
+	t_mlx_data *data;
+
+	data = param;
+	(void)xdelta;
+	if (ydelta > 0 && data->zoom < 150)
+		data->zoom++;
+	if (ydelta < 0 && data->zoom > 80)
+		data->zoom--;
+}
+
+void cursor_hook(double xpos, double ypos, void* param)
+{
+	t_mlx_data *data;
+
+	data = param;
+	(void)ypos;
+	if (xpos < WIDTH)
+	{
+		data->fov.angle -= 3;
+		if (data->fov.angle < 0)
+			data->fov.angle += 360;
+	}
+	if (xpos > WIDTH)
+	{
+		data->fov.angle += 3;
+		if (data->fov.angle >= 360)
+			data->fov.angle -= 360;
+	}
+	mlx_set_mouse_pos(data->mlx, WIDTH, HEIGHT / 2);
+}
+
 void my_hook(void *param)
 {
 	t_mlx_data *data;
@@ -11,6 +44,7 @@ void my_hook(void *param)
 	memset(data->camera_img->pixels, 128, data->camera_img->width * data->camera_img->height * sizeof(int));
 	memset(data->cub_img->pixels, 128, data->cub_img->width * data->cub_img->height * sizeof(int));
 	put_bg_img(data);
+	put_cub_img(data);
 	set_fov_pos(data);
 	for (int i = 0; i < 300; i++)
 	{
@@ -22,6 +56,15 @@ void my_hook(void *param)
 	}
 	cub_draw(data);
 	mlx_key_hook(data->mlx, key_hook, data);
+	mlx_scroll_hook(data->mlx, mouse_hook, data);
+}
+
+int find_grid(int x, int y)
+{
+	int result;
+
+	result = (x / GRID) + (y / GRID) * MAP_SPACE;
+	return (result);
 }
 
 void key_hook(mlx_key_data_t keydata, void *param)
@@ -29,80 +72,42 @@ void key_hook(mlx_key_data_t keydata, void *param)
 	t_mlx_data *data = param;
 	mlx_t	*mlx;
 	int angle = data->fov.angle;
-	int grid_x1 = data->camera_img->instances[0].x / GRID;
-	int grid_x2 = (data->camera_img->instances[0].x + IMG_SIZE) / GRID;
-	int grid_y1 = data->camera_img->instances[0].y / GRID;
-	int grid_y2 = (data->camera_img->instances[0].y + IMG_SIZE) / GRID;
-
+	int *c_x = &data->camera_img->instances[0].x;
+	int *c_y = &data->camera_img->instances[0].y;
 	double move_x;
 	double move_y;
 
 
 	move_x = SPEED * sin(angle * M_PI / 180);
 	move_y = SPEED * -cos(angle * M_PI / 180);
-	printf("c_x1 : %d, c_x2 : %d, c_y1 : %d, c_y2 : %d\n", (data->camera_img->instances[0].x), (data->camera_img->instances[0].x + IMG_SIZE), data->camera_img->instances[0].y, data->camera_img->instances[0].y + IMG_SIZE);
-	printf("x1 : %d, x2 : %d, y1 : %d, y2 : %d\n", grid_x1, grid_x2, grid_y1, grid_y2);
-	printf("move_x : %f,  move_y : %f\n", move_x, move_y);
-
 	mlx = data->mlx;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_W))
 	{
-		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x2 + grid_y1 * 8] \
-				|| data->map[grid_x1 + grid_y2 * 8] || data->map[grid_x2 + grid_y2 * 8])
-			data->camera_img->instances[0].y -= move_y;
-
-		data->camera_img->instances[0].y += move_y;
-
-		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x2 + grid_y1 * 8] \
-				|| data->map[grid_x1 + grid_y2 * 8] || data->map[grid_x2 + grid_y2 * 8])
-			data->camera_img->instances[0].y -= move_y;
-
-
-		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x1 + grid_y2 * 8] \
-				|| data->map[grid_x2 + grid_y1 * 8] || data->map[grid_x2 + grid_y2 * 8])
-			data->camera_img->instances[0].x -= move_x;
-
-		data->camera_img->instances[0].x += move_x;
-
-		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x1 + grid_y2 * 8] \
-				|| data->map[grid_x2 + grid_y1 * 8] || data->map[grid_x2 + grid_y2 * 8])
-			data->camera_img->instances[0].x -= move_x;
+		*c_y += move_y;
+		if (data->map[find_grid(*c_x, *c_y)] || data->map[find_grid(*c_x + IMG_SIZE - 1, *c_y)])
+			*c_y = ((*c_y) / GRID) * GRID + GRID;
+		else if (data->map[find_grid(*c_x, *c_y + IMG_SIZE - 1)] || data->map[find_grid(*c_x + IMG_SIZE - 1, *c_y + IMG_SIZE - 1)])
+			*c_y = ((*c_y) / GRID) * GRID + GRID - IMG_SIZE;
+		*c_x += move_x;
+		if (data->map[find_grid(*c_x, *c_y)] || data->map[find_grid(*c_x, *c_y + IMG_SIZE - 1)])
+			*c_x = ((*c_x) / GRID) * GRID + GRID;
+		else if (data->map[find_grid(*c_x + IMG_SIZE - 1, *c_y)] || data->map[find_grid(*c_x + IMG_SIZE - 1, *c_y + IMG_SIZE - 1)])
+			*c_x = ((*c_x) / GRID) * GRID + GRID - IMG_SIZE;
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_S))
 	{
-		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x2 + grid_y1 * 8] \
-				|| data->map[grid_x1 + grid_y2 * 8] || data->map[grid_x2 + grid_y2 * 8])
-			data->camera_img->instances[0].y += move_y;
-
-		data->camera_img->instances[0].y -= move_y;
-
-		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x2 + grid_y1 * 8] \
-				|| data->map[grid_x1 + grid_y2 * 8] || data->map[grid_x2 + grid_y2 * 8])
-			data->camera_img->instances[0].y += move_y;
-
-
-		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x1 + grid_y2 * 8] \
-				|| data->map[grid_x2 + grid_y1 * 8] || data->map[grid_x2 + grid_y2 * 8])
-			data->camera_img->instances[0].x += move_x;
-
-		data->camera_img->instances[0].x -= move_x;
-
-		if (data->map[grid_x1 + grid_y1 * 8] || data->map[grid_x1 + grid_y2 * 8] \
-				|| data->map[grid_x2 + grid_y1 * 8] || data->map[grid_x2 + grid_y2 * 8])
-			data->camera_img->instances[0].x += move_x;
-	}
-	if (mlx_is_key_down(mlx, MLX_KEY_A))
-	{
-		data->fov.angle -= 5;
-		if (data->fov.angle < 0)
-			data->fov.angle += 360;
-	}
-	if (mlx_is_key_down(mlx, MLX_KEY_D))
-	{
-		data->fov.angle += 5;
-		if (data->fov.angle >= 360)
-			data->fov.angle -= 360;
+		*c_y -=move_y;
+		if (data->map[find_grid(*c_x, *c_y)] || data->map[find_grid(*c_x + IMG_SIZE - 1, *c_y)])
+			*c_y = ((*c_y) / GRID) * GRID + GRID;
+		else if (data->map[find_grid(*c_x, *c_y + IMG_SIZE - 1)] || data->map[find_grid(*c_x + IMG_SIZE - 1, *c_y + IMG_SIZE - 1)])
+			*c_y = ((*c_y) / GRID) * GRID + GRID - IMG_SIZE;
+		*c_x -= move_x;
+		if (data->map[find_grid(*c_x, *c_y)] || data->map[find_grid(*c_x, *c_y + IMG_SIZE - 1)])
+			*c_x = ((*c_x) / GRID) * GRID + GRID;
+		else if (data->map[find_grid(*c_x + IMG_SIZE - 1, *c_y)] || data->map[find_grid(*c_x + IMG_SIZE - 1, *c_y + IMG_SIZE - 1)])
+			*c_x = ((*c_x) / GRID) * GRID + GRID - IMG_SIZE;
 	}
 }
+

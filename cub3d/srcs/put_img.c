@@ -6,7 +6,7 @@ void put_bg_img(t_mlx_data *data)
 	int pos_y = 0;
 	for (int grid = 0; grid < 64; grid++)
 	{
-		if (data->map[grid] == 1)
+		if (data->map[grid])
 		{
 			for (int x = pos_x * GRID; x < pos_x * GRID + GRID; x++)
 			{
@@ -28,5 +28,20 @@ void put_bg_img(t_mlx_data *data)
 			 if (i % GRID == 0 || j % GRID == 0)
 				 mlx_put_pixel(data->bg_img, j, i, 0x000000ff);
 		 }
+	}
+}
+
+void put_cub_img(t_mlx_data *data)
+{
+	int y = 0;
+	for (; y < HEIGHT / 2; y++)
+	{
+		for (int x = 0; x < WIDTH; x++)
+			mlx_put_pixel(data->cub_img, x, y, 0x0000000f);
+	}
+	for(; y < HEIGHT / 2; y++)
+	{
+		for (int x = 0; x < WIDTH; x++)
+			mlx_put_pixel(data->cub_img, x, y, 0x000000af);
 	}
 }

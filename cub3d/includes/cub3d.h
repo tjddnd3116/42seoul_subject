@@ -31,6 +31,7 @@ typedef struct s_point
 	int grid_x;
 	int grid_y;
 	int is_line;
+	int type;
 }t_point;
 
 typedef struct s_fov
@@ -46,8 +47,11 @@ typedef struct s_mlx_data
 	mlx_image_t *camera_img;
 	mlx_image_t *bg_img;
 	mlx_image_t *cub_img;
+	mlx_texture_t *wall_txt;
+	mlx_image_t *gun_img;
 	t_fov fov;
 	int *map;
+	int zoom;
 
 }	t_mlx_data;
 
@@ -59,6 +63,9 @@ void	put_bg_img(t_mlx_data *data);
 void 	set_fov_pos(t_mlx_data *data);
 void	detect_wall(t_point *point, t_mlx_data *data, int i);
 void	cub_draw(t_mlx_data *data);
+void 	cursor_hook(double xpos, double ypos, void* param);
+void	put_cub_img(t_mlx_data *data);
+uint32_t to_le(uint32_t color);
 
 
 #endif
