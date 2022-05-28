@@ -21,7 +21,7 @@ void cursor_hook(double xpos, double ypos, void* param)
 	(void)ypos;
 	if (xpos < WIDTH)
 	{
-		data->fov.angle -= 3;
+		data->fov.angle -= 4;
 		if (data->fov.angle < 0)
 			data->fov.angle += 360;
 	}
