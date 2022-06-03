@@ -34,14 +34,15 @@ void put_bg_img(t_mlx_data *data)
 void put_cub_img(t_mlx_data *data)
 {
 	int y = 0;
+
 	for (; y < HEIGHT / 2; y++)
 	{
 		for (int x = 0; x < WIDTH; x++)
-			mlx_put_pixel(data->cub_img, x, y, 0x0000000f);
+			mlx_put_pixel(data->cub_img, x, y, 0xffffffff);
 	}
-	for(; y < HEIGHT / 2; y++)
+	for(; y < HEIGHT ; y++)
 	{
 		for (int x = 0; x < WIDTH; x++)
-			mlx_put_pixel(data->cub_img, x, y, 0x000000af);
+			mlx_put_pixel(data->cub_img, x, y, 0x000000ff);
 	}
 }

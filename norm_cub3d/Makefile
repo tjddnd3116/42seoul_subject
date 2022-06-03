@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/05/28 23:19:31 by soum             ###   ########.fr        #
+#    Updated: 2022/06/03 21:35:00 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,25 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 SRCS = main.c \
+	   ./gnl/get_next_line.c \
+	   ./gnl/get_next_line_utils.c \
 	   ./srcs/Error.c \
 	   ./srcs/FreeData.c \
 	   ./srcs/InitData.c \
-	   ./srcs/map.c \
-	   ./gnl/get_next_line.c \
-	   ./gnl/get_next_line_utils.c \
-
+	   ./srcs/InitMap.c \
+	   ./srcs/Util.c \
+	   ./srcs/drawline.c \
+	   ./srcs/InitMlx.c \
+	   ./srcs/PutPixel.c \
+	   ./srcs/put_pixel2.c \
+	   ./srcs/Hook.c \
+	   ./srcs/Fov.c \
+	   ./srcs/InitPlayer.c \
+	   ./srcs/detect_wall.c \
+	   ./srcs/player_move.c \
+	   ./srcs/get_color.c \
+	   ./srcs/scaling.c \
+	   ./srcs/draw_cub.c \
 
 LIBFT = libft
 LIBFT_LIB = libft/libft.a

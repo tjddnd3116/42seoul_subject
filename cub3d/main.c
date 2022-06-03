@@ -11,6 +11,7 @@ int main(void)
 		exit(EXIT_FAILURE);
 	init_data(&data);
 	put_bg_img(&data);
+	/** mlx_resize_image(data.bg_img, 400, 400); */
 	mlx_image_to_window(data.mlx, data.bg_img, 0, 0);
 	mlx_image_to_window(data.mlx, data.cub_img, WIDTH, 0);
 	mlx_image_to_window(data.mlx, data.camera_img, 129, 129);

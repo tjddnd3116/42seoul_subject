@@ -2,10 +2,8 @@
 
 int draw_wall_pos(t_point *ray, t_mlx_data *data)
 {
-	double angle;
 	int wall_pos;
 
-	angle = ray->angle;
 	wall_pos = (int)(ray->x) % GRID;
 	wall_pos += (int)(ray->y) % GRID;
 	wall_pos = data->wall_txt->width * (double)wall_pos / GRID;
