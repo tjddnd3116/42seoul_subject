@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:20:58 by soum              #+#    #+#             */
-/*   Updated: 2022/06/06 13:42:38 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/07 22:44:59 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	print_map_data(t_map *map)
 		printf("%s", map->map[idx++]);
 	printf("map grid width : %d, map grid height : %d\n", \
 			map->width, map->height);
+	printf("cub_x : %d, cub_y : %d\n", \
+			map->cub_x, map->cub_y);
 	printf("---[map data]----\n");
 }
 
@@ -52,15 +54,45 @@ void	print_point_data(t_point *point)
 	printf("---[point data]----\n");
 }
 
+void	print_fc_data(t_texture *text)
+{
+	char	**floor;
+	char	**ceiling;
+	int		idx;
+
+	floor = text->floor_txt;
+	ceiling = text->ceiling_txt;
+	idx = 0;
+	while (floor[idx])
+	{
+		printf("floor : %s\n", floor[idx]);
+		idx++;
+	}
+	idx = 0;
+	while (ceiling[idx])
+	{
+		printf("ceiling : %s\n", ceiling[idx]);
+		idx++;
+	}
+}
+
+void	print_wall_txt_data(t_texture *text)
+{
+	printf("N :%s\n", text->n_wall_path);
+	printf("S :%s\n", text->s_wall_path);
+	printf("W :%s\n", text->w_wall_path);
+	printf("E :%s\n", text->e_wall_path);
+}
+
 void	init_data(t_mlx_data *data, char *map_path)
 {
-	init_map(data, map_path);
-	/** print_map_data(data->map); */
+	data->map.map_path = map_path;
+	init_fc(data);
+	init_wall_txt(data);
+	init_map(data);
 	init_screen(data);
 	init_img(data);
 	init_txt(data);
-	/** print_mlx_data(&data->screen); */
 	init_player(data);
-	/** print_player_data(&data->player); */
 	mlx_set_cursor_mode(data->mlx, MLX_MOUSE_HIDDEN);
 }

@@ -6,13 +6,14 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/06/06 15:05:08 by soum             ###   ########.fr        #
+#    Updated: 2022/06/07 23:17:15 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -o3 -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -o3
+#-fsanitize=address -g
 
 SRCS = main.c \
 	   ./gnl/get_next_line.c \
@@ -20,15 +21,17 @@ SRCS = main.c \
 	   ./srcs/Error.c \
 	   ./srcs/FreeData.c \
 	   ./srcs/InitData.c \
+	   ./srcs/init_fc.c \
+	   ./srcs/init_wall.c \
 	   ./srcs/InitMap.c \
+	   ./srcs/InitMlx.c \
+	   ./srcs/InitPlayer.c \
 	   ./srcs/Util.c \
 	   ./srcs/drawline.c \
-	   ./srcs/InitMlx.c \
 	   ./srcs/PutPixel.c \
 	   ./srcs/put_pixel2.c \
 	   ./srcs/Hook.c \
 	   ./srcs/Fov.c \
-	   ./srcs/InitPlayer.c \
 	   ./srcs/detect_wall.c \
 	   ./srcs/player_move.c \
 	   ./srcs/get_color.c \

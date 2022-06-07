@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:24:01 by soum              #+#    #+#             */
-/*   Updated: 2022/06/06 13:45:27 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/07 22:44:14 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	player_move(t_player *p, double x, double y, t_mlx_data *data)
 	char	**map;
 	int		re_pos;
 
-	map = data->map->map;
+	map = data->map.map;
 	p_x = &p->pos[0];
 	p_y = &p->pos[1];
 	*p_y += y;
@@ -71,5 +71,5 @@ void	player_move(t_player *p, double x, double y, t_mlx_data *data)
 	re_pos = is_x_grid(map, p);
 	if (re_pos)
 		*p_x = re_pos;
-	player_pos_scale(p, data->map);
+	player_pos_scale(p, &data->map);
 }

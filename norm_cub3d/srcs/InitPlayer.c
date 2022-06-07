@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:09:37 by soum              #+#    #+#             */
-/*   Updated: 2022/06/06 04:29:02 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/07 17:16:37 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	player_pos_scale(t_player *p, t_map *map_data)
 	pos_togrid(p->mid_pos, p->grid);
 	scale_map_to_scn(p->pos, p->scaled_pos, map_data);
 	scale_map_to_scn(p->mid_pos, p->scaled_mid_pos, map_data);
-	p->scale_size[0] = (PLAYER_SIZE * SCREEN_W) / map_data->width;
-	p->scale_size[1] = (PLAYER_SIZE * SCREEN_H) / map_data->height;
+	p->scale_size[0] = (PLAYER_SIZE * MINIMAP_W) / map_data->width;
+	p->scale_size[1] = (PLAYER_SIZE * MINIMAP_H) / map_data->height;
 }
 
 void	player_angle(t_player *p, char direction)
@@ -74,7 +74,7 @@ int	init_player(t_mlx_data *data)
 
 	player = &data->player;
 	player->size = PLAYER_SIZE;
-	error_idx = find_player(player, data->map, data->map->map);
+	error_idx = find_player(player, &data->map, data->map.map);
 	if (error_idx)
 		return (error_idx);
 	return (0);
