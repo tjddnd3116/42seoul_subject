@@ -41,7 +41,7 @@ int main(void)
 {
 	mlx_t *mlx;
 	mlx_texture_t *wall;
-	mlx = mlx_init(1024, 1024, "test", true);
+	mlx = mlx_init(2560, 1440, "test", true);
 	mlx_image_t *image;
 	/** uint32_t xy[2]; */
 	/** uint32_t wh[2]; */
@@ -49,9 +49,9 @@ int main(void)
 	/** xy[1] = 0; */
 	/** wh[0] = 624; */
 	/** wh[1] = 624; */
-	image = mlx_new_image(mlx, IMG_SIZE, IMG_SIZE );
+	image = mlx_new_image(mlx, 2560, 1440 );
 	/** memset(image->pixels, 255, image->width * image->height * sizeof(int)); */
-	wall = mlx_load_png("./enemy2.png");
+	wall = mlx_load_png("./wall2.png");
 	/** mlx_draw_texture(image, wall, 0, 0); */
 	/** mlx_image_to_window(mlx, image, 0, 0); */
 	/** printf("%d\n", *(uint32_t *)(wall->pixels)); */
@@ -59,7 +59,7 @@ int main(void)
 	uint32_t width = wall->width;
 	uint32_t height = wall->height;
     /**  */
-	printf("%d %d\n", width, height);
+	/** printf("%d %d\n", width, height); */
 	/** uint32_t color = *(uint32_t *)(wall->pixels); */
 	/** printf("%x\n", to_le(color)); */
 

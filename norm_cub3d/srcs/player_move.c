@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:24:01 by soum              #+#    #+#             */
-/*   Updated: 2022/06/03 20:53:38 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/06 13:45:27 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,4 @@ void	player_move(t_player *p, double x, double y, t_mlx_data *data)
 	if (re_pos)
 		*p_x = re_pos;
 	player_pos_scale(p, data->map);
-	/** print_player_data(p); */
 }

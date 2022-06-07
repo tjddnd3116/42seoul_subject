@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:09:37 by soum              #+#    #+#             */
-/*   Updated: 2022/06/03 19:34:57 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/06 04:29:02 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	player_pos_scale(t_player *p, t_map *map_data)
 	y_pos = p->pos[1];
 	p->mid_pos[0] = x_pos + (PLAYER_SIZE / 2);
 	p->mid_pos[1] = y_pos + (PLAYER_SIZE / 2);
-	pos_togrid(p->pos, p->grid);
+	pos_togrid(p->mid_pos, p->grid);
 	scale_map_to_scn(p->pos, p->scaled_pos, map_data);
 	scale_map_to_scn(p->mid_pos, p->scaled_mid_pos, map_data);
 	p->scale_size[0] = (PLAYER_SIZE * SCREEN_W) / map_data->width;

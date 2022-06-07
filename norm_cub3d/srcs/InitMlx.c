@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 15:39:30 by soum              #+#    #+#             */
-/*   Updated: 2022/06/03 18:17:06 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/06 14:23:28 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ int	init_txt(t_mlx_data *data)
 	t_texture	*texture;
 
 	texture = &data->texture;
-	texture->wall_txt = mlx_load_png("./images/wall.png");
+	texture->wall_txt = mlx_load_png("./images/wall2.png");
 	texture->mini_player = mlx_load_png("./images/mini_player.png");
+	texture->dice_txt = mlx_load_png("./images/dice2.png");
 	return (0);
 }
 

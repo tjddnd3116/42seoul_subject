@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 15:33:09 by soum              #+#    #+#             */
-/*   Updated: 2022/06/03 20:40:25 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/04 23:12:09 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 inline void	pos_togrid(int *pos, int *grid)
 {
-	grid[0] = pos[0] / GRID;
-	grid[1] = pos[1] / GRID;
+	grid[0] = (pos[0] -1) / GRID;
+	grid[1] = (pos[1] -1) / GRID;
 }
 
 uint32_t	to_le(uint32_t color)

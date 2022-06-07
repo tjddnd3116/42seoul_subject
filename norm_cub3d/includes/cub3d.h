@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:21:10 by soum              #+#    #+#             */
-/*   Updated: 2022/06/03 21:39:41 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/06 15:04:59 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@
 # include "../Libft/libft.h"
 # include "../gnl/get_next_line.h"
 
-# define GRID 64
-# define PLAYER_SIZE 16
-# define SPEED 4
+# define RED 0xff0000ff
+# define GRID 512
+# define PLAYER_SIZE 128
+# define SPEED 50
+# define PNT_CNT 720
 # define ARG_ERROR 3
 # define MAP_OPEN_ERROR 4
 # define MAP_MALLOC_ERROR 5
@@ -52,6 +54,7 @@ typedef struct s_point
 	int			grid_y;
 	int			is_line;
 	char		type;
+	int			dice;
 }t_point;
 
 typedef struct s_fov
@@ -59,6 +62,15 @@ typedef struct s_fov
 	t_point	camera_pos;
 	t_point	point[300];
 }t_fov;
+
+typedef struct s_ray
+{
+	int		origin_xy[2];
+	double	xy[2];
+	int		grid[2];
+	double	wall_len;
+	int		dice;
+}t_ray;
 
 typedef struct s_map
 {
@@ -92,6 +104,7 @@ typedef struct s_texture
 	mlx_texture_t	*floor_txt;
 	mlx_texture_t	*ceiling_txt;
 	mlx_texture_t	*mini_player;
+	mlx_texture_t	*dice_txt;
 }t_texture;
 
 typedef struct s_player
@@ -114,7 +127,7 @@ typedef struct s_mlx_data
 	t_screen		screen;
 	t_image			image;
 	t_texture		texture;
-	t_point			pnt[300];
+	t_point			pnt[PNT_CNT];
 }	t_mlx_data;
 
 /** initData.c */
@@ -189,6 +202,9 @@ int			scale_map_to_scn_single(int val, int map_size, int scn_size);
 
 /** draw_cub.c */
 void		draw_cub(t_mlx_data *data);
-void		draw_wall(mlx_image_t *cub_img, t_point *pnt, t_mlx_data *data);
+void		draw_wall(mlx_image_t *cub_img, t_point *pnt, \
+		t_mlx_data *data, int i);
 
+/** draw_dice.c */
+/** void		draw_dice(t_mlx_data *data); */
 #endif

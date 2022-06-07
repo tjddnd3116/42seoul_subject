@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 16:18:58 by soum              #+#    #+#             */
-/*   Updated: 2022/06/03 21:32:18 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/06 06:54:46 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	put_pixels(t_mlx_data *data)
 {
 	put_cub_pixel(data);
-	put_bg_pixel(data->image.bg_img, data->map);
-	put_player_pixel(data->image.bg_img, &data->player, \
-			data->texture.mini_player);
+	/** put_bg_pixel(data->image.bg_img, data->map); */
+	/** put_player_pixel(data->image.bg_img, &data->player, \ */
+	/**         data->texture.mini_player); */
 }
 
 void	put_player_pixel(mlx_image_t *bg_img, t_player *p, mlx_texture_t *p_txt)
@@ -88,7 +88,7 @@ void	put_minimap_pixel(mlx_image_t *mini_img, mlx_image_t *bg_img)
 		x = 0;
 		while (x < mini_img->width)
 		{
-			color = *((uint32_t *)bg_img->pixels + (x * 5 + y * 2560 * 5));
+			color = *((uint32_t *)bg_img->pixels + (x * 5 + y * SCREEN_W * 5));
 			color = to_le(color);
 			mlx_put_pixel(mini_img, x, y, color);
 			x++;
@@ -114,7 +114,7 @@ void	put_cub_pixel(t_mlx_data *data)
 	{
 		x = 0;
 		while (x < 2560)
-			mlx_put_pixel(data->image.cub_img, x++, y, 0x000000af);
+			mlx_put_pixel(data->image.cub_img, x++, y, 0xffffff0f);
 		y++;
 	}
 }

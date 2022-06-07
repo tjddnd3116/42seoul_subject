@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 20:40:02 by soum              #+#    #+#             */
-/*   Updated: 2022/06/03 21:05:21 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/06 01:32:48 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	scale_map_to_scn_single(int val, int map_size, int scn_size)
 {
-	int result;
+	int	result;
 
 	result = ((double)val * scn_size) / map_size;
 	return (result);
@@ -49,4 +49,3 @@ void	scale_scn_to_map(int *pos, int *scaled_pos, t_map *map_data)
 	scaled_pos[0] = (x_pos / SCREEN_W) * width;
 	scaled_pos[1] = (y_pos / SCREEN_H) * height;
 }
-

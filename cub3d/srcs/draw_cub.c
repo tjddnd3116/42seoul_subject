@@ -30,7 +30,7 @@ void draw_wall(mlx_image_t *cub, t_point *ray, int idx, int zoom, t_mlx_data *da
 	if (ray->wall_len <= zoom)
 	{
 		tmp = (draw_pixel_y - HEIGHT) / 2.0;
-		tmp = (tmp / draw_pixel_y) * 626;
+		tmp = (tmp / draw_pixel_y) * data->wall_txt->height;
 		draw_pixel_y = HEIGHT;
 	}
 	start_y = (HEIGHT - draw_pixel_y) / 2;
@@ -42,8 +42,8 @@ void draw_wall(mlx_image_t *cub, t_point *ray, int idx, int zoom, t_mlx_data *da
 		double p_y = tmp;
 		for (int y = start_y; y < end_y; y++)
 		{
-			p_y += 626 / (double)tmp2;
-			uint32_t color = *((uint32_t *)wall->pixels + ((int)p_y * 626  + wall_pos));
+			p_y += data->wall_txt->height / (double)tmp2;
+			uint32_t color = *((uint32_t *)wall->pixels + ((int)p_y * data->wall_txt->height  + wall_pos));
 			color = to_le(color);
 			if(ray->is_line)
 				mlx_put_pixel(cub, x, y, 0x000000f0);

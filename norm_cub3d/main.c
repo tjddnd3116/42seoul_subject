@@ -6,13 +6,16 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:20:07 by soum              #+#    #+#             */
-/*   Updated: 2022/06/03 21:31:07 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/06 07:45:40 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42/include/MLX42/MLX42.h"
 #include "includes/cub3d.h"
 #include <stdlib.h>
+#include <math.h>
+#include <time.h>
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -23,7 +26,7 @@ int	main(int argc, char **argv)
 	init_data(&data, argv[1]);
 	memset_all_image(&data.image);
 	put_pixels(&data);
-	mlx_image_to_window(data.mlx, data.image.bg_img, 0, 0);
+	/** mlx_image_to_window(data.mlx, data.image.bg_img, 0, 0); */
 	mlx_image_to_window(data.mlx, data.image.cub_img, 0, 0);
 	/** mlx_image_to_window(data.mlx, data.image.minimap_img, 0, 0); */
 	mlx_cursor_hook(data.mlx, cursor_hook, &data);
