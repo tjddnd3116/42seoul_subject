@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:09:42 by soum              #+#    #+#             */
-/*   Updated: 2022/06/07 23:38:02 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/08 21:46:24 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ void	my_hook(void *param)
 
 	data = param;
 	set_fov_pos(data);
-	memset_all_image(&data->image, &data->texture);
+	memset_all_image(&data->image);
 	put_pixels(data);
 	draw_cub(data);
 	mlx_cursor_hook(data->mlx, cursor_hook, data);
 	mlx_scroll_hook(data->mlx, scroll_hook, data);
 	mlx_key_hook(data->mlx, key_hook, data);
-	get_frametime();
+	/** get_frametime(); */
 }
 
 void	key_hook(mlx_key_data_t keydata, void *param)
@@ -77,4 +77,6 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		player_move(&data->player, -move_x, -move_y, data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_M))
 		data->screen.toggle_minimap = !data->screen.toggle_minimap;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_F) && data->player.near_door)
+		open_door(&data->map, data->pnt);
 }

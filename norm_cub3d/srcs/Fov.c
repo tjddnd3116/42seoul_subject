@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:59:42 by soum              #+#    #+#             */
-/*   Updated: 2022/06/07 19:18:38 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/08 21:45:55 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,7 @@ void	set_fov_pos(t_mlx_data *data)
 		data->pnt[i].degree = data->pnt[i].angle * (M_PI / 180);
 		data->pnt[i].color = RED;
 		detect_wall(data, &data->pnt[i]);
-		data->pnt[i].x = scale_map_to_scn_single(data->pnt[i].map_x, \
-				data->map.width, MINIMAP_W);
-		data->pnt[i].y = scale_map_to_scn_single(data->pnt[i].map_y, \
-				data->map.height, MINIMAP_H);
-		data->pnt[i].wall_len = data->pnt[i].wall_len * cos((player->angle - \
-					data->pnt[i].angle) * (M_PI / 180));
+		pnt_scale(data, i);
 	}
+	data->player.near_door = is_near_door(data->pnt);
 }

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:09:37 by soum              #+#    #+#             */
-/*   Updated: 2022/06/07 17:16:37 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/08 15:50:42 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	init_player(t_mlx_data *data)
 
 	player = &data->player;
 	player->size = PLAYER_SIZE;
+	player->near_door = 0;
 	error_idx = find_player(player, &data->map, data->map.map);
 	if (error_idx)
 		return (error_idx);

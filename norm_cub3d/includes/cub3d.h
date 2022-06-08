@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:21:10 by soum              #+#    #+#             */
-/*   Updated: 2022/06/07 23:36:39 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/08 23:19:40 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,8 @@ typedef struct s_point
 	uint32_t	color;
 	int			grid_x;
 	int			grid_y;
-	int			is_line;
+	int			is_door;
 	char		type;
-	int			dice;
 }t_point;
 
 typedef struct s_fov
@@ -77,8 +76,8 @@ typedef struct s_ray
 	double	xy[2];
 	int		grid[2];
 	double	wall_len;
-	int		dice;
 	char	type;
+	int		is_door;
 }t_ray;
 
 typedef struct s_map
@@ -121,6 +120,7 @@ typedef struct s_texture
 	char			*e_wall_path;
 	char			*w_wall_path;
 	mlx_texture_t	*mini_player;
+	mlx_texture_t	*door_txt;
 }t_texture;
 
 typedef struct s_player
@@ -133,6 +133,7 @@ typedef struct s_player
 	int	grid[2];
 	int	scaled_pos[2];
 	int	scaled_mid_pos[2];
+	int	near_door;
 }t_player;
 
 typedef struct s_mlx_data
@@ -181,7 +182,7 @@ void		free_map(t_mlx_data *data);
 
 /** Util.c */
 uint32_t	to_le(uint32_t color);
-void		memset_all_image(t_image *image, t_texture *txt);
+void		memset_all_image(t_image *image);
 int			is_invisible(uint32_t *color);
 void		pos_togrid(int *pos, int *grid);
 void		get_frametime(void);
@@ -207,8 +208,16 @@ void		cursor_hook(double xpos, double ypos, void *param);
 void		my_hook(void *param);
 void		key_hook(mlx_key_data_t keydata, void *param);
 
+/** door.c */
+int			is_near_door(t_point *pnt);
+void		open_door(t_map *map_data, t_point *pnt);
+
 /** detect_wall.c */
 void		detect_wall(t_mlx_data *data, t_point *pnt);
+
+/** detect_wall2.c */
+int			find_y_txt(t_ray *pnt, t_map *map_data, double angle, int *grid_xy);
+int			find_x_txt(t_ray *pnt, t_map *map_data, double angle, int *grid_xy);
 
 /** Fov.c */
 void		set_fov_pos(t_mlx_data *data);
@@ -223,12 +232,11 @@ uint32_t	get_player_color(mlx_texture_t *p_txt, t_player *p, int *xy);
 void		scale_scn_to_map(int *pos, int *scaled_pos, t_map *map_data);
 void		scale_map_to_scn(int *pos, int *scaled_pos, t_map *map_data);
 int			scale_map_to_scn_single(int val, int map_size, int scn_size);
+void		pnt_scale(t_mlx_data *data, int i);
 
 /** draw_cub.c */
 int			draw_txt_pos(t_point *ray, mlx_texture_t *txt);
 void		draw_cub(t_mlx_data *data);
 void		draw_wall(t_point *pnt, t_mlx_data *data, int i);
 
-/** draw_dice.c */
-/** void		draw_dice(t_mlx_data *data); */
 #endif

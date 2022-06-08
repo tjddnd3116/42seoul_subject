@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 16:18:58 by soum              #+#    #+#             */
-/*   Updated: 2022/06/08 00:07:21 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/08 21:55:54 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,12 @@ void	put_minimap_pixel(mlx_image_t *img, t_map *map_data)
 		while ((uint32_t)pos[0] < img->width)
 		{
 			scale_scn_to_map(pos, scaled_pos, map_data);
-			if (map[scaled_pos[1] / GRID][scaled_pos[0] / GRID] != '1')
-				color = 0x000000af;
+			if (map[scaled_pos[1] / GRID][scaled_pos[0] / GRID] == '1')
+				color = 0x000000ff;
+			else if (map[scaled_pos[1] / GRID][scaled_pos[0] / GRID] == '2')
+				color = 0x000000ff;
 			else
-				color = 0xffffffaf;
+				color = 0xffffffff;
 			if ((scaled_pos[1] / GRID + scaled_pos[0] / GRID) % 2)
 				color -= 40;
 			mlx_put_pixel(img, pos[0], pos[1], color);

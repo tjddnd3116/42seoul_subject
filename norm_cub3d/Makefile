@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/06/07 23:17:15 by soum             ###   ########.fr        #
+#    Updated: 2022/06/08 16:05:04 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,10 +33,13 @@ SRCS = main.c \
 	   ./srcs/Hook.c \
 	   ./srcs/Fov.c \
 	   ./srcs/detect_wall.c \
+	   ./srcs/detect_wall2.c \
 	   ./srcs/player_move.c \
 	   ./srcs/get_color.c \
 	   ./srcs/scaling.c \
 	   ./srcs/draw_cub.c \
+	   ./srcs/door.c \
+
 
 LIBFT = libft
 LIBFT_LIB = libft/libft.a

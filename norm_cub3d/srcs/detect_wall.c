@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:59:06 by soum              #+#    #+#             */
-/*   Updated: 2022/06/07 22:17:40 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/08 22:45:18 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	is_y_wall(t_ray *pnt, t_map *map_data, double angle)
 {
-	int	grid_x;
-	int	grid_y;
+	int	grid_xy[2];
+	int	ret;
 
 	if (angle < 90 || 270 < angle)
 		pnt->xy[1]--;
@@ -23,43 +23,36 @@ int	is_y_wall(t_ray *pnt, t_map *map_data, double angle)
 		pnt->xy[0] = (GRID * map_data->cub_x) - GRID;
 	if (pnt->xy[0] < 0)
 		pnt->xy[0] = 0;
-	grid_x = pnt->xy[0] / GRID;
-	grid_y = pnt->xy[1] / GRID;
+	grid_xy[0] = pnt->xy[0] / GRID;
+	grid_xy[1] = pnt->xy[1] / GRID;
 	if (angle < 90 || 270 < angle)
 		pnt->xy[1]++;
 	pnt->wall_len = sqrt(pow(pnt->origin_xy[0] - pnt->xy[0], 2.0) + \
 			pow(pnt->origin_xy[1] - pnt->xy[1], 2.0));
-	pnt->type = 'N';
-	if (angle > 90 && angle < 270)
-		pnt->type = 'S';
-	if (map_data->map[grid_y][grid_x] == '1')
-		return (1);
-	return (0);
+	ret = find_y_txt(pnt, map_data, angle, grid_xy);
+	return (ret);
 }
 
 int	is_x_wall(t_ray *pnt, t_map *map_data, double angle)
 {
-	int	grid_x;
-	int	grid_y;
+	int	grid_xy[2];
+	int	ret;
 
+	ret = 0;
 	if (angle > 180)
 		pnt->xy[0]--;
 	if (pnt->xy[1] >= GRID * map_data->cub_y)
 		pnt->xy[1] = GRID * map_data->cub_y - GRID;
 	if (pnt->xy[1] < 0)
 		pnt->xy[1] = 0;
-	grid_x = pnt->xy[0] / GRID;
-	grid_y = pnt->xy[1] / GRID;
+	grid_xy[0] = pnt->xy[0] / GRID;
+	grid_xy[1] = pnt->xy[1] / GRID;
 	if (angle > 180)
 		pnt->xy[0]++;
 	pnt->wall_len = sqrt(pow(pnt->origin_xy[0] - pnt->xy[0], 2.0) + \
 			pow(pnt->origin_xy[1] - pnt->xy[1], 2.0));
-	pnt->type = 'E';
-	if (angle > 180)
-		pnt->type = 'W';
-	if (map_data->map[grid_y][grid_x] == '1')
-		return (1);
-	return (0);
+	ret = find_x_txt(pnt, map_data, angle, grid_xy);
+	return (ret);
 }
 
 void	detect_y_wall(t_ray *pnt, t_mlx_data *data, \
@@ -124,7 +117,7 @@ void	detect_wall(t_mlx_data *data, t_point *pnt)
 		pnt->map_y = tmp_y.xy[1];
 		pnt->wall_len = tmp_y.wall_len;
 		pnt->type = tmp_y.type;
-		pnt->dice = tmp_y.dice;
+		pnt->is_door = tmp_y.is_door;
 	}
 	else
 	{
@@ -132,6 +125,6 @@ void	detect_wall(t_mlx_data *data, t_point *pnt)
 		pnt->map_y = tmp_x.xy[1];
 		pnt->wall_len = tmp_x.wall_len;
 		pnt->type = tmp_x.type;
-		pnt->dice = tmp_x.dice;
+		pnt->is_door = tmp_x.is_door;
 	}
 }

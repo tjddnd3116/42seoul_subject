@@ -6,13 +6,23 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 20:40:02 by soum              #+#    #+#             */
-/*   Updated: 2022/06/07 17:36:04 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/08 20:43:36 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	scale_map_to_scn_single(int val, int map_size, int scn_size)
+void	pnt_scale(t_mlx_data *data, int i)
+{
+		data->pnt[i].x = scale_map_to_scn_single(data->pnt[i].map_x, \
+				data->map.width, MINIMAP_W);
+		data->pnt[i].y = scale_map_to_scn_single(data->pnt[i].map_y, \
+				data->map.height, MINIMAP_H);
+		data->pnt[i].wall_len = data->pnt[i].wall_len * cos((data->player.angle - \
+					data->pnt[i].angle) * (M_PI / 180));
+}
+
+inline int	scale_map_to_scn_single(int val, int map_size, int scn_size)
 {
 	int	result;
 
