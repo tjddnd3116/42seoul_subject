@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:09:42 by soum              #+#    #+#             */
-/*   Updated: 2022/06/08 21:46:24 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/09 22:01:17 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,33 @@ void	my_hook(void *param)
 	t_mlx_data	*data;
 
 	data = param;
+	if (data->map.door_ani.is_door_action)
+		door_ani(&data->map.door_ani, &data->map);
 	set_fov_pos(data);
 	memset_all_image(&data->image);
 	put_pixels(data);
 	draw_cub(data);
-	mlx_cursor_hook(data->mlx, cursor_hook, data);
-	mlx_scroll_hook(data->mlx, scroll_hook, data);
+	/** mlx_cursor_hook(data->mlx, cursor_hook, data); */
+	/** mlx_scroll_hook(data->mlx, scroll_hook, data); */
 	mlx_key_hook(data->mlx, key_hook, data);
-	/** get_frametime(); */
+	get_frametime();
 }
 
+void	change_angle(t_player *p, char key)
+{
+	if (key == 'A')
+	{
+		p->angle -= ANGLE_SPEED;
+		if (p->angle < 0)
+			p->angle += 360;
+	}
+	if (key == 'D')
+	{
+		p->angle +=ANGLE_SPEED;
+		if (p->angle >= 360)
+			p->angle -=360;
+	}
+}
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_mlx_data	*data;
@@ -75,6 +92,10 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		player_move(&data->player, move_x, move_y, data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
 		player_move(&data->player, -move_x, -move_y, data);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+		change_angle(&data->player, 'A');
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+		change_angle(&data->player, 'D');
 	if (mlx_is_key_down(data->mlx, MLX_KEY_M))
 		data->screen.toggle_minimap = !data->screen.toggle_minimap;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_F) && data->player.near_door)

@@ -6,30 +6,54 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:23:42 by soum              #+#    #+#             */
-/*   Updated: 2022/06/07 23:16:43 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/09 22:50:49 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 #include <math.h>
 
+void	put_minimap_dark(mlx_image_t *mini_img, t_player *player)
+{
+	int			*p_xy;
+	uint32_t	x;
+	uint32_t	y;
+	double		len;
+
+	p_xy = player->scaled_mid_pos;
+	y = 0;
+	while (y < mini_img->height)
+	{
+		x = 0;
+		while (x < mini_img->width)
+		{
+			len = sqrt(pow(p_xy[0] - (int)x, 2.0) + pow(p_xy[1] - (int)y, 2.0));
+			if (len >= 90.0)
+				mlx_put_pixel(mini_img, x, y, 0x000000ff);
+			x++;
+		}
+		y++;
+	}
+
+}
+
 void	put_razer_pixel(t_mlx_data *data, mlx_image_t *bg_img)
 {
-	double	angle;
+	/** double	angle; */
 	t_point	player;
 	int		i;
 
 	player.x = data->player.scaled_mid_pos[0];
 	player.y = data->player.scaled_mid_pos[1];
-	player.color = 0xff0000ff;
+	player.color = RED;
 	i = 0;
 	while (i < PNT_CNT)
 	{
-		angle = data->pnt[0].angle;
-		if (angle == 0.0 || angle == 90.0 || angle == 180.0 || angle == 270.0)
-			fdf_drawline(bg_img, &data->pnt[(i + 2) % PNT_CNT], &player);
-		else
-			fdf_drawline(bg_img, &data->pnt[i], &player);
+		/** angle = data->pnt[i].angle; */
+		/** if ((int)angle == 0 || (int)angle == 90 || angle == 180.0 || angle == 270.0) */
+		/**     fdf_drawline(bg_img, &data->pnt[(i + 1) % PNT_CNT], &player); */
+		/** else */
+		fdf_drawline(bg_img, &data->pnt[i], &player);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:59:06 by soum              #+#    #+#             */
-/*   Updated: 2022/06/08 22:45:18 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/09 15:38:34 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ void	detect_y_wall(t_ray *pnt, t_mlx_data *data, \
 		if (angle > 90 && angle < 270)
 			pnt->xy[1] = pnt->grid[1] * GRID + GRID;
 		if (angle == 90.0 || angle == 270.0)
-			pnt->xy[0] = pnt->origin_xy[0];
+		{
+			pnt->wall_len = GRID * (data->map.cub_x * data->map.cub_y);
+			return ;
+		}
 		else
 			pnt->xy[0] = pnt->origin_xy[0] + ((pnt->origin_xy[1] \
 						- pnt->xy[1]) * tan(degree));
@@ -87,7 +90,10 @@ void	detect_x_wall(t_ray *pnt, t_mlx_data *data, \
 		if (angle < 180)
 			pnt->xy[0] = pnt->grid[0] * GRID + GRID;
 		if (angle == 180.0 || angle == 0.0)
-			pnt->xy[1] = pnt->origin_xy[1];
+		{
+			pnt->wall_len = GRID * (data->map.cub_x * data->map.cub_y);
+			return ;
+		}
 		else
 			pnt->xy[1] = pnt->origin_xy[1] + ((pnt->origin_xy[0] \
 						- pnt->xy[0]) / tan(degree));

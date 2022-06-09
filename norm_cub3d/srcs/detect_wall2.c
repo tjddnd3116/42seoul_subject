@@ -6,12 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 13:51:45 by soum              #+#    #+#             */
-/*   Updated: 2022/06/08 22:59:57 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/09 21:10:43 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include <math.h>
 
 int	find_y_txt(t_ray *pnt, t_map *map_data, double angle, int *grid_xy)
 {
@@ -26,8 +25,6 @@ int	find_y_txt(t_ray *pnt, t_map *map_data, double angle, int *grid_xy)
 		ret = 1;
 	if (map_data->map[grid_xy[1]][grid_xy[0]] == '2')
 	{
-		ret = 2;
-		pnt->is_door = 1;
 		if (angle < 90 || angle > 270)
 			pnt->xy[1] -= GRID / 2.0;
 		else if (angle > 90 && angle < 270)
@@ -36,6 +33,10 @@ int	find_y_txt(t_ray *pnt, t_map *map_data, double angle, int *grid_xy)
 					- pnt->xy[1]) * tan(angle * (M_PI / 180)));
 		pnt->wall_len = sqrt(pow(pnt->origin_xy[0] - pnt->xy[0], 2.0) + \
 				pow(pnt->origin_xy[1] - pnt->xy[1], 2.0));
+		if (!check_door_action(pnt, map_data))
+			return (ret);
+		ret = 2;
+		pnt->is_door += 1;
 	}
 	return (ret);
 }
@@ -53,8 +54,6 @@ int	find_x_txt(t_ray *pnt, t_map *map_data, double angle, int *grid_xy)
 		ret = 1;
 	else if (map_data->map[grid_xy[1]][grid_xy[0]] == '2')
 	{
-		ret = 2;
-		pnt->is_door = 1;
 		if (angle < 180)
 			pnt->xy[0] += GRID / 2.0;
 		else if (angle > 180)
@@ -63,6 +62,10 @@ int	find_x_txt(t_ray *pnt, t_map *map_data, double angle, int *grid_xy)
 					- pnt->xy[0]) / tan(angle * (M_PI / 180)));
 		pnt->wall_len = sqrt(pow(pnt->origin_xy[0] - pnt->xy[0], 2.0) + \
 				pow(pnt->origin_xy[1] - pnt->xy[1], 2.0));
+		if (!check_door_action(pnt, map_data))
+			return (ret);
+		ret = 2;
+		pnt->is_door += 1;
 	}
 	return (ret);
 }

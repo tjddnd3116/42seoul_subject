@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 16:18:58 by soum              #+#    #+#             */
-/*   Updated: 2022/06/08 21:55:54 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/09 22:17:50 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	put_pixels(t_mlx_data *data)
 	{
 		put_minimap_pixel(data->image.minimap_img, &data->map);
 		put_razer_pixel(data, data->image.minimap_img);
+		put_minimap_dark(data->image.minimap_img, &data->player);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:21:10 by soum              #+#    #+#             */
-/*   Updated: 2022/06/08 23:19:40 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/09 22:17:59 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@
 # define PNT_CNT 1280
 
 # define FOV 60
-# define ANGLE_SPEED 3
-# define SPEED 40
+# define ANGLE_SPEED 4
+# define SPEED 55
 
 typedef struct s_point
 {
@@ -65,11 +65,6 @@ typedef struct s_point
 	char		type;
 }t_point;
 
-typedef struct s_fov
-{
-	t_point	point[300];
-}t_fov;
-
 typedef struct s_ray
 {
 	int		origin_xy[2];
@@ -80,6 +75,17 @@ typedef struct s_ray
 	int		is_door;
 }t_ray;
 
+typedef struct	s_door
+{
+	int		is_door_action;
+	double	start_x;
+	double	end_x;
+	double	start_y;
+	double	end_y;
+	int		grid_x;
+	int		grid_y;
+}t_door;
+
 typedef struct s_map
 {
 	int		cub_x;
@@ -89,6 +95,7 @@ typedef struct s_map
 	char	**map;
 	int		cub_size;
 	char	*map_path;
+	t_door	door_ani;
 }t_map;
 
 typedef struct s_screen
@@ -119,7 +126,6 @@ typedef struct s_texture
 	char			*s_wall_path;
 	char			*e_wall_path;
 	char			*w_wall_path;
-	mlx_texture_t	*mini_player;
 	mlx_texture_t	*door_txt;
 }t_texture;
 
@@ -201,6 +207,7 @@ void		put_pixels(t_mlx_data *data);
 void		put_razer_pixel(t_mlx_data *data, mlx_image_t *bg_img);
 void		put_wall_pixel(t_mlx_data *data, double *start_end_xy, \
 		double *tmp_xy, int txt_pos, mlx_texture_t *txt);
+void		put_minimap_dark(mlx_image_t *mini_img, t_player *player);
 
 /** Hook.c */
 void		scroll_hook(double xdelta, double ydelta, void *param);
@@ -209,8 +216,10 @@ void		my_hook(void *param);
 void		key_hook(mlx_key_data_t keydata, void *param);
 
 /** door.c */
+int			check_door_action(t_ray *pnt, t_map *map_data);
 int			is_near_door(t_point *pnt);
 void		open_door(t_map *map_data, t_point *pnt);
+void		door_ani(t_door *door, t_map *map_data);
 
 /** detect_wall.c */
 void		detect_wall(t_mlx_data *data, t_point *pnt);
@@ -235,7 +244,7 @@ int			scale_map_to_scn_single(int val, int map_size, int scn_size);
 void		pnt_scale(t_mlx_data *data, int i);
 
 /** draw_cub.c */
-int			draw_txt_pos(t_point *ray, mlx_texture_t *txt);
+int			draw_txt_pos(t_point *ray, mlx_texture_t *txt, t_door *door);
 void		draw_cub(t_mlx_data *data);
 void		draw_wall(t_point *pnt, t_mlx_data *data, int i);
 
