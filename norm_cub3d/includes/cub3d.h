@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:21:10 by soum              #+#    #+#             */
-/*   Updated: 2022/06/09 22:17:59 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/10 23:18:48 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct	s_door
 	double	end_y;
 	int		grid_x;
 	int		grid_y;
+	char	act;
 }t_door;
 
 typedef struct s_map
@@ -218,7 +219,7 @@ void		key_hook(mlx_key_data_t keydata, void *param);
 /** door.c */
 int			check_door_action(t_ray *pnt, t_map *map_data);
 int			is_near_door(t_point *pnt);
-void		open_door(t_map *map_data, t_point *pnt);
+void		act_door(t_map *map_data, t_point *pnt);
 void		door_ani(t_door *door, t_map *map_data);
 
 /** detect_wall.c */

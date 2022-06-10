@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:24:01 by soum              #+#    #+#             */
-/*   Updated: 2022/06/08 20:34:28 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/10 21:50:02 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,9 @@ int	is_y_grid(char **map, t_player *p)
 	grid_y1 = pos_to_grid(p->pos[1], GRID, 0);
 	grid_x2 = pos_to_grid(p->pos[0], GRID, PLAYER_SIZE - 1);
 	grid_y2 = pos_to_grid(p->pos[1], GRID, PLAYER_SIZE - 1);
-	if (map[grid_y1][grid_x1] == '1' || map[grid_y1][grid_x2] == '1')
+	if (map[grid_y1][grid_x1] & 1 || map[grid_y1][grid_x2] & 1)
 		return ((p->pos[1] / GRID) * GRID + GRID);
-	else if (map[grid_y2][grid_x1] == '1' || map[grid_y2][grid_x2] == '1')
-		return ((p->pos[1] / GRID) * GRID + GRID - PLAYER_SIZE);
-	if (map[grid_y1][grid_x1] == '2' || map[grid_y1][grid_x2] == '2')
-		return ((p->pos[1] / GRID) * GRID + GRID);
-	else if (map[grid_y2][grid_x1] == '2' || map[grid_y2][grid_x2] == '2')
+	else if (map[grid_y2][grid_x1] & 1 || map[grid_y2][grid_x2] & 1)
 		return ((p->pos[1] / GRID) * GRID + GRID - PLAYER_SIZE);
 	return (0);
 }
@@ -50,13 +46,9 @@ int	is_x_grid(char **map, t_player *p)
 	grid_y1 = pos_to_grid(p->pos[1], GRID, 0);
 	grid_x2 = pos_to_grid(p->pos[0], GRID, PLAYER_SIZE - 1);
 	grid_y2 = pos_to_grid(p->pos[1], GRID, PLAYER_SIZE - 1);
-	if (map[grid_y1][grid_x1] == '1' || map[grid_y2][grid_x1] == '1')
+	if (map[grid_y1][grid_x1] &   1 || map[grid_y2][grid_x1] & 1)
 		return ((p->pos[0] / GRID) * GRID + GRID);
-	else if (map[grid_y1][grid_x2] == '1' || map[grid_y2][grid_x2] == '1')
-		return ((p->pos[0] / GRID) * GRID + GRID - PLAYER_SIZE);
-	if (map[grid_y1][grid_x1] == '2' || map[grid_y2][grid_x1] == '2')
-		return ((p->pos[0] / GRID) * GRID + GRID);
-	else if (map[grid_y1][grid_x2] == '2' || map[grid_y2][grid_x2] == '2')
+	else if (map[grid_y1][grid_x2] & 1 || map[grid_y2][grid_x2] & 1)
 		return ((p->pos[0] / GRID) * GRID + GRID - PLAYER_SIZE);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:09:42 by soum              #+#    #+#             */
-/*   Updated: 2022/06/09 22:01:17 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/10 23:13:05 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,6 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		change_angle(&data->player, 'D');
 	if (mlx_is_key_down(data->mlx, MLX_KEY_M))
 		data->screen.toggle_minimap = !data->screen.toggle_minimap;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_F) && data->player.near_door)
-		open_door(&data->map, data->pnt);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_F))
+		act_door(&data->map, data->pnt);
 }

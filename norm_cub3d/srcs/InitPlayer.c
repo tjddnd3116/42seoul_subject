@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:09:37 by soum              #+#    #+#             */
-/*   Updated: 2022/06/08 15:50:42 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/10 20:40:59 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ int	find_player(t_player *p, t_map *map_data, char **map)
 		x = 0;
 		while (x < map_data->cub_x)
 		{
-			if (map[y][x] == 'N' || map[y][x] == 'E' \
-					|| map[y][x] == 'S' || map[y][x] == 'W')
+			if (map[y][x] >= 65)
 			{
 				p->pos[0] = GRID * x + (GRID / 2) - (PLAYER_SIZE / 2);
 				p->pos[1] = GRID * y + (GRID / 2) - (PLAYER_SIZE / 2);
 				player_pos_scale(p, map_data);
 				player_angle(p, map[y][x]);
+				map[y][x] = '0';
 				return (0);
 			}
 			x++;

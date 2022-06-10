@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:34:37 by soum              #+#    #+#             */
-/*   Updated: 2022/06/09 20:43:56 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/10 23:02:56 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 mlx_texture_t	*find_wall_txt(t_point *pnt, t_texture *txt)
 {
-	if (pnt->is_door)
+	if (pnt->is_door == 2)
 		return (txt->door_txt);
 	if (pnt->type == 'N')
 		return (txt->n_wall_txt);
@@ -35,13 +35,13 @@ int	draw_txt_pos(t_point *ray, mlx_texture_t *txt, t_door *door)
 	if (ray->type == 'N' || ray->type == 'S')
 	{
 		txt_pos = (int)(ray->map_x) % GRID;
-		if (ray->is_door == 2)
+		if (ray->is_door == 2 && ray->wall_len <= GRID * 2)
 			txt_pos = ((int)ray->map_x - (int)door->start_x) % GRID;
 	}
 	else if (ray->type == 'W' || ray->type == 'E')
 	{
 		txt_pos = (int)(ray->map_y) % GRID;
-		if (ray->is_door == 2)
+		if (ray->is_door == 2 && ray->wall_len <= GRID * 2)
 			txt_pos = ((int)ray->map_y - (int)door->start_y) % GRID;
 	}
 	txt_pos = (txt->width * (double)txt_pos) / GRID;

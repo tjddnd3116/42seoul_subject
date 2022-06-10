@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:59:06 by soum              #+#    #+#             */
-/*   Updated: 2022/06/09 15:38:34 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/10 21:10:31 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ int	is_y_wall(t_ray *pnt, t_map *map_data, double angle)
 	int	grid_xy[2];
 	int	ret;
 
+	pnt->type = 'S';
 	if (angle < 90 || 270 < angle)
+	{
 		pnt->xy[1]--;
+		pnt->type = 'N';
+	}
 	if (pnt->xy[0] >= GRID * map_data->cub_x)
 		pnt->xy[0] = (GRID * map_data->cub_x) - GRID;
 	if (pnt->xy[0] < 0)
@@ -39,8 +43,12 @@ int	is_x_wall(t_ray *pnt, t_map *map_data, double angle)
 	int	ret;
 
 	ret = 0;
+	pnt->type = 'E';
 	if (angle > 180)
+	{
 		pnt->xy[0]--;
+		pnt->type = 'W';
+	}
 	if (pnt->xy[1] >= GRID * map_data->cub_y)
 		pnt->xy[1] = GRID * map_data->cub_y - GRID;
 	if (pnt->xy[1] < 0)
@@ -58,6 +66,7 @@ int	is_x_wall(t_ray *pnt, t_map *map_data, double angle)
 void	detect_y_wall(t_ray *pnt, t_mlx_data *data, \
 		double angle, double degree)
 {
+	pnt->is_door = 0;
 	pnt->grid[1] = (pnt->origin_xy[1] - 1) / GRID;
 	while (pnt->grid[1] >= 0 && pnt->grid[1] < data->map.height)
 	{
@@ -83,6 +92,7 @@ void	detect_y_wall(t_ray *pnt, t_mlx_data *data, \
 void	detect_x_wall(t_ray *pnt, t_mlx_data *data, \
 		double angle, double degree)
 {
+	pnt->is_door = 0;
 	pnt->grid[0] = (pnt->origin_xy[0] - 1) / GRID;
 	while (pnt->grid[0] >= 0 && pnt->grid[0] < data->map.width)
 	{

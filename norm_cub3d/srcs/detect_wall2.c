@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 13:51:45 by soum              #+#    #+#             */
-/*   Updated: 2022/06/09 21:10:43 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/10 22:50:44 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ int	find_y_txt(t_ray *pnt, t_map *map_data, double angle, int *grid_xy)
 	int	ret;
 
 	ret = 0;
-	pnt->type = 'N';
-	pnt->is_door = 0;
-	if (angle > 90 && angle < 270)
-		pnt->type = 'S';
 	if (map_data->map[grid_xy[1]][grid_xy[0]] == '1')
 		ret = 1;
-	if (map_data->map[grid_xy[1]][grid_xy[0]] == '2')
+	else if (map_data->map[grid_xy[1]][grid_xy[0]] == '2')
+		pnt->is_door = 1;
+	else if (map_data->map[grid_xy[1]][grid_xy[0]] == '3')
 	{
 		if (angle < 90 || angle > 270)
 			pnt->xy[1] -= GRID / 2.0;
@@ -36,7 +34,7 @@ int	find_y_txt(t_ray *pnt, t_map *map_data, double angle, int *grid_xy)
 		if (!check_door_action(pnt, map_data))
 			return (ret);
 		ret = 2;
-		pnt->is_door += 1;
+		/** pnt->is_door += 1; */
 	}
 	return (ret);
 }
@@ -46,13 +44,11 @@ int	find_x_txt(t_ray *pnt, t_map *map_data, double angle, int *grid_xy)
 	int	ret;
 
 	ret = 0;
-	pnt->type = 'E';
-	pnt->is_door = 0;
-	if (angle > 180)
-		pnt->type = 'W';
 	if (map_data->map[grid_xy[1]][grid_xy[0]] == '1')
 		ret = 1;
 	else if (map_data->map[grid_xy[1]][grid_xy[0]] == '2')
+		pnt->is_door = 1;
+	else if (map_data->map[grid_xy[1]][grid_xy[0]] == '3')
 	{
 		if (angle < 180)
 			pnt->xy[0] += GRID / 2.0;
@@ -65,7 +61,7 @@ int	find_x_txt(t_ray *pnt, t_map *map_data, double angle, int *grid_xy)
 		if (!check_door_action(pnt, map_data))
 			return (ret);
 		ret = 2;
-		pnt->is_door += 1;
+		/** pnt->is_door += 1; */
 	}
 	return (ret);
 }
