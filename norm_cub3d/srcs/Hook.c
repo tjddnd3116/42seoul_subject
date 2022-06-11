@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:09:42 by soum              #+#    #+#             */
-/*   Updated: 2022/06/10 23:13:05 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/11 16:43:11 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ void	my_hook(void *param)
 	memset_all_image(&data->image);
 	put_pixels(data);
 	draw_cub(data);
-	/** mlx_cursor_hook(data->mlx, cursor_hook, data); */
-	/** mlx_scroll_hook(data->mlx, scroll_hook, data); */
+	mlx_cursor_hook(data->mlx, cursor_hook, data);
+	mlx_scroll_hook(data->mlx, scroll_hook, data);
 	mlx_key_hook(data->mlx, key_hook, data);
-	get_frametime();
+	/** get_frametime(); */
 }
 
 void	change_angle(t_player *p, char key)
@@ -72,11 +72,12 @@ void	change_angle(t_player *p, char key)
 	}
 	if (key == 'D')
 	{
-		p->angle +=ANGLE_SPEED;
+		p->angle += ANGLE_SPEED;
 		if (p->angle >= 360)
-			p->angle -=360;
+			p->angle -= 360;
 	}
 }
+
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_mlx_data	*data;
@@ -98,6 +99,6 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		change_angle(&data->player, 'D');
 	if (mlx_is_key_down(data->mlx, MLX_KEY_M))
 		data->screen.toggle_minimap = !data->screen.toggle_minimap;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_F))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_F) && data->player.near_door)
 		act_door(&data->map, data->pnt);
 }

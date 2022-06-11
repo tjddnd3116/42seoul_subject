@@ -6,13 +6,14 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/06/10 23:21:39 by soum             ###   ########.fr        #
+#    Updated: 2022/06/11 20:07:11 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -o3 -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -o3
+#-fsanitize=address -g
 
 SRCS = main.c \
 	   ./gnl/get_next_line.c \
@@ -26,6 +27,7 @@ SRCS = main.c \
 	   ./srcs/InitMlx.c \
 	   ./srcs/InitPlayer.c \
 	   ./srcs/Util.c \
+	   ./srcs/util2.c \
 	   ./srcs/drawline.c \
 	   ./srcs/PutPixel.c \
 	   ./srcs/put_pixel2.c \
@@ -38,7 +40,6 @@ SRCS = main.c \
 	   ./srcs/scaling.c \
 	   ./srcs/draw_cub.c \
 	   ./srcs/door.c \
-
 
 LIBFT = libft
 LIBFT_LIB = libft/libft.a

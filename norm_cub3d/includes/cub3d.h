@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:21:10 by soum              #+#    #+#             */
-/*   Updated: 2022/06/10 23:18:48 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/11 21:41:37 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,18 @@
 # define ANGLE_SPEED 4
 # define SPEED 55
 
+typedef struct s_door
+{
+	int		is_door_action;
+	double	start_x;
+	double	end_x;
+	double	start_y;
+	double	end_y;
+	int		grid_x;
+	int		grid_y;
+	char	act;
+}t_door;
+
 typedef struct s_point
 {
 	double		x;
@@ -61,8 +73,11 @@ typedef struct s_point
 	uint32_t	color;
 	int			grid_x;
 	int			grid_y;
-	int			is_door;
+	int			is_close_door;
+	int			is_open_door;
 	char		type;
+	int			open_door_grid[2];
+	double		open_door_len;
 }t_point;
 
 typedef struct s_ray
@@ -72,20 +87,11 @@ typedef struct s_ray
 	int		grid[2];
 	double	wall_len;
 	char	type;
-	int		is_door;
+	int		is_close_door;
+	int		is_open_door;
+	int		open_door_grid[2];
+	double	open_door_len;
 }t_ray;
-
-typedef struct	s_door
-{
-	int		is_door_action;
-	double	start_x;
-	double	end_x;
-	double	start_y;
-	double	end_y;
-	int		grid_x;
-	int		grid_y;
-	char	act;
-}t_door;
 
 typedef struct s_map
 {
@@ -194,6 +200,10 @@ int			is_invisible(uint32_t *color);
 void		pos_togrid(int *pos, int *grid);
 void		get_frametime(void);
 
+/** util2.c */
+void		copy_ray_data(t_point *pnt, t_ray *ray);
+void		init_ray_data(t_ray *ray, t_mlx_data *data);
+
 /** drawline.c */
 void		fdf_drawline(mlx_image_t *img, t_point *p0, t_point *p1);
 
@@ -207,7 +217,7 @@ void		put_pixels(t_mlx_data *data);
 /** put_pixel2.c */
 void		put_razer_pixel(t_mlx_data *data, mlx_image_t *bg_img);
 void		put_wall_pixel(t_mlx_data *data, double *start_end_xy, \
-		double *tmp_xy, int txt_pos, mlx_texture_t *txt);
+		int txt_pos, mlx_texture_t *txt);
 void		put_minimap_dark(mlx_image_t *mini_img, t_player *player);
 
 /** Hook.c */
@@ -248,5 +258,4 @@ void		pnt_scale(t_mlx_data *data, int i);
 int			draw_txt_pos(t_point *ray, mlx_texture_t *txt, t_door *door);
 void		draw_cub(t_mlx_data *data);
 void		draw_wall(t_point *pnt, t_mlx_data *data, int i);
-
 #endif

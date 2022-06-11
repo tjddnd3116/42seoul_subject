@@ -6,12 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:59:42 by soum              #+#    #+#             */
-/*   Updated: 2022/06/09 16:05:39 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/11 20:09:12 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include <math.h>
 
 void	set_fov_pos(t_mlx_data *data)
 {

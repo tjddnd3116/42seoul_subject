@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 20:40:02 by soum              #+#    #+#             */
-/*   Updated: 2022/06/08 20:43:36 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/11 20:11:26 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ void	pnt_scale(t_mlx_data *data, int i)
 				data->map.width, MINIMAP_W);
 		data->pnt[i].y = scale_map_to_scn_single(data->pnt[i].map_y, \
 				data->map.height, MINIMAP_H);
-		data->pnt[i].wall_len = data->pnt[i].wall_len * cos((data->player.angle - \
-					data->pnt[i].angle) * (M_PI / 180));
+		data->pnt[i].wall_len = data->pnt[i].wall_len * \
+				cos((data->player.angle - \
+				data->pnt[i].angle) * (M_PI / 180));
 }
 
 inline int	scale_map_to_scn_single(int val, int map_size, int scn_size)

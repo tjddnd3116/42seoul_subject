@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:59:06 by soum              #+#    #+#             */
-/*   Updated: 2022/06/10 21:10:31 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/11 15:06:46 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	is_x_wall(t_ray *pnt, t_map *map_data, double angle)
 void	detect_y_wall(t_ray *pnt, t_mlx_data *data, \
 		double angle, double degree)
 {
-	pnt->is_door = 0;
 	pnt->grid[1] = (pnt->origin_xy[1] - 1) / GRID;
 	while (pnt->grid[1] >= 0 && pnt->grid[1] < data->map.height)
 	{
@@ -92,7 +91,6 @@ void	detect_y_wall(t_ray *pnt, t_mlx_data *data, \
 void	detect_x_wall(t_ray *pnt, t_mlx_data *data, \
 		double angle, double degree)
 {
-	pnt->is_door = 0;
 	pnt->grid[0] = (pnt->origin_xy[0] - 1) / GRID;
 	while (pnt->grid[0] >= 0 && pnt->grid[0] < data->map.width)
 	{
@@ -121,26 +119,12 @@ void	detect_wall(t_mlx_data *data, t_point *pnt)
 	t_ray	tmp_y;
 	t_ray	tmp_x;
 
-	tmp_y.origin_xy[0] = data->player.mid_pos[0];
-	tmp_y.origin_xy[1] = data->player.mid_pos[1];
-	tmp_x.origin_xy[0] = data->player.mid_pos[0];
-	tmp_x.origin_xy[1] = data->player.mid_pos[1];
+	init_ray_data(&tmp_y, data);
+	init_ray_data(&tmp_x, data);
 	detect_y_wall(&tmp_y, data, pnt->angle, pnt->degree);
 	detect_x_wall(&tmp_x, data, pnt->angle, pnt->degree);
 	if (tmp_y.wall_len < tmp_x.wall_len)
-	{
-		pnt->map_x = tmp_y.xy[0];
-		pnt->map_y = tmp_y.xy[1];
-		pnt->wall_len = tmp_y.wall_len;
-		pnt->type = tmp_y.type;
-		pnt->is_door = tmp_y.is_door;
-	}
+		copy_ray_data(pnt, &tmp_y);
 	else
-	{
-		pnt->map_x = tmp_x.xy[0];
-		pnt->map_y = tmp_x.xy[1];
-		pnt->wall_len = tmp_x.wall_len;
-		pnt->type = tmp_x.type;
-		pnt->is_door = tmp_x.is_door;
-	}
+		copy_ray_data(pnt, &tmp_x);
 }

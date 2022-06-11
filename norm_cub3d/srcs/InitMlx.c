@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 15:39:30 by soum              #+#    #+#             */
-/*   Updated: 2022/06/09 21:59:04 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/11 21:48:30 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	init_screen(t_mlx_data *data)
 	screen->screen_w = SCREEN_W;
 	screen->screen_h = SCREEN_H;
 	data->mlx = mlx_init(SCREEN_W, SCREEN_H, "soum_cub3d", true);
-	screen->zoom = 500;
+	screen->zoom = 350;
 	screen->toggle_minimap = 0;
 	return (0);
 }
@@ -34,7 +34,7 @@ int	init_txt(t_mlx_data *data)
 	texture->s_wall_txt = mlx_load_png(data->texture.s_wall_path);
 	texture->w_wall_txt = mlx_load_png(data->texture.w_wall_path);
 	texture->e_wall_txt = mlx_load_png(data->texture.e_wall_path);
-	texture->door_txt = mlx_load_png("./images/door3.png");
+	texture->door_txt = mlx_load_png("./images/new_door.png");
 	return (0);
 }
 
