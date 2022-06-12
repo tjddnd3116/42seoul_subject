@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:09:37 by soum              #+#    #+#             */
-/*   Updated: 2022/06/10 20:40:59 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/12 19:21:10 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	player_pos_scale(t_player *p, t_map *map_data)
 	p->scale_size[1] = (PLAYER_SIZE * MINIMAP_H) / map_data->height;
 }
 
-void	player_angle(t_player *p, char direction)
+void	player_angle(t_mlx_data *data, t_player *p, char direction)
 {
 	if (direction == 'N')
 		p->angle = 0;
@@ -38,45 +38,45 @@ void	player_angle(t_player *p, char direction)
 		p->angle = 180;
 	else if (direction == 'W')
 		p->angle = 270;
+	else
+		error_msg("check cub file (player angle)", PLAYER_INIT_ERR, data);
 }
 
-int	find_player(t_player *p, t_map *map_data, char **map)
+void	find_player(t_mlx_data *data, t_player *p, t_map *map_data, char **map)
 {
 	int		x;
 	int		y;
+	int		player_cnt;
 
-	y = 0;
-	while (y < map_data->cub_y)
+	player_cnt = 0;
+	y = -1;
+	while (++y < map_data->cub_y)
 	{
-		x = 0;
-		while (x < map_data->cub_x)
+		x = -1;
+		while (++x < map_data->cub_x)
 		{
 			if (map[y][x] >= 65)
 			{
+				player_cnt++;
+				player_angle(data, p, map[y][x]);
 				p->pos[0] = GRID * x + (GRID / 2) - (PLAYER_SIZE / 2);
 				p->pos[1] = GRID * y + (GRID / 2) - (PLAYER_SIZE / 2);
 				player_pos_scale(p, map_data);
-				player_angle(p, map[y][x]);
 				map[y][x] = '0';
-				return (0);
 			}
-			x++;
 		}
-		y++;
 	}
-	return (PLAYER_ERROR);
+	if (player_cnt != 1)
+		error_msg("check cub file (number of player)", PLAYER_INIT_ERR, data);
 }
 
 int	init_player(t_mlx_data *data)
 {
 	t_player	*player;
-	int			error_idx;
 
 	player = &data->player;
 	player->size = PLAYER_SIZE;
 	player->near_door = 0;
-	error_idx = find_player(player, &data->map, data->map.map);
-	if (error_idx)
-		return (error_idx);
+	find_player(data, player, &data->map, data->map.map);
 	return (0);
 }

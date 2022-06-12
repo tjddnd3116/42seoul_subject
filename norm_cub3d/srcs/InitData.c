@@ -6,87 +6,74 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:20:58 by soum              #+#    #+#             */
-/*   Updated: 2022/06/08 15:43:10 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/12 19:46:46 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	print_mlx_data(t_screen *screen)
+int	init_screen(t_mlx_data *data)
 {
-	printf("----[mlx data]----\n");
-	printf("screen w : %d , screen h : %d\n", screen->screen_w, \
-			screen->screen_h);
-	printf("----[mlx data]----\n");
+	t_screen	*screen;
+
+	screen = &data->screen;
+	screen->screen_w = SCREEN_W;
+	screen->screen_h = SCREEN_H;
+	data->mlx = mlx_init(SCREEN_W, SCREEN_H, "soum_cub3d", true);
+	if (!data->mlx)
+		error_msg("mlx init error", MLX_INIT_ERROR, data);
+	screen->zoom = 350;
+	screen->toggle_minimap = 0;
+	return (0);
 }
 
-void	print_map_data(t_map *map)
+int	init_txt(t_mlx_data *data)
 {
-	int	idx;
+	t_texture	*texture;
 
-	idx = 0;
-	printf("---[map data]----\n");
-	while (map->map[idx])
-		printf("%s", map->map[idx++]);
-	printf("map grid width : %d, map grid height : %d\n", \
-			map->width, map->height);
-	printf("cub_x : %d, cub_y : %d\n", \
-			map->cub_x, map->cub_y);
-	printf("---[map data]----\n");
+	texture = &data->texture;
+	texture->n_wall_txt = mlx_load_png(data->texture.n_wall_path);
+	if (!texture->n_wall_txt)
+		error_msg("png file load error", MLX_INIT_ERROR, data);
+	texture->s_wall_txt = mlx_load_png(data->texture.s_wall_path);
+	if (!texture->s_wall_txt)
+		error_msg("png file load error", MLX_INIT_ERROR, data);
+	texture->w_wall_txt = mlx_load_png(data->texture.w_wall_path);
+	if (!texture->w_wall_txt)
+		error_msg("png file load error", MLX_INIT_ERROR, data);
+	texture->e_wall_txt = mlx_load_png(data->texture.e_wall_path);
+	if (!texture->e_wall_txt)
+		error_msg("png file load error", MLX_INIT_ERROR, data);
+	texture->door_txt = mlx_load_png("./images/new_door.png");
+	if (!texture->door_txt)
+		error_msg("png file load error", MLX_INIT_ERROR, data);
+	return (0);
 }
 
-void	print_player_data(t_player *player)
+int	init_img(t_mlx_data *data)
 {
-	printf("---[player data]----\n");
-	printf("mid pos x: %d, y: %d\n", player->mid_pos[0], player->mid_pos[1]);
-	printf("grid x: %d, y: %d\n", player->grid[0], player->grid[1]);
-	printf("angle : %d\n", player->angle);
-	printf("---[player data]----\n");
+	t_image	*image;
+
+	image = &data->image;
+	image->minimap_img = mlx_new_image(data->mlx, MINIMAP_W, MINIMAP_H);
+	if (!image->minimap_img)
+		error_msg("mlx image create error", MLX_INIT_ERROR, data);
+	image->cub_img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H);
+	if (!image->cub_img)
+		error_msg("mlx image create error", MLX_INIT_ERROR, data);
+	return (0);
 }
 
-void	print_point_data(t_point *point)
+void	check_file(t_mlx_data *data, char *map_path)
 {
-	printf("---[point data]----\n");
-	printf("x pos : %f, y pos : %f\n", point->map_x, point->map_y);
-	printf("x grid : %d, y grid : %d\n", point->grid_x, point->grid_y);
-	printf("player to wall len : %f\n", point->wall_len);
-	printf("angle : %f\n", point->angle);
-	printf("---[point data]----\n");
-}
-
-void	print_fc_data(t_texture *text)
-{
-	char	**floor;
-	char	**ceiling;
-	int		idx;
-
-	floor = text->floor_txt;
-	ceiling = text->ceiling_txt;
-	idx = 0;
-	while (floor[idx])
-	{
-		printf("floor : %s\n", floor[idx]);
-		idx++;
-	}
-	idx = 0;
-	while (ceiling[idx])
-	{
-		printf("ceiling : %s\n", ceiling[idx]);
-		idx++;
-	}
-}
-
-void	print_wall_txt_data(t_texture *text)
-{
-	printf("N :%s\n", text->n_wall_path);
-	printf("S :%s\n", text->s_wall_path);
-	printf("W :%s\n", text->w_wall_path);
-	printf("E :%s\n", text->e_wall_path);
+	if (!ft_strnstr(map_path, ".cub", ft_strlen(map_path)))
+		error_msg("check file name or path", FILE_NAME_ERROR, data);
 }
 
 void	init_data(t_mlx_data *data, char *map_path)
 {
 	data->map.map_path = map_path;
+	check_file(data, map_path);
 	init_fc(data);
 	init_wall_txt(data);
 	init_map(data);

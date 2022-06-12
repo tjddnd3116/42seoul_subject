@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/06/11 20:07:11 by soum             ###   ########.fr        #
+#    Updated: 2022/06/12 20:29:48 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ SRCS = main.c \
 	   ./srcs/init_fc.c \
 	   ./srcs/init_wall.c \
 	   ./srcs/InitMap.c \
-	   ./srcs/InitMlx.c \
 	   ./srcs/InitPlayer.c \
 	   ./srcs/Util.c \
 	   ./srcs/util2.c \

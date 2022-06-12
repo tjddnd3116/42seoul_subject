@@ -6,12 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:23:42 by soum              #+#    #+#             */
-/*   Updated: 2022/06/11 20:25:06 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/12 19:37:45 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include <math.h>
 
 void	put_minimap_dark(mlx_image_t *mini_img, t_player *player)
 {

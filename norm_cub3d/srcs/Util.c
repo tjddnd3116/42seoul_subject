@@ -6,12 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 15:33:09 by soum              #+#    #+#             */
-/*   Updated: 2022/06/08 20:44:18 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/12 19:38:04 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include <string.h>
 
 void	get_frametime(void)
 {
@@ -48,13 +47,6 @@ uint32_t	to_le(uint32_t color)
 		((uint32_t)bytes[2] << 16) | \
 		((uint32_t)bytes[3] << 24);
 	return (ret);
-}
-
-void	memset_all_image(t_image *image)
-{
-	ft_memset(image->minimap_img->pixels, 0x00000000, \
-			image->minimap_img->width * \
-			image->minimap_img->height * sizeof(int));
 }
 
 inline int	is_invisible(uint32_t *color)

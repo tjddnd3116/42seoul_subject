@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 16:18:58 by soum              #+#    #+#             */
-/*   Updated: 2022/06/10 20:44:39 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/12 19:28:11 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	put_pixels(t_mlx_data *data)
 {
+	ft_memset(data->image.minimap_img->pixels, 0x00000000, \
+			data->image.minimap_img->width * \
+			data->image.minimap_img->height * sizeof(int));
 	put_cub_pixel(data);
 	if (data->screen.toggle_minimap)
 	{

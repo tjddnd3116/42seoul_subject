@@ -6,20 +6,20 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 22:45:11 by soum              #+#    #+#             */
-/*   Updated: 2022/06/07 20:37:51 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/12 19:08:47 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	jump_map(char *map_path)
+int	jump_map(t_mlx_data *data, char *map_path)
 {
 	int		fd;
 	char	*read_line;
 
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
-		return (fd);
+		error_msg("file open error", MAP_INIT_ERROR, data);
 	while (1)
 	{
 		read_line = get_next_line(fd);
@@ -39,7 +39,7 @@ int	jump_map(char *map_path)
 	return (fd);
 }
 
-int	check_map(t_map *map_data, int fd)
+int	check_map(t_mlx_data *data, t_map *map_data, int fd)
 {
 	char	*read_line;
 
@@ -55,7 +55,7 @@ int	check_map(t_map *map_data, int fd)
 	close(fd);
 	map_data->map = (char **)malloc(sizeof(char *) * (map_data->cub_y + 1));
 	if (!map_data->map)
-		return (MAP_MALLOC_ERROR);
+		error_msg("malloc error", MAP_INIT_ERROR, data);
 	map_data->map[map_data->cub_y] = NULL;
 	return (0);
 }
@@ -83,28 +83,19 @@ int	load_map(t_map *map_data, int fd)
 
 int	init_map(t_mlx_data *data)
 {
-	int		error;
 	t_map	*map_data;
 	char	*map_path;
 	int		fd;
 
-	error = 0;
 	map_data = &data->map;
 	map_data->cub_size = GRID;
 	map_path = map_data->map_path;
-	fd = jump_map(map_path);
-	if (fd < 0)
-		return (MAP_OPEN_ERROR);
-	error = check_map(map_data, fd);
-	if (error)
-		return (error);
+	map_data->map = NULL;
+	fd = jump_map(data, map_path);
+	check_map(data, map_data, fd);
 	map_data->cub_x = 0;
-	fd = jump_map(map_path);
-	if (fd < 0)
-		return (MAP_OPEN_ERROR);
-	error = load_map(map_data, fd);
-	if (error)
-		return (error);
+	fd = jump_map(data, map_path);
+	load_map(map_data, fd);
 	map_data->width = GRID * map_data->cub_x;
 	map_data->height = GRID * map_data->cub_y;
 	return (0);

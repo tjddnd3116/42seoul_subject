@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:09:42 by soum              #+#    #+#             */
-/*   Updated: 2022/06/11 16:43:11 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/12 19:36:30 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,12 @@ void	my_hook(void *param)
 	if (data->map.door_ani.is_door_action)
 		door_ani(&data->map.door_ani, &data->map);
 	set_fov_pos(data);
-	memset_all_image(&data->image);
 	put_pixels(data);
 	draw_cub(data);
 	mlx_cursor_hook(data->mlx, cursor_hook, data);
 	mlx_scroll_hook(data->mlx, scroll_hook, data);
 	mlx_key_hook(data->mlx, key_hook, data);
-	/** get_frametime(); */
+	get_frametime();
 }
 
 void	change_angle(t_player *p, char key)
@@ -88,7 +87,7 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 	move_x = SPEED * sin(data->player.angle * M_PI / 180);
 	move_y = SPEED * -cos(data->player.angle * M_PI / 180);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		mlx_close_window(data->mlx);
+		free_all_data(data, PRESS_ESC);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
 		player_move(&data->player, move_x, move_y, data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_S))

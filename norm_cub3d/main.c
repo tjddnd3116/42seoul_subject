@@ -6,25 +6,19 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:20:07 by soum              #+#    #+#             */
-/*   Updated: 2022/06/11 21:22:49 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/12 19:45:27 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42/include/MLX42/MLX42.h"
 #include "includes/cub3d.h"
-#include <stdlib.h>
-#include <math.h>
-#include <time.h>
-#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
 	t_mlx_data	data;
 
 	if (argc != 2)
-		error_msg("arg error", ARG_ERROR, &data);
+		error_msg("arg error : ./cub3d [cub file path]", ARG_ERROR, &data);
 	init_data(&data, argv[1]);
-	memset_all_image(&data.image);
 	put_pixels(&data);
 	mlx_image_to_window(data.mlx, data.image.cub_img, 0, 0);
 	mlx_put_string(data.mlx, "press [m] open minimap", 0, 0);

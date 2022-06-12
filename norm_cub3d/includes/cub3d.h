@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:21:10 by soum              #+#    #+#             */
-/*   Updated: 2022/06/11 21:41:37 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/12 19:34:36 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@
 # include <fcntl.h>
 # include <time.h>
 
-# define ARG_ERROR 3
-# define MAP_OPEN_ERROR 4
-# define MAP_MALLOC_ERROR 5
-# define PLAYER_ERROR 6
-# define CANT_FIND_FC 7
-# define CANT_FIND_TXT 8
+# define ARG_ERROR 0b10
+# define FILE_OPEN_ERROR 0b11
+# define FILE_NAME_ERROR 0b11
+# define FC_INIT_ERROR 0b100
+# define TXT_INIT_ERROR 0b1100
+# define MAP_INIT_ERROR 0b11100
+# define MLX_INIT_ERROR 0b11100
+# define PLAYER_INIT_ERR 0b11100
+# define PRESS_ESC 0b111100
 
 # define RED 0xff0000ff
 
@@ -162,9 +165,6 @@ typedef struct s_mlx_data
 
 /** initData.c */
 void		init_data(t_mlx_data *data, char *map);
-void		print_map_data(t_map *map);
-void		print_point_data(t_point *point);
-void		print_player_data(t_player *player);
 
 /** Error.c */
 void		error_msg(char *msg, int error_num, t_mlx_data *data);
@@ -177,25 +177,21 @@ int			init_wall_txt(t_mlx_data *data);
 
 /** InitMap.c */
 int			init_map(t_mlx_data *data);
-int			check_map(t_map *map_data, int fd);
+int			check_map(t_mlx_data *data, t_map *map_data, int fd);
 int			load_map(t_map *map_data, int fd);
-
-/** InitMlx.c */
-int			init_screen(t_mlx_data *data);
-int			init_img(t_mlx_data *data);
-int			init_txt(t_mlx_data *data);
 
 /** InitPlayer.c */
 int			init_player(t_mlx_data *data);
-int			find_player(t_player *player, t_map *map_data, char **map);
+void		find_player(t_mlx_data *data, t_player *player, \
+		t_map *map_data, char **map);
 void		player_pos_scale(t_player *p, t_map *map_data);
 
 /** FreeData.c */
+void		free_all_data(t_mlx_data *data, int error_idx);
 void		free_map(t_mlx_data *data);
 
 /** Util.c */
 uint32_t	to_le(uint32_t color);
-void		memset_all_image(t_image *image);
 int			is_invisible(uint32_t *color);
 void		pos_togrid(int *pos, int *grid);
 void		get_frametime(void);
