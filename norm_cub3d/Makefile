@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/06/12 20:29:48 by soum             ###   ########.fr        #
+#    Updated: 2022/06/13 01:48:23 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,20 +18,20 @@ CFLAGS = -Wall -Wextra -Werror -o3
 SRCS = main.c \
 	   ./gnl/get_next_line.c \
 	   ./gnl/get_next_line_utils.c \
-	   ./srcs/Error.c \
-	   ./srcs/FreeData.c \
-	   ./srcs/InitData.c \
+	   ./srcs/error.c \
+	   ./srcs/free_data.c \
+	   ./srcs/init_data.c \
 	   ./srcs/init_fc.c \
 	   ./srcs/init_wall.c \
-	   ./srcs/InitMap.c \
-	   ./srcs/InitPlayer.c \
-	   ./srcs/Util.c \
+	   ./srcs/init_map.c \
+	   ./srcs/init_player.c \
+	   ./srcs/util.c \
 	   ./srcs/util2.c \
 	   ./srcs/drawline.c \
-	   ./srcs/PutPixel.c \
+	   ./srcs/put_pixel.c \
 	   ./srcs/put_pixel2.c \
-	   ./srcs/Hook.c \
-	   ./srcs/Fov.c \
+	   ./srcs/hook.c \
+	   ./srcs/fov.c \
 	   ./srcs/detect_wall.c \
 	   ./srcs/detect_wall2.c \
 	   ./srcs/player_move.c \

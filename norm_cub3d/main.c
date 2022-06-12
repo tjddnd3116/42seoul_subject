@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:20:07 by soum              #+#    #+#             */
-/*   Updated: 2022/06/12 19:45:27 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/13 01:33:41 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,5 @@ int	main(int argc, char **argv)
 	mlx_image_to_window(data.mlx, data.image.minimap_img, 0, 0);
 	mlx_loop_hook(data.mlx, my_hook, &data);
 	mlx_loop(data.mlx);
-	mlx_terminate(data.mlx);
 	return (0);
 }

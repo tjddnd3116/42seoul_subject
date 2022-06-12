@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FreeData.c                                         :+:      :+:    :+:   */
+/*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 23:21:51 by soum              #+#    #+#             */
-/*   Updated: 2022/06/12 19:49:21 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/13 01:50:54 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	free_all_data(t_mlx_data *data, int error_idx)
 	if (error_idx == PRESS_ESC)
 	{
 		mlx_close_window(data->mlx);
+		mlx_terminate(data->mlx);
 		error_idx = 0;
 	}
 	exit(error_idx);
