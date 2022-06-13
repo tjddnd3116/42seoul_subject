@@ -6,11 +6,12 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:20:07 by soum              #+#    #+#             */
-/*   Updated: 2022/06/13 01:33:41 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/13 15:27:59 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
