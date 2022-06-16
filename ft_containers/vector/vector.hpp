@@ -3,7 +3,7 @@
 
 #include <memory>
 #include <iostream>
-#include <iterator>
+#include "../util/iterator.hpp"
 
 namespace	ft
 {
@@ -21,12 +21,10 @@ public:
 	typedef typename allocator_type::difference_type	difference_type;
 	typedef typename allocator_type::pointer			pointer;
 	typedef typename allocator_type::const_pointer		const_pointer;
-	typedef std::iterator_traits<T>						iterator;
+	typedef	ft::iterator_traits<T>						iterator;
 
 	//	(1) default constructor
-	vector( const allocator_type& = allocator_type() ) { create(); }
-	//	(1) default constructor
-	// explicit	vector( const allocator_type& type = allocator_type() ) { create(); }
+	explicit vector( const allocator_type& = allocator_type() ) { create(); }
 	//	(2) fill constructor
 	explicit	vector( size_type n , const value_type& val, const allocator_type& = allocator_type()) { create(n, val); }
 	//	(3) range constructor
@@ -35,10 +33,36 @@ public:
 	vector( const vector& x) { create(x.begin(), x.end()); }
 	//	(4) copy constructor - nomal
 	vector( vector& x ) { create(x.begin(), x.end()); }
-	void	print_val() {
-			pointer tmp;
-			for (tmp = _firstData; tmp < _lastData; tmp++)
-				std::cout << *tmp << std::endl;
+
+	// iterators
+	pointer
+	begin( )
+	{
+		return (_firstData);
+	}
+	pointer
+	end( )
+	{
+		return (_lastData);
+	}
+	// capacity
+	size_type
+	size() const
+	{
+		return (_lastData - _firstData);
+	}
+
+
+
+
+
+	// myfunc
+	void
+	print_val()
+	{
+		pointer tmp;
+		for (tmp = _firstData; tmp < _lastData; tmp++)
+			std::cout << *tmp << std::endl;
 	}
 
 private:
