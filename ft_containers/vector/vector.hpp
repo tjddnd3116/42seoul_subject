@@ -21,7 +21,8 @@ public:
 	typedef typename allocator_type::difference_type	difference_type;
 	typedef typename allocator_type::pointer			pointer;
 	typedef typename allocator_type::const_pointer		const_pointer;
-	typedef	ft::iterator_traits<T>						iterator;
+	typedef	ft::random_access_iterator<T>				iterator;
+
 
 	//	(1) default constructor
 	explicit vector( const allocator_type& = allocator_type() ) { create(); }
