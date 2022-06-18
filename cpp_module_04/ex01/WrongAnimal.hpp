@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:03:38 by soum              #+#    #+#             */
-/*   Updated: 2022/04/18 16:03:38 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/18 20:51:20 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class WrongAnimal
 			virtual ~WrongAnimal();
 			// member functions
 			void makeSound( void ) const;
+
 			// getter
 			std::string getType( void ) const;
 			// setter

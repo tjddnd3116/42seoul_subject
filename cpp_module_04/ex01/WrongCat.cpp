@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 12:56:12 by soum              #+#    #+#             */
-/*   Updated: 2022/04/20 02:14:22 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/18 21:03:05 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ WrongCat& WrongCat::operator=(const WrongCat &wrongcat)
 WrongCat::~WrongCat()
 {
 	delete _brain;
-	std::cout << "\033[31m" << getType() << " deleted" << "\033[0m" << std::endl;
+	std::cout << "\033[31m" << "wrongAnimal" << " deleted" << "\033[0m" << std::endl;
 }
 
 void WrongCat::makeSound( void ) const

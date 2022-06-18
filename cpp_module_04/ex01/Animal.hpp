@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:03:22 by soum              #+#    #+#             */
-/*   Updated: 2022/05/10 21:25:04 by soum             ###   ########.fr       */
+/*   Updated: 2022/06/18 20:32:30 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ class Animal
 			Animal();
 			Animal( const Animal& animal);
 			Animal& operator=( const Animal & animal );
-			~Animal();
+			virtual ~Animal();
 			// member functions
-			void makeSound( void ) const;
+			virtual void makeSound( void ) const;
 			// getter
 			std::string getType( void ) const;
 			// setter
