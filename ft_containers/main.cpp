@@ -1,5 +1,6 @@
 #include "./vector/vector.hpp"
 #include <iterator>
+#include <algorithm>
 
 int main(void)
 {
@@ -8,6 +9,8 @@ int main(void)
 	std::cout << myVec1.size() << std::endl;
 
 	ft::vector<int>::iterator it;
+
+	it = myVec1.begin();
 
 	return (0);
 }

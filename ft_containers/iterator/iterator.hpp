@@ -4,7 +4,7 @@
 #include <cstddef>
 namespace ft
 {
-// Types
+// ITERATOR CATEGORY
 struct	input_iterator_tag {};
 struct	output_iterator_tag {};
 struct	forward_iterator_tag		: public input_iterator_tag			{};
@@ -14,7 +14,7 @@ struct	random_access_iterator_tag	: public bidirectional_iterator_tag	{};
 // TEMPLATE CLASSES
 template <class Category, class T, class Distance = ptrdiff_t,
 		 class Pointer = T*, class Reference = T&>
-struct iterator
+struct	iterator
 {
 	typedef T			value_type;
 	typedef Distance	difference_type;
@@ -24,7 +24,7 @@ struct iterator
 };
 
 template<class Iterator>
-struct iterator_traits
+struct	iterator_traits
 {
 	typedef typename Iterator::difference_type difference_type;
 	typedef typename Iterator::value_type value_type;
@@ -43,14 +43,25 @@ struct	iterator_traits<T*>
 	typedef	random_access_iterator_tag		iterator_category;
 };
 
-template <typename T>
-struct random_access_iterator : iterator<random_access_iterator_tag, T>
+template<class T>
+struct	iterator_traits<const T*>
 {
+	typedef	ptrdiff_t						difference_type;
+	typedef	T								value_type;
+	typedef T*								pointer;
+	typedef T&								reference;
+	typedef	random_access_iterator_tag		iterator_category;
+};
+
+template <typename T>
+class	random_access_iterator : iterator<random_access_iterator_tag, T>
+{
+	typedef typename iterator<random_access_iterator_tag, T>::iterator_category iterator_category;
 
 };
 
 template <typename T>
-struct reverse_iterator : iterator<bidirectional_iterator_tag, T>
+struct	reverse_iterator : iterator<bidirectional_iterator_tag, T>
 {
 
 };
