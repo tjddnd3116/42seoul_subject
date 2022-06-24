@@ -54,6 +54,7 @@ public:
 	{
 		return (_firstData);
 	}
+
 	iterator
 	end( )
 	{
@@ -65,11 +66,6 @@ public:
 	{
 		return (_lastData - _firstData);
 	}
-
-
-
-
-
 	// myfunc
 	void
 	print_val()
@@ -99,6 +95,5 @@ private:
 				_lastData = std::uninitialized_copy(first, last, _firstData);
 			}
 	};
-
 }
 #endif	/* vector_hpp */
