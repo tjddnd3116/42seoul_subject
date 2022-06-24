@@ -4,14 +4,15 @@
 
 int main(void)
 {
-	// ft::vector<int> myVec;
-	ft::vector<int> myVec1(14, 4);
-	// std::cout << myVec1.size() << std::endl;
+	ft::vector<std::string> myVec1(1, "42");
 
-	ft::vector<int>::iterator it;
-	// std::cout << myVec1.begin() << std::endl;
+	ft::vector<std::string>::iterator it;
 	it = myVec1.begin();
 
 	std::cout << *it << std::endl;
+	std::cout << *(--it) << std::endl;
+	std::cout << *it << std::endl;
+	// std::cout << *(++it) << std::endl;
+	// std::cout << *(++it) << std::endl;
 	return (0);
 }

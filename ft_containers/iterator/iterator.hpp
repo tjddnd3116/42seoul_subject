@@ -63,11 +63,13 @@ class	random_access_iterator : iterator<random_access_iterator_tag, T>
 	typedef	T*																	pointer;
 	typedef T&																	reference;
 
+	// default constructor
 	random_access_iterator() : _ptr(NULL)
 	{}
-
-	random_access_iterator(pointer ptr) : _ptr(ptr) {}
-
+	// constructor
+	random_access_iterator(pointer ptr) : _ptr(ptr)
+	{}
+	// copy assignment operator
 	random_access_iterator &operator=(const random_access_iterator &op)
 	{
 		if (this == &op)
@@ -75,11 +77,40 @@ class	random_access_iterator : iterator<random_access_iterator_tag, T>
 		this->_ptr = op._ptr;
 		return (*this);
 	}
+	// destructor
+	~random_access_iterator() {}
 
 	reference operator* (void) const
 	{
 		return (*_ptr);
 	}
+
+	random_access_iterator &operator++( void )
+	{
+		_ptr++;
+		return (*this);
+	}
+
+	random_access_iterator operator++( int )
+	{
+		random_access_iterator tmp(*this);
+		_ptr++;
+		return (tmp);
+	}
+
+	random_access_iterator &operator--( void )
+	{
+		_ptr--;
+		return (*this);
+	}
+
+	random_access_iterator operator--( int )
+	{
+		random_access_iterator tmp(*this);
+		_ptr--;
+		return (tmp);
+	}
+
 	private:
 		pointer _ptr;
 
@@ -90,7 +121,6 @@ struct	reverse_iterator : iterator<bidirectional_iterator_tag, T>
 {
 
 };
-
 
 }
 #endif

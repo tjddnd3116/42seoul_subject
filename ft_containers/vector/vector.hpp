@@ -39,14 +39,14 @@ public:
 		create(n, val);
 	}
 	//	(3) range constructor
-	explicit	vector(iterator first, iterator last)
-	{
-		create(first, last);
-	}
+	// explicit	vector(pointer first, pointer last)
+	// {
+	//     create(first, last);
+	// }
 	//	(4) copy constructor - const
-	vector( const vector& x) { create(x.begin(), x.end()); }
+	// vector( const vector& x) { create(x.begin(), x.end()); }
 	//	(4) copy constructor - nomal
-	vector( vector& x ) { create(x.begin(), x.end()); }
+	// vector( vector& x ) { create(x.begin(), x.end()); }
 
 	// iterators
 	iterator
@@ -77,8 +77,8 @@ public:
 
 private:
 			// member variable
-			pointer		_firstData;
-			pointer		_lastData;
+			pointer			_firstData;
+			pointer			_lastData;
 			allocator_type	_alloc;
 			// constructor memeber function overloading
 			void	create() {
@@ -90,7 +90,7 @@ private:
 				_lastData = _firstData + n;
 				std::uninitialized_fill(_firstData, _lastData, val);
 			}
-			void	create( iterator first, iterator last ){
+			void	create( pointer first, pointer last ){
 				_firstData = _alloc.allocate(last - first);
 				_lastData = std::uninitialized_copy(first, last, _firstData);
 			}
