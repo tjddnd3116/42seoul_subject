@@ -2,7 +2,6 @@
 #define vector_hpp
 
 #include <memory>
-#include <iostream>
 #include "../iterator/randomAccessIterator.hpp"
 #include "../iterator/reverseIterator.hpp"
 
@@ -28,15 +27,15 @@ class vector
 	typedef typename allocator_type::size_type						size_type;
 
 	//	constructor
-	explicit	vector(const allocator_type& alloc = allocator_type());		// default constructor
-	explicit	vector(size_type				n,							// fill constructor
-					   const value_type&		val,
-					   const allocator_type&	alloc = allocator_type());
+	explicit	vector(const allocator_type& alloc = allocator_type());		// default constructor (1)
+	explicit	vector(size_type n,											// fill constructor (2)
+			const value_type& val,
+			const allocator_type& alloc = allocator_type());
 	template <class InputIterator>
-				vector(InputIterator			first,						// range constructor
-					   InputIterator			last,
-					   const allocator_type&	alloc = allocator_type());
-				vector(const vector& x);									// copy constructor
+				vector(InputIterator first,									// range constructor (3)
+						InputIterator last,
+						const allocator_type& alloc = allocator_type());
+				vector(const vector& x);									// copy constructor (4)
 
 	// destructor
 				~vector();
@@ -71,20 +70,20 @@ class vector
 
 	// Modifiers
 	template <class InputIterator>
-	void					assign(InputIterator first,						// range
-								   InputIterator last);
-	void					assign(size_type n,								// fill
-								   const value_type& val = value_type());
+	void					assign(InputIterator first,						// range (1)
+									InputIterator last);
+	void					assign(size_type n,								// fill (2)
+									const value_type& val = value_type());
 	void					push_back(const value_type& val);
 	void					pop_back();
-	iterator				insert(iterator position,						// single element
-								   const value_type& val = value_type());
-	void					insert(iterator position, size_type n,			// fill
-								   const value_type& val = value_type());
+	iterator				insert(iterator position,						// single element (1)
+									const value_type& val = value_type());
+	void					insert(iterator position, size_type n,			// fill (2)
+									const value_type& val = value_type());
 	template <class InputIterator>
-	void					insert(iterator position,						// range
-								   InputIterator first,
-								   InputIterator last);
+	void					insert(iterator position,						// range (3)
+									InputIterator first,
+									InputIterator last);
 	iterator				erase(iterator position);
 	iterator				erase(iterator first, iterator last);
 	void					swap(vector& x);
@@ -97,53 +96,53 @@ class vector
 	// member variable
 	pointer			_firstData;
 	pointer			_lastData;
+	pointer			_endData;
 	allocator_type	_alloc;
-
-	// void	create() {
-	//     _firstData = 0;
-	//     _lastData = 0;
-	// }
-	// void	create( size_type n , const T& val)
-	// {
-	//     _firstData = _alloc.allocate(n);
-	//     _lastData = _firstData + n;
-	//     std::uninitialized_fill(_firstData, _lastData, val);
-	// }
-	// void	create( pointer first, pointer last ){
-	//     _firstData = _alloc.allocate(last - first);
-	//     _lastData = std::uninitialized_copy(first, last, _firstData);
-	// }
 };
 
 template <class T, class Allocator>
 vector<T, Allocator>::vector(const allocator_type& alloc) : _alloc(alloc)
 {
-
+	_firstData = NULL;
+	_lastData = NULL;
+	_endData = NULL;
 }
 
 template <class T, class Allocator>
 vector<T, Allocator>::vector(size_type n,
-							 const value_type& val,
-							 const allocator_type& alloc) : _alloc(alloc)
-{}
+								const value_type& val,
+								const allocator_type& alloc) : _alloc(alloc)
+{
+	_firstData = _alloc.allocate(n);
+	_lastData = _firstData + n;
+	std::uninitialized_fill(_firstData, _lastData, val);
+	_endData = _lastData;
+}
 
 template <class T, class Allocator>
 template<class InputIterator>
-vector<T, Allocator>::vector(InputIterator first, InputIterator last,
-							 const allocator_type& alloc)
+vector<T, Allocator>::vector(InputIterator first,
+								InputIterator last,
+								const allocator_type& alloc)
 {
-
+	(void)first;
+	(void)last;
+	(void)alloc;
+	// ???
 }
 
 template <class T, class Allocator>
 vector<T, Allocator>::vector(const vector& x)
 {
-
+	(void)x;
+	// ???
 }
 
 template <class T, class Allocator>
 vector<T, Allocator>::~vector()
-{}
+{
+	// ???
+}
 
 template <class T, class Allocator>
 typename vector<T, Allocator>::iterator
@@ -206,6 +205,157 @@ typename vector<T, Allocator>::size_type
 vector<T, Allocator>::size() const
 {
 	return (_lastData - _firstData);
+}
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::size_type
+vector<T, Allocator>::max_size() const
+{
+	return (_alloc.max_size());
+}
+
+template <class T, class Allocator>
+void
+vector<T, Allocator>::resize(size_type n, value_type val)
+{
+	while (this->size() > n)
+		_alloc.destroy(--_lastData);
+	(void)val;
+	// this->insert(...)
+}
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::size_type
+vector<T, Allocator>::capacity() const
+{
+	return (_endData - _firstData);
+}
+
+
+template <class T, class Allocator>
+bool
+vector<T, Allocator>::empty() const
+{
+	return (this->size() ? false : true);
+}
+
+template <class T, class Allocator>
+void
+vector<T, Allocator>::reserve(size_type n)
+{
+	(void)n;
+	// ???
+}
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::reference
+vector<T, Allocator>::operator[](size_type n)
+{
+	return (*(_firstData + n));
+}
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::const_reference
+vector<T, Allocator>::operator[](size_type n) const
+{
+	return (*(_firstData + n));
+}
+
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::reference
+vector<T, Allocator>::at(size_type n)
+{
+	// range exception
+	return (*(_firstData + n));
+}
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::const_reference
+vector<T, Allocator>::at(size_type n) const
+{
+	// range exception
+	return (*(_firstData + n));
+}
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::reference
+vector<T, Allocator>::front()
+{
+	return (*_firstData);
+}
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::const_reference
+vector<T, Allocator>::front() const
+{
+	return (*_firstData);
+}
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::reference
+vector<T, Allocator>::back()
+{
+	return (*(--_lastData));
+}
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::const_reference
+vector<T, Allocator>::back() const
+{
+	return (*(--_lastData));
+}
+
+// non-member function overloads
+//
+// relational operators
+template <class T, class Allocator>
+bool
+operator==(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// equal to (1)
+{
+
+}
+
+template <class T, class Allocator>
+bool
+operator!=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// not equal to (2)
+{
+
+}
+
+template <class T, class Allocator>
+bool
+operator<(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// less than (3)
+{
+
+}
+
+template <class T, class Allocator>
+bool
+operator<=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// less than or equal to (4)
+{
+
+}
+
+template <class T, class Allocator>
+bool
+operator>(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// greater than (5)
+{
+
+}
+
+template <class T, class Allocator>
+bool
+operator>=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// greater than or equal to (6)
+{
+
+}
+
+template <class T, class Allocator>
+void
+swap(vector<T, Allocator>& x, vector<T, Allocator>& y)
+{
+
 }
 
 }
