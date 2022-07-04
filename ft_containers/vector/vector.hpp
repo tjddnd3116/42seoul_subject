@@ -1,7 +1,9 @@
 #ifndef vector_hpp
 #define vector_hpp
 
+#include <iostream>
 #include <memory>
+#include <ostream>
 #include "../iterator/randomAccessIterator.hpp"
 #include "../iterator/reverseIterator.hpp"
 
@@ -110,20 +112,20 @@ vector<T, Allocator>::vector(const allocator_type& alloc) : _alloc(alloc)
 
 template <class T, class Allocator>
 vector<T, Allocator>::vector(size_type n,
-								const value_type& val,
-								const allocator_type& alloc) : _alloc(alloc)
+		const value_type& val,
+		const allocator_type& alloc) : _alloc(alloc)
 {
 	_firstData = _alloc.allocate(n);
 	_lastData = _firstData + n;
+	_endData = _firstData + n;
 	std::uninitialized_fill(_firstData, _lastData, val);
-	_endData = _lastData;
 }
 
 template <class T, class Allocator>
 template<class InputIterator>
 vector<T, Allocator>::vector(InputIterator first,
-								InputIterator last,
-								const allocator_type& alloc)
+		InputIterator last,
+		const allocator_type& alloc) : _alloc(alloc)
 {
 	(void)first;
 	(void)last;
@@ -218,10 +220,42 @@ template <class T, class Allocator>
 void
 vector<T, Allocator>::resize(size_type n, value_type val)
 {
-	while (this->size() > n)
-		_alloc.destroy(--_lastData);
-	(void)val;
-	// this->insert(...)
+	if (this->size() > n)
+	{
+		while (this->size() > n)
+			_alloc.destroy(--_lastData);
+	}
+	else if (this->size() < n)
+	{
+		if (this->capacity() < n)
+		{
+			pointer newFirstData;
+			pointer newLastData;
+			pointer	newEndData;
+			size_type newSize;
+
+			if (n > this->capacity() * 2)
+				newSize = n;
+			else
+				newSize = this->capacity() * 2;
+			newFirstData = _alloc.allocate(newSize);
+			newEndData = newFirstData + newSize;
+			std::uninitialized_copy(_firstData, _lastData, newFirstData);
+			std::uninitialized_fill(newFirstData + this->size(), newFirstData + n, val);
+			newLastData = newFirstData + n;
+			for (size_type size = this->size(); size > 0; --size)
+				_alloc.destroy(--_lastData);
+			_alloc.deallocate(_firstData, this->capacity());
+			_firstData = newFirstData;
+			_lastData = newLastData;
+			_endData = newEndData;
+		}
+		else
+		{
+			std::uninitialized_fill(_lastData, _firstData + n, val);
+			_lastData = _firstData + n;
+		}
+	}
 }
 
 template <class T, class Allocator>
@@ -243,8 +277,23 @@ template <class T, class Allocator>
 void
 vector<T, Allocator>::reserve(size_type n)
 {
-	(void)n;
-	// ???
+	if (this->capacity() < n)
+	{
+		pointer newFirstData;
+		pointer newLastData;
+		pointer newEndData;
+
+		newFirstData = _alloc.allocate(n);
+		newEndData = newFirstData + n;
+		std::uninitialized_copy(_firstData, _lastData, newFirstData);
+		newLastData = newFirstData + this->size();
+		for (size_type size = this->size(); size > 0; --size)
+			_alloc.destroy(--_lastData);
+		_alloc.deallocate(_firstData, this->capacity());
+		_firstData = newFirstData;
+		_lastData = newLastData;
+		_endData = newEndData;
+	}
 }
 
 template <class T, class Allocator>
@@ -309,54 +358,54 @@ vector<T, Allocator>::back() const
 // non-member function overloads
 //
 // relational operators
-template <class T, class Allocator>
-bool
-operator==(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// equal to (1)
-{
-
-}
-
-template <class T, class Allocator>
-bool
-operator!=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// not equal to (2)
-{
-
-}
-
-template <class T, class Allocator>
-bool
-operator<(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// less than (3)
-{
-
-}
-
-template <class T, class Allocator>
-bool
-operator<=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// less than or equal to (4)
-{
-
-}
-
-template <class T, class Allocator>
-bool
-operator>(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// greater than (5)
-{
-
-}
-
-template <class T, class Allocator>
-bool
-operator>=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// greater than or equal to (6)
-{
-
-}
-
-template <class T, class Allocator>
-void
-swap(vector<T, Allocator>& x, vector<T, Allocator>& y)
-{
-
-}
+// template <class T, class Allocator>
+// bool
+// operator==(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// equal to (1)
+// {
+//
+// }
+//
+// template <class T, class Allocator>
+// bool
+// operator!=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// not equal to (2)
+// {
+//
+// }
+//
+// template <class T, class Allocator>
+// bool
+// operator<(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// less than (3)
+// {
+//
+// }
+//
+// template <class T, class Allocator>
+// bool
+// operator<=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// less than or equal to (4)
+// {
+//
+// }
+//
+// template <class T, class Allocator>
+// bool
+// operator>(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// greater than (5)
+// {
+//
+// }
+//
+// template <class T, class Allocator>
+// bool
+// operator>=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// greater than or equal to (6)
+// {
+//
+// }
+//
+// template <class T, class Allocator>
+// void
+// swap(vector<T, Allocator>& x, vector<T, Allocator>& y)
+// {
+//
+// }
 
 }
 #endif	/* vector_hpp */
