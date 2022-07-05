@@ -3,12 +3,16 @@
 
 #include <iostream>
 #include <memory>
-#include <ostream>
+#include <stdexcept>
 #include "../iterator/randomAccessIterator.hpp"
 #include "../iterator/reverseIterator.hpp"
 
 namespace	ft
 {
+
+//---------------------------------------
+//   vector<T, Allocator> synopsis
+//---------------------------------------
 
 template <class T, class Allocator = std::allocator<T> >
 class vector
@@ -38,6 +42,9 @@ class vector
 						InputIterator last,
 						const allocator_type& alloc = allocator_type());
 				vector(const vector& x);									// copy constructor (4)
+
+	// operator
+	vector		&operator=(const vector& x);								// copy assignment oeprator
 
 	// destructor
 				~vector();
@@ -102,6 +109,10 @@ class vector
 	allocator_type	_alloc;
 };
 
+//---------------------------------------
+//   vector<T, Allocator> definition
+//---------------------------------------
+
 template <class T, class Allocator>
 vector<T, Allocator>::vector(const allocator_type& alloc) : _alloc(alloc)
 {
@@ -129,21 +140,46 @@ vector<T, Allocator>::vector(InputIterator first,
 {
 	(void)first;
 	(void)last;
-	(void)alloc;
 	// ???
 }
 
 template <class T, class Allocator>
-vector<T, Allocator>::vector(const vector& x)
+vector<T, Allocator>::vector(const vector<T, Allocator>& x) : _alloc(x._alloc)
 {
-	(void)x;
-	// ???
+	_firstData = NULL;
+	_lastData = NULL;
+	_endData = NULL;
+	*this = x;
 }
+
+template <class T, class Allocator>
+vector<T, Allocator>&
+vector<T, Allocator>::operator=(const vector<T, Allocator> &x)
+{
+	if (x == *this)
+		return (*this);
+	if (this->capacity() < x.size())
+	{
+		this->reserve(x.size());
+		this->clear();
+		std::uninitialized_copy(x._firstData, x._lastData, _firstData);
+		_lastData = _firstData + x.size();
+	}
+	else
+	{
+		this->clear();
+		std::uninitialized_copy(x._firstData, x._lastData, _firstData);
+		_lastData = _firstData + x.size();
+	}
+	return (*this);
+}
+
 
 template <class T, class Allocator>
 vector<T, Allocator>::~vector()
 {
-	// ???
+	this->clear();
+	_alloc.deallocate(_firstData, this->capacity());
 }
 
 template <class T, class Allocator>
@@ -220,6 +256,8 @@ template <class T, class Allocator>
 void
 vector<T, Allocator>::resize(size_type n, value_type val)
 {
+	if (n > this->max_size())
+		throw (std::length_error("length_error"));
 	if (this->size() > n)
 	{
 		while (this->size() > n)
@@ -243,8 +281,7 @@ vector<T, Allocator>::resize(size_type n, value_type val)
 			std::uninitialized_copy(_firstData, _lastData, newFirstData);
 			std::uninitialized_fill(newFirstData + this->size(), newFirstData + n, val);
 			newLastData = newFirstData + n;
-			for (size_type size = this->size(); size > 0; --size)
-				_alloc.destroy(--_lastData);
+			this->clear();
 			_alloc.deallocate(_firstData, this->capacity());
 			_firstData = newFirstData;
 			_lastData = newLastData;
@@ -277,6 +314,8 @@ template <class T, class Allocator>
 void
 vector<T, Allocator>::reserve(size_type n)
 {
+	if (n > this->max_size())
+		throw (std::length_error("length_error"));
 	if (this->capacity() < n)
 	{
 		pointer newFirstData;
@@ -287,8 +326,7 @@ vector<T, Allocator>::reserve(size_type n)
 		newEndData = newFirstData + n;
 		std::uninitialized_copy(_firstData, _lastData, newFirstData);
 		newLastData = newFirstData + this->size();
-		for (size_type size = this->size(); size > 0; --size)
-			_alloc.destroy(--_lastData);
+		this->clear();
 		_alloc.deallocate(_firstData, this->capacity());
 		_firstData = newFirstData;
 		_lastData = newLastData;
@@ -315,7 +353,8 @@ template <class T, class Allocator>
 typename vector<T, Allocator>::reference
 vector<T, Allocator>::at(size_type n)
 {
-	// range exception
+	if (this->size() < n)
+		throw (std::out_of_range("out_of_range"));
 	return (*(_firstData + n));
 }
 
@@ -323,7 +362,8 @@ template <class T, class Allocator>
 typename vector<T, Allocator>::const_reference
 vector<T, Allocator>::at(size_type n) const
 {
-	// range exception
+	if (this->size() < n)
+		throw (std::out_of_range("out_of_range"));
 	return (*(_firstData + n));
 }
 
@@ -355,23 +395,207 @@ vector<T, Allocator>::back() const
 	return (*(--_lastData));
 }
 
-// non-member function overloads
+// template <class T, class Allocator>
+// template <class InputIterator>
+// void
+// vector<T, Allocator>::assign(InputIterator first, InputIterator last)
+// {
 //
+// }
+
+template <class T, class Allocator>
+void
+vector<T, Allocator>::assign(size_type n, const value_type& val)
+{
+	if (this->size() >= n)
+	{
+		this->clear();
+		std::uninitialized_fill(_firstData, _firstData + n, val);
+		_lastData = _firstData + n;
+	}
+	else
+	{
+		if (this->capacity() < n)
+		{
+			vector<T, Allocator> tmpVec(n, val);
+			*this = tmpVec;
+		}
+		else
+		{
+			this->clear();
+			std::uninitialized_fill(_firstData, _firstData + n, val);
+			_lastData = _firstData + n;
+		}
+	}
+}
+
+template <class T, class Allocator>
+void
+vector<T, Allocator>::push_back(const value_type &val)
+{
+	this->resize(this->size() + 1, val);
+}
+
+template <class T, class Allocator>
+void
+vector<T, Allocator>::pop_back()
+{
+	_alloc.destroy(--_lastData);
+}
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::iterator
+vector<T, Allocator>::insert(iterator position, const value_type& val)
+{
+	size_type idxPos;
+
+	idxPos = &(*position) - _firstData;
+	this->insert(position, 1, val);
+	return (iterator(_firstData + idxPos));
+}
+
+template <class T, class Allocator>
+void
+vector<T, Allocator>::insert(iterator position, size_type n, const value_type& val)
+{
+	size_type idxPos;
+
+	idxPos = &(*position) - _firstData;
+	this->resize(this->size() + n);
+	for (size_type lastIdx = this->size() - 1; lastIdx != idxPos; --lastIdx)
+	{
+		_alloc.destroy(_firstData + lastIdx);
+		_alloc.construct(_firstData + lastIdx, *(_firstData + lastIdx - n));
+	}
+	for (size_type insertCnt = 0; insertCnt != n; ++insertCnt)
+	{
+		_alloc.destroy(_firstData + idxPos + insertCnt);
+		_alloc.construct(_firstData + idxPos + insertCnt, val);
+	}
+}
+
+// template <class T, class Allocator>
+// template <class InputIterator>
+// void
+// vector<T, Allocator>::insert(iterator position, InputIterator first, InputIterator last)
+// {
+//
+// }
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::iterator
+vector<T, Allocator>::erase(iterator position)
+{
+	size_type idxPos;
+	size_type startIdx;
+	size_type size;
+
+	idxPos = &(*position) - _firstData;
+	startIdx = idxPos + 1;
+	size = this->size();
+	while (startIdx < size)
+	{
+		_alloc.destroy(_firstData + startIdx - 1);
+		_alloc.construct(_firstData + startIdx - 1, *(_firstData + startIdx));
+		++startIdx;
+	}
+	_alloc.destroy(_firstData + startIdx - 1);
+	--_lastData;
+	return (iterator(_firstData + idxPos));
+}
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::iterator
+vector<T, Allocator>::erase(iterator first, iterator last)
+{
+	size_type firstIdx;
+	size_type lastIdx;
+	size_type startIdx;
+	size_type size;
+
+	firstIdx = &(*first) - _firstData;
+	lastIdx = &(*last) - _firstData;
+	startIdx = firstIdx;
+	size = this->size();
+	for (size_type copyIdx = lastIdx; copyIdx < size; copyIdx++)
+	{
+		_alloc.destroy(_firstData + startIdx);
+		_alloc.construct(_firstData + startIdx, *(_firstData + copyIdx));
+		++startIdx;
+	}
+	_lastData = _firstData + startIdx;
+	for (; startIdx < size; ++startIdx)
+		_alloc.destroy(_firstData + startIdx);
+	return (iterator(_firstData + firstIdx));
+}
+
+
+template <class T, class Allocator>
+void
+vector<T, Allocator>::swap(vector& x)
+{
+	if (x == *this)
+		return;
+	pointer tmpFirstData;
+	pointer tmpLastData;
+	pointer tmpEndData;
+	allocator_type tmpAlloc;
+
+	tmpFirstData = x._firstData;
+	tmpLastData = x._lastData;
+	tmpEndData = x._endData;
+	tmpAlloc = x._alloc;
+	x._firstData = _firstData;
+	x._lastData = _lastData;
+	x._endData = _endData;
+	x._alloc = _alloc;
+	_firstData = tmpFirstData;
+	_lastData = tmpLastData;
+	_endData = tmpEndData;
+	_alloc = tmpAlloc;
+}
+
+template <class T, class Allocator>
+void
+vector<T, Allocator>::clear()
+{
+	for(size_type size = this->size(); size > 0; --size)
+		_alloc.destroy(--_lastData);
+}
+
+template <class T, class Allocator>
+typename vector<T, Allocator>::allocator_type
+vector<T, Allocator>::get_allocator() const
+{
+	return (_alloc);
+}
+
+//---------------------------------------
+//   vector<T, Allocator> non-member function overloads
+//---------------------------------------
+
 // relational operators
-// template <class T, class Allocator>
-// bool
-// operator==(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// equal to (1)
-// {
-//
-// }
-//
-// template <class T, class Allocator>
-// bool
-// operator!=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// not equal to (2)
-// {
-//
-// }
-//
+template <class T, class Allocator>
+bool
+operator==(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// equal to (1)
+{
+	if (lhs.size() != rhs.size())
+		return (false);
+	typename vector<T, Allocator>::const_iterator lBegin = lhs.begin();
+	typename vector<T, Allocator>::const_iterator rBegin = rhs.begin();
+	for (;lBegin != lhs.end(); ++lBegin, ++rBegin)
+		if (*lBegin != *rBegin)
+			return (false);
+	return (true);
+}
+
+template <class T, class Allocator>
+bool
+operator!=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// not equal to (2)
+{
+	return (!(lhs == rhs));
+}
+
 // template <class T, class Allocator>
 // bool
 // operator<(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// less than (3)
@@ -383,29 +607,29 @@ vector<T, Allocator>::back() const
 // bool
 // operator<=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// less than or equal to (4)
 // {
-//
+//     return (!(rhs < lhs));
 // }
 //
 // template <class T, class Allocator>
 // bool
 // operator>(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// greater than (5)
 // {
-//
+//     return (rhs < lhs);
 // }
 //
 // template <class T, class Allocator>
 // bool
 // operator>=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// greater than or equal to (6)
 // {
-//
+//     return (!(rhs < lhs));
 // }
-//
-// template <class T, class Allocator>
-// void
-// swap(vector<T, Allocator>& x, vector<T, Allocator>& y)
-// {
-//
-// }
+
+template <class T, class Allocator>
+void
+swap(vector<T, Allocator>& x, vector<T, Allocator>& y)
+{
+	x.swap(y);
+}
 
 }
 #endif	/* vector_hpp */

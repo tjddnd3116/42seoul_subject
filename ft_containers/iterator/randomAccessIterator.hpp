@@ -3,9 +3,11 @@
 
 #include "iterator.hpp"
 namespace ft {
+
 //---------------------------------------
 //   random_access_iterator<T> synopsis
 //---------------------------------------
+
 template <typename T>
 class	random_access_iterator : iterator<random_access_iterator_tag, T>
 {
