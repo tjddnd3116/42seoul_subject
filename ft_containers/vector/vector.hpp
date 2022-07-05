@@ -1,7 +1,6 @@
 #ifndef vector_hpp
 #define vector_hpp
 
-#include <iostream>
 #include <memory>
 #include <stdexcept>
 #include "../iterator/randomAccessIterator.hpp"
@@ -103,10 +102,10 @@ class vector
 
 	private:
 	// member variable
-	pointer			_firstData;
-	pointer			_lastData;
-	pointer			_endData;
-	allocator_type	_alloc;
+	pointer					_firstData;
+	pointer					_lastData;
+	pointer					_endData;
+	allocator_type			_alloc;
 };
 
 //---------------------------------------
@@ -621,7 +620,7 @@ operator!=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// 
 // bool
 // operator>=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// greater than or equal to (6)
 // {
-//     return (!(rhs < lhs));
+//     return (!(lhs < rhs));
 // }
 
 template <class T, class Allocator>
