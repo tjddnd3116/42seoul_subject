@@ -137,9 +137,15 @@ vector<T, Allocator>::vector(InputIterator first,
 		InputIterator last,
 		const allocator_type& alloc) : _alloc(alloc)
 {
-	(void)first;
-	(void)last;
-	// ???
+	difference_type n = last - first;
+	_firstData = _alloc.allocate(n);
+	_lastData = _firstData;
+	_endData = _firstData + n;
+	while (n--)
+	{
+		_alloc.construct(_lastData, *(first++));
+		_lastData++;
+	}
 }
 
 template <class T, class Allocator>

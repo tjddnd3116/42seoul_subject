@@ -1,7 +1,9 @@
 #include "./vector/vector.hpp"
+#include <cmath>
 #include <exception>
 #include <iterator>
 #include <algorithm>
+#include <memory>
 #include <vector>
 #include <iostream>
 
@@ -41,6 +43,7 @@ void	realVector(void)
 {
 	std::cout << "-------realVector--------" << std::endl;
 	std::vector<std::string> realVec;
+	std::vector<int> realVec2(1);
 	realVec.push_back("1");
 	realVec.push_back("2");
 	realVec.push_back("3");
@@ -66,26 +69,25 @@ void	realVector(void)
 void	myVector(void)
 {
 	std::cout << "-------myVector--------" << std::endl;
-	ft::vector<std::string> myVec(5, "42");
-	ft::vector<std::string> myVec2(myVec);
-	// std::cout << "before" << std::endl;
-	// std::cout << "	size : " << myVec.size() << std::endl;
-	// std::cout << "	capacity :" << myVec.capacity() << std::endl;
-	// for(ft::vector<std::string>::iterator it = myVec.begin(); it != myVec.end(); it++)
-	//     std::cout << "	" << *it << std::endl;
+	// std::allocator<int> a;
+	ft::vector<std::string> myVec(1, "aa");
+	ft::vector<std::string>::iterator::pointer ptr;
 
-	// myVec.swap(myVec2);
-	// std::cout << "after" << std::endl;
-	std::cout << "myVec	size : "<< myVec.size() << std::endl;
-	std::cout << "myVec	capacity :" << myVec.capacity() << std::endl;
-	for(ft::vector<std::string>::iterator it = myVec.begin(); it != myVec.end(); it++)
-		std::cout << "	" << *it << std::endl;
-	std::cout << "--------" << std::endl;
-	std::cout << "myVec2	size : "<< myVec2.size() << std::endl;
-	std::cout << "myVec2	capacity :" << myVec2.capacity() << std::endl;
-	for(ft::vector<std::string>::iterator it = myVec2.begin(); it != myVec2.end(); it++)
-		std::cout << "	" << *it << std::endl;
-	std::cout << "-------myVector--------" << std::endl;
+
+	// std::string a("aaa");
+	// ft::vector<int> myVec(1);
+	// ft::vector<std::string> myVec2(myVec.begin() + 2, myVec.end());
+
+	// std::cout << "myVec	size : "<< myVec.size() << std::endl;
+	// std::cout << "myVec	capacity :" << myVec.capacity() << std::endl;
+	// for(ft::vector<int>::iterator it = myVec.begin(); it != myVec.end(); it++)
+	//     std::cout << "	" << *it << std::endl;
+	// std::cout << "--------" << std::endl;
+	// std::cout << "myVec2	size : "<< myVec2.size() << std::endl;
+	// std::cout << "myVec2	capacity :" << myVec2.capacity() << std::endl;
+	// for(ft::vector<int>::iterator it = myVec2.begin(); it != myVec2.end(); it++)
+	//     std::cout << "	" << *it << std::endl;
+	// std::cout << "-------myVector--------" << std::endl;
 }
 
 int main(void)
