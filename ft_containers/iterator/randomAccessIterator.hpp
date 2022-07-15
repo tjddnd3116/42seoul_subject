@@ -47,6 +47,7 @@ class	random_access_iterator : iterator<random_access_iterator_tag, T>
 	bool						operator<=(const random_access_iterator &op) const;	// less than or equal to
 	bool						operator>=(const random_access_iterator &op) const;	// greater than or equal to
 	operator					random_access_iterator<const T>() const;			// conversion operator
+
 	private:
 	pointer _ptr;
 };
