@@ -70,8 +70,16 @@ void	myVector(void)
 {
 	std::cout << "-------myVector--------" << std::endl;
 	// std::allocator<int> a;
-	ft::vector<std::string> myVec(1, "aa");
-	ft::vector<std::string>::iterator::pointer ptr;
+	ft::vector<int> myVec(4, 4);
+	// std::vector<char> myVec2;
+
+
+	ft::vector<int>::iterator it;
+	ft::vector<int>::iterator it2;
+	// //
+	it = myVec.begin();
+	it2 = myVec.end();
+	// ft::vector<int> myVec2(it, it2);
 
 
 	// std::string a("aaa");
@@ -80,9 +88,9 @@ void	myVector(void)
 
 	// std::cout << "myVec	size : "<< myVec.size() << std::endl;
 	// std::cout << "myVec	capacity :" << myVec.capacity() << std::endl;
-	// for(ft::vector<int>::iterator it = myVec.begin(); it != myVec.end(); it++)
-	//     std::cout << "	" << *it << std::endl;
-	// std::cout << "--------" << std::endl;
+	for(ft::vector<int>::iterator it = myVec.begin(); it != myVec.end(); it++)
+		std::cout << "	" << *it << std::endl;
+	std::cout << "--------" << std::endl;
 	// std::cout << "myVec2	size : "<< myVec2.size() << std::endl;
 	// std::cout << "myVec2	capacity :" << myVec2.capacity() << std::endl;
 	// for(ft::vector<int>::iterator it = myVec2.begin(); it != myVec2.end(); it++)

@@ -3,8 +3,10 @@
 
 #include <memory>
 #include <stdexcept>
+#include <type_traits>
 #include "../iterator/randomAccessIterator.hpp"
 #include "../iterator/reverseIterator.hpp"
+#include "../utils/typeTraits.hpp"
 
 namespace	ft
 {
@@ -34,12 +36,13 @@ class vector
 	//	constructor
 	explicit	vector(const allocator_type& alloc = allocator_type());		// default constructor (1)
 	explicit	vector(size_type n,											// fill constructor (2)
-			const value_type& val,
+			const value_type& val = value_type(),
 			const allocator_type& alloc = allocator_type());
 	template <class InputIterator>
 				vector(InputIterator first,									// range constructor (3)
 						InputIterator last,
-						const allocator_type& alloc = allocator_type());
+						const allocator_type& alloc = allocator_type(),
+		typename enable_if<is_iterator<InputIterator>::value, InputIterator>::type = 0) ;
 				vector(const vector& x);									// copy constructor (4)
 
 	// operator
@@ -135,7 +138,8 @@ template <class T, class Allocator>
 template<class InputIterator>
 vector<T, Allocator>::vector(InputIterator first,
 		InputIterator last,
-		const allocator_type& alloc) : _alloc(alloc)
+		const allocator_type& alloc,
+		typename enable_if<is_iterator<InputIterator>::value, InputIterator>::type) : _alloc(alloc)
 {
 	difference_type n = last - first;
 	_firstData = _alloc.allocate(n);
