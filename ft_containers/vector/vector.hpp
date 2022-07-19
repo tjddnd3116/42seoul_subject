@@ -1,7 +1,11 @@
 #ifndef vector_hpp
 #define vector_hpp
 
+
+#include <iostream>
+
 #include <memory>
+#include <ostream>
 #include <stdexcept>
 #include <type_traits>
 #include "../iterator/randomAccessIterator.hpp"
@@ -42,7 +46,7 @@ class vector
 				vector(InputIterator first,									// range constructor (3)
 						InputIterator last,
 						const allocator_type& alloc = allocator_type(),
-		typename enable_if<is_iterator<InputIterator>::value, InputIterator>::type = 0) ;
+		typename std::enable_if<!std::is_integral<InputIterator>::value>::type* = 0);
 				vector(const vector& x);									// copy constructor (4)
 
 	// operator
@@ -91,10 +95,10 @@ class vector
 									const value_type& val = value_type());
 	void					insert(iterator position, size_type n,			// fill (2)
 									const value_type& val = value_type());
-	template <class InputIterator>
-	void					insert(iterator position,						// range (3)
-									InputIterator first,
-									InputIterator last);
+	// template <class InputIterator>
+	// void					insert(iterator position,						// range (3)
+	//                                 InputIterator first,
+	//                                 InputIterator last);
 	iterator				erase(iterator position);
 	iterator				erase(iterator first, iterator last);
 	void					swap(vector& x);
@@ -139,7 +143,7 @@ template<class InputIterator>
 vector<T, Allocator>::vector(InputIterator first,
 		InputIterator last,
 		const allocator_type& alloc,
-		typename enable_if<is_iterator<InputIterator>::value, InputIterator>::type) : _alloc(alloc)
+		typename std::enable_if<!std::is_integral<InputIterator>::value>::type*) : _alloc(alloc)
 {
 	difference_type n = last - first;
 	_firstData = _alloc.allocate(n);
@@ -467,19 +471,20 @@ template <class T, class Allocator>
 void
 vector<T, Allocator>::insert(iterator position, size_type n, const value_type& val)
 {
-	size_type idxPos;
+	size_type insertPos;
 
-	idxPos = &(*position) - _firstData;
+	insertPos = &(*position) - _firstData;
+	std::cout << insertPos << std::endl;
 	this->resize(this->size() + n);
-	for (size_type lastIdx = this->size() - 1; lastIdx != idxPos; --lastIdx)
+	for (size_type startIdx = 0; startIdx < insertPos; ++startIdx)
 	{
-		_alloc.destroy(_firstData + lastIdx);
-		_alloc.construct(_firstData + lastIdx, *(_firstData + lastIdx - n));
+		_alloc.destroy(_firstData + startIdx);
+		_alloc.construct(_firstData + startIdx, *(_firstData + startIdx - n));
 	}
 	for (size_type insertCnt = 0; insertCnt != n; ++insertCnt)
 	{
-		_alloc.destroy(_firstData + idxPos + insertCnt);
-		_alloc.construct(_firstData + idxPos + insertCnt, val);
+		_alloc.destroy(_firstData + insertPos + insertCnt);
+		_alloc.construct(_firstData + insertPos + insertCnt, val);
 	}
 }
 
@@ -524,6 +529,8 @@ vector<T, Allocator>::erase(iterator first, iterator last)
 
 	firstIdx = &(*first) - _firstData;
 	lastIdx = &(*last) - _firstData;
+	if (firstIdx == lastIdx)
+		return (iterator(_firstData + firstIdx));
 	startIdx = firstIdx;
 	size = this->size();
 	for (size_type copyIdx = lastIdx; copyIdx < size; copyIdx++)

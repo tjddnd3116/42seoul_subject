@@ -42,13 +42,7 @@ class myClass
 void	realVector(void)
 {
 	std::cout << "-------realVector--------" << std::endl;
-	std::vector<std::string> realVec;
-	std::vector<int> realVec2(1);
-	realVec.push_back("1");
-	realVec.push_back("2");
-	realVec.push_back("3");
-	realVec.push_back("4");
-	realVec.push_back("5");
+	std::vector<std::string> realVec(3, "42");
 	std::cout << "before" << std::endl;
 	std::cout << "	size : " << realVec.size() << std::endl;
 	std::cout << "	capacity :" << realVec.capacity() << std::endl;
@@ -56,8 +50,8 @@ void	realVector(void)
 		std::cout << "	" << *it << std::endl;
 
 	std::vector<std::string>::iterator it;
-	it = realVec.begin();
-	realVec.erase(it, it + 4);
+	it = realVec.end();
+	realVec.insert(it, 2, "4");
 	std::cout << "after" << std::endl;
 	std::cout << "	size : "<< realVec.size() << std::endl;
 	std::cout << "	capacity :" << realVec.capacity() << std::endl;
@@ -69,39 +63,30 @@ void	realVector(void)
 void	myVector(void)
 {
 	std::cout << "-------myVector--------" << std::endl;
-	// std::allocator<int> a;
-	ft::vector<int> myVec(4, 4);
-	// std::vector<char> myVec2;
-
-
+	ft::vector<int> myVec(3, 42);
 	ft::vector<int>::iterator it;
-	ft::vector<int>::iterator it2;
-	// //
-	it = myVec.begin();
-	it2 = myVec.end();
-	// ft::vector<int> myVec2(it, it2);
 
 
-	// std::string a("aaa");
-	// ft::vector<int> myVec(1);
-	// ft::vector<std::string> myVec2(myVec.begin() + 2, myVec.end());
-
-	// std::cout << "myVec	size : "<< myVec.size() << std::endl;
-	// std::cout << "myVec	capacity :" << myVec.capacity() << std::endl;
+	std::cout << "--------before" << std::endl;
+	std::cout << " size : " << myVec.size() << std::endl;
+	std::cout << " capacity : " << myVec.capacity() << std::endl;
 	for(ft::vector<int>::iterator it = myVec.begin(); it != myVec.end(); it++)
 		std::cout << "	" << *it << std::endl;
-	std::cout << "--------" << std::endl;
-	// std::cout << "myVec2	size : "<< myVec2.size() << std::endl;
-	// std::cout << "myVec2	capacity :" << myVec2.capacity() << std::endl;
-	// for(ft::vector<int>::iterator it = myVec2.begin(); it != myVec2.end(); it++)
-	//     std::cout << "	" << *it << std::endl;
+	it = myVec.end();
+	myVec.insert(it, 2, 4);
+	// myVec.insert(myVec.end(), 5, myVec.front());
+	std::cout << "--------after" << std::endl;
+	std::cout << " size : " << myVec.size() << std::endl;
+	std::cout << " capacity : " << myVec.capacity() << std::endl;
+	for(ft::vector<int>::iterator it = myVec.begin(); it != myVec.end(); it++)
+		std::cout << "	" << *it << std::endl;
 	// std::cout << "-------myVector--------" << std::endl;
 }
 
 int main(void)
 {
-	myVector();
-	// realVector();
+	// myVector();
+	realVector();
 	// system("leaks a.out");
 	return (0);
 }
