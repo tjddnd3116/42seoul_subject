@@ -2,6 +2,7 @@
 #define vector_hpp
 
 
+#include <algorithm>
 #include <iostream>
 
 #include <memory>
@@ -11,6 +12,7 @@
 #include "../iterator/randomAccessIterator.hpp"
 #include "../iterator/reverseIterator.hpp"
 #include "../utils/typeTraits.hpp"
+#include "../utils/algorithm.hpp"
 
 namespace	ft
 {
@@ -86,7 +88,8 @@ class vector
 	// Modifiers
 	template <class InputIterator>
 	void					assign(InputIterator first,						// range (1)
-									InputIterator last);
+									InputIterator last,
+									typename std::enable_if<!std::is_integral<InputIterator>::value>::type* = 0);
 	void					assign(size_type n,								// fill (2)
 									const value_type& val = value_type());
 	void					push_back(const value_type& val);
@@ -95,10 +98,11 @@ class vector
 									const value_type& val = value_type());
 	void					insert(iterator position, size_type n,			// fill (2)
 									const value_type& val = value_type());
-	// template <class InputIterator>
-	// void					insert(iterator position,						// range (3)
-	//                                 InputIterator first,
-	//                                 InputIterator last);
+	template <class InputIterator>
+	void					insert(iterator position,						// range (3)
+									InputIterator first,
+									InputIterator last,
+									typename std::enable_if<!std::is_integral<InputIterator>::value>::type* = 0);
 	iterator				erase(iterator position);
 	iterator				erase(iterator first, iterator last);
 	void					swap(vector& x);
@@ -139,7 +143,7 @@ vector<T, Allocator>::vector(size_type n,
 }
 
 template <class T, class Allocator>
-template<class InputIterator>
+template <class InputIterator>
 vector<T, Allocator>::vector(InputIterator first,
 		InputIterator last,
 		const allocator_type& alloc,
@@ -398,23 +402,52 @@ template <class T, class Allocator>
 typename vector<T, Allocator>::reference
 vector<T, Allocator>::back()
 {
-	return (*(--_lastData));
+	return (*(_lastData - 1));
 }
 
 template <class T, class Allocator>
 typename vector<T, Allocator>::const_reference
 vector<T, Allocator>::back() const
 {
-	return (*(--_lastData));
+	return (*(_lastData - 1));
 }
 
-// template <class T, class Allocator>
-// template <class InputIterator>
-// void
-// vector<T, Allocator>::assign(InputIterator first, InputIterator last)
-// {
-//
-// }
+template <class T, class Allocator>
+template <class InputIterator>
+void
+vector<T, Allocator>::assign(InputIterator first, InputIterator last,
+		typename std::enable_if<!std::is_integral<InputIterator>::value>::type*)
+{
+	size_type n;
+
+	n = last - first;
+	if (this->size() >= n)
+	{
+		this->clear();
+		for (size_type i = 0; i < n; i++)
+		{
+			_alloc.construct(_lastData, *(first++));
+			_lastData++;
+		}
+	}
+	else
+	{
+		if (this->capacity() < n)
+		{
+			vector<T, Allocator> tmpVec(first, last);
+			*this = tmpVec;
+		}
+		else
+		{
+			this->clear();
+			for (size_type i = 0; i < n; i++)
+			{
+				_alloc.construct(_lastData, *(first++));
+				_lastData++;
+			}
+		}
+	}
+}
 
 template <class T, class Allocator>
 void
@@ -461,9 +494,11 @@ typename vector<T, Allocator>::iterator
 vector<T, Allocator>::insert(iterator position, const value_type& val)
 {
 	size_type idxPos;
+	value_type tmpVal;
 
+	tmpVal = val;
 	idxPos = &(*position) - _firstData;
-	this->insert(position, 1, val);
+	this->insert(position, 1, tmpVal);
 	return (iterator(_firstData + idxPos));
 }
 
@@ -472,29 +507,60 @@ void
 vector<T, Allocator>::insert(iterator position, size_type n, const value_type& val)
 {
 	size_type insertPos;
+	value_type tmpVal;
+	size_type copyCnt;
+	size_type startIdx;
 
+	tmpVal = val;
 	insertPos = &(*position) - _firstData;
-	std::cout << insertPos << std::endl;
+	copyCnt = this->size() - insertPos;
 	this->resize(this->size() + n);
-	for (size_type startIdx = 0; startIdx < insertPos; ++startIdx)
+	startIdx = this->size() - n - 1;
+	for (size_type tmpCnt = 0; tmpCnt < copyCnt; tmpCnt++)
 	{
-		_alloc.destroy(_firstData + startIdx);
-		_alloc.construct(_firstData + startIdx, *(_firstData + startIdx - n));
+		_alloc.destroy(_firstData + startIdx + n);
+		_alloc.construct(_firstData + startIdx + n, *(_firstData + startIdx));
+		--startIdx;
 	}
 	for (size_type insertCnt = 0; insertCnt != n; ++insertCnt)
 	{
 		_alloc.destroy(_firstData + insertPos + insertCnt);
-		_alloc.construct(_firstData + insertPos + insertCnt, val);
+		_alloc.construct(_firstData + insertPos + insertCnt, tmpVal);
 	}
 }
 
-// template <class T, class Allocator>
-// template <class InputIterator>
-// void
-// vector<T, Allocator>::insert(iterator position, InputIterator first, InputIterator last)
-// {
-//
-// }
+template <class T, class Allocator>
+template <class InputIterator>
+void
+vector<T, Allocator>::insert(iterator position, InputIterator first, InputIterator last,
+		typename std::enable_if<!std::is_integral<InputIterator>::value>::type*)
+{
+	size_type n;
+	value_type val;
+	size_type insertPos;
+	size_type copyCnt;
+	size_type startIdx;
+
+	insertPos = &(*position) - _firstData;
+	n = last - first;
+	copyCnt = this->size() - insertPos;
+	this->resize(this->size() + n);
+	startIdx = this->size() - n - 1;
+	for (size_type tmpCnt = 0; tmpCnt < copyCnt; tmpCnt++)
+	{
+		_alloc.destroy(_firstData + startIdx + n);
+		_alloc.construct(_firstData + startIdx + n, *(_firstData + startIdx));
+		--startIdx;
+	}
+	for (size_type insertCnt = 0; insertCnt != n; ++insertCnt)
+	{
+		val = *first;
+		_alloc.destroy(_firstData + insertPos + insertCnt);
+		_alloc.construct(_firstData + insertPos + insertCnt, val);
+		first++;
+	}
+
+}
 
 template <class T, class Allocator>
 typename vector<T, Allocator>::iterator
@@ -612,33 +678,33 @@ operator!=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// 
 	return (!(lhs == rhs));
 }
 
-// template <class T, class Allocator>
-// bool
-// operator<(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// less than (3)
-// {
-//
-// }
-//
-// template <class T, class Allocator>
-// bool
-// operator<=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// less than or equal to (4)
-// {
-//     return (!(rhs < lhs));
-// }
-//
-// template <class T, class Allocator>
-// bool
-// operator>(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// greater than (5)
-// {
-//     return (rhs < lhs);
-// }
-//
-// template <class T, class Allocator>
-// bool
-// operator>=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// greater than or equal to (6)
-// {
-//     return (!(lhs < rhs));
-// }
+template <class T, class Allocator>
+bool
+operator<(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// less than (3)
+{
+	return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
+}
+
+template <class T, class Allocator>
+bool
+operator<=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// less than or equal to (4)
+{
+	return (!(rhs < lhs));
+}
+
+template <class T, class Allocator>
+bool
+operator>(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// greater than (5)
+{
+	return (rhs < lhs);
+}
+
+template <class T, class Allocator>
+bool
+operator>=(const vector<T, Allocator>& lhs, const vector<T, Allocator>& rhs)	// greater than or equal to (6)
+{
+	return (!(lhs < rhs));
+}
 
 template <class T, class Allocator>
 void

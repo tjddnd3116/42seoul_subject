@@ -42,20 +42,19 @@ class myClass
 void	realVector(void)
 {
 	std::cout << "-------realVector--------" << std::endl;
-	std::vector<std::string> realVec(3, "42");
+	std::vector<std::string> realVec(10, "42");
+	std::vector<std::string> realVec2(4, "21");
 	std::cout << "before" << std::endl;
 	std::cout << "	size : " << realVec.size() << std::endl;
 	std::cout << "	capacity :" << realVec.capacity() << std::endl;
 	for(std::vector<std::string>::iterator it = realVec.begin(); it != realVec.end(); it++)
 		std::cout << "	" << *it << std::endl;
 
-	std::vector<std::string>::iterator it;
-	it = realVec.end();
-	realVec.insert(it, 2, "4");
+	realVec2.assign(realVec.begin(), realVec.end());
 	std::cout << "after" << std::endl;
-	std::cout << "	size : "<< realVec.size() << std::endl;
-	std::cout << "	capacity :" << realVec.capacity() << std::endl;
-	for(std::vector<std::string>::iterator it = realVec.begin(); it != realVec.end(); it++)
+	std::cout << "	size : "<< realVec2.size() << std::endl;
+	std::cout << "	capacity :" << realVec2.capacity() << std::endl;
+	for(std::vector<std::string>::iterator it = realVec2.begin(); it != realVec2.end(); it++)
 		std::cout << "	" << *it << std::endl;
 	std::cout << "-------realVector--------" << std::endl;
 }
@@ -63,30 +62,30 @@ void	realVector(void)
 void	myVector(void)
 {
 	std::cout << "-------myVector--------" << std::endl;
-	ft::vector<int> myVec(3, 42);
-	ft::vector<int>::iterator it;
+	ft::vector<int> myVec;
 
-
+	myVec.push_back(1);
+	myVec.push_back(2);
+	myVec.push_back(3);
 	std::cout << "--------before" << std::endl;
 	std::cout << " size : " << myVec.size() << std::endl;
 	std::cout << " capacity : " << myVec.capacity() << std::endl;
-	for(ft::vector<int>::iterator it = myVec.begin(); it != myVec.end(); it++)
+	for(ft::vector<int>::const_reverse_iterator it = myVec.rbegin(); it != myVec.rend(); it++)
 		std::cout << "	" << *it << std::endl;
-	it = myVec.end();
-	myVec.insert(it, 2, 4);
-	// myVec.insert(myVec.end(), 5, myVec.front());
-	std::cout << "--------after" << std::endl;
-	std::cout << " size : " << myVec.size() << std::endl;
-	std::cout << " capacity : " << myVec.capacity() << std::endl;
-	for(ft::vector<int>::iterator it = myVec.begin(); it != myVec.end(); it++)
-		std::cout << "	" << *it << std::endl;
+	// myVec.insert(myVec.begin(), myVec.begin(), myVec.end());
+	// myVec.insert(myVec.end(), 5,  myVec.front());
+	// std::cout << "--------after" << std::endl;
+	// std::cout << " size : " << myVec.size() << std::endl;
+	// std::cout << " capacity : " << myVec.capacity() << std::endl;
+	// for(ft::vector<int>::reverse_iterator it = myVec.rbegin(); it != myVec.rend(); it++)
+	//     std::cout << "	" << *it << std::endl;
 	// std::cout << "-------myVector--------" << std::endl;
 }
 
 int main(void)
 {
-	// myVector();
-	realVector();
+	myVector();
+	// realVector();
 	// system("leaks a.out");
 	return (0);
 }

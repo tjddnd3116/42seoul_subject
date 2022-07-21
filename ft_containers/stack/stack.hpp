@@ -31,6 +31,7 @@ class stack
 	const value_type&	top() const;
 	void				push(const value_type& val);
 	void				pop();
+	container_type		base() const;
 
 	private:
 	container_type 		_cont;
@@ -90,6 +91,13 @@ stack<T, Container>::pop()
 	this->_cont.pop_back();
 }
 
+template <class T, class Container>
+typename stack<T, Container>::container_type
+stack<T, Container>::base() const
+{
+	return (_cont);
+}
+
 //---------------------------------------
 //   stack<T, Container> non-member function overloads
 //---------------------------------------
@@ -99,42 +107,42 @@ template <class T, class Container>
 bool
 operator==(const stack<T, Container>& lhs, const stack<T, Container>& rhs)	// equal to (1)
 {
-	return (lhs._cont == rhs._cont);
+	return (lhs.base() == rhs.base());
 }
 
 template <class T, class Container>
 bool
 operator!=(const stack<T, Container>& lhs, const stack<T, Container>& rhs)	// not equal to (2)
 {
-	return (lhs._cont != rhs._cont);
+	return (lhs.base() != rhs.base());
 }
 
 template <class T, class Container>
 bool
 operator<(const stack<T, Container>& lhs, const stack<T, Container>& rhs)	// less than (3)
 {
-	return (lhs._cont < rhs._cont);
+	return (lhs.base() < rhs.base());
 }
 
 template <class T, class Container>
 bool
 operator<=(const stack<T, Container>& lhs, const stack<T, Container>& rhs)	// less than or equal to (4)
 {
-	return (lhs._cont <= rhs._cont);
+	return (lhs.base() <= rhs.base());
 }
 
 template <class T, class Container>
 bool
 operator>(const stack<T, Container>& lhs, const stack<T, Container>& rhs)	// greater than (5)
 {
-	return (lhs._cont > rhs._cont);
+	return (lhs.base() > rhs.base());
 }
 
 template <class T, class Container>
 bool
 operator>=(const stack<T, Container>& lhs, const stack<T, Container>& rhs)	// greater than or equal to (6)
 {
-	return (lhs._cont >= rhs._cont);
+	return (lhs.base() >= rhs.base());
 }
 
 }

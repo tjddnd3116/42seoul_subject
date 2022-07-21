@@ -47,6 +47,7 @@ class	random_access_iterator : iterator<random_access_iterator_tag, T>
 	bool						operator<=(const random_access_iterator &op) const;	// less than or equal to
 	bool						operator>=(const random_access_iterator &op) const;	// greater than or equal to
 	operator					random_access_iterator<const T>() const;			// conversion operator
+	pointer						base() const;
 
 	private:
 	pointer _ptr;
@@ -224,8 +225,48 @@ random_access_iterator<const T>(void) const
 	return (random_access_iterator<const T>(this->_ptr));
 }
 
+template <typename T>
+typename random_access_iterator<T>::pointer
+random_access_iterator<T>::base() const
+{
+	return (_ptr);
+}
+
 // non-member function overloads
 // addition operator overriding
+
+template <typename T_l, typename T_r>
+bool
+operator<(const random_access_iterator<T_l>& lhs,
+		const random_access_iterator<T_r>& rhs)
+{
+	return (lhs.base() < rhs.base());
+}
+
+template <typename T_l, typename T_r>
+bool
+operator>(const random_access_iterator<T_l>& lhs,
+		const random_access_iterator<T_r>& rhs)
+{
+	return (lhs.base() > rhs.base());
+}
+
+template <typename T_l, typename T_r>
+bool
+operator<=(const random_access_iterator<T_l>& lhs,
+		const random_access_iterator<T_r>& rhs)
+{
+	return (lhs.base() <= rhs.base());
+}
+
+template <typename T_l, typename T_r>
+bool
+operator>=(const random_access_iterator<T_l>& lhs,
+		const random_access_iterator<T_r>& rhs)
+{
+	return (lhs.base() >= rhs.base());
+}
+
 template <typename T>
 random_access_iterator<T>
 operator+(typename random_access_iterator<T>::difference_type n,
