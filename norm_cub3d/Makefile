@@ -6,12 +6,12 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/06/13 01:48:23 by soum             ###   ########.fr        #
+#    Updated: 2022/07/21 21:48:30 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -o3
 #-fsanitize=address -g
 

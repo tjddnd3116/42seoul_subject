@@ -1,4 +1,5 @@
 #include "./vector/vector.hpp"
+#include "./utils/utility.hpp"
 #include <cmath>
 #include <exception>
 #include <iterator>
@@ -6,6 +7,7 @@
 #include <memory>
 #include <vector>
 #include <iostream>
+#include <map>
 
 class myClass
 {
@@ -39,53 +41,31 @@ class myClass
 		}
 };
 
-void	realVector(void)
+void	stdCont(void)
 {
-	std::cout << "-------realVector--------" << std::endl;
-	std::vector<std::string> realVec(10, "42");
-	std::vector<std::string> realVec2(4, "21");
-	std::cout << "before" << std::endl;
-	std::cout << "	size : " << realVec.size() << std::endl;
-	std::cout << "	capacity :" << realVec.capacity() << std::endl;
-	for(std::vector<std::string>::iterator it = realVec.begin(); it != realVec.end(); it++)
-		std::cout << "	" << *it << std::endl;
-
-	realVec2.assign(realVec.begin(), realVec.end());
-	std::cout << "after" << std::endl;
-	std::cout << "	size : "<< realVec2.size() << std::endl;
-	std::cout << "	capacity :" << realVec2.capacity() << std::endl;
-	for(std::vector<std::string>::iterator it = realVec2.begin(); it != realVec2.end(); it++)
-		std::cout << "	" << *it << std::endl;
-	std::cout << "-------realVector--------" << std::endl;
+	std::cout << "-------stdCont--------" << std::endl;
+	std::cout << "-------stdCont--------" << std::endl;
 }
 
-void	myVector(void)
+void	ftCont(void)
 {
-	std::cout << "-------myVector--------" << std::endl;
-	ft::vector<int> myVec;
+	std::cout << "-------ftCont--------" << std::endl;
+	ft::pair<std::string, int> myPair1;
+	ft::pair<std::string, int> myPair2("ftCont", 1);
+	ft::pair<std::string, int> myPair3(myPair2);
 
-	myVec.push_back(1);
-	myVec.push_back(2);
-	myVec.push_back(3);
-	std::cout << "--------before" << std::endl;
-	std::cout << " size : " << myVec.size() << std::endl;
-	std::cout << " capacity : " << myVec.capacity() << std::endl;
-	for(ft::vector<int>::const_reverse_iterator it = myVec.rbegin(); it != myVec.rend(); it++)
-		std::cout << "	" << *it << std::endl;
-	// myVec.insert(myVec.begin(), myVec.begin(), myVec.end());
-	// myVec.insert(myVec.end(), 5,  myVec.front());
-	// std::cout << "--------after" << std::endl;
-	// std::cout << " size : " << myVec.size() << std::endl;
-	// std::cout << " capacity : " << myVec.capacity() << std::endl;
-	// for(ft::vector<int>::reverse_iterator it = myVec.rbegin(); it != myVec.rend(); it++)
-	//     std::cout << "	" << *it << std::endl;
-	// std::cout << "-------myVector--------" << std::endl;
+	myPair1.first = "abcd";
+	myPair1.second = 42;
+	std::cout << "myPair 1 : "<< myPair1.first << " " << myPair1.second << std::endl;
+	std::cout << "myPair 2 : "<< myPair2.first << " " << myPair2.second << std::endl;
+	std::cout << "myPair 3 : "<< myPair3.first << " " << myPair3.second << std::endl;
+
+	std::cout << "-------ftCont--------" << std::endl;
 }
 
 int main(void)
 {
-	myVector();
-	// realVector();
-	// system("leaks a.out");
+	ftCont();
+	// stdCont();
 	return (0);
 }

@@ -6,13 +6,13 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 11:56:22 by soum              #+#    #+#              #
-#    Updated: 2021/05/14 19:12:24 by soum             ###   ########.fr        #
+#    Updated: 2022/07/21 21:48:43 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS = ft_bzero.c ft_memset.c ft_strlen.c ft_memcpy.c \
