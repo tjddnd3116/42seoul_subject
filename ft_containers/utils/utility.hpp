@@ -39,18 +39,12 @@ pair<T1, T2>::pair() : first(), second()
 
 template <class T1, class T2>
 template <class U, class V>
-pair<T1, T2>::pair(const pair<U, V>& pr)
-{
-	first(pr.first);
-	second(pr.second);
-}
+pair<T1, T2>::pair(const pair<U, V>& pr) : first(pr.first), second(pr.second)
+{}
 
 template <class T1, class T2>
-pair<T1, T2>::pair(const first_type& a, const second_type& b)
-{
-	first(a);
-	second(b);
-}
+pair<T1, T2>::pair(const first_type& a, const second_type& b) : first(a), second(b)
+{}
 
 template <class T1, class T2>
 pair<T1, T2>&

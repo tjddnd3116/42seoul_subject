@@ -1,10 +1,13 @@
 #include "./vector/vector.hpp"
+#include "./stack/stack.hpp"
 #include "./utils/utility.hpp"
+#include "./map/map.hpp"
 #include <cmath>
 #include <exception>
 #include <iterator>
 #include <algorithm>
 #include <memory>
+#include <string>
 #include <vector>
 #include <iostream>
 #include <map>
@@ -44,28 +47,22 @@ class myClass
 void	stdCont(void)
 {
 	std::cout << "-------stdCont--------" << std::endl;
+	std::map<std::string, int> stdMap;
+
 	std::cout << "-------stdCont--------" << std::endl;
 }
 
 void	ftCont(void)
 {
 	std::cout << "-------ftCont--------" << std::endl;
-	ft::pair<std::string, int> myPair1;
-	ft::pair<std::string, int> myPair2("ftCont", 1);
-	ft::pair<std::string, int> myPair3(myPair2);
-
-	myPair1.first = "abcd";
-	myPair1.second = 42;
-	std::cout << "myPair 1 : "<< myPair1.first << " " << myPair1.second << std::endl;
-	std::cout << "myPair 2 : "<< myPair2.first << " " << myPair2.second << std::endl;
-	std::cout << "myPair 3 : "<< myPair3.first << " " << myPair3.second << std::endl;
-
+	ft::map<std::string, int> myMap;
+	myMap.insert(ft::pair<std::string, int>("aa", 42));
 	std::cout << "-------ftCont--------" << std::endl;
 }
 
 int main(void)
 {
-	ftCont();
-	// stdCont();
+	// ftCont();
+	stdCont();
 	return (0);
 }
