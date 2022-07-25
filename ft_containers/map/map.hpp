@@ -34,8 +34,8 @@ class map
 	typedef typename allocator_type::const_reference				const_reference;
 	typedef typename allocator_type::pointer						pointer;
 	typedef typename allocator_type::const_pointer					const_pointer;
-	typedef	ft::bidirectional_iterator<value_type>					iterator;
-	typedef	ft::bidirectional_iterator<const value_type>			const_iterator;
+	typedef	typename ft::redBlackTree<Key, T>::iterator				iterator;
+	typedef	typename ft::redBlackTree<Key, T>::const_iterator		const_iterator;
 	typedef ft::reverse_iterator<iterator>							reverse_iterator;
 	typedef ft::reverse_iterator<const_iterator>					const_reverse_iterator;
 	typedef typename ft::iterator_traits<iterator>::difference_type	difference_type;
@@ -111,9 +111,9 @@ class map
 
 	private:
 	// member variable
-	redBlackTree<Key, T, Compare, Alloc>	_rbt;
-	allocator_type							_alloc;
-	Compare									_comp;
+	redBlackTree<Key, T>	_rbt;
+	allocator_type			_alloc;
+	Compare					_comp;
 
 };
 

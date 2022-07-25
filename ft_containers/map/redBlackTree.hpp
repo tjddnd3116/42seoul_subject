@@ -21,18 +21,20 @@ template <class Key,
 		 class Alloc = std::allocator<ft::pair<const Key, T> > >
 class redBlackTree
 {
+	private:
+	// member types
+	struct											node;
+	class											RBTIterator;
+	class											const_RBTIterator;
+
 	public:
 		typedef Key												key_type;
 		typedef T												mapped_type;
 		typedef ft::pair<const key_type, mapped_type>			value_type;
 		typedef Compare											key_compare;
 		typedef Alloc											allocator_type;
-		typedef	ft::bidirectional_iterator<value_type>			iterator;
-		typedef	ft::bidirectional_iterator<const value_type>	const_iterator;
-
-	private:
-	// member types
-	struct											node;
+		typedef	RBTIterator										iterator;
+		typedef	const_RBTIterator								const_iterator;
 
 	public:
 	// constructor
@@ -108,9 +110,11 @@ redBlackTree<Key, T, Compare, Alloc>::insert(const value_type &val)
 		node *newNode = NULL;
 	}
 }
+
 //------------------------------------------------------
 //   redBlackTree<Key, T, Compare, Alloc>::node synopsis
 //------------------------------------------------------
+
 template <class Key, class T, class Compare, class Alloc>
 struct redBlackTree<Key, T, Compare, Alloc>::node
 {

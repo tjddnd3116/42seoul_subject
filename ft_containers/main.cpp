@@ -48,7 +48,14 @@ void	stdCont(void)
 {
 	std::cout << "-------stdCont--------" << std::endl;
 	std::map<std::string, int> stdMap;
-
+	stdMap.insert(std::pair<std::string, int>("5", 42));
+	stdMap.insert(std::pair<std::string, int>("1", 42));
+	stdMap.insert(std::pair<std::string, int>("6", 42));
+	for (std::map<std::string, int>::iterator it = stdMap.begin(); it != stdMap.end(); it++)
+	{
+		std::cout << (*it).first << std::endl;
+		std::cout << (*it).second << std::endl;
+	}
 	std::cout << "-------stdCont--------" << std::endl;
 }
 
@@ -56,7 +63,7 @@ void	ftCont(void)
 {
 	std::cout << "-------ftCont--------" << std::endl;
 	ft::map<std::string, int> myMap;
-	myMap.insert(ft::pair<std::string, int>("aa", 42));
+	// myMap.insert(ft::pair<std::string, int>("aa", 42));
 	std::cout << "-------ftCont--------" << std::endl;
 }
 
