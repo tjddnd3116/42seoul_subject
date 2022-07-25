@@ -6,24 +6,31 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:09:29 by soum              #+#    #+#             */
-/*   Updated: 2022/06/12 18:36:36 by soum             ###   ########.fr       */
+/*   Updated: 2022/07/25 14:34:32 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+#include <stdint.h>
 
-uint32_t	char_to_color(char **text)
+uint32_t	char_to_color(char **text, t_mlx_data *data)
 {
 	uint32_t		color;
-	unsigned char	bytes[3];
+	int				bytes;
+	int				cnt;
+	int				idx;
 
-	bytes[0] = ft_atoi(text[0]);
-	bytes[1] = ft_atoi(text[1]);
-	bytes[2] = ft_atoi(text[2]);
-	color = ((uint32_t)bytes[0] << 24 | \
-			(uint32_t)bytes[1] << 16 | \
-			(uint32_t)bytes[2] << 8 | \
-			190);
+	cnt = 3;
+	idx = 0;
+	color = 0;
+	while (cnt--)
+	{
+		bytes = ft_atoi(text[idx++]);
+		if (bytes < 0 || bytes > 255)
+			error_msg("check cub file (floor, ceiling)", FC_INIT_ERROR, data);
+		color |= (uint32_t)bytes << (cnt + 1) * 8;
+	}
+	color |= 190;
 	return (color);
 }
 
@@ -91,7 +98,7 @@ int	init_fc(t_mlx_data *data)
 	check_fc(data, map_data->map_path, text);
 	if (!text->floor_txt || !text->ceiling_txt)
 		error_msg("check cub file (floor, ceiling)", FC_INIT_ERROR, data);
-	text->floor_color = char_to_color(text->floor_txt);
-	text->ceiling_color = char_to_color(text->ceiling_txt);
+	text->floor_color = char_to_color(text->floor_txt, data);
+	text->ceiling_color = char_to_color(text->ceiling_txt, data);
 	return (0);
 }

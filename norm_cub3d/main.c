@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:20:07 by soum              #+#    #+#             */
-/*   Updated: 2022/06/17 21:17:33 by soum             ###   ########.fr       */
+/*   Updated: 2022/07/25 14:06:36 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	init_data(&data, argv[1]);
 	put_pixels(&data);
 	mlx_image_to_window(data.mlx, data.image.cub_img, 0, 0);
-
 	mlx_put_string(data.mlx, "press [m] open minimap", 0, 0);
 	mlx_image_to_window(data.mlx, data.image.minimap_img, 0, 0);
 	mlx_loop_hook(data.mlx, my_hook, &data);
