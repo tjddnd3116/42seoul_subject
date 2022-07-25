@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Hook.c                                             :+:      :+:    :+:   */
+/*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:09:42 by soum              #+#    #+#             */
-/*   Updated: 2022/06/12 19:36:30 by soum             ###   ########.fr       */
+/*   Updated: 2022/07/25 16:01:46 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	my_hook(void *param)
 	mlx_cursor_hook(data->mlx, cursor_hook, data);
 	mlx_scroll_hook(data->mlx, scroll_hook, data);
 	mlx_key_hook(data->mlx, key_hook, data);
-	get_frametime();
 }
 
 void	change_angle(t_player *p, char key)
