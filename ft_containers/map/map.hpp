@@ -245,11 +245,12 @@ map<Key, T, Compare, Alloc>::~map()
 //
 //
 template <class Key, class T, class Compare, class Alloc>
-// pair<typename map<Key, T, Compare, Alloc>::iterator, bool>
 void
+// pair<typename map<Key, T, Compare, Alloc>::iterator, bool>
 map<Key, T, Compare, Alloc>::insert(const value_type& val)
 {
-	return (_rbt.insert(val));
+	_rbt.insert(val);
+	// return (_rbt.insert(val));
 }
 //
 //

@@ -2,9 +2,11 @@
 #define funtional_hpp
 
 namespace ft {
+
 //---------------------------------------
 //   binary_funtion<Arg1, Arg2, result> synopsis
 //---------------------------------------
+
 template <class Arg1, class Arg2, class result>
 struct binary_funtion
 {

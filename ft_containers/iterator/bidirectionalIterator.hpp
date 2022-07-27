@@ -9,7 +9,7 @@ namespace ft {
 //---------------------------------------
 //
 template <typename T>
-class	bidirectional_iterator : iterator<bidirectional_iterator_tag, T>
+class	bidirectional_iterator : ft::iterator<bidirectional_iterator_tag, T>
 {
 	public:
 	// member types

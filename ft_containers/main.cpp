@@ -1,9 +1,10 @@
-#include "./vector/vector.hpp"
-#include "./stack/stack.hpp"
-#include "./utils/utility.hpp"
+// #include "./vector/vector.hpp"
+// #include "./stack/stack.hpp"
+// #include "./utils/utility.hpp"
 #include "./map/map.hpp"
 #include <cmath>
 #include <exception>
+#include <functional>
 #include <iterator>
 #include <algorithm>
 #include <memory>
@@ -47,15 +48,23 @@ class myClass
 void	stdCont(void)
 {
 	std::cout << "-------stdCont--------" << std::endl;
-	std::map<std::string, int> stdMap;
-	stdMap.insert(std::pair<std::string, int>("5", 42));
-	stdMap.insert(std::pair<std::string, int>("1", 42));
-	stdMap.insert(std::pair<std::string, int>("6", 42));
-	for (std::map<std::string, int>::iterator it = stdMap.begin(); it != stdMap.end(); it++)
-	{
-		std::cout << (*it).first << std::endl;
-		std::cout << (*it).second << std::endl;
-	}
+	// std::map<std::string, int, std::greater<std::string> > stdMap;
+	// std::map<std::string, int > stdMap;
+	std::map<std::string, int>::key_compare kComp;
+
+	if (kComp("1", "2"))
+		std::cout << "true" << std::endl;
+	else
+		std::cout << "false" << std::endl;;
+
+	// stdMap.insert(std::pair<std::string, int>("1", 42));
+	// stdMap.insert(std::pair<std::string, int>("6", 42));
+	// stdMap.insert(std::pair<std::string, int>("5", 42));
+	// for (std::map<std::string, int>::iterator it = stdMap.begin(); it != stdMap.end(); it++)
+	// {
+	//     std::cout << (*it).first << std::endl;
+	//     // std::cout << (*it).second << std::endl;
+	// }
 	std::cout << "-------stdCont--------" << std::endl;
 }
 
@@ -63,13 +72,16 @@ void	ftCont(void)
 {
 	std::cout << "-------ftCont--------" << std::endl;
 	ft::map<std::string, int> myMap;
-	// myMap.insert(ft::pair<std::string, int>("aa", 42));
+
+	myMap.insert(ft::pair<std::string, int>("bb", 42));
+	myMap.insert(ft::pair<std::string, int>("aa", 42));
+	myMap.insert(ft::pair<std::string, int>("cc", 42));
 	std::cout << "-------ftCont--------" << std::endl;
 }
 
 int main(void)
 {
-	// ftCont();
-	stdCont();
+	ftCont();
+	// stdCont();
 	return (0);
 }
