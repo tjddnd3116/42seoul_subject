@@ -14,16 +14,17 @@ class RBTIterator : public ft::iterator<ft::bidirectional_iterator_tag, Node>
 {
 	public:
 	// member types
-	typedef typename ft::iterator<ft::bidirectional_iterator_tag, Node>::iterator_category	iterator_category;
-	typedef typename ft::iterator<ft::bidirectional_iterator_tag, Node>::value_type			value_type;
-	typedef typename ft::iterator<ft::bidirectional_iterator_tag, Node>::difference_type	difference_type;
-	typedef Node*																			pointer;
-	typedef Node&																			reference;
+	typedef typename Node::value_type																value_type;
+	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_category	iterator_category;
+	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type		difference_type;
+	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer				pointer;
+	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
 
 	public:
 	// constructor
 	RBTIterator(const Compare& comp = Compare());
-	RBTIterator(Node* node, const Compare& comp = Compare());
+	RBTIterator(Node* startNode, const Compare& comp = Compare());
+	RBTIterator(Node* startNode, Node* leafNode, const Compare& comp = Compare());
 	RBTIterator(const RBTIterator& it);
 
 	// destructor
@@ -42,7 +43,8 @@ class RBTIterator : public ft::iterator<ft::bidirectional_iterator_tag, Node>
 
 	private:
 	// member variable
-	Node		*_node;
+	Node		*_startNode;
+	Node		*_leafNode;
 	Compare		_comp;
 };
 
@@ -51,16 +53,31 @@ class RBTIterator : public ft::iterator<ft::bidirectional_iterator_tag, Node>
 //--------------------------------------------------------------
 
 template <class Node, class Compare>
-RBTIterator<Node, Compare>::RBTIterator(const Compare& comp) : _node(), _comp(comp)
+RBTIterator<Node, Compare>::RBTIterator(const Compare& comp) :
+	_startNode(),
+	_leafNode(),
+	_comp(comp)
 {}
 
 template <class Node, class Compare>
-RBTIterator<Node, Compare>::RBTIterator(Node* node, const Compare& comp) : _node(node), _comp(comp)
+RBTIterator<Node, Compare>::RBTIterator(Node* startNode, const Compare& comp) :
+	_startNode(startNode),
+	_leafNode(),
+	_comp(comp)
 {}
 
+template <class Node, class Compare>
+RBTIterator<Node, Compare>::RBTIterator(Node* newNode, Node * leafNode, const Compare& comp) :
+	_startNode(newNode),
+	_leafNode(leafNode),
+	_comp(comp)
+{}
 
 template <class Node, class Compare>
-RBTIterator<Node, Compare>::RBTIterator(const RBTIterator& it) : _node(it._node), _comp(it._comp)
+RBTIterator<Node, Compare>::RBTIterator(const RBTIterator& it) :
+	_startNode(it._startNode),
+	_leafNode(it._leafNode),
+	_comp(it._comp)
 {}
 
 template <class Node, class Compare>
@@ -73,7 +90,7 @@ RBTIterator<Node, Compare>::operator=(const RBTIterator &it)
 {
 	if (this == &it)
 		return (*this);
-	_node = it._node;
+	_startNode = it._startNode;
 	_comp = it._comp;
 	return (*this);
 }
@@ -82,7 +99,7 @@ template <class Node, class Compare>
 typename RBTIterator<Node, Compare>::reference
 RBTIterator<Node, Compare>::operator*(void) const
 {
-	return (_node->value);
+	return (_startNode->_value);
 }
 
 
@@ -90,7 +107,7 @@ template <class Node, class Compare>
 typename RBTIterator<Node, Compare>::pointer
 RBTIterator<Node, Compare>::operator->(void) const
 {
-	return (&_node->value);
+	return (&(_startNode->_value));
 }
 
 
@@ -127,14 +144,14 @@ template <class Node, class Compare>
 bool
 RBTIterator<Node, Compare>::operator==(const RBTIterator& op) const
 {
-	return (_node == op._node);
+	return (_startNode == op._startNode);
 }
 
 template <class Node, class Compare>
 bool
 RBTIterator<Node, Compare>::operator!=(const RBTIterator& op) const
 {
-	return (_node != op._node);
+	return (_startNode != op._startNode);
 }
 
 //--------------------------------------------------------------

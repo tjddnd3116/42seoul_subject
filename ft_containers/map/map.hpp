@@ -24,22 +24,22 @@ class map
 {
 	// Member types
 	public:
-	typedef Key														key_type;
-	typedef T														mapped_type;
-	typedef ft::pair<const key_type, mapped_type>					value_type;
-	typedef Compare													key_compare;
-	class															value_compare;
-	typedef Alloc													allocator_type;
-	typedef typename allocator_type::reference						reference;
-	typedef typename allocator_type::const_reference				const_reference;
-	typedef typename allocator_type::pointer						pointer;
-	typedef typename allocator_type::const_pointer					const_pointer;
-	typedef	typename ft::redBlackTree<Key, T>::iterator				iterator;
-	typedef	typename ft::redBlackTree<Key, T>::const_iterator		const_iterator;
-	typedef ft::reverse_iterator<iterator>							reverse_iterator;
-	typedef ft::reverse_iterator<const_iterator>					const_reverse_iterator;
-	typedef typename ft::iterator_traits<iterator>::difference_type	difference_type;
-	typedef typename allocator_type::size_type						size_type;
+	typedef Key															key_type;
+	typedef T															mapped_type;
+	typedef ft::pair<const key_type, mapped_type>						value_type;
+	typedef Compare														key_compare;
+	class																value_compare;
+	typedef Alloc														allocator_type;
+	typedef typename allocator_type::reference							reference;
+	typedef typename allocator_type::const_reference					const_reference;
+	typedef typename allocator_type::pointer							pointer;
+	typedef typename allocator_type::const_pointer						const_pointer;
+	typedef	typename ft::redBlackTree<value_type, Compare, Alloc>::iterator		iterator;
+	typedef	typename ft::redBlackTree<value_type, Compare, Alloc>::const_iterator	const_iterator;
+	typedef ft::reverse_iterator<iterator>								reverse_iterator;
+	typedef ft::reverse_iterator<const_iterator>						const_reverse_iterator;
+	typedef typename ft::iterator_traits<iterator>::difference_type		difference_type;
+	typedef typename allocator_type::size_type							size_type;
 
 
 	public:
@@ -78,8 +78,8 @@ class map
 	mapped_type&			operator[](const key_type& k);
 
 	// Modifiers
-	void					insert(const value_type& val);									// insert - single element (1)
-	// pair<iterator, bool>	insert(const value_type& val);									// insert - single element (1)
+	// void					insert(const value_type& val);									// insert - single element (1)
+	pair<iterator, bool>	insert(const value_type& val);									// insert - single element (1)
 	iterator				insert(iterator position, const value_type& val);				// insert - with hint (2)
 	template <class InputIterator>
 	void					insert(InputIterator first, InputIterator last,					// insert - range (3)
@@ -111,9 +111,9 @@ class map
 
 	private:
 	// member variable
-	redBlackTree<Key, T>	_rbt;
-	allocator_type			_alloc;
-	Compare					_comp;
+	redBlackTree<value_type, Compare, Alloc>	_rbt;
+	allocator_type								_alloc;
+	Compare										_comp;
 
 };
 
@@ -245,12 +245,12 @@ map<Key, T, Compare, Alloc>::~map()
 //
 //
 template <class Key, class T, class Compare, class Alloc>
-void
-// pair<typename map<Key, T, Compare, Alloc>::iterator, bool>
+// void
+pair<typename map<Key, T, Compare, Alloc>::iterator, bool>
 map<Key, T, Compare, Alloc>::insert(const value_type& val)
 {
-	_rbt.insert(val);
-	// return (_rbt.insert(val));
+	// _rbt.insert(val);
+	return (_rbt.insert(val));
 }
 //
 //

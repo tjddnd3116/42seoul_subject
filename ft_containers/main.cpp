@@ -72,10 +72,17 @@ void	ftCont(void)
 {
 	std::cout << "-------ftCont--------" << std::endl;
 	ft::map<std::string, int> myMap;
+	ft::pair<ft::map<std::string, int>::iterator, bool> ret;
 
-	myMap.insert(ft::pair<std::string, int>("bb", 42));
+	std::cout << "insert bb" << std::endl;
+	ret = myMap.insert(ft::pair<std::string, int>("bb", 42));
+	std::cout << ret.first->first << std::endl;
+	std::cout << "insert aa" << std::endl;
 	myMap.insert(ft::pair<std::string, int>("aa", 42));
+	std::cout << "insert cc" << std::endl;
 	myMap.insert(ft::pair<std::string, int>("cc", 42));
+
+
 	std::cout << "-------ftCont--------" << std::endl;
 }
 
