@@ -49,40 +49,55 @@ void	stdCont(void)
 {
 	std::cout << "-------stdCont--------" << std::endl;
 	// std::map<std::string, int, std::greater<std::string> > stdMap;
-	// std::map<std::string, int > stdMap;
-	std::map<std::string, int>::key_compare kComp;
-
-	if (kComp("1", "2"))
-		std::cout << "true" << std::endl;
-	else
-		std::cout << "false" << std::endl;;
+	std::map<std::string, int > stdMap;
+	std::map<std::string, int>::iterator mapIt;
 
 	// stdMap.insert(std::pair<std::string, int>("1", 42));
-	// stdMap.insert(std::pair<std::string, int>("6", 42));
-	// stdMap.insert(std::pair<std::string, int>("5", 42));
-	// for (std::map<std::string, int>::iterator it = stdMap.begin(); it != stdMap.end(); it++)
-	// {
-	//     std::cout << (*it).first << std::endl;
-	//     // std::cout << (*it).second << std::endl;
-	// }
+	mapIt = stdMap.find("2");
+	mapIt--;
+	std::cout << mapIt->first << std::endl;
+	std::cout << mapIt->second << std::endl;
 	std::cout << "-------stdCont--------" << std::endl;
 }
 
 void	ftCont(void)
 {
 	std::cout << "-------ftCont--------" << std::endl;
-	ft::map<std::string, int> myMap;
-	ft::pair<ft::map<std::string, int>::iterator, bool> ret;
-
-	std::cout << "insert bb" << std::endl;
-	ret = myMap.insert(ft::pair<std::string, int>("bb", 42));
-	std::cout << ret.first->first << std::endl;
-	std::cout << "insert aa" << std::endl;
-	myMap.insert(ft::pair<std::string, int>("aa", 42));
-	std::cout << "insert cc" << std::endl;
-	myMap.insert(ft::pair<std::string, int>("cc", 42));
-
-
+	ft::map<int, int> myMap;
+	ft::map<int, int>::iterator mapIt;
+	ft::pair<ft::map<int, int>::iterator, bool> ret;
+    //
+	// std::cout << myMap.max_size() << std::endl;
+	std::cout << "-----insert 8-----" << std::endl;
+	ret = myMap.insert(ft::pair<int, int>(8, 42));
+	// // std::cout << ret.first->first << std::endl;
+	std::cout << "-----insert 18-----" << std::endl;
+	ret = myMap.insert(ft::pair<int, int>(18, 42));
+	// // // std::cout << ret.first->first << std::endl;
+	std::cout << "-----insert 5-----" << std::endl;
+	ret = myMap.insert(ft::pair<int, int>(5, 42));
+	// // // std::cout << ret.first->first << std::endl;
+	std::cout << "-----insert 15-----" << std::endl;
+	ret = myMap.insert(ft::pair<int, int>(15, 42));
+	// // // std::cout << ret.first->first << std::endl;
+	std::cout << "-----insert 17-----" << std::endl;
+	ret = myMap.insert(ft::pair<int, int>(17, 42));
+	// // // std::cout << ret.first->first << std::endl;
+	std::cout << "-----insert 25-----" << std::endl;
+	ret = myMap.insert(ft::pair<int, int>(25, 42));
+	// // // std::cout << ret.first->first << std::endl;
+	std::cout << "-----insert 40-----" << std::endl;
+	ret = myMap.insert(ft::pair<int, int>(40, 42));
+	// // // std::cout << ret.first->first << std::endl;
+	std::cout << "-----insert 80-----" << std::endl;
+	ret = myMap.insert(ft::pair<int, int>(80, 42));
+	std::cout << myMap.count(81) << std::endl;
+	// // std::cout << ret.first->first << std::endl;
+	// // std::cout << "-----insert 80-----" << std::endl;
+	// // ret = myMap.insert(ft::pair<int, int>(80, 42));
+	// // std::cout << ret.first->first << std::endl;
+	// // std::cout << ret.second << std::endl;
+	// std::cout << myMap.size() << std::endl;
 	std::cout << "-------ftCont--------" << std::endl;
 }
 

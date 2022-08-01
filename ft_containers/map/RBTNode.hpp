@@ -4,12 +4,19 @@
 #include <string>
 
 namespace ft {
+
+enum Color
+{
+	RED,
+	BLACK
+};
+
 template <class T>
 struct RBTNode
 {
 	typedef	T	value_type;
 
-	std::string		_color;
+	Color			_color;
 	value_type		_value;
 	RBTNode*		_parent;
 	RBTNode*		_left;
@@ -22,7 +29,7 @@ struct RBTNode
 		_left(left),
 		_right(right)
 	{
-		_color = "black";
+		_color = RED;
 	}
 	RBTNode(const value_type& val, RBTNode* parent, RBTNode* left, RBTNode* right) :
 		_value(val),
@@ -30,16 +37,20 @@ struct RBTNode
 		_left(left),
 		_right(right)
 	{
-		_color = "black";
+		_color = RED;
 	}
+
 	// destructor
 	~RBTNode()
 	{}
 
-	void	setNodeColor(const std::string& color)
+	bool	operator==(const RBTNode& op)
 	{
-		_color = color;
+		if (_value == op._value)
+			return (true);
+		return (false);
 	}
+
 };
 
 }
