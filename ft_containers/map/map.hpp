@@ -6,6 +6,7 @@
 #include "../iterator/bidirectionalIterator.hpp"
 #include "../iterator/reverseIterator.hpp"
 #include "../utils/funtional.hpp"
+#include "../utils/algorithm.hpp"
 #include "../utils/utility.hpp"
 #include "./redBlackTree.hpp"
 
@@ -488,6 +489,34 @@ bool
 operator!=(const map<Key, T, Compare, Alloc>& lhs, const map<Key, T, Compare, Alloc>& rhs)
 {
 	return (!(lhs == rhs));
+}
+
+template <class Key, class T, class Compare, class Alloc>
+bool
+operator<(const map<Key, T, Compare, Alloc>& lhs, const map<Key, T, Compare, Alloc>& rhs)
+{
+	return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
+}
+
+template <class Key, class T, class Compare, class Alloc>
+bool
+operator<=(const map<Key, T, Compare, Alloc>& lhs, const map<Key, T, Compare, Alloc>& rhs)
+{
+	return (!(rhs < lhs));
+}
+
+template <class Key, class T, class Compare, class Alloc>
+bool
+operator>(const map<Key, T, Compare, Alloc>& lhs, const map<Key, T, Compare, Alloc>& rhs)
+{
+	return (rhs < lhs);
+}
+
+template <class Key, class T, class Compare, class Alloc>
+bool
+operator>=(const map<Key, T, Compare, Alloc>& lhs, const map<Key, T, Compare, Alloc>& rhs)
+{
+	return (!(lhs < rhs));
 }
 
 }

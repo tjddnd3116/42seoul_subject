@@ -1,6 +1,6 @@
 #include "./vector/vector.hpp"
-// #include "./stack/stack.hpp"
-// #include "./utils/utility.hpp"
+#include "./stack/stack.hpp"
+#include "./utils/utility.hpp"
 #include "./map/map.hpp"
 #include <cmath>
 #include <cstdlib>
