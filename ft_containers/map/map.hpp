@@ -280,21 +280,28 @@ map<Key, T, Compare, Alloc>::insert(InputIterator first, InputIterator last,
 // void
 // map<Key, T, Compare, Alloc>::erase(iterator position)
 // {
+//     _rbt.erase(position->first);
 // }
-//
-// template <class Key, class T, class Compare, class Alloc>
-// typename map<Key, T, Compare, Alloc>::size_type
-// map<Key, T, Compare, Alloc>::erase(const key_type& k)
-// {
-// }
-//
+
+template <class Key, class T, class Compare, class Alloc>
+typename map<Key, T, Compare, Alloc>::size_type
+map<Key, T, Compare, Alloc>::erase(const key_type& k)
+{
+	size_type retSize;
+
+	retSize = _rbt.erase(k);
+	return (retSize);
+}
+
 // template <class Key, class T, class Compare, class Alloc>
 // void
 // map<Key, T, Compare, Alloc>::erase(iterator first, iterator last)
 // {
+//     for (; first != last; first++)
+//         erase(first);
 // }
-//
-//
+
+
 template <class Key, class T, class Compare, class Alloc>
 void
 map<Key, T, Compare, Alloc>::swap(map& x)
