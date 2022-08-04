@@ -103,11 +103,10 @@ void	ftCont(void)
 	myMap.insert(ft::pair<int, int>(30, 42));
 	myMap.insert(ft::pair<int, int>(34, 42));
 	myMap.insert(ft::pair<int, int>(44, 42));
-	myMap.erase(17);
-	myMap.erase(15);
+	std::cout << "-----------------" << std::endl;
+	myMap.erase(16);
 	// myMap.erase(10);
 	// myMap.erase(13);
-	// myMap.erase(16);
 	// myMap.erase(25);
 	// myMap.erase(18);
 	// myMap.erase(19);

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:17:37 by soum              #+#    #+#             */
-/*   Updated: 2022/08/03 10:20:05 by soum             ###   ########.fr       */
+/*   Updated: 2022/08/05 02:28:35 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ namespace ft
 //------------------------------------------------------
 //   redBlackTree<Key, T, Compare, Alloc> synopsis
 //------------------------------------------------------
+//
+// Red-Black Tree 의 정의
+//
+// 1. 각 노드의 색은 red 또는 black이다.
+// 2. root 노드는 black이다.
+// 3. 모든 말단노드(leaf node)는 black이다.
+// 4. red 노드의 자식노드들은 전부 black이다.(red 노드는 연속되어 등장할 수 없다.)
+// 5. root 노드에서 시작해서 말단노드에 이르는 모든 경로에는 동일한 개수의 black노드가 존재한다.
 
 template <class T,
 		 class Compare = ft::less<T>,
@@ -235,16 +243,16 @@ redBlackTree<T, Compare, Alloc, node>::insert(const value_type &val)
 	if (newNode->_parent == _leafNode)
 	{
 		newNode->_color = BLACK;
-		// treePrint(_leafNode->_parent, "", true);
+		treePrint(_leafNode->_parent, "", true);
 		return (ft::make_pair(iterator(newNode, _leafNode), true));
 	}
 	if (newNode->_parent->_parent == _leafNode)
 	{
-		// treePrint(_leafNode->_parent, "", true);
+		treePrint(_leafNode->_parent, "", true);
 		return (ft::make_pair(iterator(newNode, _leafNode), true));
 	}
 	insertFixUp(newNode);
-	// treePrint(_leafNode->_parent, "", true);
+	treePrint(_leafNode->_parent, "", true);
 	return (ft::make_pair(iterator(newNode, _leafNode), true));
 }
 
@@ -307,18 +315,8 @@ redBlackTree<T, Compare, Alloc, node>::erase(const typename value_type::first_ty
 	node* childNode;
 	Color eraseNodeColor = eraseNode->_color;
 	node* minNode;
-	if (eraseNode->_left == _leafNode && eraseNode->_right == _leafNode)
-	{
-		if (eraseNode->_parent == _leafNode)
-			_leafNode->_parent = _leafNode;
-		else if (eraseNode == eraseNode->_parent->_left)
-			eraseNode->_parent->_left = _leafNode;
-		else
-			eraseNode->_parent->_right = _leafNode;
-		// _nodeAlloc.destroy(eraseNode);
-		// _nodeAlloc.deallocate(eraseNode, 1);
-	}
-	else if (eraseNode->_left == _leafNode)
+
+	if (eraseNode->_left == _leafNode)
 	{
 		childNode = eraseNode->_right;
 		moveChildToParent(eraseNode, eraseNode->_right);
@@ -355,6 +353,38 @@ redBlackTree<T, Compare, Alloc, node>::erase(const typename value_type::first_ty
 	return (1);
 }
 
+// insert 문제 해결 방법
+// - 문제 발생 경우
+// 	1. 조건 2 위반
+// 		기준노드가 red color 이면서 root 노드이다.
+// 		-> 기준노드를 black color로 바꿔준다.
+//
+// 	2. 조건 4 위반
+// 		기준노드와 부모노드둘다 red 이다.
+// 		-> case 1. 기준노드의 삼촌노드가 red인경우
+// 			기준노드의 부모노드와 삼촌노드를 black으로 바꿔주고 할아버지노드를 red로 바꿔준다.
+// 			하지만 red-red 문제가 위로 2칸 이동해 있을수 있다.
+// 			그러면 기준 노드를 할아버지 노드로 변경해 재귀적으로 문제를 해결한다.
+//
+// 		-> case 2. 기준노드의 삼촌 uncle이 black인 경우(leafNode 포함)
+// 			-> case 2-1. 부모노드가 할아버지노드의 왼쪽 자식일경우
+// 				-> case 2-1-1. 기준노드가 오른쪽 자식일경우
+// 					부모노드를 left-rotation 한뒤 기준노드를 부모노드로 바꿔준다. -> case 2-1-2 상황으로 만듬
+// 					그다음 case 2-1-2를 진행한다.
+//
+// 				-> case 2-1-2. 기준노드가 왼쪽 자식일경우
+//					부모노드를 black, 할아버지노드를 red로 바꾼다. 할아버지노드를 기준으로 right-rotation을 진행한다.
+//
+//			-> case 2-2. 부모노드가 할아버지노드의 오른쪽 자식일 경우
+//				-> case 2-2-1. 기준노드가 왼쪽 자식일경우
+//					부모노드를 right-rotation 한뒤 기준노드를 부모노드로 바꿔준다. -> case 2-2-2 상황으로 만듬
+//					그다음 case 2-2-2를 진행한다.
+//				-> case 2-2-2.
+//					부모노드를 black, 할아버지노드를 red로 바꾼다. 할아버지노드를 기준으로 left-rotation을 진행한다.
+//
+//	- 문제 종료 조건
+//		기준노드가 black이면 종료한다.
+// 
 template <class T, class Compare, class Alloc, class node>
 void
 redBlackTree<T, Compare, Alloc, node>::insertFixUp(node* newNode)
@@ -362,36 +392,47 @@ redBlackTree<T, Compare, Alloc, node>::insertFixUp(node* newNode)
 	node* tempNode;
 
 	tempNode = newNode;
-	while (tempNode != _leafNode->_parent && tempNode->_parent->_color == RED)
+	while (tempNode != _leafNode->_parent && tempNode->_parent->_color == RED) // 조건 4위반
 	{
 		node*	grandparent;
 		node*	uncle;
-		bool	side;
 
 		grandparent = tempNode->_parent->_parent;
 		uncle = (tempNode->_parent == grandparent->_left) ? grandparent->_right : grandparent->_left;
-		side = (tempNode->_parent == grandparent->_left) ? true : false;
-
-		if (uncle != _leafNode && uncle->_color == RED)
+		if (uncle != _leafNode && uncle->_color == RED)	// case 1
 		{
 			tempNode->_parent->_color = BLACK;
 			uncle->_color = BLACK;
 			grandparent->_color = RED;
 			tempNode = grandparent;
 		}
-		else
+		else	// case 2
 		{
-			if (tempNode == (side ? tempNode->_parent->_right : tempNode->_parent->_left))
+			if (tempNode->_parent == grandparent->_left)	// case 2-1
 			{
-				tempNode = tempNode->_parent;
-				side ? rotateLeft(tempNode) : rotateRight(tempNode);
+				if (tempNode == tempNode->_parent->_right) // case 2-1-1
+				{
+					tempNode = tempNode->_parent;
+					rotateLeft(tempNode);
+				}
+				tempNode->_parent->_color = BLACK;			// case 2-1-2
+				grandparent->_color = RED;
+				rotateRight(grandparent);
 			}
-			tempNode->_parent->_color = BLACK;
-			grandparent->_color = RED;
-			side ? rotateRight(grandparent) : rotateLeft(grandparent);
+			else if (tempNode->_parent == grandparent->_right) // case 2-2
+			{
+				if (tempNode == tempNode->_parent->_left)	// case 2-2-1
+				{
+					tempNode = tempNode->_parent;
+					rotateRight(tempNode);
+				}
+				tempNode->_parent->_color = BLACK;			// case 2-2-2
+				grandparent->_color = RED;
+				rotateLeft(grandparent);
+			}
 		}
 	}
-	_leafNode->_parent->_color = BLACK;
+	_leafNode->_parent->_color = BLACK; // 조건 2해결
 }
 
 
@@ -476,7 +517,8 @@ redBlackTree<T, Compare, Alloc, node>::moveChildToParent(node* parent, node* chi
 		parent->_parent->_left = child;
 	else
 		parent->_parent->_right = child;
-	child->_parent = parent->_parent;
+	if (child != _leafNode)
+		child->_parent = parent->_parent;
 }
 
 template <class T, class Compare, class Alloc, class node>
@@ -491,70 +533,104 @@ redBlackTree<T, Compare, Alloc, node>::nodeMin(node* curNode)
 	return (retNode);
 }
 
+//	erase 문제 해결 방법
+//	1. 삭제한 노드가 red color 이다
+//		->	red 노드의 자식과 부모는 black일것이므로 red를 지워도 black-black 연속은 문제 되지 않는다.
+//
+//	2. 삭제한 노드가 black color 이다.
+//		->	조건4 위반
+//				기준노드와 부모노드가 red color 이다.
+//
+//		->	조건5 위반
+//			root 노드에서 leaf노드 까지의 black노드의 개수가 다름
+//			-> case 1. 기준노드가 부모의 왼쪽 자식이다.
+//				-> case 1-1. 형제노드가 red color 이다.
+//					형제노드를 black로 부모노드를 red로 변경한뒤 부모노드기준으로 left-rotation을 진행한다.
+//					이후 case 1-2, 1-3, 1-4로 진행한다.
+//
+//				-> case 1-2. 형제노드가 black, 형제노드의 자식들도 black이다.
+//					형제노드를 red로 바꾼뒤 부모노드를 기준노드로 바꾼다.
+//
+//				-> case 1-3. 형제노드가 black, 형제노드의 왼쪽 자식이 red이다.
+//					형제노드를 red로 바꾼뒤 형제노드의 왼쪽자식을 black으로 변경한다.
+//					형제노드를 기준으로 right-rotate를 적용한다.
+//					기준노트의 새로운 형제노드의 오른쪽 자식이 red이다. -> case 1-4에 해당하는 상황
+//				-> case 1-4. 형제노드가 black, 형제노드의 오른쪽 자식이 red이다.
+//					부모노드와 형제노드의 색을 바꾼뒤 형제노드의 오른쪽 자식을 black으로 바꾼다.
+//					부모노드를 기준으로 left-rotation을 적용한다.
+//			-> case 2. 기준노드가 부모의 오른쪽 자식이다.
+//				-> case 2-1.
+//
+//				-> case 2-2.
+//
+//				-> case 2-3.
+//
+//				-> case 2-4.
+
 template <class T, class Compare, class Alloc, class node>
 void
 redBlackTree<T, Compare, Alloc, node>::eraseFixUp(node* childNode)
 {
 	node* siblingNode;
 
-	while (childNode != _leafNode && childNode->_color == BLACK)
+	while (childNode != _leafNode->_parent && childNode->_color == BLACK)
 	{
-		if (childNode == childNode->_parent->_left)
+		if (childNode == childNode->_parent->_left)	// case 1
 		{
 			siblingNode = childNode->_parent->_right;
-			if (siblingNode->_color == RED)
+			if (siblingNode->_color == RED)	// case 1-1
 			{
 				siblingNode->_color = BLACK;
 				childNode->_parent->_color = RED;
 				rotateLeft(childNode->_parent);
 				siblingNode = childNode->_parent->_right;
 			}
-			if (siblingNode->_left->_color == BLACK && siblingNode->_right->_color == BLACK)
+			if (siblingNode->_left->_color == BLACK && siblingNode->_right->_color == BLACK) // case 1-2
 			{
 				siblingNode->_color = RED;
 				childNode = childNode->_parent;
 			}
 			else
 			{
-				if (siblingNode->_right->_color == BLACK)
+				if (siblingNode->_right->_color == BLACK)	// case1-3
 				{
 					siblingNode->_left->_color = BLACK;
 					siblingNode->_color = RED;
 					rotateRight(siblingNode);
 					siblingNode = childNode->_parent->_right;
 				}
-				siblingNode->_color = childNode->_parent->_color;
+				siblingNode->_color = childNode->_parent->_color; // case 1-4
 				childNode->_parent->_color = BLACK;
 				siblingNode->_right->_color = BLACK;
 				rotateLeft(childNode->_parent);
 				childNode = _leafNode->_parent;
 			}
 		}
-		else
+		else											// case 2
 		{
 			siblingNode = childNode->_parent->_left;
-			if (siblingNode->_color == RED)
+			if (siblingNode->_color == RED)				// case 2-1
 			{
 				siblingNode->_color = BLACK;
 				childNode->_parent->_color = RED;
 				rotateRight(childNode->_parent);
 				siblingNode = childNode->_parent->_left;
 			}
-			if (siblingNode->_left->_color == BLACK && siblingNode->_right->_color == BLACK)
+			if (siblingNode->_left->_color == BLACK && siblingNode->_right->_color == BLACK) // case 2-2
 			{
 				siblingNode->_color = RED;
 				childNode = childNode->_parent;
 			}
 			else
 			{
-				if (siblingNode->_left->_color == BLACK)
+				if (siblingNode->_left->_color == BLACK)			// case 2-3
 				{
 					siblingNode->_right->_color = BLACK;
 					siblingNode->_color = RED;
 					rotateLeft(siblingNode);
 					siblingNode = childNode->_parent->_left;
 				}
-				siblingNode->_color = childNode->_parent->_color;
+				siblingNode->_color = childNode->_parent->_color; // case 2-4
 				childNode->_parent->_color = BLACK;
 				siblingNode->_left->_color = BLACK;
 				rotateRight(childNode->_parent);

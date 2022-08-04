@@ -29,7 +29,7 @@ struct RBTNode
 		_left(left),
 		_right(right)
 	{
-		_color = RED;
+		_color = BLACK;
 	}
 	RBTNode(const value_type& val, RBTNode* parent, RBTNode* left, RBTNode* right) :
 		_value(val),
