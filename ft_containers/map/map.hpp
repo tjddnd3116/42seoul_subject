@@ -25,22 +25,22 @@ class map
 {
 	// Member types
 	public:
-	typedef Key															key_type;
-	typedef T															mapped_type;
-	typedef ft::pair<const key_type, mapped_type>						value_type;
-	typedef Compare														key_compare;
-	class																value_compare;
-	typedef Alloc														allocator_type;
-	typedef typename allocator_type::reference							reference;
-	typedef typename allocator_type::const_reference					const_reference;
-	typedef typename allocator_type::pointer							pointer;
-	typedef typename allocator_type::const_pointer						const_pointer;
-	typedef	typename ft::redBlackTree<value_type, Compare, Alloc>::iterator		iterator;
+	typedef Key																		key_type;
+	typedef T																		mapped_type;
+	typedef ft::pair<const key_type, mapped_type>									value_type;
+	typedef Compare																	key_compare;
+	class																			value_compare;
+	typedef Alloc																	allocator_type;
+	typedef typename allocator_type::reference										reference;
+	typedef typename allocator_type::const_reference								const_reference;
+	typedef typename allocator_type::pointer										pointer;
+	typedef typename allocator_type::const_pointer									const_pointer;
+	typedef	typename ft::redBlackTree<value_type, Compare, Alloc>::iterator			iterator;
 	typedef	typename ft::redBlackTree<value_type, Compare, Alloc>::const_iterator	const_iterator;
-	typedef ft::reverse_iterator<iterator>								reverse_iterator;
-	typedef ft::reverse_iterator<const_iterator>						const_reverse_iterator;
-	typedef typename ft::iterator_traits<iterator>::difference_type		difference_type;
-	typedef typename allocator_type::size_type							size_type;
+	typedef ft::reverse_iterator<iterator>											reverse_iterator;
+	typedef ft::reverse_iterator<const_iterator>									const_reverse_iterator;
+	typedef typename ft::iterator_traits<iterator>::difference_type					difference_type;
+	typedef typename allocator_type::size_type										size_type;
 
 
 	public:
@@ -276,12 +276,12 @@ map<Key, T, Compare, Alloc>::insert(InputIterator first, InputIterator last,
 		_rbt.insert(ft::make_pair(first->first, first->second));
 }
 
-// template <class Key, class T, class Compare, class Alloc>
-// void
-// map<Key, T, Compare, Alloc>::erase(iterator position)
-// {
-//     _rbt.erase(position->first);
-// }
+template <class Key, class T, class Compare, class Alloc>
+void
+map<Key, T, Compare, Alloc>::erase(iterator position)
+{
+	_rbt.erase(position->first);
+}
 
 template <class Key, class T, class Compare, class Alloc>
 typename map<Key, T, Compare, Alloc>::size_type
@@ -293,13 +293,17 @@ map<Key, T, Compare, Alloc>::erase(const key_type& k)
 	return (retSize);
 }
 
-// template <class Key, class T, class Compare, class Alloc>
-// void
-// map<Key, T, Compare, Alloc>::erase(iterator first, iterator last)
-// {
-//     for (; first != last; first++)
-//         erase(first);
-// }
+template <class Key, class T, class Compare, class Alloc>
+void
+map<Key, T, Compare, Alloc>::erase(iterator first, iterator last)
+{
+	iterator tmpIt = first++;
+	while (tmpIt != last)
+	{
+		_rbt.erase(tmpIt->first);
+		tmpIt = first++;
+	}
+}
 
 
 template <class Key, class T, class Compare, class Alloc>

@@ -51,7 +51,6 @@ void	stdCont(void)
 	std::cout << "-------stdCont--------" << std::endl;
 	// std::map<std::string, int, std::greater<std::string> > stdMap;
 	std::map<int, int > stdMap;
-	std::map<int, int>::const_iterator constMapIt;
 	std::map<int, int>::iterator MapIt;
 	// std::pair<std::map<int, int>::iterator, std::map<int, int>::iterator> ret;
 
@@ -61,15 +60,9 @@ void	stdCont(void)
 	stdMap.insert(std::pair<int, int>(1, 5));
 	stdMap.insert(std::pair<int, int>(3, 4));
 	stdMap.insert(std::pair<int, int>(5, 3));
-	constMapIt = stdMap.end();
-	MapIt = stdMap.begin();
-	if (constMapIt == MapIt)
-	{
-
-	}
-	--constMapIt;
-	std::cout << constMapIt->first << std::endl;
-	std::cout << constMapIt->second << std::endl;
+	// MapIt = stdMap.end();
+	stdMap.erase(stdMap.end(), stdMap.end());
+	// std::cout << stdMap.size() << std::endl;
 	// mapIt = stdMap.upper_bound(14);
 	// ret = stdMap.equal_range(15);
 	// std::cout << ret.first->first << std::endl;
@@ -96,17 +89,34 @@ void	ftCont(void)
 	myMap.insert(ft::pair<int, int>(1, 42));
 	myMap.insert(ft::pair<int, int>(42, 42));
 	myMap.insert(ft::pair<int, int>(7, 42));
-	myMap.insert(ft::pair<int, int>(3, 42));
-	myMap.insert(ft::pair<int, int>(2, 42));
-	myMap.insert(ft::pair<int, int>(5, 42));
-	myMap.insert(ft::pair<int, int>(28, 42));
-	myMap.insert(ft::pair<int, int>(30, 42));
-	myMap.insert(ft::pair<int, int>(34, 42));
-	myMap.insert(ft::pair<int, int>(44, 42));
+	// myMap.insert(ft::pair<int, int>(3, 42));
+	// myMap.insert(ft::pair<int, int>(5, 42));
+	// myMap.insert(ft::pair<int, int>(28, 42));
+	// myMap.insert(ft::pair<int, int>(30, 42));
+	// myMap.insert(ft::pair<int, int>(34, 42));
+	// myMap.insert(ft::pair<int, int>(44, 42));
+	// myMap.insert(ft::pair<int, int>(-2147483648, 42));
+	// myMap.insert(ft::pair<int, int>(-1, 42));
+	// myMap.insert(ft::pair<int, int>(0, 42));
+	// myMap.insert(ft::pair<int, int>(2, 42));
+	// myMap.insert(ft::pair<int, int>(3, 42));
+	// myMap.insert(ft::pair<int, int>(4, 42));
+	// myMap.insert(ft::pair<int, int>(5, 42));
+	// myMap.insert(ft::pair<int, int>(256, 42));
+	// myMap.insert(ft::pair<int, int>(58966, 42));
+	// myMap.insert(ft::pair<int, int>(2147483647, 42));
 	std::cout << "-----------------" << std::endl;
-	myMap.erase(16);
+	ft::map<int, int> tmp = myMap;
+	tmp.erase(tmp.begin(), tmp.end());
+	// myMap.erase(myMap.end(), myMap.end());
+	// myMap.erase(1);
+	// myMap.erase(7);
 	// myMap.erase(10);
 	// myMap.erase(13);
+	std::cout << tmp.size() << std::endl;
+	// myMap.erase(13);
+	// myMap.erase(16);
+	// myMap.erase(17);
 	// myMap.erase(25);
 	// myMap.erase(18);
 	// myMap.erase(19);
@@ -115,12 +125,13 @@ void	ftCont(void)
 	// myMap.erase(42);
 	// myMap.erase(7);
 	// myMap.erase(3);
-	// myMap.erase(2);
 	// myMap.erase(5);
 	// myMap.erase(28);
 	// myMap.erase(30);
 	// myMap.erase(34);
 	// myMap.erase(44);
+	// std::cout << (myMap.begin())->first << std::endl;
+	// myMap.erase((myMap.begin())->first);
 	std::cout << "-------ftCont--------" << std::endl;
 }
 

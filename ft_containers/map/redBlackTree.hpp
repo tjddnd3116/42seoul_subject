@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:17:37 by soum              #+#    #+#             */
-/*   Updated: 2022/08/05 02:28:35 by soum             ###   ########.fr       */
+/*   Updated: 2022/08/07 21:36:14 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ class redBlackTree
 	private:
 	// member variable
 	node*					_leafNode;
+	node*					_tempNode;
 	node_alloc				_nodeAlloc;
 	Compare					_comp;
 	size_type				_size;
@@ -96,6 +97,8 @@ class redBlackTree
 	// member function
 	void					treePrint(node *root, std::string indent, bool last);
 	void					insertFixUp(node* newNode);
+	void					rotateRight(node* rotateNode, node* rootNode);
+	void					rotateLeft(node* rotateNode, node* rootNode);
 	void					rotateRight(node* rotateNode);
 	void					rotateLeft(node* rotateNode);
 	void					clear(node* curNode);
@@ -115,6 +118,10 @@ redBlackTree<T, Compare, Alloc, node>::redBlackTree(const allocator_type& alloc 
 	_leafNode = _nodeAlloc.allocate(1);
 	_nodeAlloc.construct(_leafNode, node(_leafNode, _leafNode, _leafNode));
 	_leafNode->_color = BLACK;
+
+	_tempNode = _nodeAlloc.allocate(1);
+	_nodeAlloc.construct(_tempNode, node(_leafNode, _leafNode, _leafNode));
+	_tempNode->_color = BLACK;
 	_size = 0;
 }
 
@@ -124,6 +131,8 @@ redBlackTree<T, Compare, Alloc, node>::~redBlackTree()
 	this->clear();
 	_nodeAlloc.destroy(_leafNode);
 	_nodeAlloc.deallocate(_leafNode, 1);
+	_nodeAlloc.destroy(_tempNode);
+	_nodeAlloc.deallocate(_tempNode, 1);
 }
 
 
@@ -169,28 +178,28 @@ template <class T, class Compare, class Alloc, class node>
 typename redBlackTree<T, Compare, Alloc, node>::reverse_iterator
 redBlackTree<T, Compare, Alloc, node>::rbegin()
 {
-	return (reverse_iterator(_leafNode));
+	return (reverse_iterator(end()));
 }
 
 template <class T, class Compare, class Alloc, class node>
 typename redBlackTree<T, Compare, Alloc, node>::const_reverse_iterator
 redBlackTree<T, Compare, Alloc, node>::rbegin() const
 {
-	return (const_reverse_iterator(_leafNode));
+	return (const_reverse_iterator(end()));
 }
 
 template <class T, class Compare, class Alloc, class node>
 typename redBlackTree<T, Compare, Alloc, node>::reverse_iterator
 redBlackTree<T, Compare, Alloc, node>::rend()
 {
-	return (reverse_iterator(_leafNode->_parent));
+	return (reverse_iterator(begin()));
 }
 
 template <class T, class Compare, class Alloc, class node>
 typename redBlackTree<T, Compare, Alloc, node>::const_reverse_iterator
 redBlackTree<T, Compare, Alloc, node>::rend() const
 {
-	return (const_reverse_iterator(_leafNode->_parent));
+	return (const_reverse_iterator(begin()));
 }
 
 template <class T, class Compare, class Alloc, class node>
@@ -243,16 +252,16 @@ redBlackTree<T, Compare, Alloc, node>::insert(const value_type &val)
 	if (newNode->_parent == _leafNode)
 	{
 		newNode->_color = BLACK;
-		treePrint(_leafNode->_parent, "", true);
+		// treePrint(_leafNode->_parent, "", true);
 		return (ft::make_pair(iterator(newNode, _leafNode), true));
 	}
 	if (newNode->_parent->_parent == _leafNode)
 	{
-		treePrint(_leafNode->_parent, "", true);
+		// treePrint(_leafNode->_parent, "", true);
 		return (ft::make_pair(iterator(newNode, _leafNode), true));
 	}
 	insertFixUp(newNode);
-	treePrint(_leafNode->_parent, "", true);
+	// treePrint(_leafNode->_parent, "", true);
 	return (ft::make_pair(iterator(newNode, _leafNode), true));
 }
 
@@ -313,10 +322,16 @@ redBlackTree<T, Compare, Alloc, node>::erase(const typename value_type::first_ty
 	if (eraseNode == _leafNode)
 		return (0);
 	node* childNode;
-	Color eraseNodeColor = eraseNode->_color;
+	Color eraseNodeColor;
 	node* minNode;
 
-	if (eraseNode->_left == _leafNode)
+	eraseNodeColor = eraseNode->_color;
+	if (eraseNode->_left == _leafNode && eraseNode->_right == _leafNode)
+	{
+		childNode = _tempNode;
+		moveChildToParent(eraseNode, childNode);
+	}
+	else if (eraseNode->_left == _leafNode)
 	{
 		childNode = eraseNode->_right;
 		moveChildToParent(eraseNode, eraseNode->_right);
@@ -331,11 +346,13 @@ redBlackTree<T, Compare, Alloc, node>::erase(const typename value_type::first_ty
 		minNode = nodeMin(eraseNode->_right);
 		eraseNodeColor = minNode->_color;
 		childNode = minNode->_right;
+		if (childNode == _leafNode)
+			childNode = _tempNode;
 		if (minNode->_parent == eraseNode)
 			childNode->_parent = minNode;
 		else
 		{
-			moveChildToParent(minNode, minNode->_right);
+			moveChildToParent(minNode, childNode == _tempNode ? childNode : minNode->_right);
 			minNode->_right = eraseNode->_right;
 			minNode->_right->_parent = minNode;
 		}
@@ -348,8 +365,15 @@ redBlackTree<T, Compare, Alloc, node>::erase(const typename value_type::first_ty
 	_nodeAlloc.deallocate(eraseNode, 1);
 	if (eraseNodeColor == BLACK)
 		eraseFixUp(childNode);
-	treePrint(_leafNode->_parent, "", true);
-	_size--;
+	else if (childNode == _tempNode)
+	{
+		if (childNode == childNode->_parent->_left)
+			childNode->_parent->_left = _leafNode;
+		else
+			childNode->_parent->_right = _leafNode;
+	}
+	// treePrint(_leafNode->_parent, "", true);
+	--_size;
 	return (1);
 }
 
@@ -438,6 +462,48 @@ redBlackTree<T, Compare, Alloc, node>::insertFixUp(node* newNode)
 
 template <class T, class Compare, class Alloc, class node>
 void
+redBlackTree<T, Compare, Alloc, node>::rotateRight(node* rotateNode, node* rootNode)
+{
+	node* tempNode;
+
+	tempNode = rotateNode->_left;
+	rotateNode->_left = tempNode->_right;
+	if (tempNode->_right != _leafNode)
+		tempNode->_right->_parent = rotateNode;
+	tempNode->_parent = rotateNode->_parent;
+	if (rotateNode->_parent == _leafNode)
+		rootNode = tempNode;
+	else if (rotateNode == rotateNode->_parent->_left)
+		rotateNode->_parent->_left = tempNode;
+	else
+		rotateNode->_parent->_right = tempNode;
+	rotateNode->_parent = tempNode;
+	tempNode->_right = rotateNode;
+}
+
+template <class T, class Compare, class Alloc, class node>
+void
+redBlackTree<T, Compare, Alloc, node>::rotateLeft(node* rotateNode, node* rootNode)
+{
+	node* tempNode;
+
+	tempNode = rotateNode->_right;
+	rotateNode->_right = tempNode->_left;
+	if (tempNode->_left != _leafNode)
+		tempNode->_left->_parent = rotateNode;
+	tempNode->_parent = rotateNode->_parent;
+	if (rotateNode->_parent == _leafNode)
+		rootNode = tempNode;
+	else if (rotateNode == rotateNode->_parent->_left)
+		rotateNode->_parent->_left = tempNode;
+	else
+		rotateNode->_parent->_right = tempNode;
+	rotateNode->_parent = tempNode;
+	tempNode->_left = rotateNode;
+}
+
+template <class T, class Compare, class Alloc, class node>
+void
 redBlackTree<T, Compare, Alloc, node>::rotateRight(node* rotateNode)
 {
 	node* tempNode;
@@ -511,14 +577,15 @@ template <class T, class Compare, class Alloc, class node>
 void
 redBlackTree<T, Compare, Alloc, node>::moveChildToParent(node* parent, node* child)
 {
-	if (parent->_parent == _leafNode)
+	if (parent->_parent == _leafNode && child == _tempNode)
+		_leafNode->_parent = _leafNode;
+	else if (parent->_parent == _leafNode)
 		_leafNode->_parent = child;
 	else if (parent == parent->_parent->_left)
 		parent->_parent->_left = child;
 	else
 		parent->_parent->_right = child;
-	if (child != _leafNode)
-		child->_parent = parent->_parent;
+	child->_parent = parent->_parent;
 }
 
 template <class T, class Compare, class Alloc, class node>
@@ -572,23 +639,33 @@ void
 redBlackTree<T, Compare, Alloc, node>::eraseFixUp(node* childNode)
 {
 	node* siblingNode;
+	node* tmpChildNode;
 
-	while (childNode != _leafNode->_parent && childNode->_color == BLACK)
+	tmpChildNode = childNode;
+	while (tmpChildNode != _leafNode->_parent && tmpChildNode->_color == BLACK)
 	{
-		if (childNode == childNode->_parent->_left)	// case 1
+		if (tmpChildNode == tmpChildNode->_parent->_left)	// case 1
 		{
-			siblingNode = childNode->_parent->_right;
+			siblingNode = tmpChildNode->_parent->_right;
 			if (siblingNode->_color == RED)	// case 1-1
 			{
 				siblingNode->_color = BLACK;
-				childNode->_parent->_color = RED;
-				rotateLeft(childNode->_parent);
-				siblingNode = childNode->_parent->_right;
+				tmpChildNode->_parent->_color = RED;
+				rotateLeft(tmpChildNode->_parent);
+				siblingNode = tmpChildNode->_parent->_right;
 			}
 			if (siblingNode->_left->_color == BLACK && siblingNode->_right->_color == BLACK) // case 1-2
 			{
-				siblingNode->_color = RED;
-				childNode = childNode->_parent;
+				if (siblingNode != _leafNode)
+					siblingNode->_color = RED;
+				if (tmpChildNode == _tempNode)
+				{
+					if (tmpChildNode == tmpChildNode->_parent->_left)
+						tmpChildNode->_parent->_left = _leafNode;
+					else
+						tmpChildNode->_parent->_right = _leafNode;
+				}
+				tmpChildNode = tmpChildNode->_parent;
 			}
 			else
 			{
@@ -597,29 +674,44 @@ redBlackTree<T, Compare, Alloc, node>::eraseFixUp(node* childNode)
 					siblingNode->_left->_color = BLACK;
 					siblingNode->_color = RED;
 					rotateRight(siblingNode);
-					siblingNode = childNode->_parent->_right;
+					siblingNode = tmpChildNode->_parent->_right;
 				}
-				siblingNode->_color = childNode->_parent->_color; // case 1-4
-				childNode->_parent->_color = BLACK;
+				siblingNode->_color = tmpChildNode->_parent->_color; // case 1-4
+				tmpChildNode->_parent->_color = BLACK;
 				siblingNode->_right->_color = BLACK;
-				rotateLeft(childNode->_parent);
-				childNode = _leafNode->_parent;
+				rotateLeft(tmpChildNode->_parent);
+				if (tmpChildNode == _tempNode)
+				{
+					if (tmpChildNode == tmpChildNode->_parent->_left)
+						tmpChildNode->_parent->_left = _leafNode;
+					else
+						tmpChildNode->_parent->_right = _leafNode;
+				}
+				tmpChildNode = _leafNode->_parent;
 			}
 		}
 		else											// case 2
 		{
-			siblingNode = childNode->_parent->_left;
+			siblingNode = tmpChildNode->_parent->_left;
 			if (siblingNode->_color == RED)				// case 2-1
 			{
 				siblingNode->_color = BLACK;
-				childNode->_parent->_color = RED;
-				rotateRight(childNode->_parent);
-				siblingNode = childNode->_parent->_left;
+				tmpChildNode->_parent->_color = RED;
+				rotateRight(tmpChildNode->_parent);
+				siblingNode = tmpChildNode->_parent->_left;
 			}
 			if (siblingNode->_left->_color == BLACK && siblingNode->_right->_color == BLACK) // case 2-2
 			{
-				siblingNode->_color = RED;
-				childNode = childNode->_parent;
+				if (siblingNode != _leafNode)
+					siblingNode->_color = RED;
+				if (tmpChildNode == _tempNode)
+				{
+					if (tmpChildNode == tmpChildNode->_parent->_left)
+						tmpChildNode->_parent->_left = _leafNode;
+					else
+						tmpChildNode->_parent->_right = _leafNode;
+				}
+				tmpChildNode = tmpChildNode->_parent;
 			}
 			else
 			{
@@ -628,17 +720,24 @@ redBlackTree<T, Compare, Alloc, node>::eraseFixUp(node* childNode)
 					siblingNode->_right->_color = BLACK;
 					siblingNode->_color = RED;
 					rotateLeft(siblingNode);
-					siblingNode = childNode->_parent->_left;
+					siblingNode = tmpChildNode->_parent->_left;
 				}
-				siblingNode->_color = childNode->_parent->_color; // case 2-4
-				childNode->_parent->_color = BLACK;
+				siblingNode->_color = tmpChildNode->_parent->_color; // case 2-4
+				tmpChildNode->_parent->_color = BLACK;
 				siblingNode->_left->_color = BLACK;
-				rotateRight(childNode->_parent);
-				childNode = _leafNode->_parent;
+				rotateRight(tmpChildNode->_parent);
+				if (tmpChildNode == _tempNode)
+				{
+					if (tmpChildNode == tmpChildNode->_parent->_left)
+						tmpChildNode->_parent->_left = _leafNode;
+					else
+						tmpChildNode->_parent->_right = _leafNode;
+				}
+				tmpChildNode = _leafNode->_parent;
 			}
 		}
 	}
-	childNode->_color = BLACK;
+	tmpChildNode->_color = BLACK;
 	_leafNode->_parent->_color = BLACK;
 }
 

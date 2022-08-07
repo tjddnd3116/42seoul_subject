@@ -68,17 +68,19 @@ RBTIterator<node, Compare>::RBTIterator(const Compare& comp) :
 
 template <class node, class Compare>
 RBTIterator<node, Compare>::RBTIterator(node* newNode, node* leafNode, const Compare& comp) :
-	_startNode(newNode),
-	_leafNode(leafNode),
 	_comp(comp)
-{}
+{
+	_startNode = newNode;
+	_leafNode = leafNode;
+}
 
 template <class node, class Compare>
 RBTIterator<node, Compare>::RBTIterator(const RBTIterator& it) :
-	_startNode(it._startNode),
-	_leafNode(it._leafNode),
 	_comp(it._comp)
-{}
+{
+	_startNode = it._startNode;
+	_leafNode = it._leafNode;
+}
 
 template <class node, class Compare>
 RBTIterator<node, Compare>::~RBTIterator()
@@ -272,25 +274,28 @@ const_RBTIterator<node, Compare>::const_RBTIterator(const Compare& comp) :
 // {}
 
 template <class node, class Compare>
-const_RBTIterator<node, Compare>::const_RBTIterator(node* newNode, node * leafNode, const Compare& comp) :
-	_startNode(newNode),
-	_leafNode(leafNode),
+const_RBTIterator<node, Compare>::const_RBTIterator(node* newNode, node* leafNode, const Compare& comp) :
 	_comp(comp)
-{}
+{
+	_startNode = newNode;
+	_leafNode = leafNode;
+}
 
 template <class node, class Compare>
 const_RBTIterator<node, Compare>::const_RBTIterator(const const_RBTIterator& it) :
-	_startNode(it._startNode),
-	_leafNode(it._leafNode),
 	_comp(it._comp)
-{}
+{
+	_startNode = it._startNode;
+	_leafNode = it._leafNode;
+}
 
 template <class node, class Compare>
 const_RBTIterator<node, Compare>::const_RBTIterator(const RBTIterator<node, Compare>& it) :
-	_startNode(it._startNode),
-	_leafNode(it._leafNode),
 	_comp(it._comp)
-{}
+{
+	_startNode = it._startNode;
+	_leafNode = it._leafNode;
+}
 
 template <class node, class Compare>
 const_RBTIterator<node, Compare>::~const_RBTIterator()
