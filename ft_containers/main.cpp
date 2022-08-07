@@ -13,6 +13,7 @@
 #include <vector>
 #include <iostream>
 #include <map>
+#include <list>
 
 class myClass
 {
@@ -76,19 +77,19 @@ void	stdCont(void)
 void	ftCont(void)
 {
 	std::cout << "-------ftCont--------" << std::endl;
-	ft::map<int, int> myMap;
-	myMap.insert(ft::pair<int, int>(17, 42));
-	myMap.insert(ft::pair<int, int>(15, 42));
-	myMap.insert(ft::pair<int, int>(10, 42));
-	myMap.insert(ft::pair<int, int>(13, 42));
-	myMap.insert(ft::pair<int, int>(16, 42));
-	myMap.insert(ft::pair<int, int>(25, 42));
-	myMap.insert(ft::pair<int, int>(18, 42));
-	myMap.insert(ft::pair<int, int>(19, 42));
-	myMap.insert(ft::pair<int, int>(40, 42));
-	myMap.insert(ft::pair<int, int>(1, 42));
-	myMap.insert(ft::pair<int, int>(42, 42));
-	myMap.insert(ft::pair<int, int>(7, 42));
+	// ft::map<int, int> myMap;
+	// myMap.insert(ft::pair<int, int>(17, 42));
+	// myMap.insert(ft::pair<int, int>(15, 42));
+	// myMap.insert(ft::pair<int, int>(10, 42));
+	// myMap.insert(ft::pair<int, int>(13, 42));
+	// myMap.insert(ft::pair<int, int>(16, 42));
+	// myMap.insert(ft::pair<int, int>(25, 42));
+	// myMap.insert(ft::pair<int, int>(18, 42));
+	// myMap.insert(ft::pair<int, int>(19, 42));
+	// myMap.insert(ft::pair<int, int>(40, 42));
+	// myMap.insert(ft::pair<int, int>(1, 42));
+	// myMap.insert(ft::pair<int, int>(42, 42));
+	// myMap.insert(ft::pair<int, int>(7, 42));
 	// myMap.insert(ft::pair<int, int>(3, 42));
 	// myMap.insert(ft::pair<int, int>(5, 42));
 	// myMap.insert(ft::pair<int, int>(28, 42));
@@ -105,15 +106,15 @@ void	ftCont(void)
 	// myMap.insert(ft::pair<int, int>(256, 42));
 	// myMap.insert(ft::pair<int, int>(58966, 42));
 	// myMap.insert(ft::pair<int, int>(2147483647, 42));
-	std::cout << "-----------------" << std::endl;
-	ft::map<int, int> tmp = myMap;
-	tmp.erase(tmp.begin(), tmp.end());
+	// std::cout << "-----------------" << std::endl;
+	// ft::map<int, int> tmp = myMap;
+	// tmp.erase(tmp.begin(), tmp.end());
 	// myMap.erase(myMap.end(), myMap.end());
 	// myMap.erase(1);
 	// myMap.erase(7);
 	// myMap.erase(10);
 	// myMap.erase(13);
-	std::cout << tmp.size() << std::endl;
+	// std::cout << tmp.size() << std::endl;
 	// myMap.erase(13);
 	// myMap.erase(16);
 	// myMap.erase(17);
@@ -132,6 +133,15 @@ void	ftCont(void)
 	// myMap.erase(44);
 	// std::cout << (myMap.begin())->first << std::endl;
 	// myMap.erase((myMap.begin())->first);
+	// ft::vector<int>::iterator it2;
+	ft::vector<int> myVec(10, 10);
+	ft::vector<int>::const_iterator it1 = myVec.begin();
+	ft::vector<int>::iterator it2 = myVec.begin();
+	// it1 = myVec.begin();
+	// it2 = myVec.end();
+	std::cout << it2 - it1 << std::endl;
+	// std::cout << *it1 << std::endl;
+	// std::cout << *it2 << std::endl;
 	std::cout << "-------ftCont--------" << std::endl;
 }
 

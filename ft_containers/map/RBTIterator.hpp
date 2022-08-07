@@ -309,6 +309,7 @@ const_RBTIterator<node, Compare>::operator=(const const_RBTIterator &it)
 		return (*this);
 	_startNode = it._startNode;
 	_comp = it._comp;
+	_leafNode = it._leafNode;
 	return (*this);
 }
 
@@ -324,6 +325,8 @@ template <class node, class Compare>
 typename const_RBTIterator<node, Compare>::pointer
 const_RBTIterator<node, Compare>::operator->(void) const
 {
+	if (_startNode == _leafNode)
+		return (NULL);
 	return (&(_startNode->_value));
 }
 
@@ -424,7 +427,5 @@ const_RBTIterator<node, Compare>::operator!=(const const_RBTIterator& op) const
 	return (_startNode != op._startNode);
 }
 
-
 }
-
 #endif

@@ -276,10 +276,51 @@ operator+(typename random_access_iterator<T>::difference_type n,
 }
 
 // subtraction operator overriding
+
 template <typename T>
 typename random_access_iterator<T>::difference_type
-operator-(random_access_iterator<T>& lhs,
-		random_access_iterator<T>& rhs)
+operator==(const random_access_iterator<T> lhs,
+		const random_access_iterator<T> rhs)
+{
+	return (lhs.base() == rhs.base());
+}
+
+template <typename T_L, typename T_R>
+typename random_access_iterator<T_L>::difference_type
+operator==(const random_access_iterator<T_L> lhs,
+		const random_access_iterator<T_R> rhs)
+{
+	return (lhs.base() == rhs.base());
+}
+
+template <typename T>
+typename random_access_iterator<T>::difference_type
+operator!=(const random_access_iterator<T> lhs,
+		const random_access_iterator<T> rhs)
+{
+	return (lhs.base() !=rhs.base());
+}
+
+template <typename T_L, typename T_R>
+typename random_access_iterator<T_L>::difference_type
+operator!=(const random_access_iterator<T_L> lhs,
+		const random_access_iterator<T_R> rhs)
+{
+	return (lhs.base() != rhs.base());
+}
+
+template <typename T>
+typename random_access_iterator<T>::difference_type
+operator-(const random_access_iterator<T> lhs,
+		const random_access_iterator<T> rhs)
+{
+	return (&(*lhs) - &(*rhs));
+}
+
+template <typename T_L, typename T_R>
+typename random_access_iterator<T_L>::difference_type
+operator-(const random_access_iterator<T_L> lhs,
+		const random_access_iterator<T_R> rhs)
 {
 	return (&(*lhs) - &(*rhs));
 }

@@ -377,8 +377,10 @@ map<Key, T, Compare, Alloc>::lower_bound(const key_type& k)
 
 	beginIt = _rbt.begin();
 	endIt = _rbt.end();
+	std::cout << "123" << std::endl;
 	while (beginIt != endIt && _comp(beginIt->first, k))
 		beginIt++;
+	std::cout << "123" << std::endl;
 	return (beginIt);
 }
 
@@ -391,8 +393,10 @@ map<Key, T, Compare, Alloc>::lower_bound(const key_type& k) const
 
 	beginIt = _rbt.begin();
 	endIt = _rbt.end();
+	std::cout << "123" << std::endl;
 	while (beginIt != endIt && _comp(beginIt->first, k))
-		beginIt++;
+		++beginIt;
+	std::cout << "123" << std::endl;
 	return (beginIt);
 }
 
@@ -406,7 +410,7 @@ map<Key, T, Compare, Alloc>::upper_bound(const key_type& k)
 	beginIt = _rbt.begin();
 	endIt = _rbt.end();
 	while (beginIt != endIt && !_comp(k, beginIt->first))
-		beginIt++;
+		++beginIt;
 	return (beginIt);
 }
 
