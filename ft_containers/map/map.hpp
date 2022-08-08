@@ -237,9 +237,8 @@ template <class Key, class T, class Compare, class Alloc>
 typename map<Key, T, Compare, Alloc>::size_type
 map<Key, T, Compare, Alloc>::max_size() const
 {
-	return (_alloc.max_size());
+	return (_rbt.max_size());
 }
-
 
 template <class Key, class T, class Compare, class Alloc>
 typename map<Key, T, Compare, Alloc>::mapped_type&
@@ -310,11 +309,7 @@ template <class Key, class T, class Compare, class Alloc>
 void
 map<Key, T, Compare, Alloc>::swap(map& x)
 {
-	map tempMap;
-
-	tempMap = x;
-	x = *this;
-	*this = tempMap;
+	_rbt.swap(x._rbt);
 }
 
 template <class Key, class T, class Compare, class Alloc>
@@ -377,10 +372,8 @@ map<Key, T, Compare, Alloc>::lower_bound(const key_type& k)
 
 	beginIt = _rbt.begin();
 	endIt = _rbt.end();
-	std::cout << "123" << std::endl;
 	while (beginIt != endIt && _comp(beginIt->first, k))
 		beginIt++;
-	std::cout << "123" << std::endl;
 	return (beginIt);
 }
 
@@ -393,10 +386,8 @@ map<Key, T, Compare, Alloc>::lower_bound(const key_type& k) const
 
 	beginIt = _rbt.begin();
 	endIt = _rbt.end();
-	std::cout << "123" << std::endl;
 	while (beginIt != endIt && _comp(beginIt->first, k))
 		++beginIt;
-	std::cout << "123" << std::endl;
 	return (beginIt);
 }
 

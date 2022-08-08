@@ -44,6 +44,7 @@ class	reverse_iterator : iterator<typename iterator_traits<Iterator>::iterator_c
 	reverse_iterator&	operator+=(difference_type n);			// addition assignment
 	reverse_iterator&	operator-=(difference_type n);			// subtraction assignment
 	reference			operator[](difference_type n);			// subscript
+
 	private:
 	iterator_type	_ptr;
 };
@@ -193,6 +194,20 @@ operator-(const reverse_iterator<Iterator>& lhs,
 	rhsTmp = rhs.base();
 	return (lhsTmp - rhsTmp);
 }
+
+template <class Iterator_L, class Iterator_R>
+typename reverse_iterator<Iterator_L>::difference_type
+operator-(const reverse_iterator<Iterator_L>& lhs,
+		const reverse_iterator<Iterator_R>& rhs)
+{
+	typename reverse_iterator<Iterator_L>::iterator_type lhsTmp;
+	typename reverse_iterator<Iterator_R>::iterator_type rhsTmp;
+
+	lhsTmp = lhs.base();
+	rhsTmp = rhs.base();
+	return (rhsTmp - lhsTmp);
+}
+
 
 template <class Iterator>
 bool

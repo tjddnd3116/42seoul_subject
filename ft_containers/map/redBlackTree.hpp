@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:17:37 by soum              #+#    #+#             */
-/*   Updated: 2022/08/07 21:36:14 by soum             ###   ########.fr       */
+/*   Updated: 2022/08/08 23:31:16 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ class redBlackTree
 			const Compare& comp = Compare());
 
 	// operator
-	redBlackTree			&operator=(const redBlackTree rbt);
+	redBlackTree			&operator=(const redBlackTree& rbt);
 
 	// destructor
 	~redBlackTree();
@@ -85,6 +85,7 @@ class redBlackTree
 	const_iterator			find(const	typename value_type::first_type& key) const;
 	void					clear();
 	size_type				erase(const typename value_type::first_type& key);
+	void 					swap(redBlackTree& rbt);
 
 	private:
 	// member variable
@@ -218,6 +219,13 @@ redBlackTree<T, Compare, Alloc, node>::size() const
 	return (_size);
 }
 
+
+template <class T, class Compare, class Alloc, class node>
+typename redBlackTree<T, Compare, Alloc, node>::size_type
+redBlackTree<T, Compare, Alloc, node>::max_size() const
+{
+	return (_nodeAlloc.max_size());
+}
 
 template <class T, class Compare, class Alloc, class node>
 pair<typename redBlackTree<T, Compare, Alloc, node>::iterator, bool>
@@ -375,6 +383,25 @@ redBlackTree<T, Compare, Alloc, node>::erase(const typename value_type::first_ty
 	// treePrint(_leafNode->_parent, "", true);
 	--_size;
 	return (1);
+}
+
+template <class T, class Compare, class Alloc, class node>
+void
+redBlackTree<T, Compare, Alloc, node>::swap(redBlackTree<T, Compare, Alloc, node>& rbt)
+{
+	node*	tempLeafNode;
+	node*	tempTempNode;
+	size_type	tempSize;
+
+	tempLeafNode = rbt._leafNode;
+	tempTempNode = rbt._tempNode;
+	tempSize = rbt._size;
+	rbt._leafNode = _leafNode;
+	rbt._tempNode = _tempNode;
+	rbt._size = _size;
+	_leafNode = tempLeafNode;
+	_tempNode = tempTempNode;
+	_size = tempSize;
 }
 
 // insert 문제 해결 방법

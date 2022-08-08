@@ -4,6 +4,7 @@
 #include "./map/map.hpp"
 #include <cmath>
 #include <cstdlib>
+#include <cstring>
 #include <exception>
 #include <functional>
 #include <iterator>
@@ -54,7 +55,6 @@ void	stdCont(void)
 	std::map<int, int > stdMap;
 	std::map<int, int>::iterator MapIt;
 	// std::pair<std::map<int, int>::iterator, std::map<int, int>::iterator> ret;
-
 	stdMap.insert(std::make_pair(100, 2));
 	stdMap.insert(std::pair<int, int>(10, 2));
 	stdMap.insert(std::pair<int, int>(15, 1));
@@ -131,20 +131,19 @@ void	ftCont(void)
 	// myMap.erase(30);
 	// myMap.erase(34);
 	// myMap.erase(44);
-	// std::cout << (myMap.begin())->first << std::endl;
-	// myMap.erase((myMap.begin())->first);
-	// ft::vector<int>::iterator it2;
-	ft::vector<int> myVec(10, 10);
-	ft::vector<int>::const_iterator it1 = myVec.begin();
-	ft::vector<int>::iterator it2 = myVec.begin();
-	// it1 = myVec.begin();
-	// it2 = myVec.end();
-	std::cout << it2 - it1 << std::endl;
-	// std::cout << *it1 << std::endl;
-	// std::cout << *it2 << std::endl;
+	ft::map<int, int> swapMap1;
+	ft::map<int, int> swapMap2;
+	swapMap1.insert(ft::pair<int, int>(1, 42));
+	swapMap1.insert(ft::pair<int, int>(1, 42));
+	swapMap1.insert(ft::pair<int, int>(1, 42));
+	swapMap2.insert(ft::pair<int, int>(2, 42));
+	swapMap2.insert(ft::pair<int, int>(2, 42));
+	swapMap2.insert(ft::pair<int, int>(2, 42));
+	// ft::map<int, int>::const_iterator it1 = swapMap1;
+	// ft::map<int, int>::const_iterator it2;
+	swapMap1.swap(swapMap2);
 	std::cout << "-------ftCont--------" << std::endl;
 }
-
 int main(void)
 {
 	ftCont();

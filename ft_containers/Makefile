@@ -6,13 +6,18 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/08/02 20:13:22 by soum             ###   ########.fr        #
+#    Updated: 2022/08/08 10:14:16 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = a.out
 CXX = c++
+ifeq ($(shell uname), Linux)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++11
+else
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+endif
+
 #-fsanitize=address -g
 
 SRCS = main.cpp \
