@@ -3,6 +3,7 @@
 
 #include <type_traits>
 #include "../iterator/iterator.hpp"
+#include "./utility.hpp"
 
 namespace ft {
 
@@ -15,7 +16,6 @@ struct enable_if<true, T>
 {
 	typedef T type;
 };
-
 
 }
 #endif

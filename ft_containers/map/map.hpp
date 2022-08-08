@@ -8,7 +8,7 @@
 #include "../utils/funtional.hpp"
 #include "../utils/algorithm.hpp"
 #include "../utils/utility.hpp"
-#include "./redBlackTree.hpp"
+#include "../redBlackTree/redBlackTree.hpp"
 
 namespace ft
 {
@@ -79,7 +79,6 @@ class map
 	mapped_type&			operator[](const key_type& k);
 
 	// Modifiers
-	// void					insert(const value_type& val);									// insert - single element (1)
 	pair<iterator, bool>	insert(const value_type& val);									// insert - single element (1)
 	iterator				insert(iterator position, const value_type& val);				// insert - with hint (2)
 	template <class InputIterator>
@@ -115,7 +114,6 @@ class map
 	redBlackTree<value_type, Compare, Alloc>	_rbt;
 	allocator_type								_alloc;
 	Compare										_comp;
-
 };
 
 //---------------------------------------
@@ -252,7 +250,8 @@ template <class Key, class T, class Compare, class Alloc>
 pair<typename map<Key, T, Compare, Alloc>::iterator, bool>
 map<Key, T, Compare, Alloc>::insert(const value_type& val)
 {
-	return (_rbt.insert(val));
+	key_type key;
+	return (_rbt.insert(val, key));
 }
 
 

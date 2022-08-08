@@ -2,6 +2,7 @@
 #include "./stack/stack.hpp"
 #include "./utils/utility.hpp"
 #include "./map/map.hpp"
+#include "./set/set.hpp"
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
@@ -131,17 +132,22 @@ void	ftCont(void)
 	// myMap.erase(30);
 	// myMap.erase(34);
 	// myMap.erase(44);
-	ft::map<int, int> swapMap1;
-	ft::map<int, int> swapMap2;
-	swapMap1.insert(ft::pair<int, int>(1, 42));
-	swapMap1.insert(ft::pair<int, int>(1, 42));
-	swapMap1.insert(ft::pair<int, int>(1, 42));
-	swapMap2.insert(ft::pair<int, int>(2, 42));
-	swapMap2.insert(ft::pair<int, int>(2, 42));
-	swapMap2.insert(ft::pair<int, int>(2, 42));
+	// ft::map<int, int> swapMap1;
+	// ft::map<int, int> swapMap2;
+	// swapMap1.insert(ft::pair<int, int>(1, 42));
+	// swapMap1.insert(ft::pair<int, int>(1, 42));
+	// swapMap1.insert(ft::pair<int, int>(1, 42));
+	// swapMap2.insert(ft::pair<int, int>(2, 42));
+	// swapMap2.insert(ft::pair<int, int>(2, 42));
+	// swapMap2.insert(ft::pair<int, int>(2, 42));
 	// ft::map<int, int>::const_iterator it1 = swapMap1;
 	// ft::map<int, int>::const_iterator it2;
-	swapMap1.swap(swapMap2);
+	// swapMap1.swap(swapMap2);
+	ft::set<int> aaa;
+	aaa.insert(1);
+	ft::set<int>::iterator setIt;
+	setIt = aaa.begin();
+	std::cout << *setIt;
 	std::cout << "-------ftCont--------" << std::endl;
 }
 int main(void)
