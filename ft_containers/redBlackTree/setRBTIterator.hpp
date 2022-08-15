@@ -2,6 +2,7 @@
 #define setRBTIterator_hpp
 
 #include "../iterator/iterator.hpp"
+#include "./RBTNode.hpp"
 
 namespace ft {
 
@@ -18,22 +19,21 @@ class setRBTIterator : public ft::iterator<ft::bidirectional_iterator_tag, node>
 	typedef typename node::value_type																value_type;
 	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_category	iterator_category;
 	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type		difference_type;
-	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer				pointer;
-	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
+	typedef value_type* pointer;
+	typedef value_type	reference;
 
 	public:
 	// constructor
 	setRBTIterator(const Compare& comp = Compare());
 	setRBTIterator(node* startNode, node* leafNode, const Compare& comp = Compare());
 	setRBTIterator(const setRBTIterator& it);
-	// setRBTIterator(const const_setRBTIterator<node, Compare>& it);
 
 	// destructor
 	~setRBTIterator();
 
 	// operator overloading
 	setRBTIterator&	operator=(const setRBTIterator& it);
-	reference		operator*(void) const;
+	const reference	operator*(void) const;
 	pointer			operator->(void) const;
 	setRBTIterator&	operator++(void);
 	setRBTIterator	operator++(int);
@@ -42,7 +42,6 @@ class setRBTIterator : public ft::iterator<ft::bidirectional_iterator_tag, node>
 	bool			operator==(const setRBTIterator& op) const;
 	bool			operator!=(const setRBTIterator& op) const;
 
-	// private:
 	// member variable
 	node*		_startNode;
 	node*		_leafNode;
@@ -59,13 +58,6 @@ setRBTIterator<node, Compare>::setRBTIterator(const Compare& comp) :
 	_leafNode(),
 	_comp(comp)
 {}
-
-// template <class node, class Compare>
-// setRBTIterator<node, Compare>::setRBTIterator(node* startNode, const Compare& comp) :
-//     _startNode(startNode),
-//     _leafNode(),
-//     _comp(comp)
-// {}
 
 template <class node, class Compare>
 setRBTIterator<node, Compare>::setRBTIterator(node* newNode, node* leafNode, const Compare& comp) :
@@ -100,10 +92,12 @@ setRBTIterator<node, Compare>::operator=(const setRBTIterator& it)
 }
 
 template <class node, class Compare>
-typename setRBTIterator<node, Compare>::reference
+const typename setRBTIterator<node, Compare>::reference
 setRBTIterator<node, Compare>::operator*(void) const
 {
-	return (_startNode->_value);
+	const typename node::value_type val = _startNode->_value;
+	return (val);
+	// return (_startNode->_value);
 }
 
 
@@ -224,8 +218,8 @@ class const_setRBTIterator : public ft::iterator<ft::bidirectional_iterator_tag,
 	typedef typename node::value_type																value_type;
 	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_category	iterator_category;
 	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type		difference_type;
-	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer				pointer;
-	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
+	typedef value_type* pointer;
+	typedef value_type reference;
 
 	public:
 	// constructor
@@ -240,7 +234,8 @@ class const_setRBTIterator : public ft::iterator<ft::bidirectional_iterator_tag,
 
 	// operator overloading
 	const_setRBTIterator&	operator=(const const_setRBTIterator& it);
-	reference			operator*(void) const;
+	const_setRBTIterator&	operator=(const setRBTIterator<ft::RBTNode<const typename node::value_type>, Compare>& it);
+	const reference			operator*(void) const;
 	pointer				operator->(void) const;
 	const_setRBTIterator&	operator++(void);
 	const_setRBTIterator	operator++(int);
@@ -251,9 +246,9 @@ class const_setRBTIterator : public ft::iterator<ft::bidirectional_iterator_tag,
 
 	// private:
 	// member variable
-	node		*_startNode;
-	node		*_leafNode;
-	Compare		_comp;
+	node*		_startNode;
+	node*		_leafNode;
+	Compare			_comp;
 };
 
 //--------------------------------------------------------------
@@ -266,13 +261,6 @@ const_setRBTIterator<node, Compare>::const_setRBTIterator(const Compare& comp) :
 	_leafNode(),
 	_comp(comp)
 {}
-
-// template <class node, class Compare>
-// const_setRBTIterator<node, Compare>::const_setRBTIterator(node* startNode, const Compare& comp) :
-//     _startNode(startNode),
-//     _leafNode(),
-//     _comp(comp)
-// {}
 
 template <class node, class Compare>
 const_setRBTIterator<node, Compare>::const_setRBTIterator(node* newNode, node* leafNode, const Compare& comp) :
@@ -315,10 +303,11 @@ const_setRBTIterator<node, Compare>::operator=(const const_setRBTIterator &it)
 }
 
 template <class node, class Compare>
-typename const_setRBTIterator<node, Compare>::reference
+const typename const_setRBTIterator<node, Compare>::reference
 const_setRBTIterator<node, Compare>::operator*(void) const
 {
-	return (_startNode->_value);
+	const typename node::value_type	val = _startNode->_value;
+	return (val);
 }
 
 

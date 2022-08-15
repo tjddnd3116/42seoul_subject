@@ -39,7 +39,7 @@ class setRedBlackTree
 	typedef Compare											key_compare;
 	typedef Alloc											allocator_type;
 	typedef std::allocator<node>							node_alloc;
-	typedef	ft::setRBTIterator<node, Compare>					iterator;
+	typedef	ft::setRBTIterator<node, Compare>				iterator;
 	typedef	ft::const_setRBTIterator<node, Compare>			const_iterator;
 	typedef ft::reverse_iterator<iterator>					reverse_iterator;
 	typedef ft::reverse_iterator<const_iterator>			const_reverse_iterator;
@@ -94,8 +94,6 @@ class setRedBlackTree
 	void					rotateLeft(node* rotateNode);
 	void					clear(node* curNode);
 	node*					findByKey(const value_type& key);
-	template <typename value_type>
-	node*					findByKey(const typename value_type::first_type& key);
 	void					moveChildToParent(node* parent, node *child);
 	node*					nodeMin(node* curNode);
 	void					eraseFixUp(node* childNode);
@@ -812,5 +810,4 @@ setRedBlackTree<T, Compare, Alloc, node>::treePrint(node* root, std::string inde
 }
 
 }
-
 #endif

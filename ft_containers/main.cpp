@@ -143,11 +143,19 @@ void	ftCont(void)
 	// ft::map<int, int>::const_iterator it1 = swapMap1;
 	// ft::map<int, int>::const_iterator it2;
 	// swapMap1.swap(swapMap2);
+	// ft::vector<int> bbb;
+	// bbb.push_back(1);
+	// ft::vector<int>::const_iterator vecIt;
+	// vecIt = bbb.begin();
+	// *vecIt = 44;
 	ft::set<int> aaa;
 	aaa.insert(1);
-	ft::set<int>::iterator setIt;
-	setIt = aaa.begin();
-	std::cout << *setIt;
+	ft::set<int>::iterator setIt = aaa.begin();
+	std::cout << *setIt << std::endl;
+
+	std::set<int> const bbb;
+	std::set<int>::iterator It = bbb.begin();
+	std::cout << *It << std::endl;
 	std::cout << "-------ftCont--------" << std::endl;
 }
 int main(void)
