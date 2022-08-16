@@ -1,10 +1,8 @@
 #ifndef vector_hpp
 #define vector_hpp
 
-
 #include <algorithm>
 #include <iostream>
-
 #include <memory>
 #include <ostream>
 #include <stdexcept>
