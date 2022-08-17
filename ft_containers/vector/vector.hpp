@@ -44,8 +44,8 @@ class vector
 			const allocator_type& alloc = allocator_type());
 	template <class InputIterator>
 				vector(InputIterator first,									// range constructor (3)
-						InputIterator last,
-						const allocator_type& alloc = allocator_type(),
+		InputIterator last,
+		const allocator_type& alloc = allocator_type(),
 		typename std::enable_if<!std::is_integral<InputIterator>::value>::type* = 0);
 				vector(const vector& x);									// copy constructor (4)
 

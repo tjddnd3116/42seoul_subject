@@ -40,7 +40,8 @@ class setRedBlackTree
 	typedef Alloc											allocator_type;
 	typedef std::allocator<node>							node_alloc;
 	typedef	ft::setRBTIterator<node, Compare>				iterator;
-	typedef	ft::const_setRBTIterator<node, Compare>			const_iterator;
+	typedef	ft::setRBTIterator<node, Compare>				const_iterator;
+	// typedef	ft::const_setRBTIterator<node, Compare>			const_iterator;
 	typedef ft::reverse_iterator<iterator>					reverse_iterator;
 	typedef ft::reverse_iterator<const_iterator>			const_reverse_iterator;
 	typedef size_t											size_type;
