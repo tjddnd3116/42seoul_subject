@@ -4,6 +4,7 @@
 #include <cstddef>
 namespace ft
 {
+
 // ITERATOR CATEGORY
 struct	input_iterator_tag {};
 struct	output_iterator_tag {};
@@ -23,7 +24,7 @@ struct	iterator
 	typedef Category 	iterator_category;
 };
 
-template<class Iterator>
+template <class Iterator>
 struct	iterator_traits
 {
 	typedef typename Iterator::difference_type		difference_type;
@@ -33,8 +34,8 @@ struct	iterator_traits
 	typedef typename Iterator::iterator_category	iterator_category;
 };
 
-template<class T>
-struct	iterator_traits<T*>
+template <class T>
+struct	iterator_traits <T*>
 {
 	typedef	ptrdiff_t						difference_type;
 	typedef	T								value_type;
@@ -43,8 +44,8 @@ struct	iterator_traits<T*>
 	typedef	random_access_iterator_tag		iterator_category;
 };
 
-template<class T>
-struct	iterator_traits<const T*>
+template <class T>
+struct	iterator_traits <const T*>
 {
 	typedef	ptrdiff_t						difference_type;
 	typedef	T								value_type;
@@ -52,6 +53,21 @@ struct	iterator_traits<const T*>
 	typedef T&								reference;
 	typedef	random_access_iterator_tag		iterator_category;
 };
+
+template <class InputIterator>
+typename ft::iterator_traits<InputIterator>::difference_type
+distance(InputIterator first, InputIterator last)
+{
+	typename ft::iterator_traits<InputIterator>::difference_type ret;
+
+	ret = 0;
+	while (first != last)
+	{
+		++first;
+		++ret;
+	}
+	return (ret);
+}
 
 }
 #endif

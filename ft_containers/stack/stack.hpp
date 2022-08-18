@@ -20,10 +20,12 @@ class stack
 	typedef size_t		size_type;
 
 	// constructor
-	explicit			stack(const container_type& ctnr = container_type());
+	explicit
+	stack(const container_type& ctnr = container_type());
 
 	// destructor
-						~stack();
+	~stack();
+
 	// Member functions
 	bool				empty() const;
 	size_type			size() const;

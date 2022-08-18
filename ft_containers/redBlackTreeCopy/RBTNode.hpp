@@ -50,6 +50,7 @@ struct RBTNode
 			return (true);
 		return (false);
 	}
+
 };
 
 }

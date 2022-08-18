@@ -1,13 +1,26 @@
-#ifndef setRedBlackTree_hpp
-#define	setRedBlackTree_hpp
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redBlackTree.hpp                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/03 10:17:37 by soum              #+#    #+#             */
+/*   Updated: 2022/08/18 17:21:28 by soum             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef redBlackTree_hpp
+#define redBlackTree_hpp
 
 #include <memory>
+#include <string>
 #include <iostream>
 #include <type_traits>
 #include "../utils/funtional.hpp"
 #include "../utils/utility.hpp"
 #include "../iterator/reverseIterator.hpp"
-#include "../redBlackTree/setRBTIterator.hpp"
+#include "./RBTIterator.hpp"
 #include "./RBTNode.hpp"
 #include "../utils/typeTraits.hpp"
 
@@ -15,7 +28,7 @@ namespace ft
 {
 
 //------------------------------------------------------
-//   setRedBlackTree<T, Compare, Alloc, node> synopsis
+//   redBlackTree<Key, T, Compare, Alloc> synopsis
 //------------------------------------------------------
 //
 // Red-Black Tree 의 정의
@@ -30,7 +43,7 @@ template <class T,
 		 class Compare = ft::less<T>,
 		 class Alloc = std::allocator<T>,
 		 class node = ft::RBTNode<T> >
-class setRedBlackTree
+class redBlackTree
 {
 	public:
 	// member types
@@ -38,22 +51,23 @@ class setRedBlackTree
 	typedef Compare											key_compare;
 	typedef Alloc											allocator_type;
 	typedef std::allocator<node>							node_alloc;
-	typedef	ft::setRBTIterator<node, Compare>				iterator;
-	typedef	ft::setRBTIterator<node, Compare>				const_iterator;
+	typedef	ft::RBTIterator<node, Compare>					iterator;
+	typedef	ft::const_RBTIterator<node, Compare>			const_iterator;
 	typedef ft::reverse_iterator<iterator>					reverse_iterator;
 	typedef ft::reverse_iterator<const_iterator>			const_reverse_iterator;
 	typedef size_t											size_type;
 
+
 	public:
 	// constructor
-	setRedBlackTree(const allocator_type& alloc = allocator_type(),
+	redBlackTree(const allocator_type& alloc = allocator_type(),
 			const Compare& comp = Compare());
 
 	// operator
-	setRedBlackTree			&operator=(const setRedBlackTree& rbt);
+	redBlackTree			&operator=(const redBlackTree& rbt);
 
 	// destructor
-	~setRedBlackTree();
+	~redBlackTree();
 
 	iterator				begin();
 	const_iterator			begin() const;
@@ -69,10 +83,11 @@ class setRedBlackTree
 	size_type				max_size() const;
 
 	pair<iterator, bool>	insert(const value_type& val);
-	iterator				find(const value_type& key) const;
+	iterator				find(const	typename value_type::first_type& key);
+	const_iterator			find(const	typename value_type::first_type& key) const;
 	void					clear();
-	size_type				erase(const value_type& key);
-	void 					swap(setRedBlackTree& rbt);
+	size_type				erase(const typename value_type::first_type& key);
+	void 					swap(redBlackTree& rbt);
 
 	private:
 	// member variable
@@ -90,18 +105,18 @@ class setRedBlackTree
 	void					rotateRight(node* rotateNode);
 	void					rotateLeft(node* rotateNode);
 	void					clear(node* curNode);
-	node*					findByKey(const value_type& key);
+	node*					findByKey(const typename value_type::first_type& key);
 	void					moveChildToParent(node* parent, node *child);
 	node*					nodeMin(node* curNode);
 	void					eraseFixUp(node* childNode);
 };
 
 //------------------------------------------------------
-//   setRedBlackTree<T, Compare, Alloc, node> definition
+//   redBlackTree<Key, T, Compare, Alloc> definition
 //------------------------------------------------------
 
 template <class T, class Compare, class Alloc, class node>
-setRedBlackTree<T, Compare, Alloc, node>::setRedBlackTree(const allocator_type& alloc , const Compare& comp) : _nodeAlloc(alloc), _comp(comp)
+redBlackTree<T, Compare, Alloc, node>::redBlackTree(const allocator_type& alloc , const Compare& comp) : _nodeAlloc(alloc), _comp(comp)
 {
 	_leafNode = _nodeAlloc.allocate(1);
 	_nodeAlloc.construct(_leafNode, node(_leafNode, _leafNode, _leafNode));
@@ -114,7 +129,7 @@ setRedBlackTree<T, Compare, Alloc, node>::setRedBlackTree(const allocator_type& 
 }
 
 template <class T, class Compare, class Alloc, class node>
-setRedBlackTree<T, Compare, Alloc, node>::~setRedBlackTree()
+redBlackTree<T, Compare, Alloc, node>::~redBlackTree()
 {
 	this->clear();
 	_nodeAlloc.destroy(_leafNode);
@@ -125,8 +140,8 @@ setRedBlackTree<T, Compare, Alloc, node>::~setRedBlackTree()
 
 
 template <class T, class Compare, class Alloc, class node>
-typename setRedBlackTree<T, Compare, Alloc, node>::iterator
-setRedBlackTree<T, Compare, Alloc, node>::begin()
+typename redBlackTree<T, Compare, Alloc, node>::iterator
+redBlackTree<T, Compare, Alloc, node>::begin()
 {
 	node* beginNode;
 
@@ -137,8 +152,8 @@ setRedBlackTree<T, Compare, Alloc, node>::begin()
 }
 
 template <class T, class Compare, class Alloc, class node>
-typename setRedBlackTree<T, Compare, Alloc, node>::const_iterator
-setRedBlackTree<T, Compare, Alloc, node>::begin() const
+typename redBlackTree<T, Compare, Alloc, node>::const_iterator
+redBlackTree<T, Compare, Alloc, node>::begin() const
 {
 	node* beginNode;
 
@@ -149,50 +164,50 @@ setRedBlackTree<T, Compare, Alloc, node>::begin() const
 }
 
 template <class T, class Compare, class Alloc, class node>
-typename setRedBlackTree<T, Compare, Alloc, node>::iterator
-setRedBlackTree<T, Compare, Alloc, node>::end()
+typename redBlackTree<T, Compare, Alloc, node>::iterator
+redBlackTree<T, Compare, Alloc, node>::end()
 {
 	return (iterator(_leafNode, _leafNode));
 }
 
 template <class T, class Compare, class Alloc, class node>
-typename setRedBlackTree<T, Compare, Alloc, node>::const_iterator
-setRedBlackTree<T, Compare, Alloc, node>::end() const
+typename redBlackTree<T, Compare, Alloc, node>::const_iterator
+redBlackTree<T, Compare, Alloc, node>::end() const
 {
 	return (const_iterator(_leafNode, _leafNode));
 }
 
 template <class T, class Compare, class Alloc, class node>
-typename setRedBlackTree<T, Compare, Alloc, node>::reverse_iterator
-setRedBlackTree<T, Compare, Alloc, node>::rbegin()
+typename redBlackTree<T, Compare, Alloc, node>::reverse_iterator
+redBlackTree<T, Compare, Alloc, node>::rbegin()
 {
 	return (reverse_iterator(end()));
 }
 
 template <class T, class Compare, class Alloc, class node>
-typename setRedBlackTree<T, Compare, Alloc, node>::const_reverse_iterator
-setRedBlackTree<T, Compare, Alloc, node>::rbegin() const
+typename redBlackTree<T, Compare, Alloc, node>::const_reverse_iterator
+redBlackTree<T, Compare, Alloc, node>::rbegin() const
 {
 	return (const_reverse_iterator(end()));
 }
 
 template <class T, class Compare, class Alloc, class node>
-typename setRedBlackTree<T, Compare, Alloc, node>::reverse_iterator
-setRedBlackTree<T, Compare, Alloc, node>::rend()
+typename redBlackTree<T, Compare, Alloc, node>::reverse_iterator
+redBlackTree<T, Compare, Alloc, node>::rend()
 {
 	return (reverse_iterator(begin()));
 }
 
 template <class T, class Compare, class Alloc, class node>
-typename setRedBlackTree<T, Compare, Alloc, node>::const_reverse_iterator
-setRedBlackTree<T, Compare, Alloc, node>::rend() const
+typename redBlackTree<T, Compare, Alloc, node>::const_reverse_iterator
+redBlackTree<T, Compare, Alloc, node>::rend() const
 {
 	return (const_reverse_iterator(begin()));
 }
 
 template <class T, class Compare, class Alloc, class node>
 bool
-setRedBlackTree<T, Compare, Alloc, node>::empty() const
+redBlackTree<T, Compare, Alloc, node>::empty() const
 {
 	if (_leafNode->_parent != _leafNode)
 		return (false);
@@ -200,23 +215,23 @@ setRedBlackTree<T, Compare, Alloc, node>::empty() const
 }
 
 template <class T, class Compare, class Alloc, class node>
-typename setRedBlackTree<T, Compare, Alloc, node>::size_type
-setRedBlackTree<T, Compare, Alloc, node>::size() const
+typename redBlackTree<T, Compare, Alloc, node>::size_type
+redBlackTree<T, Compare, Alloc, node>::size() const
 {
 	return (_size);
 }
 
 
 template <class T, class Compare, class Alloc, class node>
-typename setRedBlackTree<T, Compare, Alloc, node>::size_type
-setRedBlackTree<T, Compare, Alloc, node>::max_size() const
+typename redBlackTree<T, Compare, Alloc, node>::size_type
+redBlackTree<T, Compare, Alloc, node>::max_size() const
 {
 	return (_nodeAlloc.max_size());
 }
 
 template <class T, class Compare, class Alloc, class node>
-pair<typename setRedBlackTree<T, Compare, Alloc, node>::iterator, bool>
-setRedBlackTree<T, Compare, Alloc, node>::insert(const value_type &val)
+pair<typename redBlackTree<T, Compare, Alloc, node>::iterator, bool>
+redBlackTree<T, Compare, Alloc, node>::insert(const value_type &val)
 {
 	node*	curNode;
 	node*	preNode;
@@ -226,10 +241,10 @@ setRedBlackTree<T, Compare, Alloc, node>::insert(const value_type &val)
 	curNode = _leafNode->_parent;
 	while (curNode != _leafNode)
 	{
-		if (curNode->_value == val)
+		if (curNode->_value.first == val.first)
 			return (ft::make_pair(iterator(curNode, _leafNode), false));
 		preNode = curNode;
-		if (_comp(curNode->_value, val))
+		if (_comp(curNode->_value.first, val.first))
 			curNode = curNode->_right;
 		else
 			curNode = curNode->_left;
@@ -239,7 +254,7 @@ setRedBlackTree<T, Compare, Alloc, node>::insert(const value_type &val)
 	++_size;
 	if (preNode == _leafNode)
 		_leafNode->_parent = newNode;
-	else if (_comp(preNode->_value, val))
+	else if (_comp(preNode->_value.first, val.first))
 		preNode->_right = newNode;
 	else
 		preNode->_left = newNode;
@@ -261,24 +276,40 @@ setRedBlackTree<T, Compare, Alloc, node>::insert(const value_type &val)
 }
 
 template <class T, class Compare, class Alloc, class node>
-typename setRedBlackTree<T, Compare, Alloc, node>::iterator
-setRedBlackTree<T, Compare, Alloc, node>::find(const value_type& key) const
+typename redBlackTree<T, Compare, Alloc, node>::iterator
+redBlackTree<T, Compare, Alloc, node>::find(const typename value_type::first_type &key)
 {
 	node* rootNode;
 	node* parentNode;
 
 	rootNode = _leafNode->_parent;
-	while (rootNode != _leafNode && rootNode->_value!= key)
+	while (rootNode != _leafNode && rootNode->_value.first != key)
 	{
 		parentNode = rootNode;
-		rootNode = _comp(parentNode->_value, key) ? parentNode->_right : parentNode->_left;
+		rootNode = _comp(parentNode->_value.first, key) ? parentNode->_right : parentNode->_left;
 	}
 	return (iterator(rootNode, _leafNode));
 }
 
 template <class T, class Compare, class Alloc, class node>
+typename redBlackTree<T, Compare, Alloc, node>::const_iterator
+redBlackTree<T, Compare, Alloc, node>::find(const typename value_type::first_type &key) const
+{
+	node* rootNode;
+	node* parentNode;
+
+	rootNode = _leafNode->_parent;
+	while (rootNode != _leafNode && rootNode->_value.first != key)
+	{
+		parentNode = rootNode;
+		rootNode = _comp(parentNode->_value.first, key) ? parentNode->_right : parentNode->_left;
+	}
+	return (const_iterator(rootNode, _leafNode));
+}
+
+template <class T, class Compare, class Alloc, class node>
 void
-setRedBlackTree<T, Compare, Alloc, node>::clear()
+redBlackTree<T, Compare, Alloc, node>::clear()
 {
 	node* rootNode;
 
@@ -291,8 +322,8 @@ setRedBlackTree<T, Compare, Alloc, node>::clear()
 }
 
 template <class T, class Compare, class Alloc, class node>
-typename setRedBlackTree<T, Compare, Alloc, node>::size_type
-setRedBlackTree<T, Compare, Alloc, node>::erase(const value_type& key)
+typename redBlackTree<T, Compare, Alloc, node>::size_type
+redBlackTree<T, Compare, Alloc, node>::erase(const typename value_type::first_type &key)
 {
 	node* eraseNode;
 
@@ -357,7 +388,7 @@ setRedBlackTree<T, Compare, Alloc, node>::erase(const value_type& key)
 
 template <class T, class Compare, class Alloc, class node>
 void
-setRedBlackTree<T, Compare, Alloc, node>::swap(setRedBlackTree<T, Compare, Alloc, node>& rbt)
+redBlackTree<T, Compare, Alloc, node>::swap(redBlackTree<T, Compare, Alloc, node>& rbt)
 {
 	node*	tempLeafNode;
 	node*	tempTempNode;
@@ -408,7 +439,7 @@ setRedBlackTree<T, Compare, Alloc, node>::swap(setRedBlackTree<T, Compare, Alloc
 // 
 template <class T, class Compare, class Alloc, class node>
 void
-setRedBlackTree<T, Compare, Alloc, node>::insertFixUp(node* newNode)
+redBlackTree<T, Compare, Alloc, node>::insertFixUp(node* newNode)
 {
 	node* tempNode;
 
@@ -459,7 +490,7 @@ setRedBlackTree<T, Compare, Alloc, node>::insertFixUp(node* newNode)
 
 template <class T, class Compare, class Alloc, class node>
 void
-setRedBlackTree<T, Compare, Alloc, node>::rotateRight(node* rotateNode, node* rootNode)
+redBlackTree<T, Compare, Alloc, node>::rotateRight(node* rotateNode, node* rootNode)
 {
 	node* tempNode;
 
@@ -480,7 +511,7 @@ setRedBlackTree<T, Compare, Alloc, node>::rotateRight(node* rotateNode, node* ro
 
 template <class T, class Compare, class Alloc, class node>
 void
-setRedBlackTree<T, Compare, Alloc, node>::rotateLeft(node* rotateNode, node* rootNode)
+redBlackTree<T, Compare, Alloc, node>::rotateLeft(node* rotateNode, node* rootNode)
 {
 	node* tempNode;
 
@@ -501,7 +532,7 @@ setRedBlackTree<T, Compare, Alloc, node>::rotateLeft(node* rotateNode, node* roo
 
 template <class T, class Compare, class Alloc, class node>
 void
-setRedBlackTree<T, Compare, Alloc, node>::rotateRight(node* rotateNode)
+redBlackTree<T, Compare, Alloc, node>::rotateRight(node* rotateNode)
 {
 	node* tempNode;
 
@@ -522,7 +553,7 @@ setRedBlackTree<T, Compare, Alloc, node>::rotateRight(node* rotateNode)
 
 template <class T, class Compare, class Alloc, class node>
 void
-setRedBlackTree<T, Compare, Alloc, node>::rotateLeft(node* rotateNode)
+redBlackTree<T, Compare, Alloc, node>::rotateLeft(node* rotateNode)
 {
 	node* tempNode;
 
@@ -543,7 +574,7 @@ setRedBlackTree<T, Compare, Alloc, node>::rotateLeft(node* rotateNode)
 
 template <class T, class Compare, class Alloc, class node>
 void
-setRedBlackTree<T, Compare, Alloc, node>::clear(node *curNode)
+redBlackTree<T, Compare, Alloc, node>::clear(node *curNode)
 {
 	if (curNode == _leafNode)
 		return ;
@@ -555,23 +586,23 @@ setRedBlackTree<T, Compare, Alloc, node>::clear(node *curNode)
 
 template <class T, class Compare, class Alloc, class node>
 node*
-setRedBlackTree<T, Compare, Alloc, node>::findByKey(const value_type& key)
+redBlackTree<T, Compare, Alloc, node>::findByKey(const typename value_type::first_type& key)
 {
 	node* rootNode;
 	node* parentNode;
 
 	rootNode = _leafNode->_parent;
-	while (rootNode != _leafNode && rootNode->_value != key)
+	while (rootNode != _leafNode && rootNode->_value.first != key)
 	{
 		parentNode = rootNode;
-		rootNode = _comp(parentNode->_value, key) ? parentNode->_right : parentNode->_left;
+		rootNode = _comp(parentNode->_value.first, key) ? parentNode->_right : parentNode->_left;
 	}
 	return (rootNode);
 }
 
 template <class T, class Compare, class Alloc, class node>
 void
-setRedBlackTree<T, Compare, Alloc, node>::moveChildToParent(node* parent, node* child)
+redBlackTree<T, Compare, Alloc, node>::moveChildToParent(node* parent, node* child)
 {
 	if (parent->_parent == _leafNode && child == _tempNode)
 		_leafNode->_parent = _leafNode;
@@ -586,7 +617,7 @@ setRedBlackTree<T, Compare, Alloc, node>::moveChildToParent(node* parent, node* 
 
 template <class T, class Compare, class Alloc, class node>
 node*
-setRedBlackTree<T, Compare, Alloc, node>::nodeMin(node* curNode)
+redBlackTree<T, Compare, Alloc, node>::nodeMin(node* curNode)
 {
 	node* retNode;
 
@@ -632,7 +663,7 @@ setRedBlackTree<T, Compare, Alloc, node>::nodeMin(node* curNode)
 
 template <class T, class Compare, class Alloc, class node>
 void
-setRedBlackTree<T, Compare, Alloc, node>::eraseFixUp(node* childNode)
+redBlackTree<T, Compare, Alloc, node>::eraseFixUp(node* childNode)
 {
 	node* siblingNode;
 	node* tmpChildNode;
@@ -739,7 +770,7 @@ setRedBlackTree<T, Compare, Alloc, node>::eraseFixUp(node* childNode)
 
 template <class T, class Compare, class Alloc, class node>
 void
-setRedBlackTree<T, Compare, Alloc, node>::treePrint(node* root, std::string indent, bool last)
+redBlackTree<T, Compare, Alloc, node>::treePrint(node* root, std::string indent, bool last)
 {
 	if (root == _leafNode)
 		return ;

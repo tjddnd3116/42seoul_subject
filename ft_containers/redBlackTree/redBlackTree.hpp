@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:17:37 by soum              #+#    #+#             */
-/*   Updated: 2022/08/15 14:54:13 by soum             ###   ########.fr       */
+/*   Updated: 2022/08/18 21:54:31 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ namespace ft
 {
 
 //------------------------------------------------------
-//   redBlackTree<Key, T, Compare, Alloc> synopsis
+//   redBlackTree<T, Compare, Alloc, node> synopsis
 //------------------------------------------------------
 //
 // Red-Black Tree 의 정의
@@ -56,7 +56,6 @@ class redBlackTree
 	typedef ft::reverse_iterator<iterator>					reverse_iterator;
 	typedef ft::reverse_iterator<const_iterator>			const_reverse_iterator;
 	typedef size_t											size_type;
-
 
 	public:
 	// constructor
@@ -112,7 +111,7 @@ class redBlackTree
 };
 
 //------------------------------------------------------
-//   redBlackTree<Key, T, Compare, Alloc> definition
+//   redBlackTree<T, Compare, Alloc, node> definition
 //------------------------------------------------------
 
 template <class T, class Compare, class Alloc, class node>

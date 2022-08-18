@@ -1,12 +1,7 @@
 #ifndef vector_hpp
 #define vector_hpp
 
-#include <algorithm>
-#include <iostream>
 #include <memory>
-#include <ostream>
-#include <stdexcept>
-#include <type_traits>
 #include "../iterator/randomAccessIterator.hpp"
 #include "../iterator/reverseIterator.hpp"
 #include "../utils/typeTraits.hpp"
@@ -38,19 +33,20 @@ class vector
 	typedef typename allocator_type::size_type						size_type;
 
 	//	constructor
-	explicit	vector(const allocator_type& alloc = allocator_type());		// default constructor (1)
-	explicit	vector(size_type n,											// fill constructor (2)
+	explicit
+	vector(const allocator_type& alloc = allocator_type());			// default constructor (1)
+	explicit
+	vector(size_type n,												// fill constructor (2)
 			const value_type& val = value_type(),
 			const allocator_type& alloc = allocator_type());
 	template <class InputIterator>
-				vector(InputIterator first,									// range constructor (3)
-		InputIterator last,
-		const allocator_type& alloc = allocator_type(),
-		typename std::enable_if<!std::is_integral<InputIterator>::value>::type* = 0);
-				vector(const vector& x);									// copy constructor (4)
+	vector(InputIterator first, InputIterator last,					// range constructor (3)
+			const allocator_type& alloc = allocator_type(),
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
+	vector(const vector& x);										// copy constructor (4)
 
 	// operator
-	vector		&operator=(const vector& x);								// copy assignment oeprator
+	vector		&operator=(const vector& x);						// copy assignment oeprator
 
 	// destructor
 				~vector();
@@ -85,9 +81,8 @@ class vector
 
 	// Modifiers
 	template <class InputIterator>
-	void					assign(InputIterator first,						// range (1)
-									InputIterator last,
-									typename std::enable_if<!std::is_integral<InputIterator>::value>::type* = 0);
+	void					assign(InputIterator first, InputIterator last,	// range (1)
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
 	void					assign(size_type n,								// fill (2)
 									const value_type& val = value_type());
 	void					push_back(const value_type& val);
@@ -97,10 +92,8 @@ class vector
 	void					insert(iterator position, size_type n,			// fill (2)
 									const value_type& val = value_type());
 	template <class InputIterator>
-	void					insert(iterator position,						// range (3)
-									InputIterator first,
-									InputIterator last,
-									typename std::enable_if<!std::is_integral<InputIterator>::value>::type* = 0);
+	void					insert(iterator position, InputIterator first,	// range (3)
+			InputIterator last, typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
 	iterator				erase(iterator position);
 	iterator				erase(iterator first, iterator last);
 	void					swap(vector& x);
@@ -142,12 +135,12 @@ vector<T, Allocator>::vector(size_type n,
 
 template <class T, class Allocator>
 template <class InputIterator>
-vector<T, Allocator>::vector(InputIterator first,
-		InputIterator last,
-		const allocator_type& alloc,
-		typename std::enable_if<!std::is_integral<InputIterator>::value>::type*) : _alloc(alloc)
+vector<T, Allocator>::vector(InputIterator first, InputIterator last,
+		const allocator_type& alloc, typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type*) : _alloc(alloc)
 {
-	difference_type n = last - first;
+	difference_type n;
+
+	n = ft::distance(first, last);
 	_firstData = _alloc.allocate(n);
 	_lastData = _firstData;
 	_endData = _firstData + n;
@@ -414,11 +407,11 @@ template <class T, class Allocator>
 template <class InputIterator>
 void
 vector<T, Allocator>::assign(InputIterator first, InputIterator last,
-		typename std::enable_if<!std::is_integral<InputIterator>::value>::type*)
+		typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type*)
 {
 	size_type n;
 
-	n = last - first;
+	n = ft::distance(first, last);
 	if (this->size() >= n)
 	{
 		this->clear();
@@ -531,7 +524,7 @@ template <class T, class Allocator>
 template <class InputIterator>
 void
 vector<T, Allocator>::insert(iterator position, InputIterator first, InputIterator last,
-		typename std::enable_if<!std::is_integral<InputIterator>::value>::type*)
+		typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type*)
 {
 	size_type n;
 	value_type val;
@@ -540,7 +533,7 @@ vector<T, Allocator>::insert(iterator position, InputIterator first, InputIterat
 	size_type startIdx;
 
 	insertPos = &(*position) - _firstData;
-	n = last - first;
+	n = ft::distance(first, last);
 	copyCnt = this->size() - insertPos;
 	this->resize(this->size() + n);
 	startIdx = this->size() - n - 1;
@@ -712,4 +705,4 @@ swap(vector<T, Allocator>& x, vector<T, Allocator>& y)
 }
 
 }
-#endif	/* vector_hpp */
+#endif

@@ -2,7 +2,6 @@
 #define	map_hpp
 
 #include <memory>
-#include <type_traits>
 #include "../iterator/bidirectionalIterator.hpp"
 #include "../iterator/reverseIterator.hpp"
 #include "../utils/funtional.hpp"
@@ -42,23 +41,23 @@ class map
 	typedef typename ft::iterator_traits<iterator>::difference_type					difference_type;
 	typedef typename allocator_type::size_type										size_type;
 
-
 	public:
 	// constructor
-	explicit	map(const key_compare& comp = key_compare(),											// default constructor (1)
+	explicit
+	map(const key_compare& comp = key_compare(),											// default constructor (1)
 			const allocator_type& alloc = allocator_type());
 	template <class InputIterator>
-				map(InputIterator first, InputIterator last,											// range constructor (2)
-						const key_compare& comp = key_compare(),
-						const allocator_type& alloc = allocator_type(),
-						typename std::enable_if<!std::is_integral<InputIterator>::value>::type* = 0);
-				map(const map& x);																		// copy constructor (3)
+	map(InputIterator first, InputIterator last,											// range constructor (2)
+			const key_compare& comp = key_compare(),
+			const allocator_type& alloc = allocator_type(),
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
+	map(const map& x);																		// copy constructor (3)
 
 	// operator
-	map			&operator=(const map& x);
+	map						&operator=(const map& x);
 
 	// destructor
-				~map();
+	~map();
 
 	// Iterators
 	iterator				begin();
@@ -128,7 +127,7 @@ template <class Key, class T, class Compare, class Alloc>
 template <class InputIterator>
 map<Key, T, Compare, Alloc>::map(InputIterator first, InputIterator last,
 		const key_compare& comp, const allocator_type& alloc,
-		typename std::enable_if<!std::is_integral<InputIterator>::value>::type*) : _rbt(), _alloc(alloc), _comp(comp)
+		typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type*) : _rbt(), _alloc(alloc), _comp(comp)
 {
 	insert(first, last);
 }

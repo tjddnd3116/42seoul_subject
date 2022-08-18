@@ -7,7 +7,6 @@
 #include "../redBlackTree/setRedBlackTree.hpp"
 #include <memory>
 #include <type_traits>
-#include <set>
 
 namespace ft
 {
@@ -23,39 +22,39 @@ class set
 {
 	// Member types
 	public:
-	typedef T																key_type;
-	typedef key_type														value_type;
-	typedef Compare															key_compare;
-	typedef Compare 														value_compare;
-	typedef Alloc 															allocator_type;
-	typedef typename allocator_type::reference								reference;
-	typedef typename allocator_type::const_reference						const_reference;
-	typedef typename allocator_type::pointer								pointer;
-	typedef typename allocator_type::const_pointer							const_pointer;
+	typedef T																			key_type;
+	typedef key_type																	value_type;
+	typedef Compare																		key_compare;
+	typedef Compare 																	value_compare;
+	typedef Alloc 																		allocator_type;
+	typedef typename allocator_type::reference											reference;
+	typedef typename allocator_type::const_reference									const_reference;
+	typedef typename allocator_type::pointer											pointer;
+	typedef typename allocator_type::const_pointer										const_pointer;
 	typedef typename ft::setRedBlackTree<value_type, Compare, Alloc>::iterator			iterator;
-	// typedef typename ft::setRedBlackTree<value_type, Compare, Alloc>::const_iterator	const_iterator;
-	typedef typename ft::setRedBlackTree<value_type, Compare, Alloc>::iterator	const_iterator;
-	typedef ft::reverse_iterator<iterator>									reverse_iterator;
-	typedef ft::reverse_iterator<const_iterator>							const_reverse_iterator;
-	typedef typename ft::iterator_traits<iterator>::difference_type			difference_type;
-	typedef typename allocator_type::size_type								size_type;
+	typedef typename ft::setRedBlackTree<value_type, Compare, Alloc>::const_iterator	const_iterator;
+	typedef ft::reverse_iterator<iterator>												reverse_iterator;
+	typedef ft::reverse_iterator<const_iterator>										const_reverse_iterator;
+	typedef typename ft::iterator_traits<iterator>::difference_type						difference_type;
+	typedef typename allocator_type::size_type											size_type;
 
 	public:
 	// constructor
-	explicit	set(const key_compare& comp = key_compare(),
+	explicit
+	set(const key_compare& comp = key_compare(),
 			const allocator_type& alloc = allocator_type());
 	template <class InputIterator>
-				set(InputIterator first, InputIterator last,
-						const key_compare& comp = key_compare(),
-						const allocator_type& alloc = allocator_type(),
-						typename std::enable_if<!std::is_integral<InputIterator>::value>::type* = 0);
-				set(const set& x);
+	set(InputIterator first, InputIterator last,
+			const key_compare& comp = key_compare(),
+			const allocator_type& alloc = allocator_type(),
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
+	set(const set& x);
 
 	// operator
 	set			&operator=(const set& x);
 
 	// destructor
-				~set();
+	~set();
 
 	// Iterators
 	iterator					begin();
@@ -77,7 +76,7 @@ class set
 	iterator					insert(iterator position, const value_type& val);
 	template <class InputIterator>
 	void						insert(InputIterator first, InputIterator last,
-			typename std::enable_if<!std::is_integral<InputIterator>::value>::type* = 0);
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
 	void						erase(iterator position);
 	size_type					erase(const value_type& k);
 	void						erase(iterator first, iterator last);
@@ -111,14 +110,13 @@ class set
 
 template <class T, class Compare, class Alloc>
 set<T, Compare, Alloc>::set(const key_compare& comp, const allocator_type& alloc) : _rbt(), _alloc(alloc), _comp(comp)
-{
-}
+{}
 
 template <class T, class Compare, class Alloc>
 template <class InputIterator>
 set<T, Compare, Alloc>::set(InputIterator first, InputIterator last,
 		const key_compare& comp, const allocator_type& alloc,
-		typename std::enable_if<!std::is_integral<InputIterator>::value>::type*) : _rbt(), _alloc(alloc), _comp(comp)
+		typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type*) : _rbt(), _alloc(alloc), _comp(comp)
 {
 	insert(first, last);
 }
@@ -245,7 +243,7 @@ template <class T, class Compare, class Alloc>
 template <class InputIterator>
 void
 set<T, Compare, Alloc>::insert(InputIterator first, InputIterator last,
-		typename std::enable_if<!std::is_integral<InputIterator>::value>::type*)
+		typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type*)
 {
 	for (; first != last; first++)
 		_rbt.insert(*first);
@@ -280,7 +278,6 @@ set<T, Compare, Alloc>::erase(iterator first, iterator last)
 		tmpIt = first++;
 	}
 }
-
 
 template <class T, class Compare, class Alloc>
 void

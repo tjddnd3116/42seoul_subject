@@ -17,12 +17,13 @@ class RBTIterator : public ft::iterator<ft::bidirectional_iterator_tag, node>
 	typedef typename node::value_type																value_type;
 	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_category	iterator_category;
 	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type		difference_type;
-	typedef value_type*																				pointer;
-	typedef value_type&																				reference;
+	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer				pointer;
+	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
 
 	public:
 	// constructor
 	RBTIterator(const Compare& comp = Compare());
+	// RBTIterator(node* startNode, const Compare& comp = Compare());
 	RBTIterator(node* startNode, node* leafNode, const Compare& comp = Compare());
 	RBTIterator(const RBTIterator& it);
 
@@ -57,6 +58,13 @@ RBTIterator<node, Compare>::RBTIterator(const Compare& comp) :
 	_leafNode(),
 	_comp(comp)
 {}
+
+// template <class node, class Compare>
+// RBTIterator<node, Compare>::RBTIterator(node* startNode, const Compare& comp) :
+//     _startNode(startNode),
+//     _leafNode(),
+//     _comp(comp)
+// {}
 
 template <class node, class Compare>
 RBTIterator<node, Compare>::RBTIterator(node* newNode, node* leafNode, const Compare& comp) :
@@ -117,13 +125,13 @@ RBTIterator<node, Compare>::operator++(void)
 	if (_startNode == NULL)
 		return (*this);
 	curNode = _startNode;
-	if (curNode->_right != _leafNode)
+	if (curNode->_right != _leafNode) // 시작 노드의 오른쪽 자식이 있을때
 	{
 		curNode = curNode->_right;
 		while (curNode->_left != _leafNode)
 			curNode = curNode->_left;
 	}
-	else if (curNode != _leafNode)
+	else if (curNode != _leafNode)	// 시작 노드가 리프노드가 아닐때
 	{
 		curNode = curNode->_parent;
 		while (curNode != _leafNode && _comp(curNode->_value.first, _startNode->_value.first))
@@ -215,12 +223,13 @@ class const_RBTIterator : public ft::iterator<ft::bidirectional_iterator_tag, no
 	typedef typename node::value_type																value_type;
 	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::iterator_category	iterator_category;
 	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::difference_type		difference_type;
-	typedef const value_type*																		pointer;
-	typedef const value_type&																		reference;
+	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::pointer				pointer;
+	typedef typename ft::iterator<ft::bidirectional_iterator_tag, value_type>::reference			reference;
 
 	public:
 	// constructor
 	const_RBTIterator(const Compare& comp = Compare());
+	// const_RBTIterator(node* startNode, const Compare& comp = Compare());
 	const_RBTIterator(node* startNode, node* leafNode, const Compare& comp = Compare());
 	const_RBTIterator(const const_RBTIterator& it);
 	const_RBTIterator(const RBTIterator<node, Compare>& it);
@@ -256,6 +265,13 @@ const_RBTIterator<node, Compare>::const_RBTIterator(const Compare& comp) :
 	_leafNode(),
 	_comp(comp)
 {}
+
+// template <class node, class Compare>
+// const_RBTIterator<node, Compare>::const_RBTIterator(node* startNode, const Compare& comp) :
+//     _startNode(startNode),
+//     _leafNode(),
+//     _comp(comp)
+// {}
 
 template <class node, class Compare>
 const_RBTIterator<node, Compare>::const_RBTIterator(node* newNode, node* leafNode, const Compare& comp) :
@@ -324,13 +340,13 @@ const_RBTIterator<node, Compare>::operator++(void)
 	if (_startNode == NULL)
 		return (*this);
 	curNode = _startNode;
-	if (curNode->_right != _leafNode)
+	if (curNode->_right != _leafNode) // 시작 노드의 오른쪽 자식이 있을때
 	{
 		curNode = curNode->_right;
 		while (curNode->_left != _leafNode)
 			curNode = curNode->_left;
 	}
-	else if (curNode != _leafNode)
+	else if (curNode != _leafNode)	// 시작 노드가 리프노드가 아닐때
 	{
 		curNode = curNode->_parent;
 		while (curNode != _leafNode && _comp(curNode->_value.first, _startNode->_value.first))
@@ -385,6 +401,7 @@ const_RBTIterator<node, Compare>::operator--(void)
 	}
 	_startNode = curNode;
 	return (*this);
+
 }
 
 template <class node, class Compare>

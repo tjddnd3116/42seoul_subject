@@ -13,9 +13,9 @@ class	bidirectional_iterator : ft::iterator<bidirectional_iterator_tag, T>
 {
 	public:
 	// member types
-	typedef typename iterator<bidirectional_iterator_tag, T>::iterator_category	iterator_category;
-	typedef typename iterator<bidirectional_iterator_tag, T>::value_type		value_type;
-	typedef typename iterator<bidirectional_iterator_tag, T>::difference_type	difference_type;
+	typedef typename ft::iterator<ft::bidirectional_iterator_tag, T>::iterator_category	iterator_category;
+	typedef typename ft::iterator<ft::bidirectional_iterator_tag, T>::value_type		value_type;
+	typedef typename ft::iterator<ft::bidirectional_iterator_tag, T>::difference_type	difference_type;
 	typedef T*																	pointer;
 	typedef T&																	reference;
 
@@ -28,15 +28,15 @@ class	bidirectional_iterator : ft::iterator<bidirectional_iterator_tag, T>
 	~bidirectional_iterator();
 
 	// operator overloading
-	bidirectional_iterator&		operator=(const bidirectional_iterator &op);		// copy assignment
+	bidirectional_iterator&		operator=(const bidirectional_iterator& op);		// copy assignment
 	reference					operator*(void) const;								// indirection
 	pointer						operator->(void) const;								// member of pointer
 	bidirectional_iterator& 	operator++(void);									// prefix increment
 	bidirectional_iterator		operator++(int);									// postfix increment
 	bidirectional_iterator&		operator--(void);									// prefix decrement
 	bidirectional_iterator		operator--(int);									// postfix decrement
-	bool						operator==(const bidirectional_iterator &op) const;	// equal to
-	bool						operator!=(const bidirectional_iterator &op) const;	// not equal to
+	bool						operator==(const bidirectional_iterator& op) const;	// equal to
+	bool						operator!=(const bidirectional_iterator& op) const;	// not equal to
 	operator					bidirectional_iterator<const T>() const;			// conversion operator
 
 	private :

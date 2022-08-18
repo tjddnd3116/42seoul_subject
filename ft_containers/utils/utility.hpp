@@ -15,10 +15,6 @@ struct pair
 	typedef T1	first_type;
 	typedef T2	second_type;
 
-	// member variable
-	first_type	first;
-	second_type	second;
-
 	//	constructor
 	pair();												// default constructor (1)
 	template<class U, class V>
@@ -27,6 +23,10 @@ struct pair
 
 	// operator
 	pair	&operator=(const pair& pr);					// copy assignment operator
+
+	// member variable
+	first_type	first;
+	second_type	second;
 };
 
 //---------------------------------------
