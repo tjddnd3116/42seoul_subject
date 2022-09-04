@@ -1,0 +1,18 @@
+F 29,206,195
+C 64,64,64
+
+NO ./images/wall1.png
+SO ./images/wall2.png
+WE ./images/wall3.png
+EA ./images/wall4.png
+DO ./images/new_door.png
+
+11111111111
+10000000001
+10001310001
+10100000101
+10300N00301
+10100000101
+10001310001
+10000000001
+11111111111
