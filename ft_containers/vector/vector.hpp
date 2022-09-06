@@ -2,6 +2,7 @@
 #define vector_hpp
 
 #include <memory>
+
 #include "../iterator/randomAccessIterator.hpp"
 #include "../iterator/reverseIterator.hpp"
 #include "../utils/typeTraits.hpp"
@@ -34,19 +35,19 @@ class vector
 
 	//	constructor
 	explicit
-	vector(const allocator_type& alloc = allocator_type());			// default constructor (1)
+	vector(const allocator_type& alloc = allocator_type());							// default constructor (1)
 	explicit
-	vector(size_type n,												// fill constructor (2)
+	vector(size_type n,																// fill constructor (2)
 			const value_type& val = value_type(),
 			const allocator_type& alloc = allocator_type());
 	template <class InputIterator>
-	vector(InputIterator first, InputIterator last,					// range constructor (3)
+	vector(InputIterator first, InputIterator last,									// range constructor (3)
 			const allocator_type& alloc = allocator_type(),
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
-	vector(const vector& x);										// copy constructor (4)
+	vector(const vector& x);														// copy constructor (4)
 
 	// operator
-	vector		&operator=(const vector& x);						// copy assignment oeprator
+	vector		&operator=(const vector& x);										// copy assignment oeprator
 
 	// destructor
 				~vector();
@@ -81,18 +82,18 @@ class vector
 
 	// Modifiers
 	template <class InputIterator>
-	void					assign(InputIterator first, InputIterator last,	// range (1)
+	void					assign(InputIterator first, InputIterator last,					// range (1)
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
-	void					assign(size_type n,								// fill (2)
+	void					assign(size_type n,												// fill (2)
 									const value_type& val = value_type());
 	void					push_back(const value_type& val);
 	void					pop_back();
-	iterator				insert(iterator position,						// single element (1)
+	iterator				insert(iterator position,										// single element (1)
 									const value_type& val = value_type());
-	void					insert(iterator position, size_type n,			// fill (2)
+	void					insert(iterator position, size_type n,							// fill (2)
 									const value_type& val = value_type());
 	template <class InputIterator>
-	void					insert(iterator position, InputIterator first,	// range (3)
+	void					insert(iterator position, InputIterator first,					// range (3)
 			InputIterator last, typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
 	iterator				erase(iterator position);
 	iterator				erase(iterator first, iterator last);
@@ -128,9 +129,10 @@ vector<T, Allocator>::vector(size_type n,
 		const allocator_type& alloc) : _alloc(alloc)
 {
 	_firstData = _alloc.allocate(n);
-	_lastData = _firstData + n;
+	_lastData = _firstData;
 	_endData = _firstData + n;
-	std::uninitialized_fill(_firstData, _lastData, val);
+	while (n--)
+		_alloc.construct(_lastData++, val);
 }
 
 template <class T, class Allocator>
@@ -145,10 +147,7 @@ vector<T, Allocator>::vector(InputIterator first, InputIterator last,
 	_lastData = _firstData;
 	_endData = _firstData + n;
 	while (n--)
-	{
-		_alloc.construct(_lastData, *(first++));
-		_lastData++;
-	}
+		_alloc.construct(_lastData++, *(first++));
 }
 
 template <class T, class Allocator>
@@ -164,20 +163,24 @@ template <class T, class Allocator>
 vector<T, Allocator>&
 vector<T, Allocator>::operator=(const vector<T, Allocator> &x)
 {
+	difference_type n;
+
 	if (x == *this)
 		return (*this);
 	if (this->capacity() < x.size())
 	{
 		this->reserve(x.size());
 		this->clear();
-		std::uninitialized_copy(x._firstData, x._lastData, _firstData);
-		_lastData = _firstData + x.size();
+		n = x.size();
+		for (difference_type i = 0; i < n; i++)
+			_alloc.construct(_lastData++, *(x._firstData + i));
 	}
 	else
 	{
 		this->clear();
-		std::uninitialized_copy(x._firstData, x._lastData, _firstData);
-		_lastData = _firstData + x.size();
+		n = x.size();
+		for (difference_type i = 0; i < n; i++)
+			_alloc.construct(_lastData++, *(x._firstData + i));
 	}
 	return (*this);
 }
@@ -279,6 +282,7 @@ vector<T, Allocator>::resize(size_type n, value_type val)
 			pointer newLastData;
 			pointer	newEndData;
 			size_type newSize;
+			size_type curSize;
 
 			if (n > this->capacity() * 2)
 				newSize = n;
@@ -286,8 +290,11 @@ vector<T, Allocator>::resize(size_type n, value_type val)
 				newSize = this->capacity() * 2;
 			newFirstData = _alloc.allocate(newSize);
 			newEndData = newFirstData + newSize;
-			std::uninitialized_copy(_firstData, _lastData, newFirstData);
-			std::uninitialized_fill(newFirstData + this->size(), newFirstData + n, val);
+			curSize = this->size();
+			for (size_type i = 0; i < curSize; i++)
+				_alloc.construct(newFirstData + i, *(_firstData + i));
+			for (size_type i = this->size(); i < newSize; i++)
+				_alloc.construct(newFirstData + i, val);
 			newLastData = newFirstData + n;
 			this->clear();
 			_alloc.deallocate(_firstData, this->capacity());
@@ -297,8 +304,8 @@ vector<T, Allocator>::resize(size_type n, value_type val)
 		}
 		else
 		{
-			std::uninitialized_fill(_lastData, _firstData + n, val);
-			_lastData = _firstData + n;
+			for (size_type i = this->size(); i < n; i++)
+				_alloc.construct(_lastData++, val);
 		}
 	}
 }
@@ -326,13 +333,16 @@ vector<T, Allocator>::reserve(size_type n)
 		throw (std::length_error("length_error"));
 	if (this->capacity() < n)
 	{
-		pointer newFirstData;
-		pointer newLastData;
-		pointer newEndData;
+		pointer 	newFirstData;
+		pointer 	newLastData;
+		pointer		newEndData;
+		size_type	curSize;
 
 		newFirstData = _alloc.allocate(n);
 		newEndData = newFirstData + n;
-		std::uninitialized_copy(_firstData, _lastData, newFirstData);
+		curSize = this->size();
+		for (size_type i = 0; i < curSize; i++)
+			_alloc.construct(newFirstData + i, *(_firstData + i));
 		newLastData = newFirstData + this->size();
 		this->clear();
 		_alloc.deallocate(_firstData, this->capacity());
@@ -447,7 +457,8 @@ vector<T, Allocator>::assign(size_type n, const value_type& val)
 	if (this->size() >= n)
 	{
 		this->clear();
-		std::uninitialized_fill(_firstData, _firstData + n, val);
+		for (size_type i = 0; i < n; i++)
+			_alloc.construct(_firstData + i, val);
 		_lastData = _firstData + n;
 	}
 	else
@@ -460,7 +471,8 @@ vector<T, Allocator>::assign(size_type n, const value_type& val)
 		else
 		{
 			this->clear();
-			std::uninitialized_fill(_firstData, _firstData + n, val);
+			for (size_type i = 0; i < n; i++)
+				_alloc.construct(_firstData + i, val);
 			_lastData = _firstData + n;
 		}
 	}
