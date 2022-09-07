@@ -173,7 +173,9 @@ reverse_iterator<Iterator>::operator[](difference_type n)
 }
 
 // non-member function overloads
+
 // addition operator overriding
+
 template <class Iterator>
 reverse_iterator<Iterator>
 operator+(typename reverse_iterator<Iterator>::difference_type n,
@@ -183,6 +185,7 @@ operator+(typename reverse_iterator<Iterator>::difference_type n,
 }
 
 // subtraction operator overriding
+
 template <class Iterator>
 typename reverse_iterator<Iterator>::difference_type
 operator-(const reverse_iterator<Iterator>& lhs,

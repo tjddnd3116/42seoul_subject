@@ -41,14 +41,14 @@ class set
 	public:
 	// constructor
 	explicit
-	set(const key_compare& comp = key_compare(),
+	set(const key_compare& comp = key_compare(),										// default constructor (1)
 			const allocator_type& alloc = allocator_type());
 	template <class InputIterator>
-	set(InputIterator first, InputIterator last,
+	set(InputIterator first, InputIterator last,										// range constructor (2)
 			const key_compare& comp = key_compare(),
 			const allocator_type& alloc = allocator_type(),
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
-	set(const set& x);
+	set(const set& x);																	// copy constructor (3)
 
 	// operator
 	set			&operator=(const set& x);
@@ -72,14 +72,14 @@ class set
 	size_type					max_size() const;
 
 	// Modifiers
-	pair<iterator, bool>		insert(const value_type& val);
-	iterator					insert(iterator position, const value_type& val);
+	pair<iterator, bool>		insert(const value_type& val);							// insert - single element (1)
+	iterator					insert(iterator position, const value_type& val);		// insert - with hint (2)
 	template <class InputIterator>
-	void						insert(InputIterator first, InputIterator last,
+	void						insert(InputIterator first, InputIterator last,			// insert - range (3)
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
-	void						erase(iterator position);
-	size_type					erase(const value_type& k);
-	void						erase(iterator first, iterator last);
+	void						erase(iterator position);								// erase - position (1)
+	size_type					erase(const value_type& k);								// erase - single element (2)
+	void						erase(iterator first, iterator last);					// erase - range (3)
 	void						swap(set& x);
 	void						clear();
 

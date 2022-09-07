@@ -602,10 +602,12 @@ setRedBlackTree<T, Compare, Alloc, node>::nodeMin(node* curNode)
 //
 //	2. 삭제한 노드가 black color 이다.
 //		->	조건4 위반
-//				기준노드와 부모노드가 red color 이다.
+//			기준노드와 부모노드가 red color 이다.
+//			-> 기준노드를 black color로 바꾼다.
 //
 //		->	조건5 위반
 //			root 노드에서 leaf노드 까지의 black노드의 개수가 다름
+//			기준노드가 black color라서 이중흑색노드가 된다.
 //			-> case 1. 기준노드가 부모의 왼쪽 자식이다.
 //				-> case 1-1. 형제노드가 red color 이다.
 //					형제노드를 black로 부모노드를 red로 변경한뒤 부모노드기준으로 left-rotation을 진행한다.
@@ -618,17 +620,30 @@ setRedBlackTree<T, Compare, Alloc, node>::nodeMin(node* curNode)
 //					형제노드를 red로 바꾼뒤 형제노드의 왼쪽자식을 black으로 변경한다.
 //					형제노드를 기준으로 right-rotate를 적용한다.
 //					기준노트의 새로운 형제노드의 오른쪽 자식이 red이다. -> case 1-4에 해당하는 상황
+//
 //				-> case 1-4. 형제노드가 black, 형제노드의 오른쪽 자식이 red이다.
 //					부모노드와 형제노드의 색을 바꾼뒤 형제노드의 오른쪽 자식을 black으로 바꾼다.
 //					부모노드를 기준으로 left-rotation을 적용한다.
+//
 //			-> case 2. 기준노드가 부모의 오른쪽 자식이다.
-//				-> case 2-1.
+//				-> case 2-1. 형제노드가 red color이다.
+//					형제노드를 black으로 부모노드를 red로 변경한다.
+//					부모노드 기준으로 right-rotate를 진행한다.
+//					이후 case 2-2, 2-3 2-4로 진행한다.
 //
-//				-> case 2-2.
+//				-> case 2-2. 형제노드가 black, 형제노드의 자식들도 black이다.
+//					형제노드를 red로 바꾼뒤 부모노드를 기준노드로 바꾼다.
 //
-//				-> case 2-3.
+//				-> case 2-3. 형제노드가 black, 형제노드의 오른쪽 자식이 red이다.
+//					형제노드를 red로 바꾼뒤 형제노드의 오른쪽 자식을 red로 변경
+//					형제노드를 기준으로 left-rotate를 적용한다.
+//					기준노드의 새로운 형제노드의 왼쪽 자식이 red이다.
+//					-> case 2-4에 해당하는 상황
 //
-//				-> case 2-4.
+//				-> case 2-4. 형제노드가 black, 형제노드의 왼쪽 자식이 red이다.
+//					부모노드와 형제노드의 색을 바꾼다.
+//					형제노드의 왼쪽자식을 black으로 바꾼다.
+//					부모노드 기준으로 right-rotate를 적용한다.
 
 template <class T, class Compare, class Alloc, class node>
 void

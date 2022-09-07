@@ -451,7 +451,7 @@ map<Key, T, Compare, Alloc>::get_allocator() const
 //------------------------------------------------------
 
 template <class Key, class T, class Compare, class Alloc>
-class map<Key, T, Compare, Alloc>::value_compare : public binary_funtion<value_type, value_type, bool>
+class map<Key, T, Compare, Alloc>::value_compare : public ft::binary_funtion<value_type, value_type, bool>
 {
 	friend class map;
 

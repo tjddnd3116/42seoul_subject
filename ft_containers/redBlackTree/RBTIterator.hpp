@@ -6,7 +6,7 @@
 namespace ft {
 
 //--------------------------------------------------------------
-//   redBlackTree<Key, T, Compare, Alloc>::RBTIterator synopsis
+//   RBTIterator<node, Compare> synopsis
 //--------------------------------------------------------------
 
 template <class node, class Compare>
@@ -48,7 +48,7 @@ class RBTIterator : public ft::iterator<ft::bidirectional_iterator_tag, node>
 };
 
 //--------------------------------------------------------------
-//   redBlackTree<Key, T, Compare, Alloc>::RBTIterator definition
+//   RBTIterator<node, Compare> definition
 //--------------------------------------------------------------
 
 template <class node, class Compare>
@@ -204,7 +204,7 @@ RBTIterator<node, Compare>::operator!=(const RBTIterator& op) const
 }
 
 //--------------------------------------------------------------
-//   redBlackTree<Key, T, Compare, Alloc>::const_RBTIterator synopsis
+//   const_RBTIterator<node, Compare> synopsis
 //--------------------------------------------------------------
 
 template <class node, class Compare>
@@ -247,7 +247,7 @@ class const_RBTIterator : public ft::iterator<ft::bidirectional_iterator_tag, no
 };
 
 //--------------------------------------------------------------
-//   redBlackTree<Key, T, Compare, Alloc>::const_RBTIterator definition
+//   const_RBTIterator<node, Compare> definition
 //--------------------------------------------------------------
 
 template <class node, class Compare>

@@ -35,19 +35,19 @@ class vector
 
 	//	constructor
 	explicit
-	vector(const allocator_type& alloc = allocator_type());							// default constructor (1)
+	vector(const allocator_type& alloc = allocator_type());									// default constructor (1)
 	explicit
-	vector(size_type n,																// fill constructor (2)
+	vector(size_type n,																		// fill constructor (2)
 			const value_type& val = value_type(),
 			const allocator_type& alloc = allocator_type());
 	template <class InputIterator>
-	vector(InputIterator first, InputIterator last,									// range constructor (3)
+	vector(InputIterator first, InputIterator last,											// range constructor (3)
 			const allocator_type& alloc = allocator_type(),
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
-	vector(const vector& x);														// copy constructor (4)
+	vector(const vector& x);																// copy constructor (4)
 
 	// operator
-	vector		&operator=(const vector& x);										// copy assignment oeprator
+	vector		&operator=(const vector& x);												// copy assignment oeprator
 
 	// destructor
 				~vector();
@@ -82,19 +82,19 @@ class vector
 
 	// Modifiers
 	template <class InputIterator>
-	void					assign(InputIterator first, InputIterator last,					// range (1)
+	void					assign(InputIterator first, InputIterator last,						// assign - range (1)
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
-	void					assign(size_type n,												// fill (2)
+	void					assign(size_type n,													// assgin - fill (2)
 									const value_type& val = value_type());
 	void					push_back(const value_type& val);
 	void					pop_back();
-	iterator				insert(iterator position,										// single element (1)
+	iterator				insert(iterator position,											// insert - single element (1)
 									const value_type& val = value_type());
-	void					insert(iterator position, size_type n,							// fill (2)
+	void					insert(iterator position, size_type n,								// insert - fill (2)
 									const value_type& val = value_type());
 	template <class InputIterator>
-	void					insert(iterator position, InputIterator first,					// range (3)
-			InputIterator last, typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
+	void					insert(iterator position, InputIterator first,InputIterator last,	// insert - range (3)
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
 	iterator				erase(iterator position);
 	iterator				erase(iterator first, iterator last);
 	void					swap(vector& x);

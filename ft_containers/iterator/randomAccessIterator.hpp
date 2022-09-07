@@ -234,7 +234,6 @@ random_access_iterator<T>::base() const
 }
 
 // non-member function overloads
-// addition operator overriding
 
 template <typename T_l, typename T_r>
 bool
@@ -275,8 +274,6 @@ operator+(typename random_access_iterator<T>::difference_type n,
 {
 	return (op + n);
 }
-
-// subtraction operator overriding
 
 template <typename T>
 typename random_access_iterator<T>::difference_type
