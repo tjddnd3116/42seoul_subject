@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:06:05 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:07:12 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 18:02:16 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@
 # define FOG_FACTOR (800)
 
 # define HALF_GRID_LEN (256)
+
+typedef struct s_col_line_info
+{
+	mlx_texture_t	*texture;
+	int32_t			range;
+	int32_t			pos;
+	double			fog_factor;
+}	t_col_line_info;
 
 static const double		g_fov = M_PI / 3;
 static const int32_t	g_half_screen_height = SCREEN_HEIGHT / 2;

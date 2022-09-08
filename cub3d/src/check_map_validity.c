@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:06:25 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 18:56:20 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 16:46:22 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@ static void	unmask_map(uint32_t **map, int rows, int cols);
 static int	check_door(uint32_t **map, int rows, int cols,
 				t_ivec2 *boundary);
 
-/*
- * return value 1: FAIL, 0: SUCCESS
- * return value of check_closed()
- * 		1: SUCCESS, 0:FAIL
- */
 int	check_map_validity(uint32_t **map, int rows, int cols, t_ivec2 *player_pos)
 {
 	int		i;

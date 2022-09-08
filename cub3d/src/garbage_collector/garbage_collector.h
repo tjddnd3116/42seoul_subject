@@ -6,12 +6,15 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:07:44 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:07:44 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 18:06:29 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GARBAGE_COLLECTOR_H
 # define GARBAGE_COLLECTOR_H
+
+# include <unistd.h>
+# include <stdlib.h>
 
 typedef struct s_garbage
 {

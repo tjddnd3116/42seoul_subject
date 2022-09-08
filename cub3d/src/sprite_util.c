@@ -6,29 +6,22 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:07:25 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:07:26 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:55:03 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycasting.h"
 #include "sprite.h"
+#include "screen_renderer.h"
 
-uint32_t	get_sprite_color(t_sprite *sprite, int32_t pos, int32_t y)
+uint32_t	get_sprite_color(t_col_line_info *info, int32_t y)
 {
-	mlx_texture_t	*texture;
-	uint32_t		color;
-	int32_t			range;
-
-	texture = sprite->texture[sprite->idx];
-	range = g_canvas_dist * g_half_screen_height / sprite->distance;
-	if (-range + g_half_screen_height > y || range + g_half_screen_height <= y)
+	if (-info->range + g_half_screen_height > y
+		|| info->range + g_half_screen_height <= y)
 		return (0);
-	y = (y - g_half_screen_height + range) * texture->height / (2 * range);
-	color = *((uint32_t *)texture->pixels + \
-			((int)y * texture->width + pos));
-	color = apply_fog_bswap(color, FOG_FACTOR
-			/ (sprite->distance + FOG_FACTOR));
-	return (color);
+	y = (y - g_half_screen_height + info->range)
+		* info->texture->height / (2 * info->range);
+	return (apply_fog_bswap(*((uint32_t *)info->texture->pixels + \
+			((int)y * info->texture->width + info->pos)), info->fog_factor));
 }
 
 int	compare(const void *comp1, const void *comp2)

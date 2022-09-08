@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:07:27 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:07:27 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:45:54 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,6 @@
 void	user_interface(t_mlx_data *mlx_data)
 {
 	crosshair_line(mlx_data, 6, 6);
-}
-
-void	print_frame(void)
-{
-	struct timeval	time1;
-	static uint64_t	old_ms;
-	uint64_t		ms;
-
-	gettimeofday(&time1, NULL);
-	ms = time1.tv_sec * 1000 + time1.tv_usec / 1000;
-	printf("fps: %f\n", 1000.0 / (ms - old_ms));
-	old_ms = ms;
 }
 
 void	crosshair_line(t_mlx_data *data, int pos, int len)

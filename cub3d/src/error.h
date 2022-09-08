@@ -6,12 +6,14 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:06:40 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:06:40 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 18:06:19 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_H
 # define ERROR_H
+
+# include <stdlib.h>
 
 # include "cub3d.h"
 # include "garbage_collector/garbage_collector.h"

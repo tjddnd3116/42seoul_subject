@@ -6,12 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:06:51 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:55:57 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:39:41 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hook.h"
-#include "MLX42_Input.h"
 
 static int	get_player_move_input(t_mlx_data *data, t_player *player);
 

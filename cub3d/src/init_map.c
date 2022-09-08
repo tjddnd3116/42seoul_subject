@@ -6,12 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:06:57 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:06:58 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:40:42 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_data.h"
-#include <string.h>
 
 static void	get_map_size(int fd, t_mlx_data *mlx_data);
 static void	load_map(int fd, t_mlx_data *mlx_data);

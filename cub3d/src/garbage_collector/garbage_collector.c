@@ -6,13 +6,9 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:07:42 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:07:42 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:32:00 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
 
 #include "garbage_collector.h"
 

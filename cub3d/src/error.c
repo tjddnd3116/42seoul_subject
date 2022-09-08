@@ -6,12 +6,9 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:06:38 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:06:38 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:34:34 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
 
 #include "error.h"
 
@@ -40,4 +37,3 @@ void	error_handler(int status)
 	dump_garbage();
 	exit(status);
 }
-//	system("leaks cub3d");

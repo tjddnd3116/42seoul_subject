@@ -1,28 +1,9 @@
-     F       29,206,195
+f 29,206,195
+C 12,11,64,11
 
-   NO     ./images/wall1.png
-
-           C      64,64,64
-
-SO   ./images/wall2.png
-
-
-
-
-WE  ./images/wall3.png
-
-
-
-
-
-
-
-
-
-
-
-
-
+NO ./images/wall1.png
+SO ./images/wall2.png
+WE ./images/wall3.png
 EA ./images/wall4.png
 
        111111111111111111111111111

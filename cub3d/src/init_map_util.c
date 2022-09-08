@@ -6,11 +6,10 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:06:59 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:06:59 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:41:17 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
 #include "read_config.h"
 
 int	get_map_line(const char *path)

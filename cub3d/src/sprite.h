@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:07:24 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:17:06 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:58:30 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define SPRITE_H
 
 # include "cub3d.h"
+# include "raycasting.h"
+# include "player_move.h"
 
 # define SPRITE_WIDTH (256)
 # define MAX_SPRITE_TEXTURE (8)
@@ -45,7 +47,7 @@ typedef struct s_sprite
 }	t_sprite;
 
 void		render_sprite(t_mlx_data *mlx_data, const double *depth_buffer);
-uint32_t	get_sprite_color(t_sprite *sprite, int32_t pos, int32_t y);
+uint32_t	get_sprite_color(t_col_line_info *info, int32_t y);
 int			compare(const void *comp1, const void *comp2);
 void		init_sprite_texture(t_mlx_data *mlx_data);
 void		init_sprite(t_mlx_data *mlx_data);

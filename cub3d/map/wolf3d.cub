@@ -1,10 +1,10 @@
 NO ./images/bluestone.png
-SO ./images/greystone.png
-WE ./images/redbrick.png
-EA ./images/mossy.png
+SO ./images/bluestone.png
+WE ./images/bluestone.png
+EA ./images/bluestone.png
 DO ./images/new_door.png
 
-F 64,64,64
+F 64,64,100
 C 64,64,64
 
 1111111111111111111111111

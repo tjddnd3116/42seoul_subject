@@ -6,15 +6,10 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:07:00 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:17:16 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:59:37 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-
-#include "dlinkedlist.h"
-#include "raycasting.h"
-#include "player_move.h"
 #include "sprite.h"
 
 void	init_item_sprite(t_mlx_data *mlx_data, uint32_t type, t_sprite *sprite);

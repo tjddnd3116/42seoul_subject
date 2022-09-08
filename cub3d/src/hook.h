@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:06:53 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:06:53 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:39:52 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include "sprite.h"
 
 # define SPEED (50)
-/** # define ANGULAR_SPEED (0.157) // ~= M_PI / 20 */
 # define ANGULAR_SPEED (0.06)
 # define MOUSE_SENSITIVITY (0.001)
 

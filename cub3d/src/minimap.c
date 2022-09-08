@@ -6,12 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:07:02 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:07:03 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:43:41 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minimap.h"
-#include "cub3d.h"
 
 static const uint32_t	g_color_table[128] = {
 	0x0f0f0fff,	//	0 empty
@@ -208,7 +207,6 @@ inline static uint32_t	get_color(const t_ivec2 pos, const t_map map)
 	return (g_color_table[idx]);
 }
 
-// player icon: arrow, circle, triangle, square, ...
 static void	draw_player(mlx_image_t *minimap)
 {
 	int		start_y;

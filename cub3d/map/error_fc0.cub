@@ -1,5 +1,5 @@
 FF 29,206,195
-C 999,64,64
+C 53,64,64
 
 NO ./images/wall1.png
 SO ./images/wall2.png

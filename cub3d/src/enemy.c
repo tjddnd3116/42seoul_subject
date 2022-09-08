@@ -6,11 +6,9 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:06:37 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:06:37 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:34:15 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdint.h>
 
 #include "cub3d.h"
 #include "sprite.h"

@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:07:19 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:07:19 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 18:01:42 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	draw_col_line(t_mlx_data *data, t_ray point, int idx)
 	int32_t			y;
 	t_col_line_info	col_line_info;
 
-	col_line_info.wall_texture = data->texture_list.wall[point.direction];
+	col_line_info.texture = data->texture_list.wall[point.direction];
 	col_line_info.range = g_canvas_dist * g_half_screen_height / point.distance;
-	col_line_info.pos = get_pos(col_line_info.wall_texture, &point,
+	col_line_info.pos = get_pos(col_line_info.texture, &point,
 			data->map.map[lround(point.y) / GRID_LEN]
 		[lround(point.x) / GRID_LEN] >> INFO_BITSHIFT);
 	col_line_info.fog_factor = FOG_FACTOR / (point.distance + FOG_FACTOR);
@@ -113,9 +113,9 @@ static uint32_t	get_color(t_mlx_data *data, t_col_line_info *info, int32_t y)
 	else if (info->range + g_half_screen_height <= y)
 		return (apply_fog(data->texture_list.ceiling_color, fog));
 	y = (y - g_half_screen_height + info->range)
-		* info->wall_texture->height / (2 * info->range);
+		* info->texture->height / (2 * info->range);
 	return (apply_fog_bswap(
-			*((uint32_t *)info->wall_texture->pixels
-				+ ((int)y * info->wall_texture->width + info->pos)),
+			*((uint32_t *)info->texture->pixels
+				+ ((int)y * info->texture->width + info->pos)),
 			info->fog_factor));
 }

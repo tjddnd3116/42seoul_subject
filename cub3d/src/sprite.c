@@ -6,14 +6,12 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:07:23 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 16:23:24 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 18:01:02 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-
-#include "MLX42.h"
 #include "raycasting.h"
+#include "screen_renderer.h"
 #include "sprite.h"
 
 static void	load_distance(t_mlx_data *mlx_data);
@@ -95,16 +93,18 @@ void	draw_sprite_col_line(t_mlx_data *mlx_data, t_sprite *sprite,
 		int32_t idx, double transfer_ratio)
 {
 	int32_t			pixel_y;
-	int32_t			texture_x_pos;
 	uint32_t		color;
-	mlx_texture_t	*texture;
+	t_col_line_info	col_line_info;
 
 	pixel_y = 0;
-	texture = sprite->texture[sprite->idx];
-	texture_x_pos = texture->width * transfer_ratio;
+	col_line_info.texture = sprite->texture[sprite->idx];
+	col_line_info.range = g_canvas_dist * g_half_screen_height
+		/ sprite->distance;
+	col_line_info.pos = col_line_info.texture->width * transfer_ratio;
+	col_line_info.fog_factor = FOG_FACTOR / (sprite->distance + FOG_FACTOR);
 	while (pixel_y < SCREEN_HEIGHT)
 	{
-		color = get_sprite_color(sprite, texture_x_pos, pixel_y);
+		color = get_sprite_color(&col_line_info, pixel_y);
 		if (color != 0)
 		{
 			mlx_put_pixel(mlx_data->main_img, 2 * idx, pixel_y, color);

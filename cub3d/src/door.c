@@ -6,13 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:06:28 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:06:28 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:36:54 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "door.h"
-#include "cub3d.h"
-#include "raycasting.h"
 
 int	check_east_door(t_ray *ray, uint32_t *type, double angle)
 {

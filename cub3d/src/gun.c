@@ -6,13 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:06:49 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 16:18:03 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:39:58 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gun.h"
-#include "MLX42.h"
-#include "cub3d.h"
 
 int	gun_image_to_window(t_mlx_data *mlx_data, int gun_idx)
 {

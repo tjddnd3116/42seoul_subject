@@ -6,13 +6,11 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:06:54 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:06:54 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 16:23:33 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_data.h"
-#include "cub3d.h"
-#include <stdint.h>
 
 static void	init_mlx(t_mlx_data *mlx_data);
 static void	init_player(t_map map, t_player *player);

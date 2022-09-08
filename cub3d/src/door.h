@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:06:30 by soum              #+#    #+#             */
-/*   Updated: 2022/09/04 15:06:30 by soum             ###   ########.fr       */
+/*   Updated: 2022/09/07 17:33:06 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define DOOR_H
 
 # include <math.h>
-# include <stdio.h>
 
 # include "cub3d.h"
 # include "raycasting.h"
