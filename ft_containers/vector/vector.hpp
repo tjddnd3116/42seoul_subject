@@ -619,8 +619,6 @@ template <class T, class Allocator>
 void
 vector<T, Allocator>::swap(vector& x)
 {
-	if (x == *this)
-		return;
 	pointer tmpFirstData;
 	pointer tmpLastData;
 	pointer tmpEndData;

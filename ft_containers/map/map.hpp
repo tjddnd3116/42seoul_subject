@@ -82,7 +82,7 @@ class map
 	iterator				insert(iterator position, const value_type& val);				// insert - with hint (2)
 	template <class InputIterator>
 	void					insert(InputIterator first, InputIterator last,					// insert - range (3)
-			typename std::enable_if<!std::is_integral<InputIterator>::value>::type* = 0);
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
 	void					erase(iterator position);										// erase - position (1)
 	size_type				erase(const key_type& k);										// erase - single element(2)
 	void					erase(iterator first, iterator last);							// erase - range(3)
@@ -265,7 +265,7 @@ template <class Key, class T, class Compare, class Alloc>
 template <class InputIterator>
 void
 map<Key, T, Compare, Alloc>::insert(InputIterator first, InputIterator last,
-		typename std::enable_if<!std::is_integral<InputIterator>::value>::type*)
+		typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type*)
 {
 	for (; first != last; first++)
 		_rbt.insert(ft::make_pair(first->first, first->second));
