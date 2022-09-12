@@ -20,10 +20,8 @@ RUN mv $KEYS /etc/ssl/private
 RUN mv $CERTS /etc/ssl/certs
 
 # nginx conf 파일 추가
-COPY ./conf/soum.42.fr.conf /etc/nginx/conf.d/
-COPY ./conf/soum.42.fr /etc/nginx/sites-available/
-# COPY ./conf/test.conf /etc/nginx/conf.d/
-# COPY ./conf/test /etc/nginx/sites-available/
+RUN rm /etc/nginx/sites-available/default
+COPY ./conf/default /etc/nginx/sites-available/
 
 # nginx daemon 설정
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf

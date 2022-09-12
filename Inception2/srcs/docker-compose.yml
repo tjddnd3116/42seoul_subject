@@ -1,5 +1,9 @@
 version: '3'
 
+networks:
+  inception_net:
+    driver: bridge
+
 services:
   mariadb:
     image: mariadb:${TAG}
@@ -16,7 +20,7 @@ services:
       - ./.env
     expose:
       - "3306"
-    # restart: unless-stopped
+    restart: unless-stopped
     volumes:
       - db:/var/lib/mysql
     networks:
@@ -25,8 +29,6 @@ services:
   wordpress:
     image: wordpress:${TAG}
     container_name: wordpress
-    env_file:
-      - ./.env
     build:
       context: ./requirements/wordpress
       args:
@@ -46,50 +48,48 @@ services:
         WP_USER: ${WP_USER}
         WP_USER_EMAIL: ${WP_USER_EMAIL}
         WP_USER_PW: ${WP_USER_PW}
+    env_file:
+      - ./.env
     expose:
       - "9000"
-    # restart: unless-stopped
-    # volumes:
-    #   - wp:/var/www/wordpress
-    # depends_on:
-    #   - mariadb
+    restart: unless-stopped
+    volumes:
+      - wp:/var/www/wordpress
+    depends_on:
+      - mariadb
     networks:
       - inception_net
-  #
-  # nginx:
-  #   image:  nginx:${TAG}
-  #   container_name: nginx
-  #   build:
-  #     context: ./requirements/nginx
-  #     args:
-  #       CERTS: ${CERTS}
-  #       KEYS: ${KEYS}
-  #   env_file:
-  #     - ./.env
-  #   restart: unless-stopped
-  #   ports:
-  #     - "443:443"
-  #   volumes:
-  #     - wp:/var/www/wordpress
-  #   depends_on:
-  #     - wordpress
-  #   networks:
-  #     - inception_net
+
+  nginx:
+    image:  nginx:${TAG}
+    container_name: nginx
+    build:
+      context: ./requirements/nginx
+      args:
+        CERTS: ${CERTS}
+        KEYS: ${KEYS}
+    env_file:
+      - ./.env
+    restart: unless-stopped
+    ports:
+      - "443:443"
+    volumes:
+      - wp:/var/www/wordpress
+    depends_on:
+      - wordpress
+    networks:
+      - inception_net
 
 volumes:
-  # wp:
-  #   driver: local
-  #   driver_opts:
-  #     type: none
-  #     o: bind
-  #     device: ~/data/wordpress
+  wp:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /Users/soum/data/wordpress
   db:
     driver: local
     driver_opts:
       type: none
       o: bind
       device: /Users/soum/data/mariadb
-
-networks:
-  inception_net:
-    driver: bridge
