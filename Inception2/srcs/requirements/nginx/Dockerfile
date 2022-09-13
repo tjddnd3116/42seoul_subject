@@ -1,8 +1,11 @@
+# base 이미지
 FROM debian:buster
 
+# build시 사용할 arg
 ARG CERTS
 ARG KEYS
 
+# 이미지 정보
 LABEL email="soum@student.42seoul.kr"
 LABEL name="soum"
 LABEL version="1.0"
@@ -26,5 +29,5 @@ COPY ./conf/default /etc/nginx/sites-available/
 # nginx daemon 설정
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 
-# nginx 실행
+# 이미지 실행시 nginx 실행
 CMD nginx

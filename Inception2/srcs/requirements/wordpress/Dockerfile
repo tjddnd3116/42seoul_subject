@@ -1,34 +1,23 @@
+# base 이미지
 FROM debian:buster
 
-# ARG DOMAIN_NAME
-# ARG MYSQL_HOST
-# ARG MYSQL_PORT
-# ARG MYSQL_ROOT
-# ARG MYSQL_ROOT_PASSWORD
-# ARG MYSQL_PASSWORD
-# ARG MYSQL_DATABASE
-# ARG MYSQL_USER
-# ARG WP_TITLE
-# ARG WP_ADMIN
-# ARG WP_ADMIN_EMAIL
-# ARG WP_ADMIN_PW
-# ARG WP_USER
-# ARG WP_USER_EMAIL
-# ARG WP_USER_PW
-# ARG WP_PORT
-#
+# 이미지 정보
 LABEL email="soum@student.42seoul.kr"
 LABEL name="soum"
 LABEL version="1.0"
 LABEL description="wordpress + php-fpm"
 
+# php, mariadb-client 설치
 RUN apt-get update -y && apt-get install -y php-fpm && apt-get install -y php-mysql && apt-get install -y wget && apt-get install -y mariadb-client
 
-COPY ./tools/conf.sh /
-RUN chmod +x /conf.sh
-
+# wp-cli 설치
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
+# wordpress다운 및 설치, 유저추가를 위한 스크립트 복사
+COPY ./tools/conf.sh /
+RUN chmod +x /conf.sh
+
+# 이미지 실행시 스크립트 실행
 CMD /conf.sh
