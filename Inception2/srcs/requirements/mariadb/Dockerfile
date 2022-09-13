@@ -11,7 +11,7 @@ LABEL name="soum"
 LABEL version="1.0"
 LABEL description="mariadb"
 
-RUN apt-get update -y && apt-get install -y vim && apt-get install -y mariadb-server
+RUN apt-get update -y && apt-get install -y mariadb-server
 
 COPY ./tools/conf.sh /
 RUN chmod +x /conf.sh

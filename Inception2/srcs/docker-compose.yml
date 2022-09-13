@@ -1,9 +1,5 @@
 version: '3'
 
-networks:
-  inception_net:
-    driver: bridge
-
 services:
   mariadb:
     image: mariadb:${TAG}
@@ -31,23 +27,23 @@ services:
     container_name: wordpress
     build:
       context: ./requirements/wordpress
-      args:
-        MYSQL_HOST: ${MYSQL_HOST}
-        MYSQL_PORT: ${MYSQL_PORT}
-        MYSQL_ROOT: ${MYSQL_ROOT}
-        MYSQL_PORT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-        MYSQL_DATABASE: ${MYSQL_DATABASE}
-        MYSQL_USER: ${MYSQL_USER}
-        DOMAIN_NAME: ${DOMAIN_NAME}
-        WP_TITLE: ${WP_TITLE}
-        WP_ADMIN: ${WP_ADMIN}
-        WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
-        WP_ADMIN_PW: ${WP_ADMIN_PW}
-        WP_PORT: ${WP_PORT}
-        WP_USER: ${WP_USER}
-        WP_USER_EMAIL: ${WP_USER_EMAIL}
-        WP_USER_PW: ${WP_USER_PW}
+      # args:
+    #     MYSQL_HOST: ${MYSQL_HOST}
+    #     MYSQL_PORT: ${MYSQL_PORT}
+    #     MYSQL_ROOT: ${MYSQL_ROOT}
+    #     MYSQL_PORT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    #     MYSQL_DATABASE: ${MYSQL_DATABASE}
+    #     MYSQL_USER: ${MYSQL_USER}
+    #     DOMAIN_NAME: ${DOMAIN_NAME}
+    #     WP_TITLE: ${WP_TITLE}
+    #     WP_ADMIN: ${WP_ADMIN}
+    #     WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
+    #     WP_ADMIN_PW: ${WP_ADMIN_PW}
+    #     WP_PORT: ${WP_PORT}
+    #     WP_USER: ${WP_USER}
+    #     WP_USER_EMAIL: ${WP_USER_EMAIL}
+    #     WP_USER_PW: ${WP_USER_PW}
     env_file:
       - ./.env
     expose:
@@ -63,13 +59,13 @@ services:
   nginx:
     image:  nginx:${TAG}
     container_name: nginx
+    env_file:
+      - ./.env
     build:
       context: ./requirements/nginx
       args:
         CERTS: ${CERTS}
         KEYS: ${KEYS}
-    env_file:
-      - ./.env
     restart: unless-stopped
     ports:
       - "443:443"
@@ -87,9 +83,17 @@ volumes:
       type: none
       o: bind
       device: /Users/soum/data/wordpress
+      #fix it in virtualBox!!
+      # device: /home/soum/data/wordpress
   db:
     driver: local
     driver_opts:
       type: none
       o: bind
       device: /Users/soum/data/mariadb
+      #fix it in virtualBox!!
+      # device: /home/soum/data/mariadb
+
+networks:
+  inception_net:
+    driver: bridge

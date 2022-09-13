@@ -1,57 +1,57 @@
 version: '3'
 
-volumes:
-  wp:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /Users/soum/data/wordpress
-  db:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /Users/soum/data/mariadb
-
+# volumes:
+#   wp:
+#     driver: local
+#     driver_opts:
+#       type: none
+#       o: bind
+#       device: /Users/soum/data/wordpress
+#   db:
+#     driver: local
+#     driver_opts:
+#       type: none
+#       o: bind
+#       device: /Users/soum/data/mariadb
+#
 services:
-  mariadb:
-    image: mariadb:${TAG}
-    container_name: mariadb
-    build:
-      context: ./requirements/mariadb
-      args:
-        MYSQL_DATABASE: ${MYSQL_DATABASE}
-        MYSQL_USER: ${MYSQL_USER}
-        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-        MYSQL_ROOT: ${MYSQL_ROOT}
-        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-    env_file:
-      - .env
-    expose:
-      - "3306"
-    restart: unless-stopped
-    volumes:
-      - db:/var/lib/mysql
-    networks:
-      - inception_net
-
-  wordpress:
-    image: wordpress:${TAG}
-    container_name: wordpress
-    build: ./requirements/wordpress
-    env_file:
-      - .env
-    expose:
-      - "9000"
-    restart: unless-stopped
-    volumes:
-      - wp:/var/www/wordpress
-    depends_on:
-      - mariadb
-    networks:
-      - inception_net
-
+  # mariadb:
+  #   image: mariadb:${TAG}
+  #   container_name: mariadb
+  #   build:
+  #     context: ./requirements/mariadb
+  #     args:
+  #       MYSQL_DATABASE: ${MYSQL_DATABASE}
+  #       MYSQL_USER: ${MYSQL_USER}
+  #       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #       MYSQL_ROOT: ${MYSQL_ROOT}
+  #       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  #   env_file:
+  #     - .env
+  #   expose:
+  #     - "3306"
+  #   restart: unless-stopped
+  #   volumes:
+  #     - db:/var/lib/mysql
+  #   networks:
+  #     - inception_net
+  #
+  # wordpress:
+  #   image: wordpress:${TAG}
+  #   container_name: wordpress
+  #   build: ./requirements/wordpress
+  #   env_file:
+  #     - .env
+  #   expose:
+  #     - "9000"
+  #   restart: unless-stopped
+  #   volumes:
+  #     - wp:/var/www/wordpress
+  #   depends_on:
+  #     - mariadb
+  #   networks:
+  #     - inception_net
+  #
   nginx:
     image:  nginx:${TAG}
     container_name: nginx
@@ -65,14 +65,13 @@ services:
     restart: unless-stopped
     ports:
       - "443:443"
-    volumes:
-      - wp:/var/www/wordpress
-    depends_on:
-      - wordpress
+    # volumes:
+    #   - wp:/var/www/wordpress
+    # depends_on:
+    #   - wordpress
     networks:
       - inception_net
 
 networks:
   inception_net:
-    name: inception_net
     driver: bridge
