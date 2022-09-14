@@ -21,7 +21,7 @@ COPY ./tools/conf.sh /
 RUN chmod +x /conf.sh
 RUN ./conf.sh
 
-RUN service mysql start && mariadb < mariadb.sh
-RUN rm mariadb.sh
+RUN service mysql start && mariadb < mariadb_conf.sh
+RUN rm mariadb_conf.sh
 
 CMD mysqld

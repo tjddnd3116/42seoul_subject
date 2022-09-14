@@ -16,7 +16,7 @@ services:
       - ./.env
     expose:
       - "3306"
-    restart: unless-stopped
+    restart: on-failure
     volumes:
       - db:/var/lib/mysql
     networks:
@@ -31,7 +31,7 @@ services:
       - ./.env
     expose:
       - "9000"
-    restart: unless-stopped
+    restart: on-failure
     volumes:
       - wp:/var/www/wordpress
     depends_on:
@@ -49,7 +49,7 @@ services:
       args:
         CERTS: ${CERTS}
         KEYS: ${KEYS}
-    restart: unless-stopped
+    restart: on-failure
     ports:
       - "443:443"
     volumes:
