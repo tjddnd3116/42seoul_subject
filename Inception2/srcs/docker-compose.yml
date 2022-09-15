@@ -65,17 +65,17 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /Users/soum/data/wordpress
+      # device: /Users/soum/data/wordpress
       #put it in virtualBox!!
-      # device: /home/soum/data/wordpress
+      device: /home/soum/data/wordpress
   db:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /Users/soum/data/mariadb
+      # device: /Users/soum/data/mariadb
       #put it in virtualBox!!
-      # device: /home/soum/data/mariadb
+      device: /home/soum/data/mariadb
 
 networks:
   inception_net:

@@ -1,33 +1,29 @@
+DOC_COM = docker-compose -f
+DOC_YML = docker-compose.yml
+DOC_YML_PATH = ./srcs/
+DB_PATH = /home/soum/data/mariadb
+WP_PATH = /home/soum/data/wordpress
+RM_VOL = docker volume rm
+RM_IMG = docker rmi -f
+
+
 all: build up
 
 build:
-	@sudo docker-compose -f ./srcs/docker-compose.yml build
+	@docker-compose -f ./srcs/docker-compose.yml build
 
 up:
-	@sudo mkdir -p /home/soum/data/mariadb;\
-	sudo mkdir -p /home/soum/data/wordpress;\
-	sudo docker-compose -f ./srcs/docker-compose.yml up -docker
+	@mkdir -p $(DB_PATH);\
+	mkdir -p $(WP_PATH);\
+	$(DOC_COM) $(DOC_YML_PATH)$(DOC_YML) up -d
 
 down:
-	@sudo docker-compose -f ./srcs/docker-compose.yml down
+	@docker-compose -f ./srcs/docker-compose.yml down
+
+clean: down
+	@$(RM_IMG) $$(docker images -q);\
+	$(RM_VOL) $$(docker volume ls -q);
 
 re: clean build up
 
-clean: down
-	@sudo docker rmi -f $$(sudo docker images -q);\
-	sudo docker volume rm $$(sudo docekr volume ls -q);\
-	sudo rm -rf /home/soum/data
-
-ps:
-	@sudo docker-compose -f ./srcs/docker-compose.yml ps;\
-	sudo docker volume ls;\
-	sudo docker network ls;\
-	sudo docker-compose -f ./srcs/docker-compose.yml top
-
-image:
-	@sudo docker-compose -f ./srcs/docker-compose.yml images
-
-config:
-	@sudo docker-compose -f ./srcs/docker-compose.yml config
-
-.PHONY: all build up down re clean image config
+.PHONY: all build up down re clean
