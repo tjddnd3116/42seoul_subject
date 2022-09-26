@@ -1,20 +1,22 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    .defaultMakefile                                   :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/04/16 13:33:21 by soum             ###   ########.fr        #
+#    Updated: 2022/09/26 15:15:59 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = a.out
+NAME = webserv
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp
+SRCS = main.cpp \
+	   WsInitializer.cpp \
+	   WsException.cpp \
 
 .cpp.o :
 	$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)
@@ -29,7 +31,7 @@ $(NAME) : $(OBJS)
 debug : all
 	$(CXX) $(CXXFLAGS) -g $(SRCS) -o $(NAME)
 	$(shell cp ~/vimspector.json ./.vimspector.json)
-	$(shell perl -pi -e 's/filename/a.out/g' .vimspector.json)
+	$(shell perl -pi -e 's/filename/webserv/g' .vimspector.json)
 
 clean :
 	rm -f $(OBJS)
