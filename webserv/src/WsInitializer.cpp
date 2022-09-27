@@ -3,7 +3,6 @@
 
 WsInitializer::WsInitializer(char *path)
 {
-
 	(void)path;
 	m_conf.m_listenPort = 4001;
 	m_conf.m_rootPath = "./html";

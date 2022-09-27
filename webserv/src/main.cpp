@@ -11,7 +11,6 @@ int main(int argc, char **argv)
 	{
 		if (argc != 2)
 			throw (WsException("invalid arguments count"));
-
 		WsInitializer wsInit(argv[1]);
 		WsServer	wsServer(wsInit.getConfigInfo());
 

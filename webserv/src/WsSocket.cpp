@@ -1,5 +1,6 @@
 #include "WsSocket.hpp"
 #include "WsException.hpp"
+#include <sys/socket.h>
 
 WsSocket::WsSocket()
 {
@@ -27,11 +28,14 @@ WsSocket::operator=(const WsSocket& copy)
 void
 WsSocket::createSock(void)
 {
+	int option;
+
+	option = 1;
 	m_SocketFd = socket(AF_INET, SOCK_STREAM, 0);
 	if (m_SocketFd == -1)
 		throw WsException("create socket fail");
-	else
-		std::cout << "create socket success!" << std::endl;;
+	setsockopt(m_SocketFd, SOL_SOCKET, SO_REUSEADDR, &option, sizeof(option));
+	std::cout << "option : " << option << std::endl;
 }
 
 void
@@ -41,7 +45,6 @@ WsSocket::initAddr(const struct configInfo& conf)
 	m_SocketAddr.sin_family = AF_INET;
 	m_SocketAddr.sin_port = htons(conf.m_listenPort);
 	m_SocketAddr.sin_addr.s_addr = htonl(INADDR_ANY);
-	std::cout << "init socket address success!" << std::endl;
 }
 
 void
@@ -52,8 +55,6 @@ WsSocket::bindSock(void)
 	bindRet = bind(m_SocketFd, (const struct sockaddr*)&m_SocketAddr, sizeof(m_SocketAddr));
 	if (bindRet == -1)
 		throw WsException("bind socket fail");
-	else
-		std::cout << "bind socket success!" << std::endl;;
 }
 
 void
@@ -64,8 +65,6 @@ WsSocket::listenSock(void)
 	listenRet = listen(m_SocketFd, 5);
 	if (listenRet == -1)
 		throw WsException("listen socket fail");
-	else
-		std::cout << "listen socket success!" << std::endl;
 }
 
 void WsSocket::acceptSock(const WsSocket &serverSock)
@@ -73,8 +72,6 @@ void WsSocket::acceptSock(const WsSocket &serverSock)
 	m_SocketFd = accept(serverSock.m_SocketFd, (struct sockaddr*)&m_SocketAddr, &m_SocketAddrSize);
 	if (m_SocketFd < 0)
 		throw WsException("accept socket fail");
-	else
-		std::cout << "accept socket success!" << std::endl;;
 }
 
 void WsSocket::readSock(const WsSocket &clientSock)
@@ -94,13 +91,11 @@ void WsSocket::readSock(const WsSocket &clientSock)
 		strBuffer = m_buffer;
 		std::cout << "read : "<< m_buffer << std::endl;
 	}
-	std::cout << "read socekt success!" << std::endl;
 }
 
 void WsSocket::sendSock()
 {
 	send(m_SocketFd, m_strBuffer.c_str(), m_strBuffer.size() + 1, 0);
-	std::cout << "send socket success!" << std::endl;
 }
 
 void WsSocket::setStrBuffer(const std::string &str)
@@ -111,6 +106,5 @@ void WsSocket::setStrBuffer(const std::string &str)
 void WsSocket::closeSock()
 {
 	close(m_SocketFd);
-	std::cout << "close socket success!" << std::endl;
 }
 

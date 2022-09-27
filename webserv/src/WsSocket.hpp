@@ -41,15 +41,9 @@ class WsSocket
 
 			// 서버 소켓 생성
 			//
-			// AF_INET : IPv4 인터넷 프로토콜
+			// IPv4 프로토콜, SOCK_STREAM 인자로 생성
 			//
-			// SOCK_STREAM : 순차적, 신뢰할수 있는 양방향 바이트 스트림 연결
-			//
-			// 0 : 소켓과 함께 사용될 특정 프로토콜을 지정
-			//
-			// -0으로 지정하면 운영체제는 가장 적절한 프로토콜을 선택함
-			//
-			// -스트림 소켓에는 TCP를 선택하고 데이터그램 소켓은 UDP를 선택함
+			// address 재할당을 위한 setsockopt() 사용
 			void	createSock(void);
 
 			void	initAddr(const struct configInfo &conf);
