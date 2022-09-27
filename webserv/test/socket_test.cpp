@@ -21,6 +21,7 @@
 int main(void)
 {
 	socklen_t client_addr_size;
+
 	int server_socket;
 	int client_socket;
 	int htmlFD;
@@ -98,7 +99,7 @@ int main(void)
 		std::cout <<"----- read wait" << std::endl;
 
 		memset(buff_rcv, 0, sizeof(buff_snd));
-		read_ret = read(client_socket, buff_rcv, 1);
+		read_ret = read(client_socket, buff_rcv, BUFF_SIZE);
 		// flag = fcntl(client_socket, F_GETFL, 0);
 		// fcntl(client_socket, F_SETFL, flag | O_NONBLOCK);
 
@@ -117,7 +118,7 @@ int main(void)
 		else
 		{
 			std::cout << "----- read :" << buff_rcv << std::endl;
-			// send(client_socket, buff_snd, strlen(buff_snd) +1, 0);
+			send(client_socket, buff_snd, strlen(buff_snd) +1, 0);
 		}
 		std::cout << "----- other routine processing" << std::endl;
 		// close(client_socket);

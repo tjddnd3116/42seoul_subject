@@ -7,7 +7,7 @@
 class WsException : public std::exception
 {
 		private:
-			std::string _errMsg;
+			std::string m_errMsg;
 
 		public:
 			WsException(const std::string &errMsg);
