@@ -1,17 +1,15 @@
 #include "WsInitializer.hpp"
-#include "WsException.hpp"
+#include "parser/configParser.hpp"
 
-WsInitializer::WsInitializer(char *path)
+WsInitializer::WsInitializer()
 {
-	(void)path;
-	m_conf.m_listenPort = 4001;
-	m_conf.m_rootPath = "./html";
-	m_conf.m_indexFile = "index.html";
-	m_conf.m_serverName = "webserv";
+
 }
 
 WsInitializer::~WsInitializer()
-{}
+{
+
+}
 
 WsInitializer::WsInitializer(const WsInitializer& copy)
 {
@@ -21,12 +19,25 @@ WsInitializer::WsInitializer(const WsInitializer& copy)
 WsInitializer
 WsInitializer::operator=(const WsInitializer& copy)
 {
-	m_conf = copy.m_conf;
+	(void)copy;
+	// m_conf = copy.m_conf;
 	return (*this);
 }
 
-struct configInfo
-WsInitializer::getConfigInfo(void) const
+void
+WsInitializer::parseConfig(const char* path)
 {
-	return (m_conf);
+	configParser	parser;
+
+	parser.initParser(path, *this);
+}
+
+void		 WsInitializer::pushBack(WsConfigInfo &info)
+{
+	m_conf.push_back(info);
+}
+
+void		 WsInitializer::printConf(void)
+{
+	m_conf.back().printConf();
 }

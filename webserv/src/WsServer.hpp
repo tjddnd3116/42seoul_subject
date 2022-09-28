@@ -11,7 +11,7 @@ class WsServer
 {
 		private:
 			// member variable
-			struct configInfo m_conf;
+			// struct configInfo m_conf;
 
 		public:
 			// Orthodox Canonical Form

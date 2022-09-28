@@ -6,19 +6,24 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/09/27 23:17:18 by soum             ###   ########.fr        #
+#    Updated: 2022/09/29 02:59:02 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = webserv
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 
 SRCS = ./src/main.cpp \
 	   ./src/WsInitializer.cpp \
 	   ./src/WsException.cpp \
-	   ./src/WsServer.cpp \
-	   ./src/WsSocket.cpp \
+	   ./src/parser/configParser.cpp \
+	   ./src/parser/fileReader.cpp \
+	   ./src/parser/tokenizer.cpp \
+	   ./src/WsConfigInfo.cpp
+
+	   # ./src/WsServer.cpp \
+	   # ./src/WsSocket.cpp \
 
 .cpp.o :
 	$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)

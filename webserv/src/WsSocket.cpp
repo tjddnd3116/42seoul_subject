@@ -38,14 +38,14 @@ WsSocket::createSock(void)
 	std::cout << "option : " << option << std::endl;
 }
 
-void
-WsSocket::initAddr(const struct configInfo& conf)
-{
-	std::memset(&m_SocketAddr, 0, sizeof(m_SocketAddr));
-	m_SocketAddr.sin_family = AF_INET;
-	m_SocketAddr.sin_port = htons(conf.m_listenPort);
-	m_SocketAddr.sin_addr.s_addr = htonl(INADDR_ANY);
-}
+// void
+// WsSocket::initAddr(const struct configInfo& conf)
+// {
+//     std::memset(&m_SocketAddr, 0, sizeof(m_SocketAddr));
+//     m_SocketAddr.sin_family = AF_INET;
+//     m_SocketAddr.sin_port = htons(conf.m_listenPort);
+//     m_SocketAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+// }
 
 void
 WsSocket::bindSock(void)

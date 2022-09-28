@@ -11,16 +11,9 @@
 #include <iostream>
 
 #include "WsException.hpp"
+#include "WsConfigInfo.hpp"
 
 #define BUFFER_SIZE 1024
-
-struct configInfo
-{
-	std::string m_rootPath;
-	std::string	m_indexFile;
-	std::string	m_serverName;
-	int			m_listenPort;
-};
 
 class WsSocket
 {
@@ -46,7 +39,7 @@ class WsSocket
 			// address 재할당을 위한 setsockopt() 사용
 			void	createSock(void);
 
-			void	initAddr(const struct configInfo &conf);
+			// void	initAddr(const struct configInfo &conf);
 
 			void	bindSock(void);
 
