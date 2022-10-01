@@ -1,6 +1,13 @@
 #include "fileReader.hpp"
 
-fileReader::fileReader(const char* path)
+fileReader::fileReader()
+{}
+
+fileReader::~fileReader()
+{}
+
+void
+fileReader::initFileReader(const char *path)
 {
 	m_configFile.open(path);
 	if (m_configFile.fail())
@@ -8,27 +15,28 @@ fileReader::fileReader(const char* path)
 	m_buffer.clear();
 	m_pos = 0;
 	m_eof = false;
+	m_line = -1;
 }
 
-fileReader::~fileReader()
-{}
-
-std::string fileReader::readFile(void)
+t_token
+fileReader::readFile(void)
 {
-	std::string retStr;
+	t_token		token;
 	size_t		prePos;
 
-	retStr = "";
+	token.str = "";
 	if (checkBufPos())
-		return (retStr);
+		return (token);
 	prePos = m_pos;
 	m_pos = m_buffer.find(" ", prePos);
 	if (m_pos == std::string::npos)
-		retStr.assign(m_buffer, prePos, m_buffer.size() - prePos);
+		token.str.assign(m_buffer, prePos, m_buffer.size() - prePos);
 	else
-		retStr.assign(m_buffer, prePos, m_pos - prePos);
-	retStr.erase(std::remove_if(retStr.begin(), retStr.end(), isspace), retStr.end());
-	return (retStr);
+		token.str.assign(m_buffer, prePos, m_pos - prePos);
+	token.str.erase(std::remove_if(token.str.begin(), token.str.end(), isspace), token.str.end());
+	token.line = m_buffer;
+	token.lineNum = m_line;
+	return (token);
 }
 
 int		 fileReader::checkBufPos(void)
@@ -50,11 +58,17 @@ void	 fileReader::readToBuf(void)
 {
 	m_pos = 0;
 	std::getline(m_configFile, m_buffer);
-	// std::cout << "buffer : " << m_buffer << std::endl;
+	m_allBuffer.push_back(m_buffer);
+	m_line++;
 }
 
 bool	 fileReader::isEof(void) const
 {
 	return (m_eof);
+}
+
+const std::vector<std::string> fileReader::getAllBuffer(void)
+{
+	return (m_allBuffer);
 }
 

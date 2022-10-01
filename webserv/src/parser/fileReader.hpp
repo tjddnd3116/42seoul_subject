@@ -7,23 +7,28 @@
 #include <cctype>
 
 #include "../WsException.hpp"
+#include "tokenizer.hpp"
 
 class fileReader
 {
 	private:
-		std::ifstream	m_configFile;
-		std::string		m_buffer;
-		size_t			m_pos;
-		bool			m_eof;
+		std::vector<std::string>	m_allBuffer;
+		std::ifstream				m_configFile;
+		std::string					m_buffer;
+		size_t						m_pos;
+		bool						m_eof;
+		size_t						m_line;
 
 	public:
-		fileReader(const char* path);
+		fileReader();
 		~fileReader();
 
-		std::string	readFile(void);
+		void		initFileReader(const char* path);
+		t_token		readFile(void);
 		int			checkBufPos(void);
 		void		readToBuf(void);
 		bool		isEof(void) const;
+		const std::vector<std::string> getAllBuffer(void);
 
 
 };

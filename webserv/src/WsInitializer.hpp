@@ -16,19 +16,21 @@
 
 class WsInitializer
 {
-		private:
-			// member variable
-			std::vector<WsConfigInfo>	m_conf;
+	private:
+		// member variable
+		std::vector<WsConfigInfo>	m_conf;
 
-		public:
-			// Orthodox Canonical Form
-			WsInitializer();
-			~WsInitializer();
-			WsInitializer(const WsInitializer& copy);
-			WsInitializer	operator=(const WsInitializer& copy);
+	public:
+		// Orthodox Canonical Form
+		WsInitializer();
+		~WsInitializer();
+		WsInitializer(const WsInitializer& copy);
+		WsInitializer	operator=(const WsInitializer& copy);
 
-			void			parseConfig(const char* path);
-			void			pushBack(WsConfigInfo &info);
-			void			printConf(void);
+
+		void						parseConfig(const char* path);
+		void						pushBack(WsConfigInfo &info);
+		void						printConf(void);
+		std::vector<WsConfigInfo>	getConfigInfo(void);
 };
 #endif //WsInitializer_hpp

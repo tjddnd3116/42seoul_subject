@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <iostream>
+#include <fcntl.h>
 
 #include "WsException.hpp"
 #include "WsConfigInfo.hpp"
@@ -17,7 +18,8 @@
 
 class WsSocket
 {
-		private:
+		// private:
+		public:
 			struct sockaddr_in	m_SocketAddr;
 			socklen_t			m_SocketAddrSize;
 			int					m_SocketFd;
@@ -39,7 +41,7 @@ class WsSocket
 			// address 재할당을 위한 setsockopt() 사용
 			void	createSock(void);
 
-			// void	initAddr(const struct configInfo &conf);
+			void	initAddr(const WsConfigInfo& conf);
 
 			void	bindSock(void);
 

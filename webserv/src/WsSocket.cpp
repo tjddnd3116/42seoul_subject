@@ -32,20 +32,20 @@ WsSocket::createSock(void)
 
 	option = 1;
 	m_SocketFd = socket(AF_INET, SOCK_STREAM, 0);
+	fcntl(m_SocketFd, F_SETFL, O_NONBLOCK);
 	if (m_SocketFd == -1)
 		throw WsException("create socket fail");
 	setsockopt(m_SocketFd, SOL_SOCKET, SO_REUSEADDR, &option, sizeof(option));
-	std::cout << "option : " << option << std::endl;
 }
 
-// void
-// WsSocket::initAddr(const struct configInfo& conf)
-// {
-//     std::memset(&m_SocketAddr, 0, sizeof(m_SocketAddr));
-//     m_SocketAddr.sin_family = AF_INET;
-//     m_SocketAddr.sin_port = htons(conf.m_listenPort);
-//     m_SocketAddr.sin_addr.s_addr = htonl(INADDR_ANY);
-// }
+void
+WsSocket::initAddr(const WsConfigInfo& conf)
+{
+	std::memset(&m_SocketAddr, 0, sizeof(m_SocketAddr));
+	m_SocketAddr.sin_family = AF_INET;
+	m_SocketAddr.sin_port = htons(conf.getListenPort()[0]);
+	m_SocketAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+}
 
 void
 WsSocket::bindSock(void)
@@ -71,7 +71,10 @@ void WsSocket::acceptSock(const WsSocket &serverSock)
 {
 	m_SocketFd = accept(serverSock.m_SocketFd, (struct sockaddr*)&m_SocketAddr, &m_SocketAddrSize);
 	if (m_SocketFd < 0)
+	{
+		std::cout << strerror(errno) << std::endl;
 		throw WsException("accept socket fail");
+	}
 }
 
 void WsSocket::readSock(const WsSocket &clientSock)

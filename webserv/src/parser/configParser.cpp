@@ -1,29 +1,41 @@
 #include "configParser.hpp"
 #include "tokenizer.hpp"
 
-configParser::configParser()
+configParser::configParser(const char* path)
 {
+	m_fileReader.initFileReader(path);
 }
 
 configParser::~configParser()
-{
-
-}
+{}
 
 void
-configParser::initParser(const char* path, WsInitializer& init)
+configParser::initParser(void)
 {
-	std::string tmpStr;
-
-	fileReader	fr(path);
+	t_token		token;
 	tokenizer	tokenizer;
 
 	while (1)
 	{
-		if (fr.isEof())
+		if (m_fileReader.isEof())
 			break;
-		tmpStr = fr.readFile();
-		tokenizer.pushBackToken(tmpStr);
+		token = m_fileReader.readFile();
+		m_tokenizer.pushBackToken(token);
 	}
-	tokenizer.parse(init);
+	m_config = m_fileReader.getAllBuffer();
 }
+
+void configParser::parse(WsInitializer& init)
+{
+	try
+	{
+		m_tokenizer.parseToken(init);
+	}
+	catch (WsException& e)
+	{
+		e.printConfigErr(m_config);
+		throw WsException("invalid config file");
+	}
+
+}
+

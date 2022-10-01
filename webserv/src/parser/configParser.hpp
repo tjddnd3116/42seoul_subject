@@ -13,14 +13,16 @@
 class configParser
 {
 	private:
-		std::vector<WsConfigInfo>	m_configInfo;
+		fileReader m_fileReader;
+		tokenizer m_tokenizer;
+		std::vector<std::string> m_config;
 
 	public:
-		configParser();
+		configParser(const char* path);
 		~configParser();
 
-		void	initParser(const char* path, WsInitializer& init);
-		void	createParsedConf();
+		void	initParser(void);
+		void	parse(WsInitializer& init);
 };
 
 #endif //configParser_hpp

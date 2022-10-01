@@ -3,7 +3,9 @@
 
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <vector>
 
+#include "WsConfigInfo.hpp"
 #include "WsInitializer.hpp"
 #include "WsSocket.hpp"
 
@@ -11,18 +13,21 @@ class WsServer
 {
 		private:
 			// member variable
-			// struct configInfo m_conf;
+			std::vector<WsConfigInfo>	m_conf;
+			std::vector<WsSocket>		m_serverSock;
+			size_t						m_serverSize;
 
 		public:
 			// Orthodox Canonical Form
-			WsServer(struct configInfo conf);
+			WsServer(const std::vector<WsConfigInfo>& conf);
 			~WsServer();
 			WsServer(const WsServer& copy);
 			WsServer& operator=(const WsServer& copy);
 
-			WsSocket createServerSock(void);
-			WsSocket createClientSock(void);
-			void run(void);
+			void		createServerSock(void);
+			WsSocket	createClientSock(void);
+			void 		run(void);
+			// void		waitingClient(size_t sockIdx);
 
 };
 #endif //WsServer_hpp

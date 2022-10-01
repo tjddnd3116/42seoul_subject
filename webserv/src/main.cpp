@@ -2,6 +2,7 @@
 #include <iostream>
 #include "WsInitializer.hpp"
 #include "WsException.hpp"
+#include "WsServer.hpp"
 
 int main(int argc, char **argv)
 {
@@ -10,12 +11,14 @@ int main(int argc, char **argv)
 		if (argc != 2)
 			throw (WsException("invalid arguments count"));
 
-		WsInitializer wsInit;
+		WsInitializer initializer;
 
-		wsInit.parseConfig(argv[1]);
+		initializer.parseConfig(argv[1]);
 
-		// WsServer	wsServer(wsInit.getConfigInfo());
-		// wsServer.run();
+		WsServer	server(initializer.getConfigInfo());
+
+		server.createServerSock();
+		server.run();
 	}
 	catch (std::exception &e)
 	{

@@ -1,27 +1,22 @@
 #include "tokenizer.hpp"
 #include "../WsInitializer.hpp"
+#include <exception>
 
 tokenizer::tokenizer()
 {
-	m_tokenIdx = 0;
+	m_tokIdx = 0;
 }
 
 tokenizer::~tokenizer()
-{
-
-}
-
+{}
 
 void
-tokenizer::pushBackToken(const std::string& str)
+tokenizer::pushBackToken(t_token token)
 {
-	if (str == "")
+	if (token.str == "")
 		return ;
-	t_token token;
-
-	token.str = str;
 	token.type = selectTokenType(token.str);
-	m_tokenVec.push_back(token);
+	m_tokVec.push_back(token);
 }
 
 e_tokenType
@@ -33,56 +28,154 @@ tokenizer::selectTokenType(const std::string& str)
 		return (OPEN_BRACE);
 	else if (str == "}")
 		return (CLOSE_BRACE);
+	else if (str == ";")
+		return (SEMICOLON);
 	else
 		return (SERVER_CONTEXT);
 }
 
-void	 tokenizer::parse(WsInitializer &initializer)
+void
+tokenizer::parseToken(WsInitializer &initializer)
 {
-	WsConfigInfo::setTable();
-
-	while (m_tokenIdx != m_tokenVec.size() && m_tokenVec[m_tokenIdx].type == SERVER)
+	while (m_tokIdx != m_tokVec.size() && m_tokVec[m_tokIdx].type == SERVER)
 	{
 		WsConfigInfo info;
+
 		serverParse(info);
-		// TODO
-		// if (verifyInfo(info) == false)
-		//     throw WsException("error");
+		verifyInfo(info);
 		initializer.pushBack(info);
-		initializer.printConf();
+		// initializer.printConf();
 	}
-	if (m_tokenIdx != m_tokenVec.size())
-		throw WsException(std::string(__func__) + ": \"" + m_tokenVec[m_tokenIdx].str + "\"");
-
+	if (m_tokIdx != m_tokVec.size())
+		throw WsException(m_tokVec[m_tokIdx].lineNum, "invaild server");
 }
 
-void	 tokenizer::serverParse(WsConfigInfo &info)
+void
+tokenizer::serverParse(WsConfigInfo &info)
 {
-	m_tokenIdx++;
-	if (m_tokenVec[m_tokenIdx].type == OPEN_BRACE)
+	m_tokIdx++;
+	if (isSafeIdx() && m_tokVec[m_tokIdx].type == OPEN_BRACE)
 		serverContextParse(info);
-	if (m_tokenVec[m_tokenIdx].type != CLOSE_BRACE)
-		throw WsException(std::string(__func__) + ": \"" + m_tokenVec[m_tokenIdx].str + "\"");
 	else
-		++m_tokenIdx;
+		throw WsException(m_tokVec[m_tokIdx].lineNum, "miss '{' - server");
+
+	if (!isSafeIdx())
+		throw WsException(m_tokVec[m_tokIdx].lineNum + 1, "miss '}' - server");
+	else if (m_tokVec[m_tokIdx].type != CLOSE_BRACE)
+		throw WsException(m_tokVec[m_tokIdx].lineNum + 1, "miss '}' - server");
+	else
+		m_tokIdx++;
 }
 
-void	 tokenizer::serverContextParse(WsConfigInfo &info)
+void
+tokenizer::serverContextParse(WsConfigInfo &info)
 {
 	std::vector<std::string>	tokenSet;
 
-	m_tokenIdx++;
-	while (m_tokenVec[m_tokenIdx].type == SERVER_CONTEXT)
+	m_tokIdx++;
+	while (m_tokIdx < m_tokVec.size() && m_tokVec[m_tokIdx].type == SERVER_CONTEXT)
 	{
-		std::string &tokenStr = m_tokenVec[m_tokenIdx++].str;
+		if (m_tokVec[m_tokIdx].str == "location")
+		{
+			locationParse(info);
+			continue ;
+		}
+		std::string &tokenStr = m_tokVec[m_tokIdx++].str;
 
 		if (WsConfigInfo::s_table[tokenStr] == 0)
-			break;
+			throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "invaild server option");
+		else if (!isSafeIdx())
+			throw WsException(m_tokVec[m_tokIdx].lineNum, "2???");
+
 		tokenSet.clear();
-		while (m_tokenVec[m_tokenIdx].str.back() != ';')
-			tokenSet.push_back(m_tokenVec[m_tokenIdx++].str);
-		tokenSet.push_back(m_tokenVec[m_tokenIdx++].str);
-		(info.*(WsConfigInfo::s_table[tokenStr]))(tokenSet);
+		while (isSafeIdx() && m_tokVec[m_tokIdx].str.back() != ';')
+			tokenSet.push_back(m_tokVec[m_tokIdx++].str);
+		if (m_tokVec[m_tokIdx].type == SEMICOLON)
+			m_tokIdx++;
+		else if (m_tokVec[m_tokIdx].str.back() == ';')
+		{
+			m_tokVec[m_tokIdx].str.pop_back();
+			tokenSet.push_back(m_tokVec[m_tokIdx++].str);
+		}
+		else
+			throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "miss ';'");
+		try
+		{
+			(info.*(WsConfigInfo::s_table[tokenStr]))(tokenSet);
+		}
+		catch (std::exception& e)
+		{
+			throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "invaild port or path");
+		}
 	}
+}
+
+bool
+tokenizer::verifyInfo(WsConfigInfo& info)
+{
+	info.checkConfig();
+	return (true);
+}
+
+void
+tokenizer::locationContextParse(WsConfigInfo &info)
+{
+	std::vector<std::string>	tokenSet;
+
+	m_tokIdx++;
+	while (isSafeIdx() && m_tokVec[m_tokIdx].type == SERVER_CONTEXT)
+	{
+		std::string &tokenStr = m_tokVec[m_tokIdx++].str;
+		if (WsConfigInfo::s_table["loc_" + tokenStr] == 0)
+			throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "invaild location option");
+		else if (!isSafeIdx())
+			throw WsException(m_tokVec[m_tokIdx].lineNum, "3???");
+
+		tokenSet.clear();
+		while (isSafeIdx() && m_tokVec[m_tokIdx].str.back() != ';' && m_tokVec[m_tokIdx].type == SERVER_CONTEXT)
+			tokenSet.push_back(m_tokVec[m_tokIdx++].str);
+		if (m_tokVec[m_tokIdx].type == SEMICOLON)
+			m_tokIdx++;
+		else if (m_tokVec[m_tokIdx].str.back() == ';')
+		{
+			m_tokVec[m_tokIdx].str.pop_back();
+			tokenSet.push_back(m_tokVec[m_tokIdx++].str);
+		}
+		else
+			throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "miss ';'");
+		(info.*(WsConfigInfo::s_table["loc_" + tokenStr]))(tokenSet);
+	}
+}
+
+void	 tokenizer::locationParse(WsConfigInfo &info)
+{
+	m_tokIdx++;
+	if (!isSafeIdx() || info.createLocation(m_tokVec[m_tokIdx].str))
+		throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "invaild location path");
+	m_tokIdx++;
+	if (isSafeIdx() && m_tokVec[m_tokIdx].type == OPEN_BRACE)
+		locationContextParse(info);
+	else
+	{
+		std::cout << m_tokVec[m_tokIdx].str << std::endl;
+		throw WsException(m_tokVec[m_tokIdx].lineNum - 1, "miss '{' - location");
+	}
+	if (!isSafeIdx())
+		throw WsException(m_tokVec[m_tokIdx].lineNum, "4???");
+	else if (m_tokVec[m_tokIdx].type != CLOSE_BRACE)
+		throw WsException(m_tokVec[m_tokIdx].lineNum + 1, "miss '}' - location");
+	else
+		++m_tokIdx;
+}
+
+bool
+tokenizer::isSafeIdx(void)
+{
+	if (m_tokIdx >= m_tokVec.size())
+	{
+		m_tokIdx--;
+		return (false);
+	}
+	return (true);
 }
 
