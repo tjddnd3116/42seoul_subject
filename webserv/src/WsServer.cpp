@@ -1,6 +1,6 @@
 #include "WsServer.hpp"
-#include "WsSocket.hpp"
-#include <sys/_select.h>
+#include "WsClientSock.hpp"
+#include "WsServerSock.hpp"
 
 WsServer::WsServer(const std::vector<WsConfigInfo> &conf)
 	:m_conf(conf)
@@ -26,87 +26,59 @@ WsServer::operator=(const WsServer &copy)
 void
 WsServer::createServerSock(void)
 {
-	for (size_t sockIdx = 0; sockIdx < m_serverSize; sockIdx++)
+	for (size_t serverSockIdx = 0; serverSockIdx < m_serverSize; serverSockIdx++)
 	{
-		WsSocket serverSock;
+		WsServerSock serverSock(m_conf[serverSockIdx]);
 
 		serverSock.createSock();
-		serverSock.initAddr(m_conf[sockIdx]);
+		serverSock.initAddr();
 		serverSock.bindSock();
 		serverSock.listenSock();
 		m_serverSock.push_back(serverSock);
 	}
 }
 
-WsSocket WsServer::createClientSock(void)
-{
-	WsSocket clientSock;
-
-	clientSock.setStrBuffer("HTTP/1.1 200 OK\nContent-Type: text/plain\nContent-Length: 12\n\nHello world!");
-	return (clientSock);
-}
-
 void
 WsServer::run(void)
 {
-	fd_set serverFdSet;
-	fd_set tmp;
+	int changedFdCnt;
 
-	FD_ZERO(&serverFdSet);
-	for (size_t sockIdx = 0; sockIdx < m_serverSize; sockIdx++)
-		FD_SET(sockIdx, &serverFdSet);
+	int maxFd = 0;
+	fd_set readSet;
+	fd_set readSetOrig;
 
-	for (size_t sockIdx = 0; sockIdx < m_serverSize; sockIdx++)
-		if (FD_ISSET(sockIdx, &serverFdSet))
-			std::cout << sockIdx << " set" << std::endl;
+	FD_ZERO(&readSet);
+	FD_ZERO(&readSetOrig);
 
+	maxFd = m_serverSock.back().getSocketFd();
+	for (size_t idx = 0; idx < m_serverSize; idx++)
+		FD_SET(m_serverSock[idx].getSocketFd(), &readSetOrig);
 	while (1)
 	{
-		tmp = serverFdSet;
-
-		if (select(m_serverSize + 1, &tmp, NULL, NULL, NULL) < 0)
-			std::cout << "error" << std::endl;
-		for (size_t i = 0; i < m_serverSize; i++)
+		readSet = readSetOrig;
+		changedFdCnt = select(maxFd + 1, &readSet, (fd_set*)0, (fd_set*)0, NULL);
+		std::cout << "changedFdCnt : "<< changedFdCnt << std::endl;
+		if (changedFdCnt < 0)
 		{
-			std::cout << i << " " << serverFdSet.fds_bits[i] << std::endl;
-			if (FD_ISSET(i, &tmp))
+			std::cout << "error" << std::endl;
+			break;
+		}
+		for (int socketIdx = 0; socketIdx < maxFd + 1; socketIdx++)
+		{
+			std::cout << "socket index : "<< socketIdx << std::endl;
+			if (FD_ISSET(socketIdx, &readSet))
 			{
-				std::cout << "set bit :" << i << std::endl;
-				if (m_serverSock[i].m_SocketFd == serverFdSet.fds_bits[i])
+				WsClientSock clientSock(m_serverSock[socketIdx - 3].getConf());
+				clientSock.createSock();
+				std::cout << "clientSock created" << std::endl;
+				std::cout << "socket index : " << socketIdx << std::endl;
+				clientSock.acceptSock(m_serverSock[socketIdx - 3]);
+				if (clientSock.readSock() > 0)
 				{
-					WsSocket clientSock = createClientSock();
-					clientSock.acceptSock(m_serverSock[i]);
-					m_serverSock[i].readSock(clientSock);
 					clientSock.sendSock();
 					clientSock.closeSock();
 				}
 			}
 		}
-		// for (size_t sockIdx = 0; sockIdx < m_serverSize; sockIdx++)
-		// {
-		//     WsSocket clientSock = createClientSock();
-		//     std::cout << "socket index : " << sockIdx + 1 << std::endl;
-		//     std::cout << "waiting for client connection" << std::endl;
-        //
-		//     clientSock.acceptSock(m_serverSock[sockIdx]);
-		//     m_serverSock[sockIdx].readSock(clientSock);
-		//     clientSock.sendSock();
-		//     clientSock.closeSock();
-		// }
 	}
 }
-
-// void	 WsServer::waitingClient(size_t sockIdx)
-// {
-//     WsSocket clientSock = createClientSock();
-//     while (1)
-//     {
-//         std::cout << "socket index : " << sockIdx + 1 << std::endl;
-//         std::cout << "waiting for client connection" << std::endl;
-//
-//         clientSock.acceptSock(m_serverSock[sockIdx]);
-//         m_serverSock[sockIdx].readSock(clientSock);
-//         clientSock.sendSock();
-//         clientSock.closeSock();
-//     }
-// }

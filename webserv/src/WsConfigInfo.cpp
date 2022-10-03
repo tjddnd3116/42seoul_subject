@@ -17,6 +17,22 @@ WsConfigInfo::WsConfigInfo()
 WsConfigInfo::~WsConfigInfo()
 {}
 
+WsConfigInfo::WsConfigInfo(const WsConfigInfo& copy)
+{
+	*this = copy;
+}
+
+WsConfigInfo&
+WsConfigInfo::operator=(const WsConfigInfo& copy)
+{
+	m_rootPath = copy.getRootPath();
+	m_indexFile = copy.getIndexFile();
+	m_serverName = copy.getServerName();
+	m_listenPort = copy.getListenPort();
+	m_location = copy.getLocation();
+	return (*this);
+}
+
 // TODO: location
 void	WsConfigInfo::setTable()
 {
@@ -84,7 +100,7 @@ int		WsConfigInfo::createLocation(std::string& path)
 	return (0);
 }
 
-void WsConfigInfo::printConf()
+void WsConfigInfo::printConf(void) const
 {
 
 	std::cout << "---------------" << std::endl;
@@ -163,8 +179,33 @@ bool	 WsConfigInfo::isNum(std::vector<std::string>& str)
 	return (true);
 }
 
-std::vector<int> WsConfigInfo::getListenPort(void) const
+std::vector<int>
+WsConfigInfo::getListenPort(void) const
 {
 	return (m_listenPort);
+}
+
+std::vector<std::string>
+WsConfigInfo::getRootPath(void) const
+{
+	return (m_rootPath);
+}
+
+std::vector<std::string>
+WsConfigInfo::getIndexFile(void) const
+{
+	return (m_indexFile);
+}
+
+std::vector<std::string>
+WsConfigInfo::getServerName(void) const
+{
+	return (m_serverName);
+}
+
+std::vector<WsConfigInfo::Location>
+WsConfigInfo::getLocation(void) const
+{
+	return (m_location);
 }
 

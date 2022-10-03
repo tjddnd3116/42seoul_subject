@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "WsException.hpp"
-#include "WsSocket.hpp"
+#include "WsASocket.hpp"
 #include "WsConfigInfo.hpp"
 #include "./parser/configParser.hpp"
 

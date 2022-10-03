@@ -3,18 +3,20 @@
 
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <sys/_select.h>
 #include <vector>
 
 #include "WsConfigInfo.hpp"
 #include "WsInitializer.hpp"
-#include "WsSocket.hpp"
+#include "WsClientSock.hpp"
+#include "WsServerSock.hpp"
 
 class WsServer
 {
 		private:
 			// member variable
 			std::vector<WsConfigInfo>	m_conf;
-			std::vector<WsSocket>		m_serverSock;
+			std::vector<WsServerSock>	m_serverSock;
 			size_t						m_serverSize;
 
 		public:
@@ -25,9 +27,6 @@ class WsServer
 			WsServer& operator=(const WsServer& copy);
 
 			void		createServerSock(void);
-			WsSocket	createClientSock(void);
 			void 		run(void);
-			// void		waitingClient(size_t sockIdx);
-
 };
 #endif //WsServer_hpp

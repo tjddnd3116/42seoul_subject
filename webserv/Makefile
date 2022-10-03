@@ -6,7 +6,7 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/10/01 20:30:23 by soum             ###   ########.fr        #
+#    Updated: 2022/10/03 16:27:52 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,15 @@ SRCS = ./src/main.cpp \
 	   ./src/parser/tokenizer.cpp \
 	   ./src/WsConfigInfo.cpp \
 	   ./src/WsServer.cpp \
-	   ./src/WsSocket.cpp \
-
+	   ./src/WsASocket.cpp \
+	   ./src/WsServerSock.cpp \
+	   ./src/WsClientSock.cpp \
+	   ./src/WsRequest.cpp \
+	   ./src/WsResponse.cpp \
+	   ./src/WsIMethod.cpp \
+	   ./src/WsPutMethod.cpp \
+	   ./src/WsPostMethod.cpp \
+	   ./src/WsGetMethod.cpp \
 
 .cpp.o :
 	$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)
