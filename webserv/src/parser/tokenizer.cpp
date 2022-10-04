@@ -10,10 +10,23 @@ tokenizer::tokenizer()
 tokenizer::~tokenizer()
 {}
 
-void
-tokenizer::pushBackToken(t_token token)
+tokenizer::tokenizer(const tokenizer& copy)
 {
-	if (token.str == "")
+	*this = copy;
+}
+
+tokenizer&
+tokenizer::operator=(const tokenizer& copy)
+{
+	m_tokVec = copy.m_tokVec;
+	m_tokIdx = copy.m_tokIdx;
+	return (*this);
+}
+
+void
+tokenizer::pushBackToken(t_token& token)
+{
+	if (token.str == "" || token.str.front() == '#')
 		return ;
 	token.type = selectTokenType(token.str);
 	m_tokVec.push_back(token);
@@ -31,7 +44,7 @@ tokenizer::selectTokenType(const std::string& str)
 	else if (str == ";")
 		return (SEMICOLON);
 	else
-		return (SERVER_CONTEXT);
+		return (OPTION_CONTEXT);
 }
 
 void
@@ -73,7 +86,7 @@ tokenizer::serverContextParse(WsConfigInfo &info)
 	size_t						optionLineNum;
 
 	m_tokIdx++;
-	while (m_tokIdx < m_tokVec.size() && m_tokVec[m_tokIdx].type == SERVER_CONTEXT)
+	while (m_tokIdx < m_tokVec.size() && m_tokVec[m_tokIdx].type == OPTION_CONTEXT)
 	{
 		if (m_tokVec[m_tokIdx].str == "location")
 		{
@@ -126,7 +139,7 @@ tokenizer::locationContextParse(WsConfigInfo &info)
 	size_t						optionLineNum;
 
 	m_tokIdx++;
-	while (isSafeIdx() && m_tokVec[m_tokIdx].type == SERVER_CONTEXT)
+	while (isSafeIdx() && m_tokVec[m_tokIdx].type == OPTION_CONTEXT)
 	{
 		optionLineNum = m_tokVec[m_tokIdx].lineNum;
 		std::string &tokenStr = m_tokVec[m_tokIdx++].str;
@@ -137,7 +150,7 @@ tokenizer::locationContextParse(WsConfigInfo &info)
 			throw WsException(m_tokVec[m_tokIdx].lineNum, "3???");
 
 		tokenSet.clear();
-		while (isSafeIdx() && m_tokVec[m_tokIdx].str.back() != ';' && m_tokVec[m_tokIdx].type == SERVER_CONTEXT)
+		while (isSafeIdx() && m_tokVec[m_tokIdx].str.back() != ';' && m_tokVec[m_tokIdx].type == OPTION_CONTEXT)
 			tokenSet.push_back(m_tokVec[m_tokIdx++].str);
 
 		if (m_tokVec[m_tokIdx].lineNum != optionLineNum)
@@ -154,7 +167,8 @@ tokenizer::locationContextParse(WsConfigInfo &info)
 	}
 }
 
-void	 tokenizer::locationParse(WsConfigInfo &info)
+void
+tokenizer::locationParse(WsConfigInfo &info)
 {
 	m_tokIdx++;
 	if (!isSafeIdx() || info.createLocation(m_tokVec[m_tokIdx].str))
@@ -183,4 +197,3 @@ tokenizer::isSafeIdx(void)
 	}
 	return (true);
 }
-

@@ -10,16 +10,16 @@
 #include "../WsConfigInfo.hpp"
 #include "../WsException.hpp"
 
+class WsInitializer;
+
 enum e_tokenType
 {
 	SERVER,
 	OPEN_BRACE,
 	CLOSE_BRACE,
-	SERVER_CONTEXT,
+	OPTION_CONTEXT,
 	SEMICOLON
 };
-
-class WsInitializer;
 
 typedef struct	s_token
 {
@@ -35,19 +35,23 @@ class tokenizer
 		std::vector<t_token>	m_tokVec;
 		size_t					m_tokIdx;
 
-	public:
-		tokenizer();
-		~tokenizer();
-
-		void		pushBackToken(t_token token);
 		e_tokenType	selectTokenType(const std::string& str);
-		void	 	parseToken(WsInitializer &initializer);
 		void	 	serverParse(WsConfigInfo &wsConfigInfo);
 		void		serverContextParse(WsConfigInfo &info);
 		void		locationContextParse(WsConfigInfo &info);
 		void		locationParse(WsConfigInfo &info);
 		bool		verifyInfo(WsConfigInfo& info);
 		bool		isSafeIdx(void);
+
+	public:
+		tokenizer();
+		~tokenizer();
+		tokenizer(const tokenizer& copy);
+		tokenizer& operator=(const tokenizer& copy);
+
+		void		pushBackToken(t_token& token);
+		void	 	parseToken(WsInitializer &initializer);
+
 };
 
 #endif //tokenizer_hpp

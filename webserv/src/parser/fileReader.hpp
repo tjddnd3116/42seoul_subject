@@ -22,13 +22,16 @@ class fileReader
 	public:
 		fileReader();
 		~fileReader();
+		fileReader(const fileReader& copy);
+		fileReader& operator=(const fileReader& copy);
 
 		void		initFileReader(const char* path);
 		t_token		readFile(void);
 		int			checkBufPos(void);
 		void		readToBuf(void);
 		bool		isEof(void) const;
-		const std::vector<std::string> getAllBuffer(void);
+		const std::vector<std::string>&
+					getAllBuffer(void);
 
 
 };

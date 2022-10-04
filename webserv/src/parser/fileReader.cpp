@@ -1,21 +1,39 @@
 #include "fileReader.hpp"
 
 fileReader::fileReader()
-{}
+{
+	m_buffer.clear();
+	m_pos = 0;
+	m_eof = false;
+	m_line = -1;
+}
 
 fileReader::~fileReader()
 {}
+
+fileReader::fileReader(const fileReader& copy)
+{
+	*this = copy;
+}
+
+fileReader&
+fileReader::operator=(const fileReader& copy)
+{
+	m_allBuffer = copy.m_allBuffer;
+	m_configFile.clear();
+	m_buffer = copy.m_buffer;
+	m_pos = copy.m_pos;
+	m_eof = copy.m_eof;
+	m_line = copy.m_line;
+	return (*this);
+}
 
 void
 fileReader::initFileReader(const char *path)
 {
 	m_configFile.open(path);
 	if (m_configFile.fail())
-		throw WsException("file open failed");
-	m_buffer.clear();
-	m_pos = 0;
-	m_eof = false;
-	m_line = -1;
+		throw WsException("config file open failed");
 }
 
 t_token
@@ -67,8 +85,7 @@ bool	 fileReader::isEof(void) const
 	return (m_eof);
 }
 
-const std::vector<std::string> fileReader::getAllBuffer(void)
+const std::vector<std::string>& fileReader::getAllBuffer(void)
 {
 	return (m_allBuffer);
 }
-

@@ -23,20 +23,15 @@ void
 WsInitializer::parseConfig(const char* path)
 {
 	configParser	parser(path);
+	WsConfigInfo::setTable();
 
 	parser.initParser();
-	WsConfigInfo::setTable();
 	parser.parse(*this);
 }
 
 void		 WsInitializer::pushBack(WsConfigInfo &info)
 {
 	m_conf.push_back(info);
-}
-
-void		 WsInitializer::printConf(void)
-{
-	m_conf.back().printConf();
 }
 
 std::vector<WsConfigInfo> WsInitializer::getConfigInfo(void)

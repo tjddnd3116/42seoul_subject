@@ -2,17 +2,12 @@
 #define WsInitializer_hpp
 
 #include <string>
-#include <fstream>
 #include <vector>
 
-#include "WsException.hpp"
-#include "WsASocket.hpp"
 #include "WsConfigInfo.hpp"
 #include "./parser/configParser.hpp"
 
 #define BUFFER_SIZE 1024
-
-// typedef struct
 
 class WsInitializer
 {
@@ -30,7 +25,6 @@ class WsInitializer
 
 		void						parseConfig(const char* path);
 		void						pushBack(WsConfigInfo &info);
-		void						printConf(void);
 		std::vector<WsConfigInfo>	getConfigInfo(void);
 };
 #endif //WsInitializer_hpp
