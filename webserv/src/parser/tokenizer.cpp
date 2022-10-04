@@ -1,6 +1,5 @@
 #include "tokenizer.hpp"
 #include "../WsInitializer.hpp"
-#include <exception>
 
 tokenizer::tokenizer()
 {
@@ -26,14 +25,14 @@ tokenizer::operator=(const tokenizer& copy)
 void
 tokenizer::pushBackToken(t_token& token)
 {
-	if (token.str == "" || token.str.front() == '#')
+	if (token.str == "" || isComment(token))
 		return ;
 	token.type = selectTokenType(token.str);
 	m_tokVec.push_back(token);
 }
 
 e_tokenType
-tokenizer::selectTokenType(const std::string& str)
+tokenizer::selectTokenType(const std::string& str) const
 {
 	if (str == "server")
 		return (SERVER);
@@ -56,6 +55,7 @@ tokenizer::parseToken(WsInitializer &initializer)
 
 		serverParse(info);
 		verifyInfo(info);
+		info.printConf();
 		initializer.pushBack(info);
 	}
 	if (m_tokIdx != m_tokVec.size())
@@ -196,4 +196,11 @@ tokenizer::isSafeIdx(void)
 		return (false);
 	}
 	return (true);
+}
+
+bool	 tokenizer::isComment(const t_token& token) const
+{
+	if (token.line[token.line.find_first_not_of("\t ")] == '#')
+		return (true);
+	return (false);
 }

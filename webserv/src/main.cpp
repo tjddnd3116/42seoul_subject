@@ -13,9 +13,9 @@ int main(int argc, char **argv)
 		WsInitializer initializer;
 
 		initializer.parseConfig(argv[1]);
-		WsServer	server(initializer.getConfigInfo());
-		server.createServerSock();
-		server.run();
+		// WsServer	server(initializer.getConfigInfo());
+		// server.createServerSock();
+		// server.run();
 	}
 	catch (std::exception &e)
 	{

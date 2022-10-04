@@ -35,13 +35,14 @@ class tokenizer
 		std::vector<t_token>	m_tokVec;
 		size_t					m_tokIdx;
 
-		e_tokenType	selectTokenType(const std::string& str);
+		e_tokenType	selectTokenType(const std::string& str) const;
 		void	 	serverParse(WsConfigInfo &wsConfigInfo);
 		void		serverContextParse(WsConfigInfo &info);
 		void		locationContextParse(WsConfigInfo &info);
 		void		locationParse(WsConfigInfo &info);
 		bool		verifyInfo(WsConfigInfo& info);
 		bool		isSafeIdx(void);
+		bool		isComment(const t_token& token) const;
 
 	public:
 		tokenizer();
