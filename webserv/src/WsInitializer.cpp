@@ -27,6 +27,8 @@ WsInitializer::parseConfig(const char* path)
 
 	parser.initParser();
 	parser.parse(*this);
+	for (size_t i = 0; i < m_conf.size(); i++)
+		m_conf[i].checkConfig();
 }
 
 void		 WsInitializer::pushBack(WsConfigInfo &info)

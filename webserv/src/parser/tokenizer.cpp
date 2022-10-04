@@ -54,7 +54,6 @@ tokenizer::parseToken(WsInitializer &initializer)
 		WsConfigInfo info;
 
 		serverParse(info);
-		verifyInfo(info);
 		info.printConf();
 		initializer.pushBack(info);
 	}

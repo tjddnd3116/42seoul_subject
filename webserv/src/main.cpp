@@ -11,11 +11,11 @@ int main(int argc, char **argv)
 		if (argc != 2)
 			throw (WsException("invalid arguments count"));
 		WsInitializer initializer;
-
 		initializer.parseConfig(argv[1]);
-		// WsServer	server(initializer.getConfigInfo());
-		// server.createServerSock();
-		// server.run();
+
+		WsServer	server(initializer.getConfigInfo());
+		server.createServerSock();
+		server.run();
 	}
 	catch (std::exception &e)
 	{

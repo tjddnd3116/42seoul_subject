@@ -29,10 +29,14 @@ class WsConfigInfo
 		std::vector<int>			m_listenPort;
 		std::vector<Location>		m_location;
 
-		static bool		isPath(std::string& str);
-		static bool		isPath(std::vector<std::string>& str);
-		static bool		isNum(std::string& str);
-		static bool		isNum(std::vector<std::string>& str);
+		// just printing info tur / false
+		// after use delete it
+		const static bool						print_flag = false;
+
+		static bool		isPath(const std::string& str);
+		static bool		isPath(const std::vector<std::string>& str);
+		static bool		isNum(const std::string& str);
+		static bool		isNum(const std::vector<std::string>& str);
 
 	public:
 		WsConfigInfo();

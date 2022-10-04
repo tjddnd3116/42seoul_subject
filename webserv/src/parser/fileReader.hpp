@@ -19,6 +19,8 @@ class fileReader
 		bool						m_eof;
 		size_t						m_line;
 
+		int			checkBufPos(void);
+		void		readToBuf(void);
 	public:
 		fileReader();
 		~fileReader();
@@ -27,8 +29,6 @@ class fileReader
 
 		void		initFileReader(const char* path);
 		t_token		readFile(void);
-		int			checkBufPos(void);
-		void		readToBuf(void);
 		bool		isEof(void) const;
 		const std::vector<std::string>&
 					getAllBuffer(void);

@@ -6,8 +6,6 @@ std::unordered_map<std::string, WsConfigInfo::t_setterType>	WsConfigInfo::s_tabl
 
 WsConfigInfo::Location::Location(std::string &path)
 {
-	if (!WsConfigInfo::isPath(path))
-		throw WsException();
 	locPath = path;
 }
 
@@ -91,26 +89,25 @@ void	 WsConfigInfo::setLocationProxy(std::vector<std::string>& set)
 
 int		WsConfigInfo::createLocation(std::string& path)
 {
-	try {
-		Location location(path);
-		m_location.push_back(location);
-	} catch (std::exception& e) {
+	if (!isPath(path))
 		return (1);
-	}
+	Location location(path);
+	m_location.push_back(location);
 	return (0);
 }
 
 void WsConfigInfo::printConf(void) const
 {
-
-	std::cout << "---------------" << std::endl;
+	if (!print_flag)
+		return ;
+	std::cout << "------configInfo-----" << std::endl;
 	std::cout << "root : " << std::endl;
 	for (size_t i = 0; i < m_rootPath.size(); i++)
 		std::cout << "\t" << m_rootPath[i] << std::endl;
 	std::cout << "index : " << std::endl;
 	for (size_t i = 0; i < m_indexFile.size(); i++)
 		std::cout << "\t" << m_indexFile[i] << std::endl;
-	std::cout << "servername : " << std::endl;
+	std::cout << "server_name : " << std::endl;
 	for (size_t i = 0; i < m_serverName.size(); i++)
 		std::cout << "\t" << m_serverName[i] << std::endl;
 	std::cout << "listen : " << std::endl;
@@ -118,7 +115,7 @@ void WsConfigInfo::printConf(void) const
 		std::cout << "\t" << m_listenPort[i] << std::endl;
 	for (size_t i = 0; i < m_location.size(); i++)
 	{
-		std::cout << "location : " << std::endl;
+		std::cout << "location { " << std::endl;
 		std::cout << "\tpath : " << m_location[i].locPath << std::endl;
 		std::cout << "\troot :" << std::endl;
 		for (size_t j = 0; j < m_location[i].locRoot.size(); j++)
@@ -131,24 +128,34 @@ void WsConfigInfo::printConf(void) const
 		std::cout << "\tpass :" << std::endl;
 		for (size_t j = 0; j < m_location[i].locProxyPass.size(); j++)
 			std::cout << "\t\t" << m_location[i].locProxyPass[j] << std::endl;
+		if (i == m_location.size() - 1)
+			std::cout << "\t}" << std::endl;
 	}
-	std::cout << "---------------" << std::endl;
+	std::cout << "---------------------" << std::endl;
 }
 
 void	 WsConfigInfo::checkConfig(void)
 {
+	if (m_indexFile.empty())
+		throw WsException("index is emtpy");
+	if (m_rootPath.empty())
+		throw WsException("root is emtpy");
+	if (m_serverName.empty())
+		throw WsException("server_name is emtpy");
+	if (m_listenPort.empty())
+		throw WsException("listen is emtpy");
 	if (!isPath(m_rootPath))
 		throw WsException("invalid server root path");
 }
 
-bool	 WsConfigInfo::isPath(std::string& str)
+bool	 WsConfigInfo::isPath(const std::string& str)
 {
 	if (str.front() != '/')
 		return (false);
 	return (true);
 }
 
-bool	 WsConfigInfo::isPath(std::vector<std::string>& str)
+bool	 WsConfigInfo::isPath(const std::vector<std::string>& str)
 {
 	for (size_t i = 0; i < str.size(); i++)
 	{
@@ -158,7 +165,7 @@ bool	 WsConfigInfo::isPath(std::vector<std::string>& str)
 	return (true);
 }
 
-bool	 WsConfigInfo::isNum(std::string& str)
+bool	 WsConfigInfo::isNum(const std::string& str)
 {
 	for (size_t i = 0; i < str.size(); i++)
 	{
@@ -168,7 +175,7 @@ bool	 WsConfigInfo::isNum(std::string& str)
 	return (true);
 }
 
-bool	 WsConfigInfo::isNum(std::vector<std::string>& str)
+bool	 WsConfigInfo::isNum(const std::vector<std::string>& str)
 {
 	for (size_t i = 0; i < str.size(); i++)
 	{
