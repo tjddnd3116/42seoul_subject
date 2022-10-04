@@ -59,23 +59,16 @@ tokenizer::parseToken(WsInitializer &initializer)
 		initializer.pushBack(info);
 	}
 	if (m_tokIdx != m_tokVec.size())
-		throw WsException(m_tokVec[m_tokIdx].lineNum, "invaild server");
+		throw WsException(m_tokVec[m_tokIdx].lineNum, "invaild server block");
 }
 
 void
 tokenizer::serverParse(WsConfigInfo &info)
 {
 	m_tokIdx++;
-	if (isSafeIdx() && m_tokVec[m_tokIdx].type == OPEN_BRACE)
+	if (isOpenBrace())
 		serverContextParse(info);
-	else
-		throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "miss '{' - server");
-
-	if (!isSafeIdx())
-		throw WsException(m_tokVec[m_tokIdx].lineNum + 1, "miss '}' - server");
-	else if (m_tokVec[m_tokIdx].type != CLOSE_BRACE)
-		throw WsException(m_tokVec[m_tokIdx].lineNum + 1, "miss '}' - server");
-	else
+	if (isCloseBrace())
 		m_tokIdx++;
 }
 
@@ -86,10 +79,11 @@ tokenizer::serverContextParse(WsConfigInfo &info)
 	size_t						optionLineNum;
 
 	m_tokIdx++;
-	while (m_tokIdx < m_tokVec.size() && m_tokVec[m_tokIdx].type == OPTION_CONTEXT)
+	while (isOptionContext())
 	{
 		if (m_tokVec[m_tokIdx].str == "location")
 		{
+			m_tokIdx++;
 			locationParse(info);
 			continue ;
 		}
@@ -97,15 +91,9 @@ tokenizer::serverContextParse(WsConfigInfo &info)
 		std::string &tokenStr = m_tokVec[m_tokIdx++].str;
 		if (WsConfigInfo::s_table[tokenStr] == 0)
 			throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "invaild server option");
-		else if (!isSafeIdx())
-			throw WsException(m_tokVec[m_tokIdx].lineNum, "2???");
 		tokenSet.clear();
-		while (isSafeIdx() && m_tokVec[m_tokIdx].str.back() != ';')
+		while (!isSemicolon(optionLineNum))
 			tokenSet.push_back(m_tokVec[m_tokIdx++].str);
-
-		if (m_tokVec[m_tokIdx].lineNum != optionLineNum)
-			throw WsException(optionLineNum, "miss ';'");
-
 		if (m_tokVec[m_tokIdx].type == SEMICOLON)
 			m_tokIdx++;
 		else if (m_tokVec[m_tokIdx].str.back() == ';')
@@ -113,7 +101,6 @@ tokenizer::serverContextParse(WsConfigInfo &info)
 			m_tokVec[m_tokIdx].str.pop_back();
 			tokenSet.push_back(m_tokVec[m_tokIdx++].str);
 		}
-
 		try
 		{
 			(info.*(WsConfigInfo::s_table[tokenStr]))(tokenSet);
@@ -139,23 +126,15 @@ tokenizer::locationContextParse(WsConfigInfo &info)
 	size_t						optionLineNum;
 
 	m_tokIdx++;
-	while (isSafeIdx() && m_tokVec[m_tokIdx].type == OPTION_CONTEXT)
+	while (isOptionContext())
 	{
 		optionLineNum = m_tokVec[m_tokIdx].lineNum;
 		std::string &tokenStr = m_tokVec[m_tokIdx++].str;
-
 		if (WsConfigInfo::s_table["loc_" + tokenStr] == 0)
 			throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "invaild location option");
-		else if (!isSafeIdx())
-			throw WsException(m_tokVec[m_tokIdx].lineNum, "3???");
-
 		tokenSet.clear();
-		while (isSafeIdx() && m_tokVec[m_tokIdx].str.back() != ';' && m_tokVec[m_tokIdx].type == OPTION_CONTEXT)
+		while (!isSemicolon(optionLineNum))
 			tokenSet.push_back(m_tokVec[m_tokIdx++].str);
-
-		if (m_tokVec[m_tokIdx].lineNum != optionLineNum)
-			throw WsException(optionLineNum, "miss ';'");
-
 		if (m_tokVec[m_tokIdx].type == SEMICOLON)
 			m_tokIdx++;
 		else if (m_tokVec[m_tokIdx].str.back() == ';')
@@ -168,23 +147,14 @@ tokenizer::locationContextParse(WsConfigInfo &info)
 }
 
 void
-tokenizer::locationParse(WsConfigInfo &info)
+tokenizer::locationParse(WsConfigInfo& info)
 {
-	m_tokIdx++;
-	if (!isSafeIdx() || info.createLocation(m_tokVec[m_tokIdx].str))
-		throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "invaild location path");
-	m_tokIdx++;
-	if (isSafeIdx() && m_tokVec[m_tokIdx].type == OPEN_BRACE)
+	if (isLocationPath(info))
+		m_tokIdx++;
+	if (isOpenBrace())
 		locationContextParse(info);
-	else
-		throw WsException(m_tokVec[m_tokIdx].lineNum - 1, "miss '{' - location");
-
-	if (!isSafeIdx())
-		throw WsException(m_tokVec[m_tokIdx].lineNum, "4???");
-	else if (m_tokVec[m_tokIdx].type != CLOSE_BRACE)
-		throw WsException(m_tokVec[m_tokIdx].lineNum + 1, "miss '}' - location");
-	else
-		++m_tokIdx;
+	if (isCloseBrace())
+		m_tokIdx++;
 }
 
 bool
@@ -198,9 +168,63 @@ tokenizer::isSafeIdx(void)
 	return (true);
 }
 
-bool	 tokenizer::isComment(const t_token& token) const
+bool
+tokenizer::isComment(const t_token& token) const
 {
 	if (token.line[token.line.find_first_not_of("\t ")] == '#')
 		return (true);
 	return (false);
 }
+
+bool
+tokenizer::isOpenBrace()
+{
+	if (!isSafeIdx())
+		throw WsException(m_tokVec[m_tokIdx].lineNum, "miss '{'");
+	else if (m_tokVec[m_tokIdx].type != OPEN_BRACE)
+		throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "miss '{'");
+	return (true);
+}
+
+bool
+tokenizer::isCloseBrace()
+{
+	if (!isSafeIdx() || m_tokVec[m_tokIdx].type != CLOSE_BRACE)
+		throw WsException(m_tokVec[m_tokIdx].lineNum + 1, "miss '}'");
+	return (true);
+}
+
+bool
+tokenizer::isOptionContext(void)
+{
+	if (!isSafeIdx())
+	{
+		m_tokIdx++;
+		return (false);
+	}
+	if (m_tokVec[m_tokIdx].type == CLOSE_BRACE)
+		return (false);
+	return (true);
+}
+
+bool
+tokenizer::isSemicolon(size_t optionLineNum)
+{
+	if (!isSafeIdx())
+		throw WsException(m_tokVec[m_tokIdx].lineNum, "miss ';'");
+	if (m_tokVec[m_tokIdx].lineNum != optionLineNum)
+		throw WsException(optionLineNum, "miss ';'");
+	if (m_tokVec[m_tokIdx].str.back() == ';')
+		return (true);
+	return (false);
+}
+
+bool	 tokenizer::isLocationPath(WsConfigInfo& info)
+{
+	if (!isSafeIdx())
+		throw WsException(m_tokVec[m_tokIdx].lineNum, "invalid location path");
+	if (info.createLocation(m_tokVec[m_tokIdx].str))
+		throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "invalid location path");
+	return (true);
+}
+

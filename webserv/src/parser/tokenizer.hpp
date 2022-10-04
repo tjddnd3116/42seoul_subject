@@ -43,6 +43,11 @@ class tokenizer
 		bool		verifyInfo(WsConfigInfo& info);
 		bool		isSafeIdx(void);
 		bool		isComment(const t_token& token) const;
+		bool		isOpenBrace(void);
+		bool		isCloseBrace(void);
+		bool		isOptionContext(void);
+		bool		isSemicolon(size_t optionLineNum);
+		bool		isLocationPath(WsConfigInfo& info);
 
 	public:
 		tokenizer();
