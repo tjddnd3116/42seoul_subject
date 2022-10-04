@@ -56,16 +56,16 @@ WsServer::run(void)
 	while (1)
 	{
 		readSet = readSetOrig;
+		std::cout << "before socket selected" << std::endl;
 		changedFdCnt = select(maxFd + 1, &readSet, (fd_set*)0, (fd_set*)0, NULL);
-		std::cout << "changedFdCnt : "<< changedFdCnt << std::endl;
 		if (changedFdCnt < 0)
 		{
 			std::cout << "error" << std::endl;
 			break;
 		}
+		std::cout << "socket selected" << std::endl;
 		for (int socketIdx = 0; socketIdx < maxFd + 1; socketIdx++)
 		{
-			std::cout << "socket index : "<< socketIdx << std::endl;
 			if (FD_ISSET(socketIdx, &readSet))
 			{
 				WsClientSock clientSock(m_serverSock[socketIdx - 3].getConf());
