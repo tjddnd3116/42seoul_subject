@@ -18,7 +18,7 @@ void WsClientSock::acceptSock(const WsASocket &serverSock)
 
 	std::cout << "wait accept" << std::endl;
 	m_SocketFd = accept(serverSock.getSocketFd(), (struct sockaddr*)&m_SocketAddr, &m_SocketAddrSize);
-	fcntl(m_SocketFd, F_SETFL, O_NONBLOCK);
+	// fcntl(m_SocketFd, F_SETFL, O_NONBLOCK);
 	if (m_SocketFd < 0)
 		throw WsException("accept socket fail");
 	std::cout << "accept finish" << std::endl;
@@ -53,7 +53,6 @@ void WsClientSock::sendSock()
 
 	if (m_request.getMethod() == NULL)
 		std::cout << "get method is null" << std::endl;
-	std::cout << "get method is not null" << std::endl;
 	m_response.makeResponse(m_request.getMethod());
 	std::cout << m_response().c_str() << std::endl;
 	sendRet = send(m_SocketFd, m_response().c_str(), m_response.getBufSize() + 1, 0);

@@ -44,7 +44,7 @@ void WsResponse::readFile(void)
 {
 	std::string readLine;
 
-	m_responseBuf += "Content-Length: 12\n";
+	m_responseBuf += "Content-Length: 1000\n\n";
 	while (!m_file.eof())
 	{
 		std::getline(m_file, readLine);

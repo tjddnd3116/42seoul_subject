@@ -10,13 +10,9 @@ int main(int argc, char **argv)
 	{
 		if (argc != 2)
 			throw (WsException("invalid arguments count"));
-
 		WsInitializer initializer;
-
 		initializer.parseConfig(argv[1]);
-
 		WsServer	server(initializer.getConfigInfo());
-
 		server.createServerSock();
 		server.run();
 	}
@@ -25,6 +21,5 @@ int main(int argc, char **argv)
 		std::cerr << e.what() << std::endl;
 		std::cerr << "Webserv server exit....." << std::endl;
 	}
-
 	return (0);
 }

@@ -2,14 +2,10 @@
 #include "parser/configParser.hpp"
 
 WsInitializer::WsInitializer()
-{
-
-}
+{}
 
 WsInitializer::~WsInitializer()
-{
-
-}
+{}
 
 WsInitializer::WsInitializer(const WsInitializer& copy)
 {
