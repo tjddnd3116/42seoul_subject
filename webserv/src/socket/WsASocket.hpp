@@ -15,6 +15,7 @@
 #include "../parser/WsConfigInfo.hpp"
 
 #define BUFFER_SIZE 1024
+
 #define RESET	"\033[0m"
 #define RED		"\033[31m"
 #define BLUE    "\033[34m"

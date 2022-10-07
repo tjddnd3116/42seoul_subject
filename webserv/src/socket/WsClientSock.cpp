@@ -31,7 +31,8 @@ WsClientSock::operator=(const WsClientSock& copy)
 
 void WsClientSock::createSock(void)
 {
-	m_SocketFd = accept(m_SocketFd, (struct sockaddr*)&m_SocketAddr, &m_SocketAddrSize);
+	m_SocketFd = accept(m_SocketFd, (struct sockaddr*)&m_SocketAddr,
+			&m_SocketAddrSize);
 	fcntl(m_SocketFd, F_SETFL, O_NONBLOCK);
 	if (m_SocketFd < 0)
 		throw WsException("create(accept) socket fail");
@@ -45,7 +46,7 @@ int WsClientSock::readSock(void)
 
 	std::memset(m_buffer, 0, sizeof(m_buffer));
 	std::cout << "before read" << std::endl;
-	readRet = recv(m_SocketFd, m_buffer, BUFFER_SIZE, O_NONBLOCK);
+	readRet = recv(m_SocketFd, m_buffer, 10, O_NONBLOCK);
 	if (readRet < 0)
 	{
 		std::cout << "read fail close socket :" << m_SocketFd << std::endl;
@@ -54,6 +55,7 @@ int WsClientSock::readSock(void)
 	}
 	else
 	{
+		std::cout << m_buffer << std::endl;
 		m_request.readRequest(m_buffer);
 		m_request.printRequest();
 	}
@@ -62,13 +64,14 @@ int WsClientSock::readSock(void)
 
 void WsClientSock::sendSock(void)
 {
-	int sendRet;
-
 	if (m_request.getMethod() == NULL)
+	{
 		std::cout << "get method is null" << std::endl;
+		return;
+	}
 	m_response.makeResponse(m_request.getMethod());
 	std::cout << BLUE << "-----------response----------------" << std::endl;
 	std::cout << m_response().c_str() << std::endl;
 	std::cout << "-------------------------------" << RESET << std::endl;
-	sendRet = send(m_SocketFd, m_response().c_str(), m_response.getBufSize(), 0);
+	send(m_SocketFd, m_response().c_str(), m_response.getBufSize(), 0);
 }

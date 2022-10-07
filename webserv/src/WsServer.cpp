@@ -44,9 +44,7 @@ WsServer::createServerSock(void)
 void
 WsServer::run(void)
 {
-	std::cout << m_FdSet.fds_bits[0] << std::endl;
 	initFdSet();
-	std::cout << m_FdSet.fds_bits[0] << std::endl;
 	while (1)
 	{
 		m_FdSetCopy = m_FdSet;
@@ -89,14 +87,19 @@ void WsServer::communicateSock(void)
 		{
 			serverFd = fdIdx - 3;
 			WsClientSock clientSock(m_serverSock[serverFd]);
-			std::cout << "server socket fd : " << m_serverSock[serverFd].getSocketFd() << std::endl;
 			clientSock.createSock();
-			if (clientSock.readSock() > 0)
-			{
-				clientSock.sendSock();
-				clientSock.closeSock();
-			}
+			m_clientSock.push_back(clientSock);
+			// if (clientSock.readSock() > 0)
+			// {
+			//     clientSock.sendSock();
+			//     clientSock.closeSock();
+			// }
 		}
+	}
+	for (size_t clientIdx = 0; clientIdx < m_clientSock.size(); clientIdx++)
+	{
+		std::cout << "reading and writing~~~~" << std::endl;
+		sleep(10);
 	}
 }
 

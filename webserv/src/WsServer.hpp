@@ -18,6 +18,7 @@ class WsServer
 		// member variable
 		std::vector<WsConfigInfo>	m_conf;
 		std::vector<WsServerSock>	m_serverSock;
+		std::vector<WsClientSock>	m_clientSock;
 		size_t						m_serverSize;
 
 		fd_set						m_FdSet;
