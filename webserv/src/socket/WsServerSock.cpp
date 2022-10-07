@@ -1,8 +1,7 @@
 #include "WsServerSock.hpp"
-#include <cstdio>
-#include <cstring>
+#include "WsASocket.hpp"
 
-WsServerSock::WsServerSock(const WsConfigInfo conf)
+WsServerSock::WsServerSock(const WsConfigInfo& conf)
 	:WsASocket(conf)
 {}
 
@@ -15,7 +14,7 @@ void WsServerSock::createSock(void)
 
 	option = 1;
 	m_SocketFd = socket(AF_INET, SOCK_STREAM, 0);
-	// fcntl(m_SocketFd, F_SETFL, O_NONBLOCK);
+	fcntl(m_SocketFd, F_SETFL, O_NONBLOCK);
 	if (m_SocketFd == -1)
 		throw WsException("create socket fail");
 	setsockopt(m_SocketFd, SOL_SOCKET, SO_REUSEADDR, &option, sizeof(option));
@@ -46,3 +45,5 @@ void WsServerSock::listenSock(void)
 	if (listenRet == -1)
 		throw WsException("listen socket fail");
 }
+
+

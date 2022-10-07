@@ -1,6 +1,4 @@
 #include "WsRequest.hpp"
-#include "WsPostMethod.hpp"
-#include "WsPutMethod.hpp"
 
 WsRequest::WsRequest()
 {

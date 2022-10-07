@@ -11,10 +11,13 @@
 #include <iostream>
 #include <fcntl.h>
 
-#include "WsException.hpp"
-#include "WsConfigInfo.hpp"
+#include "../WsException.hpp"
+#include "../parser/WsConfigInfo.hpp"
 
 #define BUFFER_SIZE 1024
+#define RESET	"\033[0m"
+#define RED		"\033[31m"
+#define BLUE    "\033[34m"
 
 class WsASocket
 {
@@ -24,7 +27,6 @@ class WsASocket
 			socklen_t			m_SocketAddrSize;
 			int					m_SocketFd;
 			char				m_buffer[BUFFER_SIZE];
-			std::string			m_strBuffer;
 
 		public:
 			// Orthodox Canonical Form
@@ -33,10 +35,8 @@ class WsASocket
 			WsASocket(const WsASocket& copy);
 			WsASocket& operator=(const WsASocket &copy);
 
-
 			virtual void		createSock(void) = 0;
 			void				closeSock();
-			void				setStrBuffer(const std::string &str);
 			int					getSocketFd(void) const;
 			const WsConfigInfo&	getConf(void) const;
 };

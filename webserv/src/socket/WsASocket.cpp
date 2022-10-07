@@ -22,14 +22,7 @@ WsASocket::operator=(const WsASocket& copy)
 	m_SocketAddr = copy.m_SocketAddr;
 	m_SocketFd = copy.m_SocketFd;
 	m_SocketAddrSize = copy.m_SocketAddrSize;
-	m_strBuffer = copy.m_strBuffer;
 	return (*this);
-}
-
-void
-WsASocket::setStrBuffer(const std::string &str)
-{
-	m_strBuffer = str;
 }
 
 void

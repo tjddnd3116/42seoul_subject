@@ -7,7 +7,7 @@
 #include <iostream>
 #include <exception>
 
-#include "../WsConfigInfo.hpp"
+#include "WsConfigInfo.hpp"
 #include "../WsException.hpp"
 
 class WsInitializer;

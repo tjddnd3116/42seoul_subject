@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <cctype>
 
-#include "WsException.hpp"
+#include "../WsException.hpp"
 
 class WsConfigInfo
 {

@@ -5,9 +5,9 @@
 #include <string>
 #include <vector>
 
-#include "WsGetMethod.hpp"
-#include "WsPostMethod.hpp"
-#include "WsPutMethod.hpp"
+#include "../method/WsGetMethod.hpp"
+#include "../method/WsPostMethod.hpp"
+#include "../method/WsPutMethod.hpp"
 
 class WsRequest
 {

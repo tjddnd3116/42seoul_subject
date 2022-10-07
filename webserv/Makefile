@@ -6,31 +6,32 @@
 #    By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 14:41:39 by soum              #+#    #+#              #
-#    Updated: 2022/10/03 16:27:52 by soum             ###   ########.fr        #
+#    Updated: 2022/10/07 15:13:43 by soum             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = webserv
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+# -g -fsanitize=address
 
 SRCS = ./src/main.cpp \
 	   ./src/WsInitializer.cpp \
 	   ./src/WsException.cpp \
+	   ./src/WsServer.cpp \
 	   ./src/parser/configParser.cpp \
 	   ./src/parser/fileReader.cpp \
 	   ./src/parser/tokenizer.cpp \
-	   ./src/WsConfigInfo.cpp \
-	   ./src/WsServer.cpp \
-	   ./src/WsASocket.cpp \
-	   ./src/WsServerSock.cpp \
-	   ./src/WsClientSock.cpp \
-	   ./src/WsRequest.cpp \
-	   ./src/WsResponse.cpp \
-	   ./src/WsIMethod.cpp \
-	   ./src/WsPutMethod.cpp \
-	   ./src/WsPostMethod.cpp \
-	   ./src/WsGetMethod.cpp \
+	   ./src/parser/WsConfigInfo.cpp \
+	   ./src/method/WsIMethod.cpp \
+	   ./src/method/WsPutMethod.cpp \
+	   ./src/method/WsPostMethod.cpp \
+	   ./src/method/WsGetMethod.cpp \
+	   ./src/socket/WsASocket.cpp \
+	   ./src/socket/WsServerSock.cpp \
+	   ./src/socket/WsClientSock.cpp \
+	   ./src/socket/WsRequest.cpp \
+	   ./src/socket/WsResponse.cpp \
 
 .cpp.o :
 	$(CXX) $(CXXFLAGS) -c $< -o $(<:.cpp=.o)

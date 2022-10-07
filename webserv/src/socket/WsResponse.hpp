@@ -3,9 +3,10 @@
 
 #include <string>
 #include <fstream>
+#include <ctime>
 
-#include "WsIMethod.hpp"
-#include "WsConfigInfo.hpp"
+#include "../method/WsIMethod.hpp"
+#include "../parser/WsConfigInfo.hpp"
 
 class WsResponse
 {
@@ -16,13 +17,21 @@ class WsResponse
 		WsConfigInfo			m_conf;
 		int						m_statusCode;
 
-		void	makeHeader(void);
+		void				makeStatusLine(void);
+		void				makeResponseHeader(void);
+		void				makeEntityHeader(void);
+		void				makeGeneralHeader(void);
+		const std::string	getDate(void);
+
 	public:
 		WsResponse(const WsConfigInfo& conf);
 		~WsResponse();
+		WsResponse(const WsResponse& copy);
+		WsResponse& operator=(const WsResponse& copy);
 
-		void	readFile(void);
+		void	makeBody(void);
 		void	makeResponse(const WsIMethod* method);
+		void	makeDate(void);
 		size_t	getBufSize(void) const;
 
 		const std::string& operator()(void);

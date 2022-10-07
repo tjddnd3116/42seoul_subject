@@ -1,8 +1,8 @@
 #ifndef WsClientSock_hpp
 #define WsClientSock_hpp
 
+#include "../parser/WsConfigInfo.hpp"
 #include "WsASocket.hpp"
-#include "WsConfigInfo.hpp"
 #include "WsRequest.hpp"
 #include "WsResponse.hpp"
 
@@ -14,11 +14,13 @@ class WsClientSock : public WsASocket
 
 	public:
 		WsClientSock(const WsConfigInfo& conf);
+		WsClientSock(const WsASocket& serverSock);
 		~WsClientSock();
+		WsClientSock(const WsClientSock& copy);
+		WsClientSock& operator=(const WsClientSock& copy);
 
 		void	createSock(void);
-		void	acceptSock(const WsASocket &serverSock);
-		int		readSock();
-		void	sendSock();
+		int		readSock(void);
+		void	sendSock(void);
 };
 #endif //WsClientSock_hpp

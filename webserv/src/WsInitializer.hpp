@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "WsConfigInfo.hpp"
+#include "./parser/WsConfigInfo.hpp"
 #include "./parser/configParser.hpp"
 
 #define BUFFER_SIZE 1024

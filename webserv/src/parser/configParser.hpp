@@ -5,7 +5,7 @@
 #include <cstring>
 #include <iostream>
 
-#include "../WsConfigInfo.hpp"
+#include "WsConfigInfo.hpp"
 #include "fileReader.hpp"
 #include "tokenizer.hpp"
 

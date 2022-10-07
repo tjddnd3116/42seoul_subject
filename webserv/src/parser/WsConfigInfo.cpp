@@ -1,6 +1,4 @@
 #include "WsConfigInfo.hpp"
-#include "WsException.hpp"
-#include <cctype>
 
 std::unordered_map<std::string, WsConfigInfo::t_setterType>	WsConfigInfo::s_table;
 
