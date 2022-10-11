@@ -4,7 +4,7 @@
 #include <iostream>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <sys/_select.h>
+// #include <sys/_select.h>
 #include <vector>
 
 #include "WsInitializer.hpp"
@@ -20,14 +20,16 @@ class WsServer
 		std::vector<WsServerSock>	m_serverSock;
 		std::vector<WsClientSock>	m_clientSock;
 		size_t						m_serverSize;
-
 		fd_set						m_FdSet;
 		fd_set						m_FdSetCopy;
 		int							m_maxServerFd;
+		int							m_totalFd;
 
 		void	initFdSet(void);
 		bool	selectSock(void);
 		void	communicateSock(void);
+		bool	isServerSockSet(int fdIdx);
+		bool	isClientSockSet(int fdIdx);
 
 	public:
 		// Orthodox Canonical Form

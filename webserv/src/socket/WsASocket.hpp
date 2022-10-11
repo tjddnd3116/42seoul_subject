@@ -28,6 +28,7 @@ class WsASocket
 			socklen_t			m_SocketAddrSize;
 			int					m_SocketFd;
 			char				m_buffer[BUFFER_SIZE];
+			std::string			m_strBuffer;
 
 		public:
 			// Orthodox Canonical Form

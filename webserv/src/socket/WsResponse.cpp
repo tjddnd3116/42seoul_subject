@@ -213,7 +213,7 @@ void WsResponse::makeEntityHeader(void)
 	// 각 chunk 마다 그 시작에 16진수 길이를 삽입하여 chunk 길이를 알려준다.
 	m_responseBuf += "Content-Type: text/html; charset=UTF-8\n";
 	// m_responseBuf += "Content-Disposition: attachment; filename=soum.html";
-	m_responseBuf += "Content-Disposition: inline";
+	m_responseBuf += "Content-Disposition: inline\n";
 }
 
 void WsResponse::makeGeneralHeader(void)
