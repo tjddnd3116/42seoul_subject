@@ -14,26 +14,30 @@
 #include "./socket/WsClientSock.hpp"
 #include "./socket/WsServerSock.hpp"
 
+#define EVENT_SIZE 8
+
 class WsServer
 {
 	private:
 		// member variable
 		std::vector<WsConfigInfo>	m_conf;
-		std::map<int, WsServerSock>	m_serverSocket;
-		std::map<int, WsClientSock>	m_clientSocket;
-
+		std::map<int, WsServerSock>	m_serverSock;
+		std::map<int, WsClientSock>	m_clientSock;
+		std::vector<struct kevent>	m_changeList;
+		struct kevent				m_eventList[EVENT_SIZE];
+		int							m_kq;
 		size_t						m_serverSize;
-		fd_set						m_FdSet;
-		fd_set						m_FdSetCopy;
-		int							m_maxServerFd;
-		int							m_totalFd;
 
-		void	initFdSet(void);
-		int		selectSock(void);
-		void	communicateSock(void);
-		bool	isServerSockSet(int fdIdx);
-		bool	isClientSockSet(int fdIdx);
-		// void	isClientSockEof(void);
+		void	addEvents(uintptr_t ident, int16_t filter, uint16_t flags,
+				uint32_t fflags, intptr_t data, void* udata);
+		bool	isServerSocket(int fd);
+		bool	isClientSocket(int fd);
+
+		int		kevent(void);
+		void	keventSock(int newEvents);
+		void	readEvent(struct kevent* curEvent);
+		void	writeEvent(struct kevent* curEvent);
+		void	disconnectClient(int fd);
 
 	public:
 		// Orthodox Canonical Form

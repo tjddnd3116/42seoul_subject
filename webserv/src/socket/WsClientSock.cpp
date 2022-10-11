@@ -36,7 +36,8 @@ WsClientSock::operator=(const WsClientSock& copy)
 }
 
 
-void WsClientSock::createSock(void)
+void
+WsClientSock::createSock(void)
 {
 	int opts;
 
@@ -47,11 +48,11 @@ void WsClientSock::createSock(void)
 	fcntl(m_SocketFd, F_SETFL, opts);
 	if (m_SocketFd < 0)
 		throw WsException("create(accept) socket fail");
-	std::cout << "created(accept) client socket : " << m_SocketFd << std::endl;
-
+	// std::cout << "created(accept) client socket : " << m_SocketFd << std::endl;
 }
 
-int WsClientSock::readSock(void)
+int
+WsClientSock::readSock(void)
 {
 	int readRet;
 
@@ -63,22 +64,28 @@ int WsClientSock::readSock(void)
 		std::cout << "client socket close!" << std::endl;
 	else
 	{
+		m_buffer[readRet] = '\0';
 		m_request.readRequest(m_buffer);
-		m_request.printRequest();
+		if (1)
+			m_request.printRequest();
 	}
 	return (readRet);
 }
 
-void WsClientSock::sendSock(void)
+int
+WsClientSock::sendSock(void)
 {
+	int sendRet;
+
 	if (m_request.getMethod() == NULL)
-	{
-		std::cout << "get method is null" << std::endl;
-		return;
-	}
+		return (-1);
 	m_response.makeResponse(m_request.getMethod());
-	std::cout << BLUE << "-----------response----------------" << std::endl;
-	std::cout << m_response().c_str() << std::endl;
-	std::cout << "-------------------------------" << RESET << std::endl;
-	send(m_SocketFd, m_response().c_str(), m_response.getBufSize(), 0);
+	if (1)
+	{
+		std::cout << BLUE << "-----------response----------------" << std::endl;
+		std::cout << m_response().c_str() << std::endl;
+		std::cout << "-------------------------------" << RESET << std::endl;
+	}
+	sendRet = write(m_SocketFd, m_response().c_str(), m_response.getBufSize());
+	return (sendRet);
 }

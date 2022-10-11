@@ -1,13 +1,14 @@
 #include "WsServer.hpp"
 #include "socket/WsClientSock.hpp"
-#include <utility>
+#include <sys/event.h>
 
 WsServer::WsServer(const std::vector<WsConfigInfo> &conf)
 	:m_conf(conf)
 {
 	m_serverSize = m_conf.size();
-	FD_ZERO(&m_FdSet);
-	FD_ZERO(&m_FdSetCopy);
+	m_kq = kqueue();
+	if (m_kq < 0)
+		throw (WsException("kqueue fail"));
 }
 
 WsServer::~WsServer()
@@ -22,7 +23,7 @@ WsServer&
 WsServer::operator=(const WsServer &copy)
 {
 	m_conf = copy.m_conf;
-	m_serverSocket = copy.m_serverSocket;
+	m_serverSock = copy.m_serverSock;
 	m_serverSize = copy.m_serverSize;
 	return (*this);
 }
@@ -37,138 +38,145 @@ WsServer::createServerSock(void)
 		serverSock.initAddr();
 		serverSock.bindSock();
 		serverSock.listenSock();
-		m_maxServerFd = serverSock.getSocketFd();
-		m_serverSocket.insert(std::make_pair(serverSock.getSocketFd(), serverSock));
+		m_serverSock.insert(std::make_pair(serverSock.getSocketFd(), serverSock));
+		addEvents(serverSock.getSocketFd(), EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, NULL);
 	}
-	m_totalFd = m_maxServerFd;
+	std::cout << "all server socket created" << std::endl;
 }
 
 void
 WsServer::run(void)
 {
-	int selectRet;
-
-	initFdSet();
+	int newEvents;
 	while (1)
 	{
-		m_FdSetCopy = m_FdSet;
-		selectRet = selectSock();
-		if (selectRet < 0)
-			break;
-		else if (selectRet == 0)
-			continue;
-		communicateSock();
+		newEvents = kevent();
+		keventSock(newEvents);
 	}
 }
 
 void
-WsServer::initFdSet(void)
+WsServer::addEvents(uintptr_t ident, int16_t filter, uint16_t flags, uint32_t fflags, intptr_t data, void* udata)
 {
-	// for (size_t idx = 0; idx < m_serverSize; idx++)
-	//     FD_SET(m_serverSock[idx].getSocketFd(), &m_FdSet);
+	struct kevent tempEvent;
 
-	std::map<int, WsServerSock>::iterator serverSockIt = m_serverSocket.begin();
-	for (; serverSockIt != m_serverSocket.end(); serverSockIt++)
-		FD_SET(serverSockIt->first, &m_FdSet);
+	EV_SET(&tempEvent, ident, filter, flags, fflags, data, udata);
+	m_changeList.push_back(tempEvent);
 }
 
 int
-WsServer::selectSock(void)
+WsServer::kevent()
 {
-	int selectRet;
-	// struct timeval timeout;
+	int newEvents;
 
-	// timeout.tv_sec = 5;
-	// timeout.tv_usec = 5000;
-	std::cout << std::endl << "waiting socket to select" << std::endl;
-	std::cout << "total fd : " << m_totalFd << std::endl;
-	selectRet = select(m_totalFd + 1, &m_FdSetCopy, (fd_set*)0, (fd_set*)0, 0);
-	if (selectRet < 0)
-	{
-		std::cout << "select error" << std::endl;
-		return (-1);
-	}
-	if (selectRet == 0)
-	{
-		std::cout << "select time out" << std::endl;
-		return (0);
-	}
-	std::cout << "selected socket ready socket status num : " << selectRet << std::endl;
-	return (1);
+	std::cout << "waiting event" << std::endl;
+	newEvents = ::kevent(m_kq, &m_changeList[0], m_changeList.size(),
+			m_eventList, EVENT_SIZE, NULL);
+	std::cout << "new events count : " << newEvents << std::endl;
+	if (newEvents == -1)
+		throw (WsException("kevent fail"));
+	m_changeList.clear();
+	return (newEvents);
 }
 
-void WsServer::communicateSock(void)
+void
+WsServer::keventSock(int newEvents)
 {
-	for (int fdIdx = 3; fdIdx < m_totalFd + 1; fdIdx++)
+	for (int i = 0; i < newEvents; i++)
 	{
-		if (isServerSockSet(fdIdx))
+		struct kevent* curEvent;
+
+		curEvent = &m_eventList[i];
+		std::cout << curEvent->ident << std::endl;
+		std::cout << curEvent->filter << std::endl;
+		if (curEvent->flags & EV_ERROR)
 		{
-			WsClientSock clientSock(m_serverSocket.at(fdIdx));
-			clientSock.createSock();
-			FD_SET(clientSock.getSocketFd(), &m_FdSet);
-
-			m_clientSocket.insert(std::make_pair(clientSock.getSocketFd(), clientSock));
-			if (m_totalFd < clientSock.getSocketFd())
-				m_totalFd = clientSock.getSocketFd();
-			std::cout << "total fd : "<< m_totalFd << std::endl;
-			std::cout << "server client connected" << std::endl;
+			if (isServerSocket(curEvent->ident))
+				throw (WsException("server socket fail"));
+			if (isClientSocket(curEvent->ident))
+				throw (WsException("client socket fail"));
 		}
-		else if (isClientSockSet(fdIdx))
-		{
-			int readRet;
-
-			std::cout << "client call to read " << fdIdx << std::endl;
-
-			std::map<int, WsClientSock>::iterator clientIt = m_clientSocket.find(fdIdx);
-			readRet = (*clientIt).second.readSock();
-			if (readRet == 0)
-			{
-				FD_CLR((*clientIt).first, &m_FdSet);
-				(*clientIt).second.closeSock();
-				// m_clientSock.erase(clientIt);
-			}
-			else if (readRet < 0)
-			{}
-			else
-				(*clientIt).second.sendSock();
-				FD_CLR((*clientIt).first, &m_FdSet);
-				(*clientIt).second.closeSock();
-				// m_clientSock.erase(clientIt);
-		}
+		else if (curEvent->filter == EVFILT_READ)
+			readEvent(curEvent);
+		else if (curEvent->filter == EVFILT_WRITE)
+			writeEvent(curEvent);
 	}
 }
 
-bool WsServer::isServerSockSet(int fdIdx)
+bool
+WsServer::isServerSocket(int fd)
 {
-	if (fdIdx <= m_maxServerFd && FD_ISSET(fdIdx, &m_FdSetCopy))
+	if (m_serverSock.find(fd) != m_serverSock.end())
 		return (true);
 	return (false);
 }
 
-bool WsServer::isClientSockSet(int fdIdx)
+bool
+WsServer::isClientSocket(int fd)
 {
-	if (fdIdx > m_maxServerFd && FD_ISSET(fdIdx, &m_FdSetCopy))
+	if (m_clientSock.find(fd) != m_clientSock.end())
 		return (true);
 	return (false);
 }
 
-// void WsServer::isClientSockEof(void)
-// {
-//     int readRet;
-//
-//     for (std::vector<WsClientSock>::iterator clientIt = m_clientSock.begin();
-//             clientIt != m_clientSock.end(); clientIt++)
-//     {
-//         readRet = (*clientIt).readSock();
-//         std::cout << "read request finish" << std::endl;
-//         std::cout << readRet << std::endl;
-//         if (readRet <= 0)
-//         {
-//             (*clientIt).sendSock();
-//             FD_CLR((*clientIt).getSocketFd(), &m_FdSet);
-//             (*clientIt).closeSock();
-//             m_clientSock.erase(clientIt);
-//             return;
-//         }
-//     }
-// }
+void
+WsServer::readEvent(struct kevent* curEvent)
+{
+	if (isServerSocket(curEvent->ident))
+	{
+		WsClientSock clientSock(m_serverSock.at(curEvent->ident));
+
+		clientSock.createSock();
+		m_clientSock.insert(std::make_pair(clientSock.getSocketFd(), clientSock));
+		addEvents(clientSock.getSocketFd(), EVFILT_READ,
+				EV_ADD | EV_ENABLE, 0, 0, NULL);
+		addEvents(clientSock.getSocketFd(), EVFILT_WRITE,
+				EV_ADD | EV_ENABLE, 0, 0, NULL);
+		std::cout << "client socket created" << std::endl;
+	}
+	else if(isClientSocket(curEvent->ident))
+	{
+		int readRet;
+
+		std::map<int, WsClientSock>::iterator clientIt =
+			m_clientSock.find(curEvent->ident);
+		readRet = (*clientIt).second.readSock();
+		if (readRet <= 0)
+		{
+			if (readRet < 0)
+				std::cout << "client read error" << std::endl;
+			disconnectClient(curEvent->ident);
+		}
+		std::cout << "client read finish" << std::endl;
+	}
+}
+
+void
+WsServer::writeEvent(struct kevent* curEvent)
+{
+	if (isClientSocket(curEvent->ident))
+	{
+		int sendRet;
+
+		std::map<int, WsClientSock>::iterator clientIt =
+			m_clientSock.find(curEvent->ident);
+		sendRet = (*clientIt).second.sendSock();
+		if (sendRet < 0)
+		{
+			std::cout << "client send error" << std::endl;
+			disconnectClient(curEvent->ident);
+		}
+		else
+		{
+			std::cout << "client send finish" << std::endl;
+			disconnectClient(curEvent->ident);
+		}
+	}
+}
+
+void WsServer::disconnectClient(int fd)
+{
+	std::cout << "client disconnected : " << fd << std::endl;
+	m_clientSock.at(fd).closeSock();
+	m_clientSock.erase(fd);
+}

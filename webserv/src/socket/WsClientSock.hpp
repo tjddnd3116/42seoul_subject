@@ -21,6 +21,6 @@ class WsClientSock : public WsASocket
 
 		void	createSock(void);
 		int		readSock(void);
-		void	sendSock(void);
+		int		sendSock(void);
 };
 #endif //WsClientSock_hpp

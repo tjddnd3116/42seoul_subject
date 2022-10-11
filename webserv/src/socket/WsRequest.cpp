@@ -6,9 +6,7 @@ WsRequest::WsRequest()
 }
 
 WsRequest::~WsRequest()
-{
-	// delete m_method;
-}
+{}
 
 void
 WsRequest::readRequest(const std::string& request)
@@ -58,6 +56,3 @@ void	 WsRequest::printRequest(void) const
 {
 	m_method->printInfo();
 }
-
-
-
