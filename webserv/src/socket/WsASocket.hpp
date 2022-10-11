@@ -14,7 +14,7 @@
 #include "../WsException.hpp"
 #include "../parser/WsConfigInfo.hpp"
 
-#define BUFFER_SIZE 1024
+#define BUF_SIZE 65535
 
 #define RESET	"\033[0m"
 #define RED		"\033[31m"
@@ -27,7 +27,8 @@ class WsASocket
 			struct sockaddr_in	m_SocketAddr;
 			socklen_t			m_SocketAddrSize;
 			int					m_SocketFd;
-			char				m_buffer[BUFFER_SIZE];
+			int					m_epollFd;
+			char				m_buffer[BUF_SIZE];
 			std::string			m_strBuffer;
 
 		public:

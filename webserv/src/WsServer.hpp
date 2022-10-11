@@ -1,11 +1,13 @@
 #ifndef WsServer_hpp
 #define WsServer_hpp
 
-#include <iostream>
+#include <sys/event.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-// #include <sys/_select.h>
+
+#include <map>
 #include <vector>
+#include <iostream>
 
 #include "WsInitializer.hpp"
 #include "./parser/WsConfigInfo.hpp"
@@ -17,8 +19,9 @@ class WsServer
 	private:
 		// member variable
 		std::vector<WsConfigInfo>	m_conf;
-		std::vector<WsServerSock>	m_serverSock;
-		std::vector<WsClientSock>	m_clientSock;
+		std::map<int, WsServerSock>	m_serverSocket;
+		std::map<int, WsClientSock>	m_clientSocket;
+
 		size_t						m_serverSize;
 		fd_set						m_FdSet;
 		fd_set						m_FdSetCopy;
@@ -26,10 +29,11 @@ class WsServer
 		int							m_totalFd;
 
 		void	initFdSet(void);
-		bool	selectSock(void);
+		int		selectSock(void);
 		void	communicateSock(void);
 		bool	isServerSockSet(int fdIdx);
 		bool	isClientSockSet(int fdIdx);
+		// void	isClientSockEof(void);
 
 	public:
 		// Orthodox Canonical Form

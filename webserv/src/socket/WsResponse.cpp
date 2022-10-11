@@ -219,7 +219,7 @@ void WsResponse::makeEntityHeader(void)
 void WsResponse::makeGeneralHeader(void)
 {
 	m_responseBuf += "Date: " + getDate() + "\n";
-	m_responseBuf += "Connection: Keep-Alive\n";
+	// m_responseBuf += "Connection: close\n";
 	// Connection
 	// 클라이언트와 서버간 연결에 대한 옵션 설정 (다소 모호한 복잡성 있음)
 	// 	ex) Connection: close

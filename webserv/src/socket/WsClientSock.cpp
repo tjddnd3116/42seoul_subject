@@ -54,22 +54,18 @@ void WsClientSock::createSock(void)
 int WsClientSock::readSock(void)
 {
 	int readRet;
-	char buffer[1024];
 
-	// std::memset(m_buffer, 0, sizeof(m_buffer));
-	std::memset(buffer, 0, sizeof(buffer));
-	readRet = read(m_SocketFd, buffer, sizeof(buffer) - 1);
-	// readRet = read(m_SocketFd, m_buffer, sizeof(m_buffer) - 1);
-	// readRet = recv(m_SocketFd, m_buffer, 89, MSG_DONTWAIT);
+	std::memset(m_buffer, 0, sizeof(m_buffer));
+	readRet = read(m_SocketFd, m_buffer, BUF_SIZE);
 	if (readRet < 0)
+		std::cout << "non-blocking" << std::endl;
+	else if (readRet == 0)
+		std::cout << "client socket close!" << std::endl;
+	else
 	{
-		m_request.readRequest(m_strBuffer);
+		m_request.readRequest(m_buffer);
 		m_request.printRequest();
 	}
-	else if (readRet == 0)
-		std::cout << "eof!" << std::endl;
-	else
-		m_strBuffer += m_buffer;
 	return (readRet);
 }
 
