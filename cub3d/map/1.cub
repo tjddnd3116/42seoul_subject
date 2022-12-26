@@ -1,11 +1,12 @@
 NO ./images/wall1.png
+C 64,64,64
+
 SO ./images/wall2.png
 WE ./images/wall3.png
 EA ./images/wall4.png
 DO ./images/new_door.png
 
 F 29,206,195
-C 64,64,64
 
 111111111111111111111111
 100001000001000000000001

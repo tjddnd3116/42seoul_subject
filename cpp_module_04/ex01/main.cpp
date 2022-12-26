@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 18:00:38 by soum              #+#    #+#             */
-/*   Updated: 2022/08/17 21:59:43 by soum             ###   ########.fr       */
+/*   Updated: 2022/10/17 21:39:51 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 int main(void)
 {
 	// <subject test>
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-
-	j->makeSound();
-	i->makeSound();
-
-	delete j;
-	delete i;
+	// const Animal* j = new Dog();
+	// const Animal* i = new Cat();
+    //
+	// j->makeSound();
+	// i->makeSound();
+    //
+	// delete j;
+	// delete i;
 
 	// <custom test1>
 	// ----------------------------------------------------------------------
@@ -69,15 +69,17 @@ int main(void)
 	// shallow copy
 	// ****Do Not Do This!!!****
 
-	// WrongCat *jj = new WrongCat();
+	WrongCat *jj = new WrongCat();
 	WrongCat ii;
 	// std::cout << "ff" << std::endl;
 
-	// ii = *jj;
-	// jj->makeSound();
-	// ii.makeSound();
+	ii = *jj;
+	jj->makeSound();
 
-	// delete jj;
+	delete jj;
+
+	// ii.makeSound();
+	ii.makeThink();
 
 	return (0);
 }

@@ -23,5 +23,6 @@ RUN ./conf.sh
 
 RUN service mysql start && mariadb < mariadb_conf.sh
 RUN rm mariadb_conf.sh
+VOLUME [ "/data" ]
 
 CMD mysqld

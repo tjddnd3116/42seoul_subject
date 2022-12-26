@@ -2,6 +2,7 @@
 #define vector_hpp
 
 #include <memory>
+#include <vector>
 
 #include "../iterator/randomAccessIterator.hpp"
 #include "../iterator/reverseIterator.hpp"

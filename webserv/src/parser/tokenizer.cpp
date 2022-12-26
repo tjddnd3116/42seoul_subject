@@ -1,26 +1,13 @@
 #include "tokenizer.hpp"
-#include "../WsInitializer.hpp"
 
 tokenizer::tokenizer()
 {
+	m_tokVec.clear();
 	m_tokIdx = 0;
 }
 
 tokenizer::~tokenizer()
 {}
-
-tokenizer::tokenizer(const tokenizer& copy)
-{
-	*this = copy;
-}
-
-tokenizer&
-tokenizer::operator=(const tokenizer& copy)
-{
-	m_tokVec = copy.m_tokVec;
-	m_tokIdx = copy.m_tokIdx;
-	return (*this);
-}
 
 void
 tokenizer::pushBackToken(t_token& token)
@@ -47,32 +34,27 @@ tokenizer::selectTokenType(const std::string& str) const
 }
 
 void
-tokenizer::parseToken(WsInitializer &initializer)
+tokenizer::parseToken(std::vector<configInfo>& config,
+					  std::fstream& logFile)
 {
 	while (m_tokIdx != m_tokVec.size() && m_tokVec[m_tokIdx].type == SERVER)
 	{
-		WsConfigInfo info;
+		configInfo info;
 
-		serverParse(info);
-		info.printConf();
-		initializer.pushBack(info);
+		blockParse(info);
+		info.createDefaultLocation();
+		info.checkConfig();
+		logFile << info;
+		info.locationVecToMap();
+		config.push_back(info);
 	}
 	if (m_tokIdx != m_tokVec.size())
 		throw WsException(m_tokVec[m_tokIdx].lineNum, "invaild server block");
 }
 
 void
-tokenizer::serverParse(WsConfigInfo &info)
-{
-	m_tokIdx++;
-	if (isOpenBrace())
-		serverContextParse(info);
-	if (isCloseBrace())
-		m_tokIdx++;
-}
-
-void
-tokenizer::serverContextParse(WsConfigInfo &info)
+tokenizer::contextParse(configInfo &info,
+						const std::string& blockType)
 {
 	std::vector<std::string>	tokenSet;
 	size_t						optionLineNum;
@@ -80,16 +62,17 @@ tokenizer::serverContextParse(WsConfigInfo &info)
 	m_tokIdx++;
 	while (isOptionContext())
 	{
-		if (m_tokVec[m_tokIdx].str == "location")
+		if (isLocationBlock(blockType))
 		{
 			m_tokIdx++;
-			locationParse(info);
+			if (isLocationPath(info))
+				blockParse(info, "loc_");
 			continue ;
 		}
 		optionLineNum = m_tokVec[m_tokIdx].lineNum;
 		std::string &tokenStr = m_tokVec[m_tokIdx++].str;
-		if (WsConfigInfo::s_table[tokenStr] == 0)
-			throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "invaild server option");
+		if (configInfo::s_table[blockType + tokenStr] == 0)
+			throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "invaild block option");
 		tokenSet.clear();
 		while (!isSemicolon(optionLineNum))
 			tokenSet.push_back(m_tokVec[m_tokIdx++].str);
@@ -100,58 +83,22 @@ tokenizer::serverContextParse(WsConfigInfo &info)
 			m_tokVec[m_tokIdx].str.pop_back();
 			tokenSet.push_back(m_tokVec[m_tokIdx++].str);
 		}
-		try
-		{
-			(info.*(WsConfigInfo::s_table[tokenStr]))(tokenSet);
-		}
-		catch (std::exception& e)
-		{
-			throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "invaild port or path");
+		try {
+			(info.*(configInfo::s_table[blockType + tokenStr]))(tokenSet);
+		} catch (WsException& e) {
+			std::string errMsg = e.getErrorMsg();
+			throw WsException(m_tokVec[m_tokIdx - 1].lineNum, errMsg);
 		}
 	}
 }
 
-bool
-tokenizer::verifyInfo(WsConfigInfo& info)
-{
-	info.checkConfig();
-	return (true);
-}
-
 void
-tokenizer::locationContextParse(WsConfigInfo &info)
+tokenizer::blockParse(configInfo &info,
+					  const std::string& blockType)
 {
-	std::vector<std::string>	tokenSet;
-	size_t						optionLineNum;
-
 	m_tokIdx++;
-	while (isOptionContext())
-	{
-		optionLineNum = m_tokVec[m_tokIdx].lineNum;
-		std::string &tokenStr = m_tokVec[m_tokIdx++].str;
-		if (WsConfigInfo::s_table["loc_" + tokenStr] == 0)
-			throw WsException(m_tokVec[m_tokIdx - 1].lineNum, "invaild location option");
-		tokenSet.clear();
-		while (!isSemicolon(optionLineNum))
-			tokenSet.push_back(m_tokVec[m_tokIdx++].str);
-		if (m_tokVec[m_tokIdx].type == SEMICOLON)
-			m_tokIdx++;
-		else if (m_tokVec[m_tokIdx].str.back() == ';')
-		{
-			m_tokVec[m_tokIdx].str.pop_back();
-			tokenSet.push_back(m_tokVec[m_tokIdx++].str);
-		}
-		(info.*(WsConfigInfo::s_table["loc_" + tokenStr]))(tokenSet);
-	}
-}
-
-void
-tokenizer::locationParse(WsConfigInfo& info)
-{
-	if (isLocationPath(info))
-		m_tokIdx++;
 	if (isOpenBrace())
-		locationContextParse(info);
+		contextParse(info, blockType);
 	if (isCloseBrace())
 		m_tokIdx++;
 }
@@ -218,7 +165,8 @@ tokenizer::isSemicolon(size_t optionLineNum)
 	return (false);
 }
 
-bool	 tokenizer::isLocationPath(WsConfigInfo& info)
+bool
+tokenizer::isLocationPath(configInfo& info)
 {
 	if (!isSafeIdx())
 		throw WsException(m_tokVec[m_tokIdx].lineNum, "invalid location path");
@@ -227,3 +175,14 @@ bool	 tokenizer::isLocationPath(WsConfigInfo& info)
 	return (true);
 }
 
+bool
+tokenizer::isLocationBlock(const std::string& blockType)
+{
+	if (m_tokVec[m_tokIdx].str == "location")
+	{
+		if (blockType == "loc_")
+				throw WsException(m_tokVec[m_tokIdx].lineNum - 1, "miss '}'");
+		return (true);
+	}
+	return (false);
+}

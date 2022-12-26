@@ -1,16 +1,15 @@
 #ifndef tokenizer_hpp
 #define tokenizer_hpp
 
-#include <string>
 #include <sys/resource.h>
+
+#include <string>
 #include <vector>
 #include <iostream>
 #include <exception>
 
-#include "WsConfigInfo.hpp"
+#include "configInfo.hpp"
 #include "../WsException.hpp"
-
-class WsInitializer;
 
 enum e_tokenType
 {
@@ -36,27 +35,32 @@ class tokenizer
 		size_t					m_tokIdx;
 
 		e_tokenType	selectTokenType(const std::string& str) const;
-		void	 	serverParse(WsConfigInfo &wsConfigInfo);
-		void		serverContextParse(WsConfigInfo &info);
-		void		locationContextParse(WsConfigInfo &info);
-		void		locationParse(WsConfigInfo &info);
-		bool		verifyInfo(WsConfigInfo& info);
+
+		void	 	blockParse(configInfo &info, const std::string& blockType = "");
+		void		contextParse(configInfo &info, const std::string& blockType);
+
+		bool		isLocationBlock(const std::string& blockType);
 		bool		isSafeIdx(void);
 		bool		isComment(const t_token& token) const;
 		bool		isOpenBrace(void);
 		bool		isCloseBrace(void);
 		bool		isOptionContext(void);
 		bool		isSemicolon(size_t optionLineNum);
-		bool		isLocationPath(WsConfigInfo& info);
+		bool		isLocationPath(configInfo& info);
+		bool		isLimitExcept(configInfo& info);
 
-	public:
-		tokenizer();
-		~tokenizer();
+		// hide copy
 		tokenizer(const tokenizer& copy);
 		tokenizer& operator=(const tokenizer& copy);
 
+	public:
+		// constructor & destructor
+		tokenizer();
+		~tokenizer();
+
+		// make token & parse token
 		void		pushBackToken(t_token& token);
-		void	 	parseToken(WsInitializer &initializer);
+		void	 	parseToken(std::vector<configInfo>& config, std::fstream& logFile);
 
 };
 

@@ -1,8 +1,10 @@
 #include <exception>
 #include <iostream>
-#include "WsInitializer.hpp"
+
+#include "./parser/parser.hpp"
 #include "WsException.hpp"
-#include "WsServer.hpp"
+#include "server.hpp"
+#include "webServ.hpp"
 
 int main(int argc, char **argv)
 {
@@ -10,16 +12,16 @@ int main(int argc, char **argv)
 	{
 		if (argc != 2)
 			throw (WsException("invalid arguments count"));
-		WsInitializer initializer;
-		initializer.parseConfig(argv[1]);
-
-		WsServer	server(initializer.getConfigInfo());
-		server.createServerSock();
-		server.run();
+		webServ webServ;
+		webServ.parsing(argv[1]);
+		webServ.serverRun();
 	}
-	catch (std::exception &e)
+	catch (std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
+		// TODO
+		// free all data
+		// webServ.clear();
 		std::cerr << "Webserv server exit....." << std::endl;
 	}
 	return (0);

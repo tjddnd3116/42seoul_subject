@@ -6,16 +6,19 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 13:50:18 by soum              #+#    #+#             */
-/*   Updated: 2022/05/01 15:04:38 by soum             ###   ########.fr       */
+/*   Updated: 2022/10/17 21:01:14 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <list>
 #include "MutantStack.hpp"
 
 int main()
 {
 	MutantStack<int> mstack;
+
+	MutantStack<int, std::list<int> > mstack1;
 
 	mstack.push(5);
 	mstack.push(17);
