@@ -6,7 +6,7 @@
 /*   By: soum <soum@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 17:48:19 by soum              #+#    #+#             */
-/*   Updated: 2022/10/17 20:57:38 by soum             ###   ########.fr       */
+/*   Updated: 2023/01/20 23:03:46 by soum             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void iter(const T* addr, unsigned long long len, void(*f)(const T&))
 }
 
 template <typename T>
-void iter(T* addr, unsigned long long len, void(*f)(T&))
+void iter(const T* addr, unsigned long long len, void(*f)(T&))
 {
 	if (addr == NULL || f == NULL)
 		return ;

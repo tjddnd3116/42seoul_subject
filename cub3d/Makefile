@@ -41,7 +41,6 @@ OBJ		=	$(SRC:%.c=%.o)
 
 INC_DIR	=	-Isrc
 
-
 LIBFLAGS 	+=	-L.
 
 # NOTE: library order (-ldlinkedlist and -lft) can be problem
